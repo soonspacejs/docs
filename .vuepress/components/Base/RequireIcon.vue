@@ -43,7 +43,7 @@
 export default {
   name: "base-requireIcon",
   props: {
-    isRequire: Boolean,
+    isRequire: { type: Boolean, default: true },
   },
 };
 </script>
