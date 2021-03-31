@@ -1,0 +1,313 @@
+# 拓扑路径
+
+## createTopology
+创建 `topology` 对象。
+### 定义：
+```ts
+interface TwoWaysLink {
+  pointAIndex: number;
+  pointBIndex: number;
+}
+
+interface TopologyInfo extends BaseObject3DInfo {
+  nodes: Position[];
+  links: TwoWaysLink[]
+  linkWidth?: number;
+  // 
+  renderNode?: boolean;
+  nodeColor?: IColor | IColor[];
+  // 
+  renderCircle?: boolean;
+  // 
+  renderLink?: boolean;
+  linkColor?: IColor | IColor[];
+  imgUrl?: string;
+  animation?: boolean | AnimationOptions;
+}
+
+function createTopology(topologyInfo: TopologyInfo): Topology
+```
+### 用法：
+``` js
+ssp.createTopology(
+  // topologyInfo
+  {
+    id: 'xx',
+    name: 'xx',
+    level: {
+      max: 1000,
+      min: null
+    },
+    position: { x: 0, y: 0, z: 0 },
+    rotation: { x: 0, y: 0, z: 0 },
+    scale: { x: 2, y: 2, z: 2 },
+    userData: {
+
+    }
+  }
+)
+```
+### 参数：
+#### topologyInfo
+  - **描述:** 实例路径对象所需信息
+  - **类型:** TopologyInfo
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+##### TopologyInfo
+<Docs-Table
+    :data="[
+      { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
+      { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
+      { prop: 'nodes', desc: '节点坐标集合', type: 'Position[]', require: true, default: '', link: '../guide/types.html#level' },
+      { prop: 'links', desc: '连接线集合', type: 'TwoWaysLink[]', require: true, default: '', link: '#twowayslink' },
+      { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
+      { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
+      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
+      { prop: 'renderCircle', desc: '是否渲染线段连接处的补全圆', type: 'boolean', require: false, default: 'true' },
+      { prop: 'renderLink', desc: '是否渲染连接线', type: 'boolean', require: false, default: 'true' },
+      { prop: 'linkColor', desc: '连接线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'imgUrl', desc: '非纯色线时使用的图片资源路径', type: 'string', require: false, default: 'null' },
+      { prop: 'animation', desc: '非纯色线时的流动动画', type: 'boolean | AnimationOptions', require: false, default: 'false', link: './animation.html#animationoptions'},
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'rotation', desc: '旋转角度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
+    ]"
+/>
+
+##### TwoWaysLink
+<Docs-Table
+    :data="[
+      { prop: 'pointAIndex', desc: '连接线一端位置坐标在 nodes 内的索引', type: 'number', require: true, default: '' },
+      { prop: 'pointBIndex', desc: '连接线另一端位置坐标在 nodes 内的索引', type: 'number', require: true, default: '' },
+    ]"
+/>
+
+## getTopologyById
+通过 `id` 查找
+### 定义：
+```ts
+function getTopologyById(id: TopologyInfo['id']): Topology | null
+```
+### 用法：
+``` js
+const topology = ssp.getTopologyById('xxx')
+```
+
+## getTopologyByName
+通过 `name` 查找
+### 定义：
+```ts
+function getTopologyByName(name: string): Topology[]
+```
+### 用法：
+``` js
+const topologyList = ssp.getTopologyByName('xxx')
+```
+
+## getAllTopology
+获取所有 `Topology` 对象
+### 定义：
+```ts
+function getAllTopology(): Topology[]
+```
+### 用法：
+``` js
+const allTopologyList = ssp.getAllTopology()
+```
+
+## getTopologyByUserDataProperty
+通过 `userData` 属性查找
+### 定义：
+```ts
+function getTopologyByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Topology[]
+```
+### 用法：
+``` js
+const topologyList = ssp.getTopologyByUserDataProperty('propKey'， 'propVal')
+// or
+const topologyList = ssp.getTopologyByUserDataProperty(item => item['itemPropKey'] === 'itemPropVal')
+```
+### 参数：
+#### propNameOrFindFunc
+  - **描述:** `userData` 内属性名 或 `find` 函数
+  - **类型:** string | function
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+#### propValue
+  - **描述:** `userData` 内属性值。
+  - **类型:** any
+  - **必填:** <Base-RequireIcon :isRequire="false"/>
+
+::: tip find 函数使用场景
+```js
+topology.userData = {
+  people: {
+    name: 'xiaoming',
+    age: 18
+  }
+}
+const topologyList = ssp.getTopologyByUserDataProperty(userData => userData?.people?.name === 'xiaoming')
+```
+:::
+
+## removeTopologyById
+通过 `id` 移除
+### 定义：
+```ts
+function removeTopologyById(id: TopologyInfo['id']): boolean
+```
+### 用法：
+```js
+ssp.removeTopologyById('xxx')
+```
+
+## createTopologyToGroup
+创建 `topology` 到一个组内。
+### 定义：
+```ts
+function createTopologyToGroup(groupInfo: GroupInfo, topologyInfoList: TopologyInfo[]): Group
+```
+### 用法：
+```js
+ssp.createTopologyToGroup(
+  // groupInfo
+  {
+    id: 'firstTopologyGroup',
+    name: 'name_firstTopologyGroup',
+    // ...
+  },
+  // topologyInfoList
+  [
+    topologyInfo1,
+    topologyInfo2,
+    topologyInfo3
+  ]
+)
+```
+### 参数
+#### groupInfo
+  - **描述:** 实例组对象所需信息
+  - **类型:** [GroupInfo](./sbm.html#groupinfo)
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+#### topologyInfoList
+  - **描述:** `topologyInfo` 集合
+  - **类型:** [topologyinfo](#topologyinfo)[]
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+## createGroupForTopology
+为 `topology` 提前创建一个空组。
+::: tip 使用场景
+与 `createTopologyToGroup` 不同，有些时候可能你还没有具体的 `topologyInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addTopologyForGroup](#addtopologyforgroup) 插入。
+:::
+### 定义：
+```ts
+function createGroupForTopology(groupInfo: GroupInfo): Group
+```
+### 用法：
+```js
+ssp.createGroupForTopology({
+  id: 'firstTopologyGroup',
+  name: 'name_firstTopologyGroup',
+  // ...
+})
+```
+### 参数
+#### groupInfo
+  - **描述:** 实例组对象所需信息
+  - **类型:** [GroupInfo](./sbm.html#groupinfo)
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+## addTopologyForGroup
+向一个已经存在的组内添加 `topology` 对象。
+### 定义：
+```ts
+function addTopologyForGroup(groupId: GroupInfo['id'], topologyInfoList: TopologyInfo[]): Group | null
+```
+### 用法：
+```js
+ssp.addTopologyForGroup(
+  // groupId
+  'firstTopologyGroup',
+  // topologyInfoList
+  [
+    topologyInfo4,
+    topologyInfo5
+  ],
+  // onProgress
+  progress => console.log('进度信息：', progress)
+)
+```
+### 参数
+#### groupId
+  - **描述:** 组 `id`
+  - **类型:** [groupId](./sbm.html#groupinfo)[‘id’]
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+#### topologyInfoList
+  - **描述:** `topologyInfo` 集合
+  - **类型:** [topologyinfo](#topologyinfo)[]
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+## getTopologyGroupById
+通过 `id` 查找 `topology` 组
+### 定义：
+``` ts
+function getTopologyGroupById(id: GroupInfo['id']): Group | null
+```
+### 用法：
+``` js
+const group = ssp.getTopologyGroupById('firstTopologyGroup')
+```
+
+## getTopologyGroupByName
+通过 `name` 查找 `topology` 组
+### 定义：
+``` ts
+function getTopologyGroupByName(name: string): Group[]
+```
+### 用法：
+``` js
+const groupList = ssp.getTopologyGroupByName('name_firstTopologyGroup')
+```
+
+## removeTopologyGroupById
+通过 `id` 移除 `topology` 组
+### 定义：
+``` ts
+function removeTopologyGroupById(id: GroupInfo['id']): boolean
+```
+### 用法：
+``` js
+const isRemoveSuccess = ssp.removeTopologyGroupById('firstTopologyGroup')
+```
+## clearTopology
+清除当前场景内所有 `topology` 对象。
+### 定义：
+``` ts
+function clearTopology(): void
+```
+### 用法：
+``` js
+ssp.clearTopology()
+```
+
+## showAllTopology
+显示当前场景内所有 `topology` 对象。
+### 定义：
+``` ts
+function showAllTopology(): void
+```
+### 用法：
+``` js
+ssp.showAllTopology()
+```
+
+## hideAllTopology
+隐藏当前场景内所有 `topology` 对象。
+### 定义：
+``` ts
+function hideAllTopology(): void
+```
+### 用法：
+``` js
+ssp.hideAllTopology()
+```
