@@ -33,11 +33,21 @@ module.exports = {
           { text: '样例', link: `${PRO_PATH}/examples/2.x/page/` },
           { text: '1.x', link: `${PRO_PATH}/Docs/` },
           {
-            text: '相关产品',
+            text: '了解更多',
             items: [
-              { text: '建模工具 SoonBuilder', link: `${BASE_HTTP_URL}?page_id=1101&lang=zh` },
-              { text: '空间平台 SoonManager 2.x', link: `${BASE_HTTP_URL}:9010` },
-              { text: '空间平台 SoonManager 4.6.x', link: `${BASE_HTTP_URL}:9050` }
+              {
+                text: '开发指南',
+                items: [
+                  { text: 'FAQ', link: '/faq/' },
+                ]
+              },
+              {
+                text: '相关产品',
+                items: [
+                  { text: '建模工具 SoonBuilder', link: `${BASE_HTTP_URL}?page_id=1101&lang=zh` },
+                  { text: '空间平台 SoonManager', link: `${BASE_HTTP_URL}:9050` }
+                ]
+              },
             ]
           },
           {
@@ -116,6 +126,9 @@ module.exports = {
             'first-person-controls',
             'follow-mouse',
             'soonmanager-sync',
+          ],
+          '/faq/': [
+            '/faq/'
           ]
         }
       }

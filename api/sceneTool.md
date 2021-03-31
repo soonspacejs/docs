@@ -43,7 +43,7 @@ ssp.setSphereSkyBackground('http://xx.com/xx.png')
 function setSphereSkyBackground(imgUrl: string): void
 ```
 ### 参数：
-#### <Api-ParamName title="imgUrl" required/>
+#### imgUrl
 - **类型:** string
 - **描述:** 图片路径。
 
