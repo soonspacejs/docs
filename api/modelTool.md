@@ -88,12 +88,10 @@ ssp.unEdgeShow();
 ### 定义:
 
 ```ts
-interface StrokeSelectOptions {
-  isOpacityShow: boolean;
-  color: IColor;
-  opacity: number;
-  edgeColor: IColor;
-  edgeOpacity: number;
+interface StrokeSelectOptions extends BaseSelectOptions {
+  isOpacityShow?: boolean;
+  edgeColor?: IColor;
+  edgeOpacity?: number;
 }
 
 function strokeShow(
@@ -123,6 +121,8 @@ ssp.strokeShow(object);
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 #### StrokeSelectOptions
+
+[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
 
 <Docs-Table
     :data="[
@@ -163,9 +163,8 @@ ssp.unStrokeShow();
 ### 定义:
 
 ```ts
-interface OpacitySelectOptions {
-    color?: IColor;
-    opacity?: number;
+interface OpacitySelectOptions extends BaseSelectOptions {
+
 }
 
 opacityShow(object: BaseObject3D | BaseObject3D[], options?: OpacitySelectOptions): Promise<void | void[]>;
@@ -194,6 +193,8 @@ ssp.opacityShow(object, {
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 #### OpacitySelectOptions
+
+[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
 
 <Docs-Table
     :data="[
@@ -231,7 +232,7 @@ ssp.unOpacityShow();
 ### 定义:
 
 ```ts
-interface HighlightSelectOptions extends OpacitySelectOptions {}
+interface HighlightSelectOptions extends BaseSelectOptions {}
 
 function highlightShow(
   object: BaseObject3D | BaseObject3D[],
@@ -255,9 +256,20 @@ ssp.highlightShow(object, { color: 0xff6600 });
 
 #### options
 
-- **描述:** options
-- **类型:** [继承自 OpacitySelectOptions](#opacityselectoptions)
+- **描述:** 配置选项
+- **类型:** HighlightSelectOptions
 - **必填:** <Base-RequireIcon :isRequire="false" />
+
+#### HighlightSelectOptions
+
+[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
+
+<Docs-Table
+    :data="[
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xff0000' , link: '../guide/types.html#icolor'},
+      { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 1 },
+    ]"
+/>
 
 ## unHighlightShow
 
@@ -288,10 +300,10 @@ ssp.unHighlightShow();
 ### 定义:
 
 ```ts
-interface EmissiveSelectOptions extends OpacitySelectOptions {
-  isAnimation?: boolean;
+interface EmissiveSelectOptions extends BaseSelectOptions {
   minOpacity?: number;
   maxOpacity?: number;
+  duration?: number;
 }
 
 function emissiveShow(
@@ -317,19 +329,20 @@ ssp.emissiveShow(object);
 #### options
 
 - **描述:** 模型对象
-- **类型:** options
-- **必填:** <Base-RequireIcon />
+- **类型:** EmissiveSelectOptions
+- **必填:** <Base-RequireIcon :isRequire="false" />
 
-#### options
+#### EmissiveSelectOptions
 
-继承自[OpacitySelectOptions](#opacityselectoptions)
+[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
+
 <Docs-Table
     :data="[
-      { prop: 'isAnimation', desc: '是否启用闪烁动画', type: 'boolean', require: false, default: 'true' },
-      { prop: 'minOpacity', desc: '动画透明度初始值', type: 'number', require: false, default: 0 },
-      { prop: 'maxOpacity', desc: '动画透明度最终值', type: 'number', require: false, default: 1 },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: 'red',  link: '../guide/types.html#icolor'},
       { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.3 },
+      { prop: 'minOpacity', desc: '动画透明度最小值', type: 'number', require: false, default: 0 },
+      { prop: 'maxOpacity', desc: '动画透明度最大值', type: 'number', require: false, default: 1 },
+      { prop: 'duration', desc: '动画周期时长(ms)', type: 'number', require: false, default: 1000 },
     ]"
 />
 
@@ -388,10 +401,10 @@ ssp.modelClipping(model, { axis: 'x', clipPoint: 200, isForward: true });
 #### options
 
 - **描述:** 配置选项
-- **类型:** options
+- **类型:** ClippingOptions
 - **必填:** <Base-RequireIcon />
 
-#### options
+#### ClippingOptions
 
 <Docs-Table
     :data="[
