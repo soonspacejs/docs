@@ -72,6 +72,17 @@ interface Level {
 }
 ```
 
+## OffsetPoint
+
+偏移量
+
+```ts
+interface OffsetPoint {
+  offsetX: number;
+  offsetY: number;
+}
+```
+
 ## AxisType
 
 空间轴类型
