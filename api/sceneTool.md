@@ -174,32 +174,6 @@ function closeSceneFog(): void;
 ssp.closeSceneFog();
 ```
 
-## sceneClipping
-
-场景切割
-
-### 定义:
-
-```ts
-interface ClippingOptions {
-  axis: AxisType;
-  clipPoint: number;
-  isForward?: boolean;
-}
-
-function sceneClipping(options: ClippingOptions): void;
-```
-
-### 用法:
-
-```js
-ssp.sceneClipping({ axis: 'x', clipPoint: 200, isForward: true });
-```
-
-## changeSceneClipping
-
-## removeSceneClipping
-
 ## getObjectLabelPos
 
 获取对象的标签位置坐标
