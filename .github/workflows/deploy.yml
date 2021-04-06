@@ -34,8 +34,8 @@ jobs:
       - name: copy file 
         uses: appleboy/scp-action@master
         with:
-          host: 111.231.137.202
+          host: ${{ secrets.HOST }}
           username: root
           key: ${{ secrets.KEY }}
-          source: "dist/"
+          source: "dist/*"
           target: "/soonspacejs-test-docs/"
