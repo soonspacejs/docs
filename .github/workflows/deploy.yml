@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: deploy-docs
 
 # Controls when the action will run. 
 on:
@@ -38,5 +38,5 @@ jobs:
           username: root
           key: ${{ secrets.KEY }}
           source: "dist/*"
-          target: "/soonspacejs-test-docs/"
+          target: "/www/webSample/BusanStation/soonspacejs/Docs/2.x"
           strip_components: 1
