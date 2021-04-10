@@ -64,6 +64,16 @@ export default function SoonspaceTest () {
 }
 ```
 
+::: warning 注意
+自 react-soonspace 2.0.0-rc.3 版本以后, 任何参与到 Soonspace 实例化的 props 的改变都会导致场景重新渲染.
+
+例如 `options`, `sceneReady` 等.
+
+故在某些情况可能会导致场景渲染死循环.
+
+建议使用 [`useMemo`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo)、[`useCallback`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback) 优化, 或者将渲染无关的 props 提取到组件外部
+:::
+
 ## 配置属性
 
 ### id
