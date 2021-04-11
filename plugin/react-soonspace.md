@@ -53,7 +53,7 @@ export default function SoonspaceTest() {
   /**
    * 或者将 events 提取到组件外部
    */
-  const evens = useMemo(
+  const events = useMemo(
     () => ({
       selectPosition(position) {
         console.log('selectPosition', position);
@@ -74,7 +74,7 @@ export default function SoonspaceTest() {
       <ReactSoonspace
         className='soonspace-view'
         options={options}
-        evens={evens}
+        events={events}
         sceneReady={sceneReady}
       />
     </div>
