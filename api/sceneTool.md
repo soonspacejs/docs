@@ -225,7 +225,7 @@ ssp.getObjectLabelPos(object, { viewpoint: 'front', extendScale: 1.6 });
 
 ## getOffsetByPosition
 
-透过空间坐标点获取屏幕坐标点
+通过空间坐标点获取屏幕坐标点
 
 ### 定义:
 
@@ -249,7 +249,7 @@ ssp.getOffsetByPosition({ x: 100, y: 200, z: 300 });
 
 ## getPositionByOffset
 
-透过屏幕坐标点获取空间坐标点
+通过屏幕坐标点获取空间坐标点
 
 ### 定义:
 
