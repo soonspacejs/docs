@@ -3,15 +3,23 @@ sidebarDepth: 2
 ---
 
 # react-soonspace
+
 ![beta](https://img.shields.io/npm/v/react-soonspace/next.svg)
 <br>
 React 中快速使用 soonspacejs。
 
+::: danger Breaking changes
+`2.0.0-rc.4` 之后, 所有的事件以 `events` 形式传入, 与 `options` 保持一致.
+:::
+
 <!-- 项目模版 -->
+
 ## 项目模版
+
 [https://github.com/soonspacejs/react-soonspace-template](https://github.com/soonspacejs/react-soonspace-template)
 
 ## 安装
+
 ```bash
 npm install react-soonspace@next soonspacejs@next -S
 # or
@@ -22,74 +30,91 @@ yarn add react-soonspace@next soonspacejs@next -S
 安装 `react-soonspace` 插件时，要同时安装 `soonspacejs`，但在使用 **前者** 组件时不必手动引入 **后者**，内部自动引入。这样做是为了保证 **后者** 版本最新，不受版本依赖限制。
 :::
 
-
 <!-- 使用方法 -->
+
 ## 使用方法
 
-```jsx {2,21-31}
-import React from 'react';
+```jsx
+import React, { useMemo, useCallback } from 'react';
 import ReactSoonspace from 'react-soonspace';
 
-export default function SoonspaceTest () {
+/**
+ * 提取到组件外部保证 `options` 始终不变
+ */
+const options = {
+  showInfo: false,
+  background: {
+    color: 0x333300,
+  },
+};
 
-  function sceneReady(ssp) {
-    console.log('sceneReady', ssp)
+export default function SoonspaceTest() {
 
-    /**
-     * TODO
-     */
+  /**
+   * 或者将 events 提取到组件外部
+   */
+  const evens = useMemo(
+    () => ({
+      selectPosition(position) {
+        console.log('selectPosition', position);
+      },
+    }),
+    []
+  );
 
-  }
-
-  function selectPosition(position) {
-    console.log('selectPosition', position)
-  }
+  /**
+   * 或者将 sceneReady 提取到组件外部
+   */
+  const sceneReady = useCallback((ssp) => {
+    console.log('sceneReady', ssp);
+  }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <ReactSoonspace
         className='soonspace-view'
-        options={{
-          showInfo: false,
-          background: {
-            color: 0x333300
-          }
-        }}
+        options={options}
+        evens={evens}
         sceneReady={sceneReady}
-        selectPosition={selectPosition}
       />
     </div>
-  )
-
+  );
 }
 ```
 
 ::: warning 注意
-自 react-soonspace 2.0.0-rc.3 版本以后, 任何参与到 Soonspace 实例化的 props 的改变都会导致场景重新渲染.
+自 `2.0.0-rc.3` 版本以后, 任何参与到 `Soonspace` 实例化的 `props` 的改变都会导致场景重新渲染.
 
-例如 `options`, `sceneReady` 等.
+例如 `options`, `events` 等.
 
-故在某些情况可能会导致场景渲染死循环.
+这样的目的是使场景融合入 `react` 的生命周期中, 故在某些情况可能会导致场景渲染死循环.
 
-建议使用 [`useMemo`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo)、[`useCallback`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback) 优化, 或者将渲染无关的 props 提取到组件外部
+建议使用 [`useMemo`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo)、[`useCallback`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback) 优化, 或者将渲染无关的 props 提取到组件外部.
 :::
 
 ## 配置属性
 
 ### id
-  自定义ID
-  - **类型：** string
-  - **默认值：** `SoonSpace_View${idIndex++}`
+
+自定义 ID
+
+- **类型：** string
+- **默认值：** `SoonSpace_View_${random}`
 
 ### className
-  自定义类名
-  - **类型：** string
-  - **默认值：** `undefined`
+
+自定义类名
+
+- **类型：** string
+- **默认值：** `undefined`
 
 ### style
-  自定义样式
-  - **类型：** [React.CSSProperties](https://www.npmjs.com/package/csstype)
-  - **默认值：** 
+
+自定义样式
+
+- **类型：** [React.CSSProperties](https://www.npmjs.com/package/csstype)
+- **默认值：**
+
 ```js
   {
     position: 'relative',
@@ -99,35 +124,29 @@ export default function SoonspaceTest () {
 ```
 
 ### options
-  `soonspace` [配置项](../../guide/config.html)
-  - **类型：** object
-  - **默认值：** `{}`
 
+`soonspace` [配置项](../../guide/config.html)
 
+- **类型：** object
+- **默认值：** `{}`
+
+### events
+
+`soonspace` [场景事件](../../guide/event.html)
+
+- **类型：** object
+- **默认值：** `{}`
 <!-- 方法属性 -->
+
 ## 方法属性
 
 ### sceneReady
-  场景准备完成时触发函数。
+
+场景准备完成时触发函数。
+
 #### 回调参数
-##### ssp 
-  `soonspace` 实例
 
-<br>
-<br>
+##### ssp
 
-::: tip 提示
-  以下方法全部为 [soonspace 空间交互事件](../../guide/event.html) 在 `react-soonspace` 组件内的事件传递，方法名与回调参数完全一致。
-:::
+`soonspace` 实例
 
-### modelClick
-### modelRightClick
-### modelDblClick
-### modelHover
-### modelUnHover
-### poiClick
-### poiRightClick
-### poiDblClick
-### poiHover
-### selectPosition
-### sceneClick
