@@ -35,7 +35,7 @@ consolo.log(firstPersonControls)
 
 ## 属性
 ### rotationAngle
-可旋转角度范围。
+可旋转弧度范围。
 - 类型：`{ max: number, min: number }`
 - 默认值：`{ max: Math.PI, min: 0 }`
 
@@ -102,10 +102,10 @@ firstPersonControls.start({
 <Docs-Table 
     :data="[
       {
-        prop: 'position', desc: '漫游开始的起始位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+        prop: 'position', desc: '起始相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
       },
       {
-        prop: 'rotation', desc: '漫游开始的起始角度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation'
+        prop: 'rotation', desc: '起始相机弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation'
       },
       {
         prop: 'moveSpeed', desc: '移动速度', type: 'number', require: false, default: '1'

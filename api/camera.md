@@ -50,7 +50,7 @@ ssp.setCameraViewpoint(cameraViewpointData);
 <Docs-Table
     :data="[
       { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '相机角度', type: 'Rotation', require: true, default: '', link: '../guide/types.html#rotation' },
+      { prop: 'rotation', desc: '相机旋转弧度', type: 'Rotation', require: true, default: '', link: '../guide/types.html#rotation' },
     ]"
 />
 
@@ -222,7 +222,7 @@ ssp.flyTo(
 
 #### rotation
 
-- **描述:** 相机的角度
+- **描述:** 相机的旋转弧度
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** [Viewpoint](../guide/types.html#Viewpoint) | [Rotation](../guide/types.html#rotation)
 - **默认值:** `frontTop`

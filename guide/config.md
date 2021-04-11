@@ -25,16 +25,8 @@ const ssp = new SoonSpace({
 <!-- showGrid -->
 ## showGrid 
 是否显示场景网格。
-- **类型**: boolean | GridHelperOptions
+- **类型**: boolean | [GridHelperOptions](../api/helper.html#gridhelperoptions)
 - **默认值**: `false`
-### GridHelperOptions
-<Docs-Table 
-    :data="[
-      { prop: 'size', desc: '网格尺寸', type: 'number', require: false, default: '1000' },
-      { prop: 'divisions', desc: '网格横纵向分割格数', type: 'number', require: false, default: '20' },
-      { prop: 'color', desc: '网格颜色', type: 'IColor', require: false, default: '#ffffff' },
-    ]"
-/>
 
 <!-- showInfo -->
 ## showInfo

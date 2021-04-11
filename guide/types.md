@@ -18,7 +18,7 @@
 
 ## IVector2
 
-二维向量
+二维平面向量
 
 ```ts
 interface IVector2 {
@@ -29,7 +29,7 @@ interface IVector2 {
 
 ## IVector3
 
-三维向量
+三维空间向量
 
 ```ts
 interface IVector3 extends IVector2 {
@@ -47,7 +47,7 @@ interface Position extends IVector3 {}
 
 ## Rotation
 
-空间角度
+旋转弧度
 
 ```ts
 interface Rotation extends IVector3 {}
