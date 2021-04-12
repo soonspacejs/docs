@@ -16,6 +16,8 @@
 
 #### 2.1.1 ca-template 系列简介
 
+[Template 架构](https://www.processon.com/view/link/6073baf91e085335c2b75cda)
+
 #### 2.1.2 以 React 环境为例 
 
 ### 2.2 手动搭建
