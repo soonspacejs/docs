@@ -12,12 +12,6 @@ React 中快速使用 soonspacejs。
 `2.0.0-rc.4` 之后, 所有的事件以 `events` 形式传入, 与 `options` 保持一致.
 :::
 
-<!-- 项目模版 -->
-
-## 项目模版
-
-[https://github.com/soonspacejs/react-soonspace-template](https://github.com/soonspacejs/react-soonspace-template)
-
 ## 安装
 
 ```bash
@@ -49,7 +43,6 @@ const options = {
 };
 
 export default function SoonspaceTest() {
-
   /**
    * 或者将 events 提取到组件外部
    */
@@ -136,7 +129,7 @@ export default function SoonspaceTest() {
 
 - **类型：** object
 - **默认值：** `{}`
-<!-- 方法属性 -->
+  <!-- 方法属性 -->
 
 ## 方法属性
 
@@ -149,4 +142,3 @@ export default function SoonspaceTest() {
 ##### ssp
 
 `soonspace` 实例
-
