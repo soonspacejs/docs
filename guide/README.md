@@ -1,5 +1,8 @@
 # 介绍
 
+![version](https://img.shields.io/npm/v/soonspacejs/next)
+![downloads](https://img.shields.io/npm/dm/soonspacejs)
+
 ::: warning 警告
 如果没有足够的时间与人力成本，我不推荐用当前版本来重构项目，`1.x` 版本依然会维护预期半年左右。
 <br>
