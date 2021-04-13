@@ -4,18 +4,26 @@
 创建 `topology` 对象。
 ### 定义：
 ```ts
-interface TwoWaysLink {
+interface TopologyNodeInfo {
+  id: string | number;
+  name?: string;
+  position: Position
+}
+
+interface TopologyLinkInfo {
+  id: string | number;
+  name?: string;
   pointAIndex: number;
   pointBIndex: number;
 }
 
 interface TopologyInfo extends BaseObject3DInfo {
-  nodes: Position[];
-  links: TwoWaysLink[]
+  nodes: TopologyNodeInfo[]
+  links?: TopologyLinkInfo[]
   linkWidth?: number;
   // 
   renderNode?: boolean;
-  nodeColor?: IColor | IColor[];
+  nodeColor?: IColor | IColor[]; 
   // 
   renderCircle?: boolean;
   // 
@@ -29,23 +37,30 @@ function createTopology(topologyInfo: TopologyInfo): Topology
 ```
 ### 用法：
 ``` js
-ssp.createTopology(
-  // topologyInfo
-  {
-    id: 'xx',
-    name: 'xx',
-    level: {
-      max: 1000,
-      min: null
+const t = ssp.createTopology({
+  id: 'topology_1',
+  name: 'topology_1_name',
+  nodes: [
+    {
+      id: 'node1',
+      position: { x: 0, y: 1, z: 0 }
     },
-    position: { x: 0, y: 0, z: 0 },
-    rotation: { x: 0, y: 0, z: 0 },
-    scale: { x: 2, y: 2, z: 2 },
-    userData: {
-
-    }
-  }
-)
+    {
+      id: 'node2',
+      position: { x: 0, y: 1, z: 100 }
+    },
+    {
+      id: 'node1',
+      position: { x: 100, y: 1, z: 100 }
+    },
+    {
+      id: 'node1',
+      position: { x: 100, y: 1, z: -100 }
+    },
+  ],
+  renderNode: true,
+  renderCircle: true,
+})
 ```
 ### 参数：
 #### topologyInfo
@@ -57,8 +72,8 @@ ssp.createTopology(
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'nodes', desc: '节点坐标集合', type: 'Position[]', require: true, default: '', link: '../guide/types.html#level' },
-      { prop: 'links', desc: '连接线集合', type: 'TwoWaysLink[]', require: true, default: '', link: '#twowayslink' },
+      { prop: 'nodes', desc: '节点坐标集合', type: 'TopologyNodeInfo[]', require: true, default: '', link: '#/topologynodeinfo' },
+      { prop: 'links', desc: '连接线集合', type: 'TopologyLinkInfo[]', require: false, default: '', link: '#twowayslink' },
       { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
       { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
       { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
@@ -74,10 +89,19 @@ ssp.createTopology(
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
     ]"
 />
-
-##### TwoWaysLink
+##### TopologyNodeInfo
 <Docs-Table
     :data="[
+      { prop: 'id', desc: '节点唯一ID', type: 'string | number', require: true, default: '' },
+      { prop: 'name', desc: '节点名称', type: 'string', require: false, default: '' },
+      { prop: 'position', desc: '节点坐标', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+    ]"
+/>
+##### TopologyLinkInfo
+<Docs-Table
+    :data="[
+      { prop: 'id', desc: '连线唯一ID', type: 'string | number', require: true, default: '' },
+      { prop: 'name', desc: '连线名称', type: 'string', require: false, default: '' },
       { prop: 'pointAIndex', desc: '连接线一端位置坐标在 nodes 内的索引', type: 'number', require: true, default: '' },
       { prop: 'pointBIndex', desc: '连接线另一端位置坐标在 nodes 内的索引', type: 'number', require: true, default: '' },
     ]"
@@ -191,8 +215,69 @@ ssp.createTopologyToGroup(
   - **必填:** <Base-RequireIcon :isRequire="true"/>
 #### topologyInfoList
   - **描述:** `topologyInfo` 集合
-  - **类型:** [topologyinfo](#topologyinfo)[]
+  - **类型:** [TopologyInfo](#topologyinfo)[]
   - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+## createTopologyGroupFromGml
+创建 Topology 组，来自 gml 文件资源。
+
+### 定义：
+```ts
+interface TopologyInfoForGml {
+  url: string
+  id?: string[]
+  name?: string | string[]
+  linkWidth?: number
+  linkColor?: IColor
+  renderNode?: boolean
+  nodeColor?: IColor
+}
+
+function createTopologyGroupFromGml(groupInfo: GroupInfo, topologyInfoForGml: TopologyInfoForGml): Promise<Group>
+```
+### 用法：
+```js
+ssp.createTopologyGroupFromGml(
+  // groupInfo
+  {
+    id: 'gml_group_test'
+  },
+  // topologyInfoForGml
+  {
+    url: './gml/tuobutujinzui0401115.gml',
+    id: ['gml_for_topology_001', 'gml_for_topology_002', 'gml_for_topology_003', 'gml_for_topology_004', 'gml_for_topology_005'],
+    name: 'gml_for_topology_name',
+    linkWidth: 20,
+    linkColor: 0xff0000,
+    renderNode: true,
+    nodeColor: 0x0000ff,
+  }
+)
+  .then(group => {
+    console.log(group)
+  })
+```
+### 参数
+#### groupInfo
+  - **描述:** 实例组对象所需信息
+  - **类型:** [GroupInfo](./sbm.html#groupinfo)
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+#### topologyInfoForGml
+  - **描述:** `topologyInfo` 集合
+  - **类型:** [TopologyInfoForGml](#topologyinfoforgml)
+  - **必填:** <Base-RequireIcon :isRequire="true"/>
+##### TopologyInfoForGml
+<Docs-Table
+    :data="[
+      { prop: 'url', desc: 'gml 资源路径', type: 'string[]', require: false, default: '' },
+      { prop: 'id', desc: '组内路径对象唯一ID', type: 'string[]', require: false, default: '' },
+      { prop: 'name', desc: '组内路径对象名称', type: 'string | string[]', require: false, default: '' },
+      { prop: 'linkWidth', desc: '路径线宽', type: 'number', require: false, default: '20' },
+      { prop: 'linkColor', desc: '路径线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'renderNode', desc: '是否渲染路径节点', type: 'boolean', require: false, default: 'true' },
+      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' }
+    ]"
+/>
 
 ## createGroupForTopology
 为 `topology` 提前创建一个空组。
