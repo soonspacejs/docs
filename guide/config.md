@@ -100,3 +100,7 @@ if( option.closeWarnLog ) window.console.warn = function () {}
 是否使用 `indexedDB` 本地数据库来持久化存储模型文件数据。开启后重复的模型资源不会多次加载。
 - **类型**: boolean
 - **默认值**: `true` 
+
+::: tip 提示
+清空 `indexedDB` 存储参考[这里](../api/sbm.html#clearidb)
+:::

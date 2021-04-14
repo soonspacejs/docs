@@ -102,7 +102,7 @@ ssp.animation(
     ]"
 />
 ##### AnimationMode [链接](http://sole.github.io/tween.js/examples/03_graphs.html)
-<img src="./动画模式.jpg"/>
+<img src="./img/动画模式.jpg"/>
 
 #### onUpdate
   - **描述:** 动画实时更新回调

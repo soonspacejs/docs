@@ -683,3 +683,7 @@ ssp.clearIdb().then(() => {
   console.log('本地数据已清空!!!');
 });
 ```
+
+#### 手动清除 indexedDB 缓存
+
+![manual](./img/clearIdb.jpg)
