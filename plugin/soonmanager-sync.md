@@ -5,7 +5,7 @@ sidebarDepth: 2
 # soonmanager-sync
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-soonmanager-sync/next.svg)
-<br>
+
 [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim)生产的场景加载及数据读取插件。
 
 ## 安装
@@ -54,9 +54,9 @@ soonmanagerSync.setBaseUrl('http://xxx.com/back-resource/');
 ```
 
 ::: warning 注意
-必须要先调用 setBaseUrl, 才能加载效果、模型资源...
+必须要先调用 `setBaseUrl`, 才能加载效果、模型资源...
 
-由于内部将 url 与 资源路径进行拼接获取资源, 所以参数的结尾需要加上斜线防止链接出错.
+由于内部将 `url` 与 资源路径进行拼接获取资源, 所以参数的结尾需要加上斜线防止链接出错.
 :::
 
 ### setGlobalSetting
