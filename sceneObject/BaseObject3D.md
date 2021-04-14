@@ -1,6 +1,6 @@
 # BaseObject3D
 
-该对象继承至 [threejs](https://threejs.org/docs/index.html#api/en/core/Object3D)  `Object3D` 对象。
+该对象继承自 [threejs](https://threejs.org/docs/index.html#api/en/core/Object3D)  `Object3D` 对象。
 
 ## Object3D 常用属性
 
