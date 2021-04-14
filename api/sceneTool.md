@@ -369,19 +369,27 @@ function render(fn: Function): Promise<void>;
 
 ```js
 // 同步
-ssp.render(() => {
-  model.visible = false;
-});
+ssp
+  .render(() => {
+    model.visible = false;
+  })
+  .then(() => {
+    console.log('场景渲染完成');
+  });
 
 // 异步
-ssp.render(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      model.position.x = 1000;
-      resolve();
-    }, 3000);
+ssp
+  .render(() => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        model.position.x = 1000;
+        resolve();
+      }, 3000);
+    });
+  })
+  .then(() => {
+    console.log('场景渲染完成');
   });
-});
 ```
 
 ### 参数:
