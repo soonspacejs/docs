@@ -27,7 +27,6 @@ module.exports = {
       '/': {
         nav: [
           { text: '教程', link: '/guide/' },
-          { text: '空间对象', link: '/sceneObject/' },
           { text: 'Api', link: '/api/' },
           { text: '插件', link: '/plugin/' },
           { text: '样例', link: `${PRO_PATH}/examples/2.x/page/` },
@@ -39,6 +38,12 @@ module.exports = {
                 text: '开发指南',
                 items: [
                   { text: 'FAQ', link: '/faq/' },
+                ]
+              },
+              {
+                text: '设计原理',
+                items: [
+                  { text: '设计结构', link: '/design/architectures' }
                 ]
               },
               {
@@ -65,27 +70,30 @@ module.exports = {
             'types',
             'config',
             'event',
-            'design'
-          ],
-          '/sceneObject/': [
-            'BaseObject3D',
-            'BaseMesh',
-            'Group',
-            'Sbm',
-            'Model',
-            'Poi',
-            'PoiNode',
-            'Canvas3D',
-            'Topology',
-            'PluginObject',
-            'Point',
-            'Line',
-            'Polygon',
-            'Circle',
-            'Link',
-            'Node',
-            'Light',
-            'Icon'
+            {
+              path: '/guide/sceneObject',
+              title: '空间对象',
+              children: [
+                '/guide/sceneObject/BaseObject3D',
+                '/guide/sceneObject/BaseMesh',
+                '/guide/sceneObject/Group',
+                '/guide/sceneObject/Sbm',
+                '/guide/sceneObject/Model',
+                '/guide/sceneObject/Poi',
+                '/guide/sceneObject/PoiNode',
+                '/guide/sceneObject/Canvas3D',
+                '/guide/sceneObject/Topology',
+                '/guide/sceneObject/PluginObject',
+                '/guide/sceneObject/Point',
+                '/guide/sceneObject/Line',
+                '/guide/sceneObject/Polygon',
+                '/guide/sceneObject/Circle',
+                '/guide/sceneObject/Link',
+                '/guide/sceneObject/Node',
+                '/guide/sceneObject/Icon'
+              ]
+            },
+            // 'design'
           ],
           '/api/': [
             {
@@ -129,6 +137,9 @@ module.exports = {
           ],
           '/faq/': [
             '/faq/'
+          ],
+          '/design/': [
+            'architectures'
           ]
         }
       }

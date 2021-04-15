@@ -16,5 +16,4 @@
 - [Circle](./Circle.html) - 圆
 - [Link](./Link.html) - 路径连接线
 - [Node](./Node.html) - 路径节点
-- [Light](./Light.html) - 灯光
 - [Icon](./Icon.html) - 图标
