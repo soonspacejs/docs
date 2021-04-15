@@ -12,6 +12,8 @@
 npx @soonspacejs/create-app ssp-pro
 ```
 
+`@soonspacejs/create-app` 的简要架构:
+
 ![create-app](./img/create-app.jpg)
 
 ## 手动搭建
