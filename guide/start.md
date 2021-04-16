@@ -9,7 +9,7 @@
 通过以下命令创建一个模板：
 
 ```sh
-npx @soonspacejs/create-app ssp-pro
+npx @soonspacejs/create-app your-pro-name
 ```
 
 `@soonspacejs/create-app` 的简要架构:
