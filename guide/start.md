@@ -29,7 +29,7 @@ yarn add soonspacejs@next -S
 
 #### CDN
 
-[https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)
+[https://unpkg.com/soonspacejs@next/dist/index.js](https://unpkg.com/soonspacejs@next/dist/index.js)
 
 ### 在 html 中使用
 
