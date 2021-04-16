@@ -183,7 +183,7 @@ ssp.closeSceneFog();
 ```ts
 interface LabelOptions {
   mode?: 'scene' | 'screen';
-  viewpoint?: TlyToViewpoint;
+  viewpoint?: FlyToViewpoint;
   extendScale?: number;
 }
 
@@ -218,7 +218,7 @@ ssp.getObjectLabelPos(object, { viewpoint: 'front', extendScale: 1.6 });
 <Docs-Table
     :data="[
       { prop: 'mode', desc: '相对于谁', type: 'scene | screen', require: false, default: 'scene'},
-      { prop: 'viewpoint', desc: '视角枚举', type: 'TlyToViewpoint', require: false, default: 'frontTop' , link: '../guide/types.html#tlytoviewpoint'},
+      { prop: 'viewpoint', desc: '视角枚举', type: 'FlyToViewpoint', require: false, default: 'frontTop' , link: '../guide/types.html#flyToViewpoint'},
       { prop: 'extendScale', desc: '延伸比例', type: 'number', require: false, default: 1.6 },
     ]"
 />

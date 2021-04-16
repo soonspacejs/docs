@@ -115,12 +115,12 @@ type PoiNodeType = '2d' | '2D' | '2.5d' | '2.5D' | '3d' | '3D';
 type IColor = string | number;
 ```
 
-## TlyToViewpoint
+## FlyToViewpoint
 
 飞向视角枚举
 
 ```ts
-type TlyToViewpoint =
+type FlyToViewpoint =
   | 'current'
   | 'top'
   | 'bottom'

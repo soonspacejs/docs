@@ -64,7 +64,7 @@ ssp.setCameraViewpoint(cameraViewpointData);
 
 ```ts
 function flyMainViewpoint(
-  viewpoint: TlyToViewpoint = 'frontTop',
+  viewpoint: FlyToViewpoint = 'frontTop',
   options: FlyToObjOptions = {}
 ): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
 ```
@@ -84,7 +84,7 @@ ssp
 
 - **描述:** 相机朝向主场景的视角面
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [TlyToViewpoint](../guide/types.html#tlytoviewpoint)
+- **类型:** [FlyToViewpoint](../guide/types.html#flyToViewpoint)
 - **默认值:** `frontTop`
 
 #### options
@@ -109,7 +109,7 @@ interface FlyToObjOptions extends AnimationOptions {
 
 function flyToObj(
   object: BaseObject3D | BaseMesh,
-  viewpoint: TlyToViewpoint = 'frontTop',
+  viewpoint: FlyToViewpoint = 'frontTop',
   options: FlyToObjOptions = {}
 ): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
 ```
@@ -145,7 +145,7 @@ ssp
 
 - **描述:** 相机朝向物体对象的视角面，[可选枚举](../../guide/controls/viewpoints.html)。
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [TlyToViewpoint](../guide/types.html#tlytoviewpoint)
+- **类型:** [FlyToViewpoint](../guide/types.html#flyToViewpoint)
 - **默认值:** `frontTop`
 
 #### option
@@ -182,7 +182,7 @@ ssp
 ```ts
 function flyTo(
   position: Position,
-  rotation: TlyToViewpoint | Rotation | Euler = 'frontTop',
+  rotation: FlyToViewpoint | Rotation | Euler = 'frontTop',
   options?: AnimationOptions
 ): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
 ```
@@ -307,7 +307,7 @@ ssp
 ```ts
 function surroundOnTarget(
   position: Position,
-  rotation: TlyToViewpoint | Rotation = 'frontTop',
+  rotation: FlyToViewpoint | Rotation = 'frontTop',
   options?: AnimationOptions
 ): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
 ```
