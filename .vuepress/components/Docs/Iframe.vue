@@ -1,23 +1,36 @@
 <template>
-  <iframe
-    class="docs-iframe"
-    :src="`${this.baseUrl}${this.src}`"
-    frameborder="0"
-    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-same-origin"
-  ></iframe>
+  <div class="docs-iframe">
+    <iframe
+      style="width: 100%; height: 100%"
+      :src="`${this.baseUrl}${this.src}`"
+      frameborder="0"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-same-origin"
+    ></iframe>
+    <a id="code-button" target="_blank" :href="codeBtnHref"
+      ><img src="./close_black.svg"
+    /></a>
+  </div>
 </template>
 
 <script>
 export default {
   name: "docs-iframe",
   props: {
-      src: String
+    src: String,
   },
   data() {
     return {
-      baseUrl: "http://www.xwbuilders.com:9018/soonspacejs/examples/2.x/page/"
+      baseUrl: "http://www.xwbuilders.com:9018/soonspacejs/examples/2.x/page/",
     };
-  }
+  },
+  computed: {
+    codeBtnHref: function () {
+      return (
+        "https://github.com/soonspacejs/example/tree/main/page/" +
+        this.src
+      );
+    },
+  },
 };
 </script>
 
@@ -25,6 +38,23 @@ export default {
 .docs-iframe 
   width: 100%
   height: 400px
-  padding: 12px 0
+  position relative
+  padding-top 12px
 
+#code-button 
+  width 44px
+  height 44px
+  position: absolute
+  right: 16px
+  bottom: 16px
+  border-radius: 50%
+  margin-bottom: 0px
+  background-color: #FFF
+  opacity: .9
+  img 
+    position absolute
+    top 50%
+    left 50%
+    transform: translateX(-50%) translateY(-50%)
+  
 </style>

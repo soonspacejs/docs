@@ -1,14 +1,15 @@
 # 快速上手
 
+## hello-worid
+<Docs-Iframe src="start/helloWorld.html" />
+
 ## 快速搭建
 
 使用 `@soonspacejs/create-app` 快速搭建项目。
-
 你可以选择 `Vue`、`React`或者是 `Html`，并且我们提供了集成 [`soonmanager-sync`](../plugin/soonmanager-sync.html) 选项。
 
-通过以下命令创建一个模板：
-
 ```sh
+# 通过以下命令创建一个模板
 npx @soonspacejs/create-app your-pro-name
 ```
 
