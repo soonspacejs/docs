@@ -3,11 +3,17 @@ sidebarDepth: 2
 ---
 
 # heat-map
+
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-heat-map/next.svg)
-<br>
+
 热力图插件。
 
+### 样例：
+
+<Docs-Iframe src="plugin/heatMap.html" />
+
 ## 安装
+
 ```bash
 npm install @soonspacejs/plugin-heat-map@next -S
 # or
@@ -15,24 +21,29 @@ yarn add @soonspacejs/plugin-heat-map@next -S
 ```
 
 ## 使用方法
+
 ```js {2,10}
-import SoonSpace from 'soonspacejs'
-import HeatMapPlugin from '@soonspacejs/plugin-heat-map'
+import SoonSpace from 'soonspacejs';
+import HeatMapPlugin from '@soonspacejs/plugin-heat-map';
 
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {}
-})
+  event: {},
+});
 
-const heatMap = ssp.registerPlugin(HeatMapPlugin, 'heatMap')
-consolo.log(heatMap)
+const heatMap = ssp.registerPlugin(HeatMapPlugin, 'heatMap');
+consolo.log(heatMap);
 ```
 
 ## 方法
+
 ### create
+
 创建热力图
+
 #### 定义
+
 ```ts
 interface CreateParam {
   id: string;
@@ -49,9 +60,11 @@ interface CreateParamData {
   value: number;
 }
 
-function create(param: CreateParam): PluginObject
+function create(param: CreateParam): PluginObject;
 ```
+
 #### 用法：
+
 ```js
 heatMap.create({
   id: 'hm1',
@@ -63,22 +76,27 @@ heatMap.create({
     {
       position: { x: 200, y: 10000, z: 100 },
       radius: 100,
-      value: 100
+      value: 100,
     },
     {
       position: { x: 100, y: 20000, z: 100 },
       radius: 20,
-      value: 50
+      value: 50,
     },
-  ]
-})
+  ],
+});
 ```
+
 #### 参数：
+
 ##### param
-  - **描述:** 创建热力图参数
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** `CreateParam`
+
+- **描述:** 创建热力图参数
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `CreateParam`
+
 ###### CreateParam
+
 <br>
 <Docs-Table 
     :data="[
@@ -104,6 +122,7 @@ heatMap.create({
 />
 
 ##### CreateParamData
+
 <br>
 <Docs-Table 
     :data="[
@@ -120,19 +139,29 @@ heatMap.create({
 />
 
 ### getById
+
 通过 `id` 创建热力图
+
 #### 用法：
+
 ```js
-heatMap.getById('hm1')
+heatMap.getById('hm1');
 ```
+
 #### 参数：
+
 - id: string
 
 ### getByName
+
 通过 `name` 创建热力图
+
 #### 参数：
+
 - name: string
 
 ### remove
+
 #### 参数：
+
 - id: string

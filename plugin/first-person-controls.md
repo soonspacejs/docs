@@ -3,8 +3,9 @@ sidebarDepth: 2
 ---
 
 # first-person-controls
+
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-first-person-controls/next.svg)
-<br>
+
 第一人称漫游控制器插件。
 
 ::: tip 交互提示
@@ -12,6 +13,7 @@ sidebarDepth: 2
 :::
 
 ## 安装
+
 ```bash
 npm install @soonspacejs/plugin-first-person-controls@next -S
 # or
@@ -19,55 +21,76 @@ yarn add @soonspacejs/plugin-first-person-controls@next -S
 ```
 
 ## 使用方法
+
 ```js {2,10}
-import SoonSpace from 'soonspacejs'
-import FirstPersonControlsPlugin from '@soonspacejs/plugin-first-person-controls'
+import SoonSpace from 'soonspacejs';
+import FirstPersonControlsPlugin from '@soonspacejs/plugin-first-person-controls';
 
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {}
-})
+  event: {},
+});
 
-const firstPersonControls = ssp.registerPlugin(FirstPersonControlsPlugin, 'firstPersonControls')
-consolo.log(firstPersonControls)
+const firstPersonControls = ssp.registerPlugin(
+  FirstPersonControlsPlugin,
+  'firstPersonControls'
+);
+consolo.log(firstPersonControls);
 ```
 
 ## 属性
+
 ### rotationAngle
+
 可旋转弧度范围。
+
 - 类型：`{ max: number, min: number }`
 - 默认值：`{ max: Math.PI, min: 0 }`
 
 ### moveSpeed
+
 移动速度。
+
 - 类型：`number`
 - 默认值：`1`
 
 ### eyeHeight
+
 模拟眼睛高度。
+
 - 类型：`number`
 - 默认值：`50`
 
 ### kneeheight
+
 模拟膝盖高度。
+
 - 类型：`number`
 - 默认值：`160`
 
 ### jumpHeight
+
 跳跃高度。
+
 - 类型：`number`
 - 默认值：`110`
 
 ### enableClash
+
 开启碰撞检测。
+
 - 类型：`boolean`
 - 默认值：`true`
 
 ## 方法
+
 ### start
+
 开始漫游。
+
 #### 定义
+
 ```ts
 interface StartOptions {
   position: Position
@@ -81,7 +104,9 @@ interface StartOptions {
 
 function start(options: StartOptions) => void
 ```
+
 #### 用法
+
 ```js
 firstPersonControls.start({
   position: { x: 132, y: 5, z: 91 },
@@ -90,14 +115,18 @@ firstPersonControls.start({
   eyeHeight: 160,
   kneeheight: 50,
   jumpHeight: 110,
-  enableClash: true
-})
+  enableClash: true,
+});
 ```
+
 ##### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** `StartOptions`
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `StartOptions`
+
 ###### StartOptions
+
 <br>
 <Docs-Table 
     :data="[
@@ -126,8 +155,11 @@ firstPersonControls.start({
 />
 
 ### stop
+
 停止漫游。
+
 #### 用法
+
 ```js
-firstPersonControls.stop()
+firstPersonControls.stop();
 ```

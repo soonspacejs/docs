@@ -3,11 +3,17 @@ sidebarDepth: 2
 ---
 
 # patrol-controls
+
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-patrol-controls/next.svg)
-<br>
+
 路径巡检相机控制器插件。
 
+### 样例：
+
+<Docs-Iframe src="plugin/patrolControls.html" />
+
 ## 安装
+
 ```bash
 npm install @soonspacejs/plugin-patrol-controls@next -S
 # or
@@ -15,24 +21,32 @@ yarn add @soonspacejs/plugin-patrol-controls@next -S
 ```
 
 ## 使用方法
+
 ```js {2,10}
-import SoonSpace from 'soonspacejs'
-import PatrolControlsPlugin from '@soonspacejs/plugin-patrol-controls'
+import SoonSpace from 'soonspacejs';
+import PatrolControlsPlugin from '@soonspacejs/plugin-patrol-controls';
 
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {}
-})
+  event: {},
+});
 
-const patrolControls = ssp.registerPlugin(PatrolControlsPlugin, 'patrolControls')
-consolo.log(patrolControls)
+const patrolControls = ssp.registerPlugin(
+  PatrolControlsPlugin,
+  'patrolControls'
+);
+consolo.log(patrolControls);
 ```
 
 ## 方法
+
 ### start
+
 开始巡检。
+
 #### 定义
+
 ```ts
 interface StartOptions {
   path: Topology;
@@ -43,7 +57,9 @@ interface StartOptions {
 
 function start(path: Topology, options: StartOptions) => Promise<Position>
 ```
+
 #### 用法
+
 ```js
 patrolControls.start(
   // path
@@ -62,16 +78,23 @@ patrolControls.start(
   })
 
 ```
+
 #### 参数
+
 ##### path
-  - **描述:** 用于自动巡检的路径
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** `Topology`
+
+- **描述:** 用于自动巡检的路径
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `Topology`
+
 ##### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="false"/>
-  - **类型:** `StartOptions`
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `StartOptions`
+
 ###### StartOptions
+
 <br>
 <Docs-Table 
     :data="[
@@ -88,22 +111,31 @@ patrolControls.start(
 />
 
 ### stop
+
 结束巡检。
+
 #### 用法
+
 ```js
-patrolControls.stop()
+patrolControls.stop();
 ```
 
 ### pause
+
 暂停巡检。
+
 #### 用法
+
 ```js
-patrolControls.pause()
+patrolControls.pause();
 ```
 
 ### resume
+
 继续巡检。
+
 #### 用法
+
 ```js
-patrolControls.resume()
+patrolControls.resume();
 ```
