@@ -35,7 +35,7 @@ jobs:
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
-          username: root
+          username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           source: "dist/*"
           target: "/www/webSample/BusanStation/soonspacejs/Docs/2.x"
