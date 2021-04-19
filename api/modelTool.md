@@ -1,5 +1,9 @@
 # 模型操作
 
+### 样例：
+
+<Docs-Iframe src="modelTool/selectModel.html" />
+
 ## edgeShow
 
 显示模型轮廓
