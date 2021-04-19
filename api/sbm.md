@@ -4,6 +4,9 @@
 
 加载 `sbm` 模型。
 
+### 样例：
+<Docs-Iframe src="model/loadSbm.html" />
+
 ### 定义：
 
 ```ts

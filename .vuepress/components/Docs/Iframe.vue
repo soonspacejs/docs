@@ -3,6 +3,7 @@
     class="docs-iframe"
     :src="`${this.baseUrl}${this.src}`"
     frameborder="0"
+    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-same-origin"
   ></iframe>
 </template>
 
@@ -14,7 +15,7 @@ export default {
   },
   data() {
     return {
-      baseUrl: "http://www.xwbuilders.com:9018/soonspacejs/examples/page/2.x/"
+      baseUrl: "http://www.xwbuilders.com:9018/soonspacejs/examples/2.x/page/"
     };
   }
 };
