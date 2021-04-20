@@ -72,6 +72,10 @@ ssp.createGround({
 
 添加坐标轴辅助器
 
+### 样例：
+
+<Docs-Iframe src="helper/addHelper.html" />
+
 ### 定义：
 
 ```ts
@@ -118,11 +122,11 @@ function addGridHelper(options: GridHelperOptions): GridHelper;
 
 ```js
 ssp.addGridHelper({
-  id: 'test_gridHelper'
+  id: 'test_gridHelper',
   size: 1000,
   divisions: 20,
-  color: '#fff'
-})
+  color: '#fff',
+});
 ```
 
 #### options
