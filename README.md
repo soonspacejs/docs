@@ -13,6 +13,8 @@ features:
 footer: 浙ICP备16043491号 | © Copyright 2018 xwbuilders - All rights reserved.
 ---
 
+<Docs-Update />
+
 ### node
 ```bash
 # 安装
