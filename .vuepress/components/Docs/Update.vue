@@ -13,7 +13,7 @@
         <ol>
           <li>锁定项目内使用的稳定版本。</li>
           <li>若想使用 1.x 最新版本，执行 <code>npm i soonspacejs@legacy</code>。</li>
-          <li>文档移步<a href="http://localhost:8080/soonspacejs/Docs/1.x/">这里</a></li>
+          <li>文档移步<a href="http://www.xwbuilders.com:9018/soonspacejs/Docs/1.x/">这里</a></li>
         </ol>
       </div>
       <div class="docs-update-footer">
