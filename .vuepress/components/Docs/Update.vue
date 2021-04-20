@@ -37,7 +37,11 @@ export default {
       return y < 2022 && m > 6
     },
     isTipUpdate: function() {
-      return localStorage && localStorage.getItem('isTipUpdate') !== 'false'
+      if( typeof window === 'object' ) {
+       return window.localStorage.getItem('isTipUpdate') !== 'false'
+      } else {
+        return true
+      }
     }
   },
   data() {
@@ -49,7 +53,10 @@ export default {
   methods: {
     IKnow() {
       this.visible = false
-      this.notTipNext && localStorage && localStorage.setItem('isTipUpdate', 'false')
+
+      if( typeof window === 'object' ) {
+        this.notTipNext && window.localStorage.setItem('isTipUpdate', 'false')
+      }
     },
     isTipUpdateChange(e) {
       this.notTipNext = e.target.checked
