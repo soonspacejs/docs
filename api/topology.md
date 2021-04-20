@@ -282,71 +282,51 @@ ssp.createTopologyToGroup(
 - **类型:** [TopologyInfo](#topologyinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## createTopologyGroupFromGml
+## createTopologyFromGml
 
-创建 Topology 组，来自 gml 文件资源。
+创建 Topology 组，从 gml 文件资源。
 
 ### 定义：
 
 ```ts
 interface TopologyInfoForGml {
   url: string;
-  id?: string[];
-  name?: string | string[];
+  id: BaseObject3DInfo['id'];
+  name?: BaseObject3DInfo['name'];
   linkWidth?: number;
   linkColor?: IColor;
   renderNode?: boolean;
   nodeColor?: IColor;
 }
 
-function createTopologyGroupFromGml(
-  groupInfo: GroupInfo,
-  topologyInfoForGml: TopologyInfoForGml
-): Promise<Group>;
+function createTopologyFromGml(
+  topologyInfo: TopologyInfoForGml
+): Promise<Topology>;
 ```
 
 ### 用法：
 
 ```js
 ssp
-  .createTopologyGroupFromGml(
-    // groupInfo
-    {
-      id: 'gml_group_test',
-    },
-    // topologyInfoForGml
-    {
-      url: './gml/tuobutujinzui0401115.gml',
-      id: [
-        'gml_for_topology_001',
-        'gml_for_topology_002',
-        'gml_for_topology_003',
-        'gml_for_topology_004',
-        'gml_for_topology_005',
-      ],
-      name: 'gml_for_topology_name',
-      linkWidth: 20,
-      linkColor: 0xff0000,
-      renderNode: true,
-      nodeColor: 0x0000ff,
-    }
-  )
-  .then((group) => {
-    console.log(group);
+  .createTopologyFromGml({
+    url: './tuobutujinzui.gml',
+    id: 'gml_for_topology',
+    name: 'gml_for_topology_name',
+    linkWidth: 100,
+    linkColor: 'blue',
+    renderNode: true,
+    nodeColor: 'green',
+  })
+  .then((topology) => {
+    console.log(topology);
   });
 ```
 
 ### 参数
 
-#### groupInfo
+#### topologyInfo
 
-- **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
-- **必填:** <Base-RequireIcon :isRequire="true"/>
-
-#### topologyInfoForGml
-
-- **描述:** `topologyInfo` 集合
+- **描述:** `topologyInfo` 对象
 - **类型:** [TopologyInfoForGml](#topologyinfoforgml)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
@@ -354,13 +334,13 @@ ssp
 
 <Docs-Table
     :data="[
-      { prop: 'url', desc: 'gml 资源路径', type: 'string[]', require: false, default: '' },
-      { prop: 'id', desc: '组内路径对象唯一ID', type: 'string[]', require: false, default: '' },
-      { prop: 'name', desc: '组内路径对象名称', type: 'string | string[]', require: false, default: '' },
+      { prop: 'url', desc: 'gml 资源路径', type: 'string', require: false, default: '' },
+      { prop: 'id', desc: '路径对象唯一ID', type: 'string', require: false, default: '' },
+      { prop: 'name', desc: '路径对象名称', type: 'string', require: false, default: '' },
       { prop: 'linkWidth', desc: '路径线宽', type: 'number', require: false, default: '20' },
-      { prop: 'linkColor', desc: '路径线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'linkColor', desc: '路径线颜色', type: 'IColor', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
       { prop: 'renderNode', desc: '是否渲染路径节点', type: 'boolean', require: false, default: 'true' },
-      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' }
+      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' }
     ]"
 />
 
