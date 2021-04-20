@@ -4,6 +4,10 @@
 
 设置背景色
 
+### 样例：
+
+<Docs-Iframe src="sceneTool/backgroundColor.html" />
+
 ### 定义：
 
 ```ts
@@ -27,6 +31,10 @@ ssp.setBackgroundColor(0xff0000);
 ## setBackgroundImage
 
 设置背景图
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/backgroundImage.html" />
 
 ### 定义：
 
@@ -52,6 +60,10 @@ ssp.setBackgroundImage('http://xx.com/xx.png');
 
 设置球体天空盒，球体天空盒的图片资源是一张全景图。
 
+### 样例：
+
+<Docs-Iframe src="sceneTool/sphereSkyBox.html" />
+
 ### 用法：
 
 ```js
@@ -75,6 +87,10 @@ function setSphereSkyBackground(imgUrl: string): void;
 ## setSkyBackground
 
 设置天空盒
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/skyBox.html" />
 
 ### 定义：
 
@@ -123,6 +139,10 @@ ssp.setSkyBackground(
 ## openSceneFog
 
 开启场景雾化
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/fog.html" />
 
 ### 定义:
 

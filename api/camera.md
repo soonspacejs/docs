@@ -100,6 +100,10 @@ ssp
 
 相机飞向对象
 
+### 样例：
+
+<Docs-Iframe src="camera/viewpointEnum.html" />
+
 ### 定义：
 
 ```ts
@@ -177,6 +181,10 @@ ssp
 
 相机飞向固定位置
 
+### 样例：
+
+<Docs-Iframe src="camera/flyTo.html" />
+
 ### 定义：
 
 ```ts
@@ -239,6 +247,10 @@ ssp.flyTo(
 ## surroundOnTarget
 
 围绕一个目标点旋转
+
+### 样例：
+
+<Docs-Iframe src="camera/surround.html" />
 
 ### 定义：
 

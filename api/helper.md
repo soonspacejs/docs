@@ -1,12 +1,21 @@
 # 辅助器
 
 ## createGround
+
 创建地面
+
+### 样例：
+
+<Docs-Iframe src="helper/createGround.html" />
+
 ### 定义：
+
 ```ts
-function createGround(options: GroundOptions): BaseMesh
+function createGround(options: GroundOptions): BaseMesh;
 ```
+
 ### 用法：
+
 ```js
 ssp.createGround({
   id: 'test_ground'
@@ -16,12 +25,17 @@ ssp.createGround({
   // ...
 })
 ```
+
 ### 参数：
+
 #### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** GroundOptions
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** GroundOptions
+
 ##### GroundOptions
+
 <Docs-Table 
     :data="[
       {
@@ -55,24 +69,34 @@ ssp.createGround({
 />
 
 ## addAxesHelper
+
 添加坐标轴辅助器
+
 ### 定义：
+
 ```ts
-function addAxesHelper(options: AxesHelperOptions): AxesHelper
+function addAxesHelper(options: AxesHelperOptions): AxesHelper;
 ```
+
 ### 用法：
+
 ```js
 ssp.addAxesHelper({
   id: 'test_axesHelper',
-  axesLength: 1000
-})
+  axesLength: 1000,
+});
 ```
+
 ### 参数：
+
 #### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** AxesHelperOptions
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** AxesHelperOptions
+
 ##### AxesHelperOptions
+
 <Docs-Table 
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
@@ -81,12 +105,17 @@ ssp.addAxesHelper({
 />
 
 ## addGridHelper
+
 添加网格辅助器
+
 ### 定义：
+
 ```ts
-function addGridHelper(options: GridHelperOptions): GridHelper
+function addGridHelper(options: GridHelperOptions): GridHelper;
 ```
+
 ### 用法：
+
 ```js
 ssp.addGridHelper({
   id: 'test_gridHelper'
@@ -95,11 +124,15 @@ ssp.addGridHelper({
   color: '#fff'
 })
 ```
+
 #### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** GridHelperOptions
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** GridHelperOptions
+
 ##### GridHelperOptions
+
 <Docs-Table 
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
@@ -110,12 +143,17 @@ ssp.addGridHelper({
 />
 
 ## addPlaneHelper
+
 添加面辅助器
+
 ### 定义：
+
 ```ts
-function addPlaneHelper(options: PlaneHelperOptions): BaseMesh
+function addPlaneHelper(options: PlaneHelperOptions): BaseMesh;
 ```
+
 ### 用法：
+
 ```js
 ssp.addPlaneHelper({
   id: 'test_planeHelper',
@@ -124,16 +162,20 @@ ssp.addPlaneHelper({
   color: '#00ff00',
   opacity: 0.2,
   position: { x: 0, y: 0, z: 0 },
-  rotation: { x: 0, y: 0, z: 0 }
-})
+  rotation: { x: 0, y: 0, z: 0 },
+});
 ```
 
 ### 参数：
+
 #### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** PlaneHelperOptions
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** PlaneHelperOptions
+
 ##### PlaneHelperOptions
+
 <Docs-Table 
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
@@ -147,25 +189,35 @@ ssp.addPlaneHelper({
 />
 
 ## addBoxHelper
+
 添加包围盒辅助器
+
 ### 定义：
+
 ```ts
-function addBoxHelper(options: BoxHelperOptions): Box3Helper
+function addBoxHelper(options: BoxHelperOptions): Box3Helper;
 ```
+
 ### 用法：
+
 ```js
 ssp.addBoxHelper({
   id: 'test_boxHelper',
   box: ssp.getSbmById('xxx').getBoundingBox(),
-  color: '#00ff00'
-})
+  color: '#00ff00',
+});
 ```
+
 ### 参数：
+
 #### options
-  - **描述:** 可配置项
-  - **必填:** <Base-RequireIcon :isRequire="true"/>
-  - **类型:** BoxHelperOptions
+
+- **描述:** 可配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** BoxHelperOptions
+
 ##### BoxHelperOptions
+
 <Docs-Table 
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
