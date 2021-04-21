@@ -1,5 +1,5 @@
 <template>
-  <div class="docs-update" v-if="visible && isTipUpdate && !isOverTime">
+  <div class="docs-update" v-if="visible">
     <div class="docs-update-body">
       <div class="docs-update-header">版本更新提示</div>
       <div class="docs-update-content">
