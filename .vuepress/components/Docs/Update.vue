@@ -61,9 +61,6 @@ export default {
     isTipUpdateChange(e) {
       this.notTipNext = e.target.checked
     }
-  },
-  mounted() {
-    console.log(this.isOverTime)
   }
 };
 </script>
