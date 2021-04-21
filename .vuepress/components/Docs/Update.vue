@@ -47,7 +47,7 @@ export default {
   name: "docs-update",
   data() {
     return {
-      visible: true,
+      visible: false,
       notTipNext: false,
       isTipUpdate: true,
       isOverTime: false,
@@ -57,6 +57,8 @@ export default {
     this.isTipUpdate = window.localStorage.getItem("isTipUpdate") !== "false";
 
     this.isOverTime = this.isOverTimeCalc();
+
+    if (this.isTipUpdate && !this.isOverTime) this.visible = true;
   },
   methods: {
     IKnow() {
