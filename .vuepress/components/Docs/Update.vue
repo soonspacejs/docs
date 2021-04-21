@@ -53,7 +53,7 @@ export default {
       isOverTime: false,
     };
   },
-  beforeMount() {
+  mounted() {
     this.isTipUpdate = window.localStorage.getItem("isTipUpdate") !== "false";
 
     this.isOverTime = this.isOverTimeCalc();
