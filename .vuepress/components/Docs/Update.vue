@@ -123,4 +123,8 @@ export default {
       font-weight bold
       left calc(100% - 172px)
 
+@media (max-width: $MQMobile)
+  .docs-update
+    display none
+
 </style>
