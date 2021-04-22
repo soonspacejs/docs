@@ -53,6 +53,35 @@ ssp.createAmbientLight({
     ]"
 />
 
+## setAmbientLight
+
+设置环境光
+
+### 定义：
+
+```ts
+function setAmbientLight(options: AmbientLightOptions): boolean;
+```
+
+### 用法：
+
+```js
+const isUpdated = ssp.setAmbientLight({
+  id: 'ambientLight',
+  color: 0x8a8a8a,
+  intensity: 0.5,
+});
+if (isUpdated) {
+  console.log('环境光配置更新成功');
+}
+```
+
+::: tip 提示
+`setAmbientLight` 与 `createAmbientLight` 的 `options` 完全一致。
+
+`setAmbientLight` 用于更新场景已存在的光的配置，`createAmbientLight` 用于创建一个光。
+:::
+
 ## createDirectionalLight
 
 创建平行光
@@ -101,6 +130,29 @@ ssp.createDirectionalLight({
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
     ]"
 />
+
+## setDirectionalLight
+
+设置平行光
+
+### 定义：
+
+```ts
+function setDirectionalLight(options: DirectionalLightOptions): boolean;
+```
+
+### 用法：
+
+```js
+const isUpdated = ssp.setDirectionalLight({
+  id: 'directionalLight',
+  color: 0x8a8a8a,
+  intensity: 0.5,
+});
+if (isUpdated) {
+  console.log('平行光配置更新成功');
+}
+```
 
 ## createHemisphereLight
 
@@ -151,6 +203,29 @@ ssp.createHemisphereLight({
     ]"
 />
 
+## setHemisphereLight
+
+设置半球光
+
+### 定义：
+
+```ts
+function setHemisphereLight(options: HemisphereLightOptions): boolean;
+```
+
+### 用法：
+
+```js
+const isUpdated = ssp.setHemisphereLight({
+  id: 'hemiLight',
+  color: 0x8a8a8a,
+  intensity: 0.5,
+});
+if (isUpdated) {
+  console.log('半球光配置更新成功');
+}
+```
+
 ## createSpotLight
 
 创建聚光灯
@@ -200,6 +275,29 @@ ssp.createSpotLight({
     ]"
 />
 
+## setSpotLight
+
+设置半球光
+
+### 定义：
+
+```ts
+function setSpotLight(options: SpotLightOptions): boolean;
+```
+
+### 用法：
+
+```js
+const isUpdated = ssp.setSpotLight({
+  id: 'spotLight',
+  color: 0x8a8a8a,
+  intensity: 0.5,
+});
+if (isUpdated) {
+  console.log('聚光灯配置更新成功');
+}
+```
+
 ## createPointLight
 
 创建点光源
@@ -239,6 +337,29 @@ ssp.createPointLight({ id: 'pointLight', name: 'pointLight' });
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
     ]"
 />
+
+## setPoinntLight
+
+设置点光源
+
+### 定义：
+
+```ts
+function setPoinntLight(options: PointLightOptions): boolean;
+```
+
+### 用法：
+
+```js
+const isUpdated = ssp.setPoinntLight({
+  id: 'pointLight',
+  color: 0x8a8a8a,
+  intensity: 0.5,
+});
+if (isUpdated) {
+  console.log('点光源配置更新成功');
+}
+```
 
 ## getLightById
 
