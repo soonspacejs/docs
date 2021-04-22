@@ -6,6 +6,10 @@
 `id` 依次是 `defaultAmbientLight`、`defaultDirectionalLight`、`defaultHemiLight`。
 :::
 
+### 样例：
+
+<Docs-Iframe src="light/setLight.html" />
+
 ## createAmbientLight
 
 创建环境光
