@@ -129,12 +129,12 @@ module.exports = {
           '/plugin/': [
             'vue-soonspace',
             'react-soonspace',
+            'soonmanager-sync',
             'heat-map',
             'patrol-controls',
             'transform-controls',
             'first-person-controls',
             'follow-mouse',
-            'soonmanager-sync',
           ],
           '/faq/': [
             '/faq/'
