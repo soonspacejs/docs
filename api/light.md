@@ -199,3 +199,126 @@ ssp.createSpotLight({
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
     ]"
 />
+
+## createPointLight
+
+创建点光源
+
+### 定义：
+
+```ts
+interface PointLightOptions extends BaseLightInfo {
+  position?: Position;
+}
+
+function createPointLight(options: PointLightOptions): THREE.PointLight;
+```
+
+### 用法：
+
+```js
+ssp.createPointLight({ id: 'pointLight', name: 'pointLight' });
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 点光源配置项
+- **必填:** <Base-RequireIcon :isRequire="true" />
+- **类型:** PointLightOptions
+
+##### PointLightOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
+      { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
+    ]"
+/>
+
+## getLightById
+
+根据 id 查询 Light 对象
+
+### 定义：
+
+```ts
+function getLightById<T extends Light>(id: BaseObject3DInfo['id']): T | null;
+```
+
+### 用法：
+
+```js
+const pointLight = ssp.getLightById('pointLight');
+```
+
+## removeLightById
+
+根据 id 移除 Light 对象
+
+### 定义：
+
+```ts
+function removeLightById(id: BaseObject3DInfo['id']): boolean;
+```
+
+### 用法：
+
+```js
+const isRemoved = ssp.removeLightById('pointLight');
+if (isRemoved) {
+  console.log('灯光移除成功！！！');
+}
+```
+
+## clearLight
+
+清空 Light 对象
+
+### 定义：
+
+```ts
+function clearLight(): void;
+```
+
+### 用法：
+
+```js
+ssp.clearLight();
+```
+
+## showAllLight
+
+显示所有光
+
+### 定义：
+
+```ts
+function showAllLight(): void;
+```
+
+### 用法：
+
+```js
+ssp.showAllLight();
+```
+
+## hideAllLight
+
+隐藏所有光
+
+### 定义：
+
+```ts
+function hideAllLight(): void;
+```
+
+### 用法：
+
+```js
+ssp.hideAllLight();
+```
