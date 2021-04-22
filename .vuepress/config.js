@@ -38,6 +38,7 @@ module.exports = {
                 text: '开发指南',
                 items: [
                   { text: 'FAQ', link: '/faq/' },
+                  { text: '报告 Bug', link: 'https://github.com/soonspacejs/bugs' },
                 ]
               },
               {
@@ -58,7 +59,7 @@ module.exports = {
           {
             text: '外部链接',
             items: [
-              { text: 'GitHub', link: 'https://github.com/soonspacejs/example' },
+              { text: 'GitHub', link: 'https://github.com/soonspacejs' },
               { text: 'npm', link: 'https://www.npmjs.com/package/soonspacejs' },
             ]
           }
