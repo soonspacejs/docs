@@ -11,33 +11,33 @@
 ### 定义：
 
 ```ts
-interface TopologyNodeInfo {
-  id: string | number;
-  name?: string;
-  position: Position;
-}
-
-interface TopologyLinkInfo {
-  id: string | number;
-  name?: string;
-  pointAIndex: number;
-  pointBIndex: number;
-}
-
-interface TopologyInfo extends BaseObject3DInfo {
-  nodes: TopologyNodeInfo[];
-  links?: TopologyLinkInfo[];
+interface TopologyEffectInfo {
   linkWidth?: number;
-  //
   renderNode?: boolean;
   nodeColor?: IColor | IColor[];
-  //
-  renderCircle?: boolean;
-  //
   renderLink?: boolean;
   linkColor?: IColor | IColor[];
-  imgUrl?: string;
-  animation?: boolean | AnimationOptions;
+  imgUrl?: LinkInfo['imgUrl'];
+  animation?: LinkInfo['animation'];
+}
+interface TopologyNodeInfo {
+  id: BaseObject3DInfo['id'];
+  name?: BaseObject3DInfo['name'];
+  position: Position;
+  graphs?: TopologyNodeGraph[];
+}
+interface TopologyNodeGraph {
+  targetId: string;
+  linkInfo: {
+    id: string;
+    name: string;
+  };
+}
+type TopologyType = 'line' | 'network';
+
+interface TopologyInfo extends BaseObject3DInfo, TopologyEffectInfo {
+  nodes: TopologyNodeInfo[];
+  type: TopologyType;
 }
 
 function createTopology(topologyInfo: TopologyInfo): Topology;
@@ -46,9 +46,10 @@ function createTopology(topologyInfo: TopologyInfo): Topology;
 ### 用法：
 
 ```js
-const t = ssp.createTopology({
+const topology = ssp.createTopology({
   id: 'topology_1',
   name: 'topology_1_name',
+  type: 'line',
   nodes: [
     {
       id: 'node1',
@@ -68,7 +69,6 @@ const t = ssp.createTopology({
     },
   ],
   renderNode: true,
-  renderCircle: true,
 });
 ```
 
@@ -86,17 +86,17 @@ const t = ssp.createTopology({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'nodes', desc: '节点坐标集合', type: 'TopologyNodeInfo[]', require: true, default: '', link: '#/topologynodeinfo' },
-      { prop: 'links', desc: '连接线集合', type: 'TopologyLinkInfo[]', require: false, default: '', link: '#twowayslink' },
+      { prop: 'nodes', desc: '节点坐标集合', type: 'TopologyNodeInfo[]', require: true, default: '', link: '#topologynodeinfo' },
+      { prop: 'type', desc: '路径类型', type: 'line | network', require: true, default: '' },
       { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
       { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
       { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
-      { prop: 'renderCircle', desc: '是否渲染线段连接处的补全圆', type: 'boolean', require: false, default: 'true' },
       { prop: 'renderLink', desc: '是否渲染连接线', type: 'boolean', require: false, default: 'true' },
       { prop: 'linkColor', desc: '连接线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
       { prop: 'imgUrl', desc: '非纯色线时使用的图片资源路径', type: 'string', require: false, default: 'null' },
       { prop: 'animation', desc: '非纯色线时的流动动画', type: 'boolean | AnimationOptions', require: false, default: 'false', link: './animation.html#animationoptions'},
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
       { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
@@ -111,17 +111,16 @@ const t = ssp.createTopology({
       { prop: 'id', desc: '节点唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '节点名称', type: 'string', require: false, default: '' },
       { prop: 'position', desc: '节点坐标', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'graphs', desc: '网结构信息', type: 'TopologyNodeGraph[]', require: false, default: '', link: '#topologynodegraph' },
     ]"
 />
 
-##### TopologyLinkInfo
+##### TopologyNodeGraph
 
 <Docs-Table
     :data="[
-      { prop: 'id', desc: '连线唯一ID', type: 'string | number', require: true, default: '' },
-      { prop: 'name', desc: '连线名称', type: 'string', require: false, default: '' },
-      { prop: 'pointAIndex', desc: '连接线一端位置坐标在 nodes 内的索引', type: 'number', require: true, default: '' },
-      { prop: 'pointBIndex', desc: '连接线另一端位置坐标在 nodes 内的索引', type: 'number', require: true, default: '' },
+      { prop: 'targetId', desc: '目标 node ID', type: 'string | number', require: true, default: '' },
+      { prop: 'linkInfo', desc: '路径信息', type: '{ id: string, name: string }', require: true, default: '' },
     ]"
 />
 
