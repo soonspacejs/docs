@@ -1,6 +1,3 @@
-
-// import { resolve } from 'path'
-
 const path = require('path')
 
 const BASE_HTTP_URL = 'http://www.xwbuilders.com'
@@ -38,13 +35,8 @@ module.exports = {
                 text: '开发指南',
                 items: [
                   { text: 'FAQ', link: '/faq/' },
+                  { text: '设计原理', link: '/design/' },
                   { text: '报告 Bug', link: 'https://github.com/soonspacejs/bugs' },
-                ]
-              },
-              {
-                text: '设计原理',
-                items: [
-                  { text: '设计结构', link: '/design/architectures' }
                 ]
               },
               {
@@ -129,18 +121,18 @@ module.exports = {
           '/plugin/': [
             'vue-soonspace',
             'react-soonspace',
-            'soonmanager-sync',
             'heat-map',
             'patrol-controls',
             'transform-controls',
             'first-person-controls',
             'follow-mouse',
+            'soonmanager-sync',
           ],
           '/faq/': [
             '/faq/'
           ],
           '/design/': [
-            'architectures'
+            '/design/'
           ]
         }
       }
