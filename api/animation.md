@@ -37,18 +37,13 @@ interface AnimationOptions {
   mode?: AnimationMode
 }
 
-interface AnimationReturn<PropType> {
-  source: PropType
-  target: PropType
-}
-
 function Animation<PropType>(
   source: PropType,
   target: PropType,
   options: AnimationOptions = {},
   onUpdate?: (source: PropType, tween: Tween<PropType>) => void,
   onStart?: (tween: Tween<PropType>) => void
-) => Promise<AnimationReturn<PropType>>
+) => Promise<void>
 ```
 
 ### 用法：

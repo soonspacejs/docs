@@ -3,7 +3,6 @@
 <!-- getCameraViewpoint -->
 
 ## getCameraViewpoint
-
 获取当前相机视角数据
 
 ### 定义：
@@ -57,7 +56,6 @@ ssp.setCameraViewpoint(cameraViewpointData);
 <!-- flyMainViewpoint -->
 
 ## flyMainViewpoint
-
 相机飞向主场景视角
 
 ### 定义：
@@ -66,7 +64,7 @@ ssp.setCameraViewpoint(cameraViewpointData);
 function flyMainViewpoint(
   viewpoint: FlyToViewpoint = 'frontTop',
   options: FlyToObjOptions = {}
-): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
+): Promise<void[]>;
 ```
 
 ### 用法：
@@ -97,7 +95,6 @@ ssp
 <!-- flyToObj -->
 
 ## flyToObj
-
 相机飞向对象
 
 ### 样例：
@@ -115,7 +112,7 @@ function flyToObj(
   object: BaseObject3D | BaseMesh,
   viewpoint: FlyToViewpoint = 'frontTop',
   options: FlyToObjOptions = {}
-): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
+): Promise<void[]>;
 ```
 
 ### 用法：
@@ -178,7 +175,6 @@ ssp
 <!-- flyTo -->
 
 ## flyTo
-
 相机飞向固定位置
 
 ### 样例：
@@ -192,7 +188,7 @@ function flyTo(
   position: Position,
   rotation: FlyToViewpoint | Rotation | Euler = 'frontTop',
   options?: AnimationOptions
-): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
+): Promise<void>;
 ```
 
 ### 用法：
@@ -245,7 +241,6 @@ ssp.flyTo(
 <!-- surroundOnTarget -->
 
 ## surroundOnTarget
-
 围绕一个目标点旋转
 
 ### 样例：
@@ -255,6 +250,12 @@ ssp.flyTo(
 ### 定义：
 
 ```ts
+interface SurroundOptions {
+  speed?: number
+  angle?: number
+  onStart?: <TweenType>(tween: TweenType) => {}
+}
+
 function surroundOnTarget(
   target: Position,
   options: SurroundOptions = {}
@@ -276,6 +277,9 @@ ssp
     {
       angle: 360,
       speed: 2,
+      onStart: tween => {
+        console.log('旋转动画对象', tween)
+      }
     }
   )
   .then(() => console.log('surroundOnTarget done'))
@@ -302,26 +306,23 @@ ssp
 <Docs-Table
     :data="[
       { prop: 'angle', desc: '旋转角度', type: 'number', require: false, default: '360' },
-      {
-        prop: 'speed', desc: '旋转速度', type: 'number', require: false, default: '1'
-      }
+      { prop: 'speed', desc: '旋转速度', type: 'number', require: false, default: '1' },
+      { prop: 'onStart', desc: '旋转开始回调函数', type: 'tween => {}', require: false, default: '' },
     ]"
 />
 
 <!-- surroundOnObject -->
 
 ## surroundOnObject
-
 围绕一个目标对象旋转
 
 ### 定义：
 
 ```ts
-function surroundOnTarget(
-  position: Position,
-  rotation: FlyToViewpoint | Rotation = 'frontTop',
-  options?: AnimationOptions
-): Promise<[AnimationReturn<Position>, AnimationReturn<Rotation>]>;
+function surroundOnObject(
+  object: BaseObject3D | BaseMesh,
+  options: SurroundOptions = {}
+): Promise<void>;
 ```
 
 ### 用法：
@@ -335,6 +336,9 @@ ssp
     {
       angle: 360,
       speed: 2,
+      onStart: tween => {
+        console.log('旋转动画对象', tween)
+      }
     }
   )
   .then(() => console.log('surroundOnTarget done'))
