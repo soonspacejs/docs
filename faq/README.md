@@ -94,3 +94,25 @@ ssp.loadSbm(sbmsInfo).then(([sensorModel]) => {
   });
 });
 ```
+
+## 角度和弧度的区别是什么？
+
+角度（Degrees）和弧度（Radians）都是由于表示角（Angle）的方法。
+
+角度通常来说更加常见。360度是一个圆，180度是半圆。
+
+![degrees](./img/degrees150.png)
+
+一弧度是一个角张开的量所占圆周长的部分等于圆的半径。
+
+![degrees](./img/radians150.png)
+
+**360∘ = 2π radians**
+
+**180∘ = π radians**
+
+**90∘ = π/2 radians**
+
+**60∘ = π/3 radians**
+
+**45∘ = π/4 radians**
