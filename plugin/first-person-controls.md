@@ -8,9 +8,16 @@ sidebarDepth: 2
 
 第一人称漫游控制器插件。
 
-::: tip 交互提示
-键盘 `WASD` 或 :arrow_up: :arrow_left: :arrow_down: :arrow_right: 来**前进、后退和左右移动**，空格跳跃，长按左键同时移动鼠标旋转视角。
-:::
+## 交互提示
+`WASD` 或 :arrow_up: :arrow_left: :arrow_down: :arrow_right: ：控制移动
+<br>
+`UHJK` 或 鼠标 ：控制方向
+<br>
+空格 ：控制跳跃
+
+<!-- ::: tip 交互提示
+键盘 `WASD` 或来**前进、后退和左右移动**，空格跳跃，长按左键同时移动鼠标旋转视角。
+::: -->
 
 ## 安装
 
