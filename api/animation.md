@@ -119,6 +119,10 @@ ssp.animation(
 
 <img src="./img/动画模式.jpg"/>
 
+### 样例：
+
+<Docs-Iframe src="animation/animationModeEnum.html" />
+
 #### onUpdate
 
 - **描述:** 动画实时更新回调
