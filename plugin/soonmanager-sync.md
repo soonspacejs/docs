@@ -161,9 +161,10 @@ soonmanagerSync.setGlobalSetting({
 #### 定义
 
 ```ts
-interface LoadSceneOptions {
-  syncLoad?: boolean;
-  LoadsPerSecond?: number;
+export interface LoadSceneOptions {
+  targetId?: number;
+  targetLevel?: number;
+  isIdleRest?: boolean;
 }
 
 function loadScene(options?: LoadSceneOptions): Promise<void>;
@@ -172,7 +173,9 @@ function loadScene(options?: LoadSceneOptions): Promise<void>;
 #### 用法
 
 ```js
-soonmanagerSync.loadScene({ syncLoad: false, LoadsPerSecond: 120 });
+soonmanagerSync.loadScene({ isIdleRest: true }).then(() => {
+  consolo.log('主层级加载完成');
+});
 ```
 
 #### 参数
@@ -187,7 +190,26 @@ soonmanagerSync.loadScene({ syncLoad: false, LoadsPerSecond: 120 });
 
 <Docs-Table
     :data="[
-      { prop: 'syncLoad', desc: '同步加载模型', type: 'boolean', require: false, default: false },
-      { prop: 'LoadsPerSecond', desc: '每秒加载多少个模型(syncLoad 为 true 时生效)', type: 'number', require: false, default: 60 },
+      { prop: 'targetId', desc: '开始加载的目标 id', type: 'number', require: false, default: '' },
+      { prop: 'targetLevel', desc: '从指定节点开始，向下加载的的层级深度', type: 'number', require: false, default: '' },
+      { prop: 'isIdleRest', desc: '否利用页面交互空闲时间去加载剩余模型', type: 'boolean', require: false, default: false },
     ]"
 />
+
+### loadSceneAllSuccess
+
+所有模型加载完成
+
+#### 定义
+
+```ts
+function loadSceneAllSuccess(callback: Function): void;
+```
+
+#### 用法
+
+```ts
+soonmanagerSync.loadSceneAllSuccess(() => {
+  consolo.log('所有场景加载完成');
+});
+```
