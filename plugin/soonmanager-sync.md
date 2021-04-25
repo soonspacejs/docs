@@ -162,9 +162,10 @@ soonmanagerSync.setGlobalSetting({
 
 ```ts
 export interface LoadSceneOptions {
-  targetId?: number;
+  targetId?: number | number[];
   targetLevel?: number;
   isIdleRest?: boolean;
+  loadSceneAllSuccess?: () => void;
 }
 
 function loadScene(options?: LoadSceneOptions): Promise<void>;
@@ -173,9 +174,39 @@ function loadScene(options?: LoadSceneOptions): Promise<void>;
 #### 用法
 
 ```js
-soonmanagerSync.loadScene({ isIdleRest: true }).then(() => {
-  consolo.log('主层级加载完成');
-});
+/**
+ * 指定开始加载的树节点 ID
+ * 未指定或指定为空，从根节点开始加载场景
+ * 指定的 ID 无法命中节点，不会加载任何模型
+ * targetId: xxxxx | [xxxxx],
+ */
+
+/**
+ * 从指定节点开始，向下加载的的层级深度。
+ * 等于 1 时只加载根节点
+ * 不设置时加载全部层级子集
+ * targetLevel: 2,
+ */
+
+/**
+ * 是否利用页面交互空闲时间去加载剩余模型，当 targetLevel 大于1或未指定时生效
+ * isIdleRest: true
+ */
+
+/**
+ * 当前 loadScene 加载模型全部完成的回调
+ * loadSceneAllSuccess: () => {}
+ */
+soonmanagerSync
+  .loadScene({
+    isIdleRest: true,
+    loadSceneAllSuccess: () => {
+      console.log('全部模型加载完成');
+    },
+  })
+  .then(() => {
+    console.log('主层级加载完成');
+  });
 ```
 
 #### 参数
@@ -190,26 +221,9 @@ soonmanagerSync.loadScene({ isIdleRest: true }).then(() => {
 
 <Docs-Table
     :data="[
-      { prop: 'targetId', desc: '开始加载的目标 id', type: 'number', require: false, default: '' },
+      { prop: 'targetId', desc: '开始加载的目标 id', type: 'number | number[]', require: false, default: '' },
       { prop: 'targetLevel', desc: '从指定节点开始，向下加载的的层级深度', type: 'number', require: false, default: '' },
       { prop: 'isIdleRest', desc: '否利用页面交互空闲时间去加载剩余模型', type: 'boolean', require: false, default: false },
+      { prop: 'loadSceneAllSuccess', desc: '所有模型加载完成的回调', type: 'Function', require: false, default: 'function(){}' },
     ]"
 />
-
-### loadSceneAllSuccess
-
-所有模型加载完成
-
-#### 定义
-
-```ts
-function loadSceneAllSuccess(callback: Function): void;
-```
-
-#### 用法
-
-```ts
-soonmanagerSync.loadSceneAllSuccess(() => {
-  consolo.log('所有场景加载完成');
-});
-```
