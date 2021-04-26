@@ -124,6 +124,61 @@ const topology = ssp.createTopology({
     ]"
 />
 
+## getShortestPath
+
+获取最短路径
+
+### 定义：
+
+```ts
+interface ShortestPathInfo extends BaseObject3DInfo, TopologyEffectInfo {
+  start: Position;
+  end: Position;
+}
+
+function getShortestPath(
+  topology: Topology,
+  info: ShortestPathInfo
+): Topology | null;
+```
+
+### 用法：
+
+```js
+const shortestTopology = ssp.getShortestPath(topologyFromOther, {
+  start: { x: 0, y: 0, z: 0 },
+  end: { x: 100, y: 0, z: 300 },
+  id: 'shortestPath',
+  linkColor: 'red',
+  nodeColor: ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'violet'],
+  imgUrl: '../../asstes/img/topology/arrow.png',
+  animation: true,
+});
+```
+
+### 参数：
+
+#### topology
+
+- **描述:** 拓扑路径对象，一般是从 gml 文件加载的拓扑路径图
+- **类型:** `Topology`
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+
+#### info
+
+- **描述:** 最短路径信息
+- **类型:** `ShortestPathInfo`
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+
+<Docs-Table
+    :data="[
+      { prop: 'start', desc: '路径的起始点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'end', desc: '路径的结束点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+    ]"
+/>
+
+部分配置参考 [TopologyInfo](#topologyinfo-2)
+
 ## getTopologyById
 
 通过 `id` 查找
