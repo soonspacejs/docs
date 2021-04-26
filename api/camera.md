@@ -307,7 +307,7 @@ ssp
     :data="[
       { prop: 'angle', desc: '旋转角度', type: 'number', require: false, default: '360' },
       { prop: 'speed', desc: '旋转速度', type: 'number', require: false, default: '1' },
-      { prop: 'onStart', desc: '旋转开始回调函数', type: 'tween => {}', require: false, default: '' },
+      { prop: 'onStart', desc: '旋转开始回调函数', type: 'function(tween){}', require: false, default: '' },
     ]"
 />
 
