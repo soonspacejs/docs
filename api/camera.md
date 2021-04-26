@@ -64,7 +64,7 @@ ssp.setCameraViewpoint(cameraViewpointData);
 function flyMainViewpoint(
   viewpoint: FlyToViewpoint = 'frontTop',
   options: FlyToObjOptions = {}
-): Promise<void[]>;
+): Promise<void>;
 ```
 
 ### 用法：
@@ -112,7 +112,7 @@ function flyToObj(
   object: BaseObject3D | BaseMesh,
   viewpoint: FlyToViewpoint = 'frontTop',
   options: FlyToObjOptions = {}
-): Promise<void[]>;
+): Promise<void>;
 ```
 
 ### 用法：
