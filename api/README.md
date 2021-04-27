@@ -2,13 +2,13 @@
 
 <Docs-Update />
 
-如果你掌握 [TypeScript](https://www.typescriptlang.org/)，文档中的 `定义：` 部分会更多的帮助你理解 `Api` 的使用，它是方法实现的伪代码，用来表明 **传入参数** 和 **输入结果** 的类型定义。
+如果你掌握 [TypeScript](https://www.typescriptlang.org/)，文档中的 `定义：` 部分会更好的帮助你理解 `Api` 的使用，它是方法实现的伪代码，用来表明 **传入参数** 和 **输入结果** 的类型定义。
 <br>
 当然如果你不掌握 `TypeScript` 也不会影响阅读文档，`参数：`部分会详细说明每一个字段。
 
 ### 基础
   - [Sbm 模型](./sbm.html)
-  - [其他模型](./model.html)
+  - [通用模型](./model.html)
   - [Poi 对象](./poi.html)
   - [PoiNode 对象](./poiNode.html)
   - [空间画布对象](./canvas3D.html)
