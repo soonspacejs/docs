@@ -190,6 +190,7 @@ function loadScene(options?: LoadSceneOptions): Promise<void>;
 
 /**
  * 是否利用页面交互空闲时间去加载剩余模型，当 targetLevel 大于1或未指定时生效
+ * 可以提升初始化时，用户的交互等待时间
  * isIdleRest: true
  */
 
