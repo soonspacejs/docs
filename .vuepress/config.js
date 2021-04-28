@@ -89,6 +89,7 @@ module.exports = {
           '/api/': [
             {
               title: '基础',
+              collapsable: false,
               children: [
                 '/api/sbm',
                 '/api/model',
@@ -100,6 +101,7 @@ module.exports = {
             },
             {
               title: '进阶',
+              collapsable: false,
               children: [
                 '/api/modelTool',
                 '/api/sceneTool',
@@ -110,6 +112,7 @@ module.exports = {
             },
             {
               title: '高阶',
+              collapsable: false,
               children: [
                 '/api/animation',
                 '/api/pligin'
