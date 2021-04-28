@@ -18,6 +18,9 @@
 ### 功能扩展插件
 - [heat-map](./heat-map.html) - 热力图插件。
 - [patrol-controls](./patrol-controls.html) - 路径巡检相机控制器插件。
+- [draw-topology](./draw-topology.html) - 绘制拓扑路径。
 - [transform-controls](./transform-controls.html) - 空间对象操作（移动、旋转、缩放）控制器插件。
-- [first-person-controls](./first-person-controls.html) - 第一人称漫游控制器插件。
 - [follow-mouse](./follow-mouse.html) - 空间中摆放模型时，模型跟随鼠标插件。
+- [first-person-controls](./first-person-controls.html) - 第一人称漫游控制器插件。
+- [camera-follower](./camera-follower.html) - 相机跟随模型。
+- [clipping-controls](./clipping-controls.html) - 模型、场景切割控制器。

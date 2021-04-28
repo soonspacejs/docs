@@ -49,13 +49,15 @@ consolo.log(patrolControls);
 
 ```ts
 interface StartOptions {
-  path: Topology;
-  naviSpeed?: number;
-  eyeHeight?: number;
-  onUpdate?: (currPosition: Position) => void;
+  eyeHeight?: number
+  naviSpeed?: number
+  rotateSpeed?: number
+  flyToStartPoint?: boolean
+  onUpdate?: (e: Position) => {}
+  onEnd?: (endPosition: Position) => {}
 }
 
-function start(path: Topology, options: StartOptions) => Promise<Position>
+function start(path: Topology, options: StartOptions) => void
 ```
 
 #### 用法
@@ -67,16 +69,17 @@ patrolControls.start(
   // options
   {
     naviSpeed: 1,
+    rotateSpeed: 1,
     eyeHeight: 100,
-    onUpdate: (currPosition) => {
-      console.log(currPosition)
+    flyToStartPoint: true,
+    onUpdate: (realTimePosition) => {
+      console.log(realTimePosition)
+    },
+    onEnd: (position) => {
+      console.log('巡检结束！', position)
     }
   }
 )
-  .then(position => {
-    console.log('巡检结束！', position)
-  })
-
 ```
 
 #### 参数
@@ -102,10 +105,19 @@ patrolControls.start(
         prop: 'naviSpeed', desc: '巡检时导航速度', type: 'number', require: false, default: '1'
       },
       {
+        prop: 'rotateSpeed', desc: '视角旋转速度', type: 'number', require: false, default: '1'
+      },
+      {
         prop: 'eyeHeight', desc: '眼睛高度', type: 'number', require: false, default: '100'
       },
       {
-        prop: 'onUpdate', desc: '巡检时实时更新回调函数', type: '(position: Position) => void', require: false, default: ''
+        prop: 'flyToStartPoint', desc: '是否飞向起始点位置', type: 'boolean', require: false, default: 'true'
+      },
+      {
+        prop: 'onUpdate', desc: '巡检时实时更新回调函数', type: '(realTimePosition: Position) => void', require: false, default: ''
+      },
+      {
+        prop: 'onUpdate', desc: '巡检结束回调函数', type: '(position: Position) => void', require: false, default: ''
       }
     ]"
 />

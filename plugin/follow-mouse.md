@@ -8,13 +8,17 @@ sidebarDepth: 2
 
 空间中摆放模型时，模型跟随鼠标插件。
 
-::: tip 交互提示
-按住键盘 `shift`，鼠标左键单击确定摆放单个，右键单击取消上次摆放，双击全部取消并结束。
+## 交互提示
 
-松开键盘 `shift`，鼠标双击完成摆放。
-
-键盘 `delete` 取消上次摆放。
-:::
+鼠标左键单击摆放模型
+<br>
+鼠标左键双击摆放模型并结束摆放
+<br>
+回车键结束摆放
+<br>
+鼠标右键单击或 `delete` 删除上一次摆放
+<br>
+`esc` 清空并取消摆放
 
 ### 样例：
 
@@ -57,9 +61,9 @@ consolo.log(followMousePlugin);
 
 ```ts
 interface StartOptions {
-  offsetY?: number
   openHelper?: boolean
   helperColor?: IColor
+  offset?: Position
   onPlace?: <ObjectType = Object3D>(object: ObjectType) => void
   onDone?: <ObjectType = Object3D>(objects: ObjectType[]) => void
   onBack?: <ObjectType = Object3D>(object: ObjectType) => void
@@ -77,9 +81,13 @@ followMousePlugin.start(
   sbmObject,
   // options
   {
-    offsetY: 1,
     openHelper: true,
     helperColor: 0xffff00,
+    offsetY: {
+      x: 2,
+      y: 2,
+      z: 2
+    },
     onPlace(model) {
       console.log('onPlace', model);
     },
@@ -116,13 +124,13 @@ followMousePlugin.start(
 <Docs-Table 
     :data="[
       {
-        prop: 'offsetY', desc: '模型移动时y轴的偏移量', type: 'number', require: false, default: '0'
-      },
-      {
         prop: 'openHelper', desc: '是否显示包围盒辅助器', type: 'boolean', require: false, default: 'true'
       },
       {
         prop: 'helperColor', desc: '包围盒辅助器颜色', type: 'IColor', require: false, default: '0xffff00', link: '../guide/types.html#icolor'
+      },
+      {
+        prop: 'offset', desc: '模型移动时取点的偏移量', type: 'Position', require: false, default: '', link: '../guide/types.html#position'
       },
       {
         prop: 'onPlace', desc: '放置模型时回调函数', type: '(model) => {}', require: false, default: ''

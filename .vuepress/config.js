@@ -64,7 +64,6 @@ module.exports = {
             'config',
             'event',
             {
-              path: '/guide/sceneObject',
               title: '空间对象',
               children: [
                 '/guide/sceneObject/BaseObject3D',
@@ -86,7 +85,6 @@ module.exports = {
                 '/guide/sceneObject/Icon'
               ]
             },
-            // 'design'
           ],
           '/api/': [
             {
@@ -119,14 +117,35 @@ module.exports = {
             }
           ],
           '/plugin/': [
-            'vue-soonspace',
-            'react-soonspace',
-            'heat-map',
-            'patrol-controls',
-            'transform-controls',
-            'first-person-controls',
-            'follow-mouse',
-            'soonmanager-sync',
+            {
+              title: '前端框架插件',
+              collapsable: false,
+              children: [
+                '/plugin/vue-soonspace',
+                '/plugin/react-soonspace'
+              ]
+            },
+            {
+              title: '平台协同插件',
+              collapsable: false,
+              children: [
+                '/plugin/soonmanager-sync'
+              ]
+            },
+            {
+              title: '功能扩展插件',
+              collapsable: false,
+              children: [
+                '/plugin/heat-map',
+                '/plugin/patrol-controls',
+                '/plugin/draw-topology',
+                '/plugin/transform-controls',
+                '/plugin/follow-mouse',
+                '/plugin/first-person-controls',
+                '/plugin/camera-follower',
+                '/plugin/clipping-controls',
+              ]
+            },
           ],
           '/faq/': [
             '/faq/'
