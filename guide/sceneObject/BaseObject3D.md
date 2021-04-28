@@ -88,7 +88,7 @@ function setMove(
   options?: AnimationOptions,
   onUpdate?: (source: Position, tween: Tween<Position>) => void,
   onStart?: (tween: Tween<Position>) => void
-): Promise<AnimationReturn<Position>> {
+): Promise<void> {
   return Animation<Position>(this.position, position, options, onUpdate, onStart)
 }
 ```
@@ -110,7 +110,7 @@ function setRotate(
   options?: AnimationOptions,
   onUpdate?: (source: Rotation, tween: Tween<Rotation>) => void,
   onStart?: (tween: Tween<Rotation>) => void
-): Promise<AnimationReturn<Rotation>> {
+): Promise<void> {
   return Animation<Euler>(this.rotation, rotation, options, onUpdate, onStart)
 }
 ```
@@ -133,7 +133,7 @@ function setScale(
   options?: AnimationOptions,
   onUpdate?: (source: Scale, tween: Tween<Scale>) => void,
   onStart?: (tween: Tween<Scale>) => void
-): Promise<AnimationReturn<Scale>> {
+): Promise<void> {
   return Animation<Scale>(this.scale, scale, options, onUpdate, onStart)
 }
 ```
