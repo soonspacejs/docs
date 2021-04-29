@@ -8,7 +8,7 @@ sidebarDepth: 2
 
 空间对象操作（移动、旋转、缩放）控制器插件。
 
-### 样例：
+## 样例
 
 <Docs-Iframe src="plugin/transformControls.html" />
 

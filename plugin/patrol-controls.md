@@ -8,7 +8,7 @@ sidebarDepth: 2
 
 路径巡检相机控制器插件。
 
-### 样例：
+## 样例
 
 <Docs-Iframe src="plugin/patrolControls.html" />
 

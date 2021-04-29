@@ -20,7 +20,7 @@ sidebarDepth: 2
 <br>
 `esc` 清空并取消摆放
 
-### 样例：
+## 样例
 
 <Docs-Iframe src="plugin/followMouse.html" />
 

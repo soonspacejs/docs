@@ -8,7 +8,7 @@ sidebarDepth: 2
 
 热力图插件。
 
-### 样例：
+## 样例
 
 <Docs-Iframe src="plugin/heatMap.html" />
 

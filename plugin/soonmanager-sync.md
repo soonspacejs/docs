@@ -8,7 +8,7 @@ sidebarDepth: 2
 
 [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim)生产的场景加载及数据读取插件。
 
-### 样例：
+## 样例
 
 <Docs-Iframe src="plugin/soonmanagerSync.html" />
 
