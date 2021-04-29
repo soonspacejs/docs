@@ -4,4 +4,4 @@ sidebarDepth: 2
 
 # camera-follower
 
-coding...
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-camera-follower/next.svg)
