@@ -20,24 +20,29 @@ interface TopologyEffectInfo {
   imgUrl?: LinkInfo['imgUrl'];
   animation?: LinkInfo['animation'];
 }
+
+type TopologyType = 'line' | 'network';
+
 interface TopologyNodeInfo {
   id: BaseObject3DInfo['id'];
   name?: BaseObject3DInfo['name'];
   position: Position;
   graphs?: TopologyNodeGraph[];
 }
+
 interface TopologyNodeGraph {
-  targetId: string;
+  targetNodeId: string
   linkInfo: {
-    id: string;
-    name: string;
-  };
+    id: string
+    name: string
+  }
+  passable: number
+  length?: number
 }
-type TopologyType = 'line' | 'network';
 
 interface TopologyInfo extends BaseObject3DInfo, TopologyEffectInfo {
-  nodes: TopologyNodeInfo[];
   type: TopologyType;
+  nodes: TopologyNodeInfo[];
 }
 
 function createTopology(topologyInfo: TopologyInfo): Topology;
@@ -89,10 +94,10 @@ const topology = ssp.createTopology({
       { prop: 'nodes', desc: '节点坐标集合', type: 'TopologyNodeInfo[]', require: true, default: '', link: '#topologynodeinfo' },
       { prop: 'type', desc: '路径类型', type: 'line | network', require: true, default: '' },
       { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
-      { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
-      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
       { prop: 'renderLink', desc: '是否渲染连接线', type: 'boolean', require: false, default: 'true' },
       { prop: 'linkColor', desc: '连接线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
+      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
       { prop: 'imgUrl', desc: '非纯色线时使用的图片资源路径', type: 'string', require: false, default: 'null' },
       { prop: 'animation', desc: '非纯色线时的流动动画', type: 'boolean | AnimationOptions', require: false, default: 'false', link: './animation.html#animationoptions'},
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
@@ -103,6 +108,8 @@ const topology = ssp.createTopology({
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
     ]"
 />
+
+`linkColor` 为数组时，有效长度是 4 个，分别对应 `passable` 的四个状态时路径颜色；为单个颜色时，表示所有路径颜色。
 
 ##### TopologyNodeInfo
 
@@ -119,10 +126,15 @@ const topology = ssp.createTopology({
 
 <Docs-Table
     :data="[
-      { prop: 'targetId', desc: '目标 node ID', type: 'string | number', require: true, default: '' },
+      { prop: 'targetNodeId', desc: '目标 node ID', type: 'string | number', require: true, default: '' },
       { prop: 'linkInfo', desc: '路径信息', type: '{ id: string, name: string }', require: true, default: '' },
+      { prop: 'passable', desc: '路径通行许可', type: '0 | 1 | 2 | 3', require: true, default: '' },
+      { prop: 'length', desc: '起始点到目标点距离', type: 'number', require: false, default: '' },
     ]"
 />
+
+`passable` 的枚举含义分别为：双向通行（0）｜ 单向正向通行（1）｜ 单向方向通向（2）｜ 禁止通行（3）
+
 
 ## getShortestPath
 
