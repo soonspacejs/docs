@@ -48,12 +48,12 @@ consolo.log(cameraFollowerPlugin);
 #### 定义
 
 ```ts
-interface CameraViewpointData {
-  position: Position;
-  rotation: Rotation;
+interface StartOptions {
+  position?: Position;
+  rotation?: Rotation;
 }
 
-function start(object: Object3D, option?: CameraViewpointData): void;
+function start(object: Object3D, options?: StartOptions): void;
 ```
 
 #### 用法
@@ -72,6 +72,31 @@ cameraFollowerPlugin.start(model, {
   },
 });
 ```
+
+#### 参数:
+
+##### object
+
+- **描述:** 模型对象
+- **类型:** `BaseObject3D`
+- **必填:** <Base-RequireIcon />
+
+##### options
+
+- **描述:** 配置选项
+- **类型:** `StartOptions`
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'position', desc: '相机位置（相对于模型）', type: 'Position', require: false, default: '{x: 0,y: 0,z: 0}', link: '../guide/types.html#position'
+      },
+      {
+        prop: 'rotation', desc: '相机弧度（相对于模型）', type: 'Rotation', require: false, default: '{x: 0,y: 0,z: 0}', link: '../guide/types.html#rotation'
+      }
+    ]"
+/>
 
 ### stop
 
