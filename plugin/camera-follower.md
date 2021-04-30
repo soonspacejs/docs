@@ -87,6 +87,8 @@ cameraFollowerPlugin.start(model, {
 - **类型:** `StartOptions`
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
+###### StartOptions
+
 <Docs-Table 
     :data="[
       {
