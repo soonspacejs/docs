@@ -28,9 +28,9 @@
 通过 npm
 
 ```sh
-npm install soonspacejs@next -S
+npm install soonspacejs -S
 # 或者
-yarn add soonspacejs@next -S 
+yarn add soonspacejs -S 
 ```
 
 使用
@@ -43,12 +43,12 @@ import SoonSpace from 'soonspacejs'
 
 通过 CDN 链接
 
-[https://unpkg.com/soonspacejs@next/dist/index.js](https://unpkg.com/soonspacejs@next/dist/index.js)
+[https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)
 
 使用
 
 ```html
-<script crossorigin src="https://unpkg.com/soonspacejs@next/dist/index.js"></script>
+<script crossorigin src="https://unpkg.com/soonspacejs/dist/index.js"></script>
 ```
 
 
@@ -75,7 +75,7 @@ import SoonSpace from 'soonspacejs'
   <div id="view"></div>
 
   <script type="module">
-    import SoonSpace from 'https://unpkg.com/soonspacejs@next/dist/index.esm.js'
+    import SoonSpace from 'https://unpkg.com/soonspacejs/dist/index.esm.js'
 
     // coding here...
     
@@ -551,9 +551,9 @@ consolo.log(followMousePlugin)
 ##### 安装
 
 ```sh
-npm install @soonspacejs/plugin-soonmanager-sync@next -S
+npm install @soonspacejs/plugin-soonmanager-sync -S
 # or
-yarn add @soonspacejs/plugin-soonmanager-sync@next -S
+yarn add @soonspacejs/plugin-soonmanager-sync -S
 ```
 
 ##### 使用

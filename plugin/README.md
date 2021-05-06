@@ -4,8 +4,6 @@
 
 ::: tip 版本提示
 除 **前端框架插件** 外, 其他插件版本必须与主框架 `SoonSapce` 版本保持一致。
-<br>
-同样，目前 `SoonSapce` 存在 `npm next` 标签下，所有插件也存在 `npm next` 标签下，会随着 `SoonSapce` 取消 `next` 标签时一起取消。
 :::
 
 ### 前端框架插件

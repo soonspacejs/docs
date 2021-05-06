@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # camera-follower
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-camera-follower/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-camera-follower/latest.svg)
 
 相机跟随插件
 
@@ -15,9 +15,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-camera-follower@next -S
+npm install @soonspacejs/plugin-camera-follower -S
 # or
-yarn add @soonspacejs/plugin-camera-follower@next -S
+yarn add @soonspacejs/plugin-camera-follower -S
 ```
 
 ## 使用方法

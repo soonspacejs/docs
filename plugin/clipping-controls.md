@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # clipping-controls
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-clipping-controls/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-clipping-controls/latest.svg)
 
 模型与场景切割插件
 
@@ -16,9 +16,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-clipping-controls@next -S
+npm install @soonspacejs/plugin-clipping-controls -S
 # or
-yarn add @soonspacejs/plugin-clipping-controls@next -S
+yarn add @soonspacejs/plugin-clipping-controls -S
 ```
 
 ## 使用方法

@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # vue-soonspace
 
-![beta](https://img.shields.io/npm/v/vue-soonspace/next.svg)
+![beta](https://img.shields.io/npm/v/vue-soonspace/latest.svg)
 <br>
 Vue 中快速使用 soonspacejs。
 
@@ -13,9 +13,9 @@ Vue 中快速使用 soonspacejs。
 ## 安装
 
 ```bash
-npm install vue-soonspace@next soonspacejs@next -S
+npm install vue-soonspace soonspacejs -S
 # or
-yarn add vue-soonspace@next soonspacejs@next -S
+yarn add vue-soonspaces soonspacejs -S
 ```
 
 ::: tip 提示

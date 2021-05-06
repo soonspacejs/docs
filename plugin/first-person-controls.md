@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # first-person-controls
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-first-person-controls/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-first-person-controls/latest.svg)
 
 第一人称漫游控制器插件。
 
@@ -18,9 +18,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-first-person-controls@next -S
+npm install @soonspacejs/plugin-first-person-controls -S
 # or
-yarn add @soonspacejs/plugin-first-person-controls@next -S
+yarn add @soonspacejs/plugin-first-person-controls -S
 ```
 
 ## 使用方法

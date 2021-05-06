@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # soonmanager-sync
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-soonmanager-sync/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-soonmanager-sync/latest.svg)
 
 [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim)生产的场景加载及数据读取插件。
 
@@ -15,9 +15,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-soonmanager-sync@next -S
+npm install @soonspacejs/plugin-soonmanager-sync -S
 # or
-yarn add @soonspacejs/plugin-soonmanager-sync@next -S
+yarn add @soonspacejs/plugin-soonmanager-sync -S
 ```
 
 ## 使用方法

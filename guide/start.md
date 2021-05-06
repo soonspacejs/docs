@@ -35,14 +35,14 @@ create-react-app：[https://create-react-app.dev/](https://create-react-app.dev/
 
 ```bash
 # 安装
-npm install soonspacejs@next -S
+npm install soonspacejs -S
 # 或者
-yarn add soonspacejs@next -S
+yarn add soonspacejs -S
 ```
 
 #### CDN
 
-[https://unpkg.com/soonspacejs@next/dist/index.js](https://unpkg.com/soonspacejs@next/dist/index.js)
+[https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)
 
 ### 在 html 中使用
 
@@ -59,7 +59,7 @@ yarn add soonspacejs@next -S
   <body>
     <div id="view"></div>
 
-    <script src="https://unpkg.com/soonspacejs@next/dist/index.js"></script>
+    <script src="https://unpkg.com/soonspacejs/dist/index.js"></script>
     <script>
       const ssp = new SoonSpace({
         // 绑定场景的元素选择器

@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # react-soonspace
 
-![beta](https://img.shields.io/npm/v/react-soonspace/next.svg)
+![beta](https://img.shields.io/npm/v/react-soonspace/latest.svg)
 
 React 中快速使用 soonspacejs。
 
@@ -15,9 +15,9 @@ React 中快速使用 soonspacejs。
 ## 安装
 
 ```bash
-npm install react-soonspace@next soonspacejs@next -S
+npm install react-soonspace soonspacejs -S
 # or
-yarn add react-soonspace@next soonspacejs@next -S
+yarn add react-soonspace soonspacejs -S
 ```
 
 ::: tip 提示

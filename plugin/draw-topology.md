@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # draw-topology
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-draw-topology/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-draw-topology/latest.svg)
 
 拓扑路径绘制插件
 
@@ -25,9 +25,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-draw-topology@next -S
+npm install @soonspacejs/plugin-draw-topology -S
 # or
-yarn add @soonspacejs/plugin-draw-topology@next -S
+yarn add @soonspacejs/plugin-draw-topology -S
 ```
 
 ## 使用方法

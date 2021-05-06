@@ -1,29 +1,24 @@
 <template>
   <div class="docs-update" v-if="visible">
     <div class="docs-update-body">
-      <div class="docs-update-header">版本更新提示</div>
+      <div class="docs-update-header">版本发布提示</div>
       <div class="docs-update-content">
-        新版本<strong class="docs-update-highlight"> 2.x </strong
-        >预计将在五一节后<strong class="docs-update-highlight">
-          2021.5.6 </strong
-        >发布正式版本。 发布后会取消在<strong class="docs-update-highlight">
-          npm </strong
-        >仓库中的<strong class="docs-update-highlight"> next </strong>标签。
+        新版本
+        <strong class="docs-update-highlight"> 2.x </strong>
+        正式版本已发布（
+        <strong class="docs-update-highlight">2021.5.6</strong>
+        ）
         <br />
         <br />
-        <strong class="docs-update-highlight"
-          >因此使用 1.x 的所有项目要注意以下几点：</strong
-        >
+        <strong class="docs-update-highlight">使用 1.x 的所有项目要注意以下几点：</strong>
         <ol>
           <li>锁定项目内使用的稳定版本。</li>
           <li>
             若想使用 1.x 最新版本，执行 <code>npm i soonspacejs@legacy</code>。
           </li>
           <li>
-            文档移步<a
-              href="http://www.xwbuilders.com:9018/soonspacejs/Docs/1.x/"
-              >这里</a
-            >
+            文档移步
+            <a href="http://www.xwbuilders.com:9018/soonspacejs/Docs/1.x/">这里</a>
           </li>
         </ol>
       </div>
@@ -31,11 +26,9 @@
         <input
           id="footer-checkbox"
           type="checkbox"
-          @change="isTipUpdateChange"
+          @change="isTipUpdate2Change"
         />
-        <label class="docs-update-footer_label" for="footer-checkbox"
-          >不再提示</label
-        >
+        <label class="docs-update-footer_label" for="footer-checkbox">不再提示</label>
         <button class="docs-update-footer_btn" @click="IKnow">我知道了</button>
       </div>
     </div>
@@ -49,26 +42,26 @@ export default {
     return {
       visible: false,
       notTipNext: false,
-      isTipUpdate: true,
+      isTipUpdate2: true,
       isOverTime: false,
     };
   },
   mounted() {
-    this.isTipUpdate = window.localStorage.getItem("isTipUpdate") !== "false";
+    this.isTipUpdate2 = window.localStorage.getItem("isTipUpdate2") !== "false";
 
     this.isOverTime = this.isOverTimeCalc();
 
-    if (this.isTipUpdate && !this.isOverTime) this.visible = true;
+    if (this.isTipUpdate2 && !this.isOverTime) this.visible = true;
   },
   methods: {
     IKnow() {
       this.visible = false;
 
       if (this.notTipNext) {
-        window.localStorage.setItem("isTipUpdate", "false");
+        window.localStorage.setItem("isTipUpdate2", "false");
       }
     },
-    isTipUpdateChange(e) {
+    isTipUpdate2Change(e) {
       this.notTipNext = e.target.checked;
     },
     isOverTimeCalc: function () {

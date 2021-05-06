@@ -2,7 +2,7 @@
 
 <Docs-Update />
 
-![version](https://img.shields.io/npm/v/soonspacejs/next)
+![version](https://img.shields.io/npm/v/soonspacejs)
 ![downloads](https://img.shields.io/npm/dm/soonspacejs)
 
 ::: warning 警告

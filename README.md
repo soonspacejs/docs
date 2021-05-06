@@ -18,9 +18,9 @@ footer: 浙ICP备16043491号 | © Copyright 2018 xwbuilders - All rights reserve
 ### node
 ```bash
 # 安装
-npm install soonspacejs@next -S
+npm install soonspacejs -S
 # 或者
-yarn add soonspacejs@next -S
+yarn add soonspacejs -S
 ```
 ### CDN
-[https://unpkg.com/soonspacejs@next/dist/index.js](https://unpkg.com/soonspacejs@next/dist/index.js)
+[https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)

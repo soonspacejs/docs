@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # follow-mouse
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-follow-mouse/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-follow-mouse/latest.svg)
 
 空间中摆放模型时，模型跟随鼠标插件。
 
@@ -27,9 +27,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-follow-mouse@next -S
+npm install @soonspacejs/plugin-follow-mouse -S
 # or
-yarn add @soonspacejs/plugin-follow-mouse@next -S
+yarn add @soonspacejs/plugin-follow-mouse -S
 ```
 
 ## 使用方法

@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # heat-map
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-heat-map/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-heat-map/latest.svg)
 
 热力图插件。
 
@@ -15,9 +15,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-heat-map@next -S
+npm install @soonspacejs/plugin-heat-map -S
 # or
-yarn add @soonspacejs/plugin-heat-map@next -S
+yarn add @soonspacejs/plugin-heat-map -S
 ```
 
 ## 使用方法

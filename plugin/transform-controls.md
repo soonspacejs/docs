@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # transform-controls
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-transform-controls/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-transform-controls/latest.svg)
 
 空间对象操作（移动、旋转、缩放）控制器插件。
 
@@ -15,9 +15,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-transform-controls@next -S
+npm install @soonspacejs/plugin-transform-controls -S
 # or
-yarn add @soonspacejs/plugin-transform-controls@next -S
+yarn add @soonspacejs/plugin-transform-controls -S
 ```
 
 ## 使用方法

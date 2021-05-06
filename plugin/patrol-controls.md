@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # patrol-controls
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-patrol-controls/next.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-patrol-controls/latest.svg)
 
 路径巡检相机控制器插件。
 
@@ -15,9 +15,9 @@ sidebarDepth: 2
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-patrol-controls@next -S
+npm install @soonspacejs/plugin-patrol-controls -S
 # or
-yarn add @soonspacejs/plugin-patrol-controls@next -S
+yarn add @soonspacejs/plugin-patrol-controls -S
 ```
 
 ## 使用方法
