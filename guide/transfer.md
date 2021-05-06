@@ -6,20 +6,6 @@ sidebarDepth: 2
 
 本文档将帮助你从 `soonspacejs 1.x` 版本升级到 `soonspacejs 2.x` 版本。
 
-## 当前进度
-<Base-Table
-    :head="[
-      { title: '包', key: 'package' },
-      { title: '状态', key: 'state' },
-    ]"
-    :data="[
-      { package: 'soonspacejs', state: 'rc' },
-      { package: '@soonspacejs/piugin-xxx', state: 'rc' },
-      { package: 'vue-soonspace', state: 'rc' },
-      { package: 'react-soonspace', state: 'rc' },
-    ]"
-/>
-
 ## 升级准备
 准备工作只需要在原本项目中安装最新版本即可
 ```bash
@@ -78,7 +64,7 @@ ssp.createPoi({
     ]"
     :data="[
       { v: '1.x.x', plugin: 'vue-soonspace@0.x.x' },
-      { v: '2.x.x', plugin: 'vue-soonspace@2.x.x' },
+      { v: '2.x.x', plugin: 'vue-soonspace@2.1.x' },
     ]"
 />
 ```bash
@@ -95,7 +81,7 @@ yarn add vue-soonspace@2.x.x -S
     ]"
     :data="[
       { v: '1.x.x', plugin: 'react-soonspace@0.x.x' },
-      { v: '2.x.x', plugin: 'react-soonspace@2.x.x' },
+      { v: '2.x.x', plugin: 'react-soonspace@2.1.x' },
     ]"
 />
 ```bash
