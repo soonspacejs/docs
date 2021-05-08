@@ -30,7 +30,7 @@ import ClippingControlsPlugin from '@soonspacejs/plugin-clipping-controls';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const clippingControlsPlugin = ssp.registerPlugin(

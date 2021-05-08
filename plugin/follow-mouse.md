@@ -41,7 +41,7 @@ import FollowMousePlugin from '@soonspacejs/plugin-follow-mouse';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const followMousePlugin = ssp.registerPlugin(

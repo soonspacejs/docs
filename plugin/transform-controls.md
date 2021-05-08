@@ -29,7 +29,7 @@ import TransformControlsPlugin from '@soonspacejs/plugin-transform-controls';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const transformControls = ssp.registerPlugin(

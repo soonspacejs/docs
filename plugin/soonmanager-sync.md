@@ -29,7 +29,7 @@ import SoonmanagerSyncPlugin from '@soonspacejs/plugin-soonmanager-sync';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const soonmanagerSync = ssp.registerPlugin(

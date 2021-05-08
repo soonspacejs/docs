@@ -9,11 +9,15 @@ sidebarDepth: 2
 第一人称漫游控制器插件。
 
 ## 交互提示
+
 `WASD` 或 :arrow_up: :arrow_left: :arrow_down: :arrow_right: ：控制移动
 <br>
 `UHJK` 或 鼠标 ：控制方向
 <br>
 空格跳跃
+
+## 样例
+由于键盘事件无法直接跨过 `iframe`，样例请看[这里](http://www.xwbuilders.com:9018/soonspacejs/examples/2.x/page/plugin/firstPersonControls.html)。
 
 ## 安装
 
@@ -32,7 +36,7 @@ import FirstPersonControlsPlugin from '@soonspacejs/plugin-first-person-controls
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const firstPersonControls = ssp.registerPlugin(

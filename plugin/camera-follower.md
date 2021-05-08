@@ -29,7 +29,7 @@ import CameraFollowerPlugin from '@soonspacejs/plugin-camera-follower';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const cameraFollowerPlugin = ssp.registerPlugin(

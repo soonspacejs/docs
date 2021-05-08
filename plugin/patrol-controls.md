@@ -29,7 +29,7 @@ import PatrolControlsPlugin from '@soonspacejs/plugin-patrol-controls';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const patrolControls = ssp.registerPlugin(

@@ -39,7 +39,7 @@ import DrawTopologyPlugin from '@soonspacejs/plugin-draw-topology';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const drawTopologyPlugin = ssp.registerPlugin(

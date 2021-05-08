@@ -29,7 +29,7 @@ import HeatMapPlugin from '@soonspacejs/plugin-heat-map';
 const ssp = new SoonSpace({
   el: '#view',
   options: {},
-  event: {},
+  events: {},
 });
 
 const heatMap = ssp.registerPlugin(HeatMapPlugin, 'heatMap');
