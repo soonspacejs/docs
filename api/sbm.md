@@ -165,9 +165,13 @@ const sbm = await ssp.parseSbm(new ArrayBuffer(8), sbmInfo, () => {});
 ### 定义:
 
 ```ts
+interface CloneSbmInfo extends Omit<SbmInfo, 'url'> {
+
+}
+
 function cloneSbm(
   model: Sbm,
-  sbmInfo: SbmInfo,
+  cloneSbmInfo: CloneSbmInfo,
   parent?: BaseObject3D | null
 ): Promise<Sbm>;
 ```
@@ -175,7 +179,14 @@ function cloneSbm(
 ### 用法:
 
 ```js
-const sbm = await ssp.cloneSbm(model, sbmInfo);
+const sbm = await ssp.cloneSbm(model, {
+  id: 'clone_sbm',
+  position: {
+    x: 100,
+    y: 0,
+    z: 0
+  }
+});
 ```
 
 ### 参数:
@@ -188,7 +199,7 @@ const sbm = await ssp.cloneSbm(model, sbmInfo);
 
 #### sbmInfo
 
-[同上](#sbminfo)
+同 [Sbminfo](#sbminfo), 但不需要字段 `url`。
 
 #### parent
 
