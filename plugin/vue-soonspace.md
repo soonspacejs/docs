@@ -15,7 +15,7 @@ Vue 中快速使用 soonspacejs。
 ```bash
 npm install vue-soonspace soonspacejs -S
 # or
-yarn add vue-soonspaces soonspacejs -S
+yarn add vue-soonspace soonspacejs -S
 ```
 
 ::: tip 提示
