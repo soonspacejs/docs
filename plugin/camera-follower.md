@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-camera-follower/latest.svg)
 
-相机跟随插件
+相机跟随。
 
 ## 样例
 

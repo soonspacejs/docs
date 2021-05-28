@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-draw-topology/latest.svg)
 
-拓扑路径绘制插件
+拓扑路径绘制。
 
 ## 交互提示
 

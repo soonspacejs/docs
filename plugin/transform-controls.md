@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-transform-controls/latest.svg)
 
-空间对象操作（移动、旋转、缩放）控制器插件。
+空间对象操作（移动、旋转、缩放）控制器。
 
 ## 样例
 

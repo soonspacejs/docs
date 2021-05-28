@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-patrol-controls/latest.svg)
 
-路径巡检相机控制器插件。
+路径巡检控制器。
 
 ## 样例
 

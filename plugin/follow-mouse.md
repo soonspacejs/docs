@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-follow-mouse/latest.svg)
 
-空间中摆放模型时，模型跟随鼠标插件。
+空间中摆放模型时，模型跟随鼠标。
 
 ## 交互提示
 

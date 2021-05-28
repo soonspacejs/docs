@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-clipping-controls/latest.svg)
 
-模型与场景切割插件
+模型与场景切割。
 
 ## 样例
 

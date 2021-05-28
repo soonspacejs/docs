@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-heat-map/latest.svg)
 
-热力图插件。
+热力图。
 
 ## 样例
 

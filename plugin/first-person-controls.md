@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-first-person-controls/latest.svg)
 
-第一人称漫游控制器插件。
+第一人称漫游控制器。
 
 ## 交互提示
 
