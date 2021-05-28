@@ -11,7 +11,7 @@
 - [react-soonspace](./react-soonspace.html) - React 中快速使用 soonspacejs。
 
 ### 平台协同插件
-- [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim)生产的场景数据加载同步。
+- [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
 
 ### 功能扩展插件
 - [heat-map](./heat-map.html) - 热力图。
