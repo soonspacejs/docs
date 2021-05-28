@@ -58,6 +58,7 @@ module.exports = {
         ],
         sidebar: {
           '/guide/': [
+            '',
             'start',
             'transfer',
             'types',
