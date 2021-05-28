@@ -15,6 +15,7 @@
   - [拓扑路径](./topology.html)
 
 ### 进阶
+  - [控制器](./controls.html)
   - [模型操作](./modelTool.html)
   - [场景操作](./sceneTool.html)
   - [相机](./camera.html)

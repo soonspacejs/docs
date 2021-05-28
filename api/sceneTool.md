@@ -166,10 +166,11 @@ ssp.openSceneFog({ color: '0xcce0ff', near: 1, far: 1000 });
 
 #### options
 
-- **类型:** FogOptions
+- **类型:** [FogOptions](#fogoptions)
 - **描述:** 配置选项
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
+##### FogOptions
 <Docs-Table
     :data="[
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xcce0ff', link: '../guide/types.html#icolor'},

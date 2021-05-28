@@ -59,6 +59,18 @@ const ssp = new SoonSpace({
   `alpha` 设置为 `true`，同时 `color` 设置为 `null`, 空间背景将完全透明。
 :::
 
+<!-- fog -->
+## fog
+场景雾化效果。
+- **类型**: boolean ｜ [FogOptions](../api/sceneTool.html#fogoptions)
+- **默认值**: `false`
+
+<!-- controls -->
+## controls
+控制器配置。
+- **类型**: [ControlsOptions](../api/controls.html#controlsoptions)
+- **默认值**: `{}`
+
 <!-- hoverEnabled -->
 ## hoverEnabled
 是否开启鼠标悬浮响应。
@@ -80,20 +92,6 @@ const ssp = new SoonSpace({
 if( option.closeWarnLog ) window.console.warn = function () {}
 ```
 :::
-
-<!-- fog -->
-## fog
-场景雾化效果。
-- **类型**: boolean ｜ FogOptions
-- **默认值**: `false`
-### FogOptions
-<Docs-Table 
-    :data="[
-      { prop: 'color', desc: '雾化颜色', type: 'IColor', require: false, default: '#cce0ff' },
-      { prop: 'near', desc: '雾化近地点高度', type: 'number', require: false, default: '500' },
-      { prop: 'far', desc: '雾化远地点高度', type: 'number', require: false, default: '50000' },
-    ]"
-/>
 
 <!-- useIndexedDB -->
 ## useIndexedDB

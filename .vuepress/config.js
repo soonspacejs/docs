@@ -103,6 +103,7 @@ module.exports = {
               title: '进阶',
               collapsable: false,
               children: [
+                '/api/controls',
                 '/api/modelTool',
                 '/api/sceneTool',
                 '/api/camera',
