@@ -19,7 +19,7 @@
 
 ## 做什么?
 - 服务于 [SoonBuilder](http://www.xwbuilders.com/?page_id=1101&lang=zh) 的模型格式 `.sbm` 加载。
-- 基于 [threejs](https://threejs.org/) 封装，简化在业务层的开发使用，做到将 `WebGL 3D` 技术推向工业化。
+- 基于 [threejs](https://threejs.org/) 封装，简化在业务层的开发使用，将 `WebGL 3D` 技术推向工业化。
 
 ## 兼容性
 PC: 不支持 `IE` 任何版本。
