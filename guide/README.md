@@ -13,7 +13,7 @@
 
 <br>
 
-**SoonSpace.js** 是 [杭州迅维智能科技有限公司](http://www.xwbuilders.com) 面向内部与客户 `BIM for web side` 开发包。
+**SoonSpace.js** 是 [杭州迅维智能科技有限公司](http://www.xwbuilders.com) 面向客户与内部项目的 web 端 `BIM` 开发包。
 
 本文档适用于 `SoonSpace.js 2.x+` 版本，当前大版本使用 `TypeScript` 重构，在 `TypeScript` 开发环境下类型明确。同时在`设计结构`、`性能`与`插件化`方面做了优化。
 
