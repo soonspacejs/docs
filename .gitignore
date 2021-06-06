@@ -1,5 +1,6 @@
 node_modules
 dist
+!说明书/*/dist
 
 # misc
 .DS_Store
