@@ -4,7 +4,7 @@ collapsable: true
 
 # 快速上手
 
-## hello-worid
+## hello-world
 <Docs-Iframe src="start/helloWorld.html" />
 
 ## 快速搭建
