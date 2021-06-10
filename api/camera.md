@@ -105,7 +105,7 @@ ssp
 
 ```ts
 interface FlyToObjOptions extends AnimationOptions {
-  padding?: number;
+  padding?: number | string;
 }
 
 function flyToObj(
@@ -126,7 +126,7 @@ ssp
     'top',
     // option
     {
-      padding: 100,
+      padding: '30%',
       duration: 1000,
     }
   )
@@ -159,7 +159,7 @@ ssp
 
 <Docs-Table
     :data="[
-      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number', require: false, default: '0' },
+      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
       {
         prop: 'duration', desc: '补间执行时长（ms）', type: 'number', require: false, default: '1000'
       },
