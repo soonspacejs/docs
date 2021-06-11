@@ -58,7 +58,7 @@ ssp.setBackgroundImage('http://xx.com/xx.png');
 
 ## setSphereSkyBackground
 
-设置球体天空盒，球体天空盒的图片资源是一张全景图。
+设置球体天空盒，球体天空盒的图片资源是一张全景图。( [球体天空盒模版资源下载](../resource/sphereSkyBox.zip) )
 
 ### 样例：
 
@@ -86,7 +86,7 @@ function setSphereSkyBackground(imgUrl: string): void;
 
 ## setSkyBackground
 
-设置天空盒
+设置天空盒 ( [天空盒模版资源下载](../resource/skyBox.zip) )
 
 ### 样例：
 
