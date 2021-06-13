@@ -38,5 +38,5 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           source: "dist/*"
-          target: "/www/webSample/BusanStation/soonspacejs/Docs/2.x"
+          target: "/mnt/soonspacejs"
           strip_components: 1

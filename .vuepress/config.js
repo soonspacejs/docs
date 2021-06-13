@@ -26,7 +26,7 @@ module.exports = {
           { text: '教程', link: '/guide/' },
           { text: 'Api', link: '/api/' },
           { text: '插件', link: '/plugin/' },
-          { text: '样例', link: `${PRO_PATH}/examples/2.x/page/` },
+          { text: '样例', link: `./examples/` },
           { text: '1.x', link: `${PRO_PATH}/Docs/1.x/` },
           {
             text: '了解更多',
