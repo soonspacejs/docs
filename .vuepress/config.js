@@ -6,7 +6,7 @@ const PACKAGE_NAME = 'soonspacejs'
 const PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`
 
 module.exports = {
-  base: '/soonspacejs/Docs/2.x/',
+  base: '/',
   dest: 'dist',
   locales: {
     '/': {
