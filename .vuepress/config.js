@@ -36,6 +36,7 @@ module.exports = {
                 items: [
                   { text: 'FAQ', link: '/faq/' },
                   { text: '设计结构', link: '/design/' },
+                  { text: '博客', link: 'http://www.soonspacejs.com:8800/blog/' },
                   { text: '报告 Bug', link: 'https://github.com/soonspacejs/bugs' },
                 ]
               },
