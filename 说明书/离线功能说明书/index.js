@@ -5,6 +5,9 @@ const path = require('path')
 const filesDir = path.resolve(__dirname, './file')
 const files = fs.readdirSync(filesDir)
 
+const DS_StoreIndex = files.findIndex(i => i === '.DS_Store')
+if (DS_StoreIndex > -1) files.splice(DS_StoreIndex, 1)
+
 const merger = new PDFMerger();
 const name = 'SoonSpace 功能说明书.pdf';
 
@@ -47,14 +50,12 @@ function resort(files) {
     })
   }
 
-  console.log(sortDataArr)
-
   for (let i = 0; i < sortDataArr.length - 1; i++) {
     for (let j = 0; j < sortDataArr.length - i - 1; j++) {
-      if (afterMinBefore(sortDataArr[j].indexs, sortDataArr[j+1].indexs)) {
+      if (afterMinBefore(sortDataArr[j].indexs, sortDataArr[j + 1].indexs)) {
         const temp = sortDataArr[j]
-        sortDataArr[j] = sortDataArr[j+ 1]
-        sortDataArr[j+ 1] = temp
+        sortDataArr[j] = sortDataArr[j + 1]
+        sortDataArr[j + 1] = temp
       }
     }
 
@@ -65,8 +66,6 @@ function resort(files) {
 
 (async () => {
   const newFiles = resort(files)
-
-  console.log(files, newFiles)
 
   for (let i in newFiles) {
     merger.add(`file/${newFiles[i]}`);
