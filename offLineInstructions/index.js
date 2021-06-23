@@ -68,7 +68,7 @@ function resort(files) {
   const newFiles = resort(files)
 
   for (let i in newFiles) {
-    merger.add(`file/${newFiles[i]}`);
+    merger.add(path.resolve(__dirname, `./file/${newFiles[i]}`));
   }
-  await merger.save(`../../.vuepress/public/resource/离线功能说明书/${destName}`);
+  await merger.save(`./.vuepress/public/resource/离线功能说明书/${destName}`);
 })();
