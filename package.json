@@ -6,9 +6,9 @@
     "build:offLine": "node ./offLineInstructions/index.js"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.8.2",
-    "vuepress": "^1.8.2",
-    "vuepress-plugin-baidu-tongji-analytics": "^1.0.2",
-    "pdf-merger-js": "^3.1.0"
+    "@vuepress/plugin-back-to-top": "1.8.2",
+    "vuepress": "1.8.2",
+    "vuepress-plugin-baidu-tongji-analytics": "1.0.2",
+    "pdf-merger-js": "3.1.0"
   }
 }
