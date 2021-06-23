@@ -27,6 +27,7 @@ module.exports = {
           { text: 'Api', link: '/api/' },
           { text: '插件', link: '/plugin/' },
           { text: '样例', link: `./examples/`, target:'_blank' },
+          { text: '博客', link: './blog/', target:'_blank' },
           { text: '1.x', link: `${PRO_PATH}/Docs/1.x/` },
           {
             text: '了解更多',
@@ -36,8 +37,7 @@ module.exports = {
                 items: [
                   { text: 'FAQ', link: '/faq/' },
                   { text: '设计结构', link: '/design/' },
-                  { text: '博客', link: 'http://www.soonspacejs.com:8800/blog/' },
-                  { text: '报告 Bug', link: 'https://github.com/soonspacejs/bugs' },
+                  { text: '离线文档下载', link: './resource/离线功能说明书/SoonSpace 功能说明书.pdf', target:'_blank' },
                 ]
               },
               {
@@ -54,6 +54,7 @@ module.exports = {
             items: [
               { text: 'GitHub', link: 'https://github.com/soonspacejs' },
               { text: 'npm', link: 'https://www.npmjs.com/package/soonspacejs' },
+              { text: '报告 Bug', link: 'https://github.com/soonspacejs/bugs' },
             ]
           }
         ],

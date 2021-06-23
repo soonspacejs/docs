@@ -9,7 +9,7 @@ const DS_StoreIndex = files.findIndex(i => i === '.DS_Store')
 if (DS_StoreIndex > -1) files.splice(DS_StoreIndex, 1)
 
 const merger = new PDFMerger();
-const name = 'SoonSpace 功能说明书.pdf';
+const destName = 'SoonSpace 功能说明书.pdf';
 
 function afterMinBefore(before, after) {
   let res = false
@@ -70,5 +70,5 @@ function resort(files) {
   for (let i in newFiles) {
     merger.add(`file/${newFiles[i]}`);
   }
-  await merger.save(`dist/${name}`);
+  await merger.save(`../../.vuepress/public/resource/离线功能说明书/${destName}`);
 })();
