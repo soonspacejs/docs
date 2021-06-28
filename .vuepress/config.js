@@ -39,7 +39,7 @@ module.exports = {
                 items: [
                   { text: 'FAQ', link: '/faq/' },
                   { text: '设计结构', link: '/design/' },
-                  { text: '离线文档下载', link: './resource/离线功能说明书/SoonSpace 功能说明书.pdf', target:'_blank' },
+                  { text: '离线文档下载', link: 'http://soonspacejs.com:8800/resource/离线功能说明书/SoonSpace 功能说明书.pdf', target:'_blank' },
                 ]
               },
               {
