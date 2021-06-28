@@ -37,6 +37,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
-          source: "dist/*"
+          source: "dist,!dist/resource"
           target: "/mnt/soonspacejs"
           strip_components: 1
