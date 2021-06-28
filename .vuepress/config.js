@@ -3,7 +3,9 @@ const path = require('path')
 const BASE_HTTP_URL = 'http://www.xwbuilders.com'
 const BASE_PORT = '9018'
 const PACKAGE_NAME = 'soonspacejs'
-const PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`
+
+const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`
+const NEW_PRO_PATH = 'http://www.soonspacejs.com:8800'
 
 module.exports = {
   base: '/',
@@ -26,9 +28,9 @@ module.exports = {
           { text: '教程', link: '/guide/' },
           { text: 'Api', link: '/api/' },
           { text: '插件', link: '/plugin/' },
-          { text: '样例', link: `./examples/`, target:'_blank' },
-          { text: '博客', link: './blog/', target:'_blank' },
-          { text: '1.x', link: `${PRO_PATH}/Docs/1.x/` },
+          { text: '样例', link: `${NEW_PRO_PATH}/examples/` },
+          { text: '博客', link: `${NEW_PRO_PATH}/blog/` },
+          { text: '1.x', link: `${OLD_PRO_PATH}/Docs/1.x/` },
           {
             text: '了解更多',
             items: [
