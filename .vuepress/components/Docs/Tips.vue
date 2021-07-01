@@ -3,7 +3,7 @@
     <div class="docs-tips-body">
       <img src="./gcd_logo_100.png" />
       <h1>庆祝中国共产党成立100周年</h1>
-      <span class="time">{{ time }} 后自动关闭</span>
+      <span class="time">{{ time }} 秒后自动关闭</span>
     </div>
   </div>
 </template>
