@@ -14,6 +14,7 @@ footer: 浙ICP备16043491号 | © Copyright 2018 xwbuilders - All rights reserve
 ---
 
 <Docs-Update />
+<Docs-Tips />
 
 ### node
 ```bash
