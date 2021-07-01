@@ -16,12 +16,12 @@ export default {
       time: 5,
     };
   },
-  mounted(){
+  mounted() {
     const t = setInterval(() => {
-      if( this.time <= 0 ) clearInterval(t)
-      this.time--
-    }, 1000)
-  }
+      if (this.time <= 0) clearInterval(t);
+      this.time--;
+    }, 1000);
+  },
 };
 </script>
 
@@ -51,8 +51,15 @@ export default {
 }
 
 @media (max-width: $MQMobile) {
-  .docs-update {
-    display: none;
+  .docs-tips {
+    h1 {
+      font-size: 24px;
+    }
+
+    &-body {
+      margin: 120px auto 0;
+      width: 94%;
+    }
   }
 }
 </style>
