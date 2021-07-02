@@ -3,7 +3,7 @@
 <Docs-Update />
 
 ::: tip 版本提示
-除 **前端框架插件** 外, 其他插件版本必须与主框架 `SoonSapce` 版本保持一致。
+**平台协同插件** 与 **功能扩展插件** 版本必须与主框架 `SoonSapce` 版本保持一致。
 :::
 
 ### 前端框架插件
@@ -22,3 +22,6 @@
 - [first-person-controls](./first-person-controls.html) - 第一人称漫游控制器。
 - [camera-follower](./camera-follower.html) - 相机跟随模型。
 - [clipping-controls](./clipping-controls.html) - 模型、场景切割控制器。
+
+### 开发者插件
+- [vscode-sbm-preview](./vscode-sbm-preview.html) - vscode 插件 - sbm 模型预览

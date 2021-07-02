@@ -13,7 +13,7 @@ export default {
   name: "docs-tips",
   data() {
     return {
-      time: 5,
+      time: 3,
     };
   },
   mounted() {

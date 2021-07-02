@@ -155,6 +155,13 @@ module.exports = {
                 '/plugin/clipping-controls',
               ]
             },
+            {
+              title: '开发者插件',
+              collapsable: false,
+              children: [
+                '/plugin/vscode-sbm-preview',
+              ]
+            },
           ],
           '/faq/': [
             '/faq/'
