@@ -200,7 +200,7 @@ module.exports = {
       }
     }],
     ['vuepress-plugin-baidu-tongji-analytics', {
-      key: 'c66a0e48f36b820887680904de6be840'
+      key: 'eabe35e4f4a0087dfb191ca425c2c3a5'
     }],
   ],
   enhanceAppFiles: path.resolve(__dirname, 'enhanceAppFile.js'),
