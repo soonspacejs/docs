@@ -18,7 +18,21 @@ module.exports = {
     },
   },
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    // manifest
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', {
+      rel: 'apple-touch-icon',
+      href: '/images/icons/apple-icon-152x152.png'
+    }],
+    ['meta', {
+      name: 'msapplication-TileImage',
+      content: '/images/icons/ms-icon-144x144.png'
+    }],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
   ],
   themeConfig: {
     smoothScroll: true,
@@ -39,7 +53,7 @@ module.exports = {
                 items: [
                   { text: 'FAQ', link: '/faq/' },
                   { text: '设计结构', link: '/design/' },
-                  { text: '离线文档下载', link: 'http://soonspacejs.com:8800/resource/离线功能说明书/SoonSpace 功能说明书.pdf', target:'_blank' },
+                  { text: '离线文档下载', link: 'http://soonspacejs.com:8800/resource/离线功能说明书/SoonSpace 功能说明书.pdf', target: '_blank' },
                 ]
               },
               {
@@ -176,9 +190,18 @@ module.exports = {
   plugins: [
     // ['@vuepress/active-header-links', false],
     ['@vuepress/back-to-top'],
+    ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: {
+        '/': {
+          message: '文档已更新',
+          buttonText: 'Refresh'
+        }
+      }
+    }],
     ['vuepress-plugin-baidu-tongji-analytics', {
       key: 'c66a0e48f36b820887680904de6be840'
-    }]
+    }],
   ],
   enhanceAppFiles: path.resolve(__dirname, 'enhanceAppFile.js'),
 }
