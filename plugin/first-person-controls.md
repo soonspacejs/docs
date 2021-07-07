@@ -17,7 +17,7 @@ sidebarDepth: 2
 空格跳跃
 
 ## 样例
-由于键盘事件无法直接跨过 `iframe`，样例请看[这里](http://www.xwbuilders.com:9018/soonspacejs/examples/2.x/page/plugin/firstPersonControls.html)。
+由于键盘事件无法直接跨过 `iframe`，样例请看[这里](http://www.soonspacejs.com:8800/examples/page/plugin/firstPersonControls.html)。
 
 ## 安装
 

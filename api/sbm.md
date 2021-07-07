@@ -598,22 +598,6 @@ function clearSbm(): void;
 ssp.clearSbm();
 ```
 
-## getAllSbm
-
-获取所有 Sbm 模型
-
-### 定义：
-
-```ts
-function getAllSbm(): Sbm[];
-```
-
-### 用法：
-
-```js
-ssp.getAllSbm();
-```
-
 ## showAllSbm
 
 显示当前场景内所有 `sbm` 对象。
