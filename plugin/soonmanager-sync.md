@@ -39,6 +39,16 @@ const soonmanagerSync = ssp.registerPlugin(
 consolo.log(soonmanagerSync);
 ```
 
+## 属性
+
+### poiInfo
+
+源数据
+
+### treeData
+
+转换之后的树结构数据
+
 ## 方法
 
 ### setBaseUrl
