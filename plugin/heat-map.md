@@ -39,25 +39,30 @@ consolo.log(heatMap);
 ## 方法
 
 ### create
-
 创建热力图
 
 #### 定义
 
 ```ts
-interface CreateParam {
-  id: string;
-  name?: string;
-  yAxisHeight: number;
-  data: CreateParamData[];
-  max?: number;
-  min?: number;
+interface DataPoint {
+  x: number;
+  y: number;
+  value: number;
+  radius: number;
 }
 
-interface CreateParamData {
-  position: Position;
-  radius: number;
-  value: number;
+interface CreateParam {
+  // base
+  id: string;
+  name?: PluginObject['name'];
+  data: DataPoint[];
+  // position
+  yAxisHeight: number;
+  minPosition: PlaneIVector2;
+  maxPosition: PlaneIVector2;
+  // // value
+  min?: number;
+  max?: number;
 }
 
 function create(param: CreateParam): PluginObject;
@@ -72,19 +77,37 @@ heatMap.create({
   yAxisHeight: 100,
   max: 100,
   min: 1,
+  minPosition: {
+    x: 0,
+    y: 0,
+    z: 0
+  },
+  maxPosition: {
+    x: 200,
+    y: 0,
+    z: 200
+  },
   data: [
     {
-      position: { x: 200, y: 10000, z: 100 },
+      x: 100,
+      y: 100,
       radius: 100,
-      value: 100,
+      value: 80
     },
     {
-      position: { x: 100, y: 20000, z: 100 },
-      radius: 20,
-      value: 50,
+      x: 200,
+      y: 50,
+      radius: 50,
+      value: 80
     },
-  ],
-});
+    {
+      x: 100,
+      y: 50,
+      radius: 50,
+      value: 80
+    },
+  ]
+})
 ```
 
 #### 参数：
@@ -107,10 +130,7 @@ heatMap.create({
         prop: 'name', desc: '热力图对象名称', type: 'string', require: false, default: ' '
       },
       {
-        prop: 'yAxisHeight', desc: '空间高度', type: 'number', require: true, default: ''
-      },
-      {
-        prop: 'data', desc: '热力图数据', type: 'CreateParamData[]', require: true, default: '', link: '#createparamdata'
+        prop: 'data', desc: '热力图数据', type: 'DataPoint', require: true, default: '', link: '#datapoint'
       },
       {
         prop: 'max', desc: '数据中单点值大于等于该值时，以最深热力颜色展示', type: 'number', require: false, default: '100'
@@ -118,16 +138,28 @@ heatMap.create({
       {
         prop: 'min', desc: '数据中单点值小于等于该值时，以最浅热力颜色展示', type: 'number', require: false, default: '1'
       },
+      {
+        prop: 'yAxisHeight', desc: '空间高度', type: 'number', require: true, default: ''
+      },
+      {
+        prop: 'minPosition', desc: '热力图绘制区域最小点', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+      },
+      {
+        prop: 'mxaPosition', desc: '热力图绘制区域最小点', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+      },
     ]"
 />
 
-##### CreateParamData
+##### DataPoint
 
 <br>
 <Docs-Table 
     :data="[
       {
-        prop: 'position', desc: '热力点空间坐标', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+        prop: 'x', desc: '点位在热力图区域的水平位置', type: 'number', require: true, default: ''
+      },
+      {
+        prop: 'y', desc: '点位在热力图区域的垂直位置', type: 'number', require: true, default: ''
       },
       {
         prop: 'radius', desc: '热力点半径', type: 'number', require: true, default: ''
@@ -138,8 +170,54 @@ heatMap.create({
     ]"
 />
 
-### getById
+### setData
+设置（重置）数据
 
+#### 定义：
+```ts
+function setData(id: CreateParam['id'], data: CreateParam['data']): PluginObject | void
+```
+
+#### 用法：
+```js
+heatMap.setData(
+  'hm1',
+  [
+    {
+      x: 100,
+      y: 100,
+      radius: 100,
+      value: Math.floor(Math.random() * 100)
+    },
+    {
+      x: 200,
+      y: 50,
+      radius: 50,
+      value: Math.floor(Math.random() * 100)
+    },
+    {
+      x: 100,
+      y: 50,
+      radius: 50,
+      value: Math.floor(Math.random() * 100)
+    },
+  ]
+)
+```
+
+#### 参数：
+
+##### id
+- **描述:** 已创建热力图的 id
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** [CreateParam['id']](#createparam)
+
+##### data
+- **描述:** 新点位数据
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** [DataPoint[]](#datapoint)
+
+### getById
 通过 `id` 创建热力图
 
 #### 用法：
