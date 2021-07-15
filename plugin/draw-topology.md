@@ -83,7 +83,6 @@ drawTopologyPlugin.start({
 #### 参数
 
 ##### options
-
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 - **类型:** `StartOptions`

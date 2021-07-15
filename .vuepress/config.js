@@ -167,6 +167,7 @@ module.exports = {
                 '/plugin/first-person-controls',
                 '/plugin/camera-follower',
                 '/plugin/clipping-controls',
+                '/plugin/model-blast',
               ]
             },
             {
