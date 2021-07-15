@@ -44,9 +44,9 @@ consolo.log(heatMap);
 #### 定义
 
 ```ts
-interface DataPoint {
+interface SceneDataPoint {
   x: number;
-  y: number;
+  z: number;
   value: number;
   radius: number;
 }
@@ -55,7 +55,7 @@ interface CreateParam {
   // base
   id: string;
   name?: PluginObject['name'];
-  data: DataPoint[];
+  data: SceneDataPoint[];
   // position
   yAxisHeight: number;
   minPosition: PlaneIVector2;
@@ -90,19 +90,19 @@ heatMap.create({
   data: [
     {
       x: 100,
-      y: 100,
+      z: 100,
       radius: 100,
       value: 80
     },
     {
       x: 200,
-      y: 50,
+      z: 50,
       radius: 50,
       value: 80
     },
     {
       x: 100,
-      y: 50,
+      z: 50,
       radius: 50,
       value: 80
     },
@@ -130,13 +130,16 @@ heatMap.create({
         prop: 'name', desc: '热力图对象名称', type: 'string', require: false, default: ' '
       },
       {
-        prop: 'data', desc: '热力图数据', type: 'DataPoint', require: true, default: '', link: '#datapoint'
+        prop: 'data', desc: '热力图数据', type: 'DataPoint', require: true, default: '', link: '#scenesatapoint'
       },
       {
         prop: 'max', desc: '数据中单点值大于等于该值时，以最深热力颜色展示', type: 'number', require: false, default: '100'
       },
       {
         prop: 'min', desc: '数据中单点值小于等于该值时，以最浅热力颜色展示', type: 'number', require: false, default: '1'
+      },
+      {
+        prop: 'radius', desc: '热力点半径', type: 'number', require: false, default: '100'
       },
       {
         prop: 'yAxisHeight', desc: '空间高度', type: 'number', require: true, default: ''
@@ -156,17 +159,17 @@ heatMap.create({
 <Docs-Table 
     :data="[
       {
-        prop: 'x', desc: '点位在热力图区域的水平位置', type: 'number', require: true, default: ''
+        prop: 'x', desc: '点位在空间平面内的水平位置', type: 'number', require: true, default: ''
       },
       {
-        prop: 'y', desc: '点位在热力图区域的垂直位置', type: 'number', require: true, default: ''
-      },
-      {
-        prop: 'radius', desc: '热力点半径', type: 'number', require: true, default: ''
+        prop: 'z', desc: '点位在空间平面内的垂直位置', type: 'number', require: true, default: ''
       },
       {
         prop: 'value', desc: '热力值', type: 'number', require: true, default: ''
-      }
+      },
+      {
+        prop: 'radius', desc: '热力点半径', type: 'number', require: false, default: '100'
+      },
     ]"
 />
 
@@ -175,7 +178,7 @@ heatMap.create({
 
 #### 定义：
 ```ts
-function setData(id: CreateParam['id'], data: CreateParam['data']): PluginObject | void
+function setData(id: CreateParam['id'], data: SceneDataPoint[]): PluginObject | void
 ```
 
 #### 用法：
@@ -215,7 +218,7 @@ heatMap.setData(
 ##### data
 - **描述:** 新点位数据
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** [DataPoint[]](#datapoint)
+- **类型:** [SceneDataPoint[]](#scenesatapoint)
 
 ### getById
 通过 `id` 创建热力图
