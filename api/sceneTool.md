@@ -204,12 +204,12 @@ ssp.closeSceneFog();
 ```ts
 interface LabelOptions {
   mode?: 'scene' | 'screen';
-  viewpoint?: FlyToViewpoint;
   extendScale?: number;
 }
 
 function getObjectLabelPos(
   object: BaseObject3D,
+  viewpoint?: FlyToViewpoint;
   options?: LabelOptions
 ): Position;
 ```
@@ -217,19 +217,22 @@ function getObjectLabelPos(
 ### 用法:
 
 ```js
-ssp.getObjectLabelPos(object, { viewpoint: 'front', extendScale: 1.6 });
+ssp.getObjectLabelPos(object, 'front', { mode: 'scene', extendScale: 1.6 });
 ```
 
 ### 参数:
 
 #### object
-
 - **类型:** BaseObject3D
 - **描述:** 模型对象
 - **必填:** <Base-RequireIcon />
 
-#### options
+#### viewpoint
+- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint)
+- **描述:** 相对模型视角枚举
+- **必填:** <Base-RequireIcon :isRequire="false"/>
 
+#### options
 - **类型:** LabelOptions
 - **描述:** 配置选项
 - **必填:** <Base-RequireIcon :isRequire="false" />
@@ -239,7 +242,6 @@ ssp.getObjectLabelPos(object, { viewpoint: 'front', extendScale: 1.6 });
 <Docs-Table
     :data="[
       { prop: 'mode', desc: '相对于谁', type: 'scene | screen', require: false, default: 'scene'},
-      { prop: 'viewpoint', desc: '视角枚举', type: 'FlyToViewpoint', require: false, default: 'frontTop' , link: '../guide/types.html#flyToViewpoint'},
       { prop: 'extendScale', desc: '延伸比例', type: 'number', require: false, default: 1.6 },
     ]"
 />
