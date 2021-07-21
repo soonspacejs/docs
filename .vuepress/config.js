@@ -160,8 +160,9 @@ module.exports = {
               collapsable: false,
               children: [
                 '/plugin/heat-map',
+                '/plugin/drawing-shape',
                 '/plugin/patrol-controls',
-                '/plugin/draw-topology',
+                '/plugin/drawing-topology',
                 '/plugin/transform-controls',
                 '/plugin/follow-mouse',
                 '/plugin/first-person-controls',

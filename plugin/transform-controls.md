@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# transform-controls
+# plugin-transform-controls
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-transform-controls/latest.svg)
 

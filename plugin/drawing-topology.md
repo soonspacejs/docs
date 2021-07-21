@@ -2,9 +2,9 @@
 sidebarDepth: 2
 ---
 
-# draw-topology
+# plugin-drawing-topology
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-draw-topology/latest.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-drawing-topology/latest.svg)
 
 拓扑路径绘制。
 
@@ -20,21 +20,21 @@ sidebarDepth: 2
 
 ## 样例
 
-<Docs-Iframe src="plugin/drawTopology.html" />
+<Docs-Iframe src="plugin/drawingTopology.html" />
 
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-draw-topology -S
+npm install @soonspacejs/plugin-drawing-topology -S
 # or
-yarn add @soonspacejs/plugin-draw-topology -S
+yarn add @soonspacejs/plugin-drawing-topology -S
 ```
 
 ## 使用方法
 
 ```js {2,10}
 import SoonSpace from 'soonspacejs';
-import DrawTopologyPlugin from '@soonspacejs/plugin-draw-topology';
+import DrawingTopologyPlugin from '@soonspacejs/plugin-drawing-topology';
 
 const ssp = new SoonSpace({
   el: '#view',
@@ -42,11 +42,11 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const drawTopologyPlugin = ssp.registerPlugin(
-  DrawTopologyPlugin,
+const drawingTopologyPlugin = ssp.registerPlugin(
+  DrawingTopologyPlugin,
   'drawTopologyPlugin'
 );
-consolo.log(drawTopologyPlugin);
+consolo.log(drawingTopologyPlugin);
 ```
 
 ## 方法
@@ -69,7 +69,7 @@ function start(options: StartOptions): void;
 #### 用法
 
 ```js
-drawTopologyPlugin.start({
+drawingTopologyPlugin.start({
   id: 'draing_topology',
   onDone(nodes) {
     console.log('drawEnd', nodes);

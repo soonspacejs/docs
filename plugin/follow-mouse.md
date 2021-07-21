@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# follow-mouse
+# plugin-follow-mouse
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-follow-mouse/latest.svg)
 

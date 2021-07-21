@@ -18,7 +18,7 @@
 
 ## IVector2
 
-二维平面向量
+二维向量
 
 ```ts
 interface IVector2 {
@@ -27,9 +27,20 @@ interface IVector2 {
 }
 ```
 
+## PlaneIVector2
+
+平面二维向量
+
+```ts
+interface IVector2 {
+  x: number;
+  z: number;
+}
+```
+
 ## IVector3
 
-三维空间向量
+三维向量
 
 ```ts
 interface IVector3 extends IVector2 {

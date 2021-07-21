@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# model-blast
+# plugin-model-blast
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-model-blast/latest.svg)
 

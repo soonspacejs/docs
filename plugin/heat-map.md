@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# heat-map
+# plugin-heat-map
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-heat-map/latest.svg)
 
@@ -224,25 +224,31 @@ heatMap.setData(
 通过 `id` 创建热力图
 
 #### 用法：
-
 ```js
 heatMap.getById('hm1');
 ```
 
 #### 参数：
-
 - id: string
 
 ### getByName
-
 通过 `name` 创建热力图
 
-#### 参数：
+#### 用法：
+```js
+heatMap.getByName('hm_name');
+```
 
+#### 参数：
 - name: string
 
-### remove
+### removeById
+通过 `id` 删除热力图
+
+#### 用法：
+```js
+heatMap.removeById('hm1');
+```
 
 #### 参数：
-
 - id: string

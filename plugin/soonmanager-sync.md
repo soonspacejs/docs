@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# soonmanager-sync
+# plugin-soonmanager-sync
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-soonmanager-sync/latest.svg)
 
