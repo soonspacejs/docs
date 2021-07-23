@@ -1,6 +1,7 @@
 # 模型操作
 
 ### 样例：
+> 四种选中效果不可叠加使用
 
 <Docs-Iframe src="modelTool/selectModel.html" />
 
