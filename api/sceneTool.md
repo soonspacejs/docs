@@ -385,22 +385,27 @@ ssp.setHoverEnabled(true);
 ### 定义:
 
 ```ts
-function render(fn: Function): Promise<void>;
+function render(fn?: Function): Promise<void>;
 ```
 
 ### 用法:
 
 ```js
-// 同步
+// 用法一
+model.position.x = 1000;
+ssp.render();
+console.log('场景渲染完成');
+
+// 用法二
 ssp
   .render(() => {
-    model.visible = false;
+    model.position.x = 1000;
   })
   .then(() => {
     console.log('场景渲染完成');
   });
 
-// 异步
+// 用法三
 ssp
   .render(() => {
     return new Promise((resolve) => {
@@ -421,7 +426,7 @@ ssp
 
 - **类型:** Function
 - **描述:** 在渲染之前执行
-- **必填:** <Base-RequireIcon />
+- **必填:** <Base-RequireIcon :isRequire="false"/>
 
 ::: tip 提示
 fn 函数可以返回一个 Promise, 场景会在 fn 返回结果之后渲染
