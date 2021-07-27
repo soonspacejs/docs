@@ -89,7 +89,6 @@ export default {
   methods: {
     sceneReady(ssp) {
       console.log('sceneReady', ssp);
-      console.log('sceneReady', this.$ssp);
 
       /**
        * TODO
@@ -169,6 +168,37 @@ body,
 ##### ssp
 
 `soonspace` 实例
+
+> 实例存储推荐使用插件 [Sspx](./sspx.html)，或保存在 `Vue` 原型上，你要保存在组件数据中，避免空间数据被劫持。
+
+正确写法
+```js
+import Vue from 'vue'
+
+export default {
+  methods: {
+    sceneReady(ssp) {
+      Vue.prototype.$ssp = ssp;
+    }
+  }
+}
+```
+
+错误写法
+```js
+export default {
+  data() {
+    return {
+      ssp: null
+    }
+  },
+  methods: {
+    sceneReady(ssp) {
+      this.ssp = ssp;
+    }
+  }
+}
+```
 
 <br>
 <br>

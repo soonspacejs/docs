@@ -142,3 +142,4 @@ export default function SoonspaceTest() {
 ##### ssp
 
 `soonspace` 实例
+> 实例存储推荐使用插件 [Sspx](./sspx.html)。

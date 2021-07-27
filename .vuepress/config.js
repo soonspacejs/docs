@@ -159,6 +159,7 @@ module.exports = {
               title: '功能扩展插件',
               collapsable: false,
               children: [
+                '/plugin/sspx',
                 '/plugin/heat-map',
                 '/plugin/drawing-shape',
                 '/plugin/patrol-controls',

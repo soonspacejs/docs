@@ -10,9 +10,9 @@ sidebarDepth: 2
 
 ## 交互提示
 
-`WASD` 或 :arrow_up: :arrow_left: :arrow_down: :arrow_right: ：控制移动
+`WASD` 或 :arrow_up: :arrow_left: :arrow_down: :arrow_right: 控制移动
 <br>
-`UHJK` 或 鼠标 ：控制方向
+`IJKL` 或 **鼠标** 控制方向
 <br>
 空格跳跃
 
@@ -69,7 +69,7 @@ consolo.log(firstPersonControls);
 - 类型：`number`
 - 默认值：`50`
 
-### kneeheight
+### kneeHeight
 
 模拟膝盖高度。
 
@@ -104,7 +104,7 @@ interface StartOptions {
   rotation?: Rotation
   moveSpeed?: number
   eyeHeight?: number
-  kneeheight?: number
+  kneeHeight?: number
   jumpHeight?: number
   enableClash?: boolean
 }
@@ -120,7 +120,7 @@ firstPersonControls.start({
   rotation: { x: 0, y: 0, z: 0 },
   moveSpeed: 1.0,
   eyeHeight: 160,
-  kneeheight: 50,
+  kneeHeight: 50,
   jumpHeight: 110,
   enableClash: true,
 });
@@ -150,7 +150,7 @@ firstPersonControls.start({
         prop: 'eyeHeight', desc: '模拟眼睛高度', type: 'number', require: false, default: '160'
       },
       {
-        prop: 'kneeheight', desc: '模拟膝盖高度', type: 'number', require: false, default: '50'
+        prop: 'kneeHeight', desc: '模拟膝盖高度', type: 'number', require: false, default: '50'
       },
       {
         prop: 'jumpHeight', desc: '跳跃高度', type: 'number', require: false, default: '110'
