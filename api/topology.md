@@ -355,7 +355,7 @@ ssp.createTopologyToGroup(
 ### 定义：
 
 ```ts
-interface TopologyInfoForGml {
+interface TopologyInfoForGml extends BaseObject3DInfo {
   url: string;
   id: BaseObject3DInfo['id'];
   name?: BaseObject3DInfo['name'];
