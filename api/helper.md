@@ -11,6 +11,11 @@
 ### 定义：
 
 ```ts
+interface AxesHelperOptions {
+  id: string | number
+  axesLength?: number
+}
+
 function addAxesHelper(options: AxesHelperOptions): AxesHelper;
 ```
 
@@ -47,6 +52,16 @@ ssp.addAxesHelper({
 ### 定义：
 
 ```ts
+interface GridHelperOptions {
+  id: string | number
+  size?: number
+  divisions?: number
+  color?: IColor
+  position?: Position
+  rotation?: Rotation
+  scale?: Scale
+}
+
 function addGridHelper(options: GridHelperOptions): GridHelper;
 ```
 
@@ -75,6 +90,9 @@ ssp.addGridHelper({
       { prop: 'size', desc: '网格尺寸', type: 'number', require: false, default: '1000' },
       { prop: 'divisions', desc: '网格横纵向分割格数', type: 'number', require: false, default: '20' },
       { prop: 'color', desc: '网格颜色', type: 'IColor', require: false, default: '#ffffff' },
+      { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
+      { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
     ]"
 />
 
@@ -85,6 +103,17 @@ ssp.addGridHelper({
 ### 定义：
 
 ```ts
+interface PlaneHelperOptions {\
+  id: string | number
+  width?: number
+  height?: number
+  color?: IColor
+  opacity?: number
+  position?: Position
+  rotation?: Rotation
+  scale?: Scale
+}
+
 function addPlaneHelper(options: PlaneHelperOptions): BaseMesh;
 ```
 
@@ -121,6 +150,7 @@ ssp.addPlaneHelper({
       { prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: '0.2' },
       { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
+      { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
     ]"
 />
 
@@ -131,6 +161,12 @@ ssp.addPlaneHelper({
 ### 定义：
 
 ```ts
+interface BoxHelperOptions {
+  id: string | number
+  box: Box3
+  color?: IColor
+}
+
 function addBoxHelper(options: BoxHelperOptions): Box3Helper;
 ```
 
@@ -180,7 +216,7 @@ interface GroundHelperOptions {
   height?: number
   opacity?: number
   position?: Position
-  rotation?: Position
+  rotation?: Rotation
   scale?: Scale
   repeat?: IVector2
 }
@@ -191,7 +227,7 @@ function addGroundHelper(options: GroundHelperOptions): BaseMesh;
 ### 用法：
 
 ```js
-ssp.createGround({
+ssp.addGroundHelper({
   id: 'test_ground'
   imgUrl: 'http://xxx.com/xx.png',
   width: 500,
@@ -212,32 +248,14 @@ ssp.createGround({
 
 <Docs-Table 
     :data="[
-      {
-        prop: 'imgUrl', desc: '生成地面的图片资源路径', type: 'string', require: true, default: ''
-      },
-      {
-        prop: 'id', desc: '地面唯一 ID', type: 'string', require: true, default: ''
-      },
-      {
-        prop: 'width', desc: '地面长（平面的宽）', type: 'number', require: false, default: '500',
-      },
-      {
-        prop: 'height', desc: '地面宽（平面的高）', type: 'number', require: false, default: '500',
-      },
-      {
-        prop: 'opacity', desc: '地面不透明度', type: 'number', require: false, default: '1',
-      },
-      {
-        prop: 'position', desc: '地面中心点坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position'
-      },
-      {
-        prop: 'rotation', desc: '地面旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation'
-      },
-      {
-        prop: 'scale', desc: '地面缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale'
-      },
-      {
-        prop: 'repeat', desc: '地面在平面内的平铺数', type: 'IVector2', require: false, default: '{ x: 10, y: 10 }', link: '../guide/types.html#ivector2'
-      },
+      { prop: 'imgUrl', desc: '生成地面的图片资源路径', type: 'string', require: true, default: '' },
+      { prop: 'id', desc: '地面唯一 ID', type: 'string', require: true, default: '' },
+      { prop: 'width', desc: '地面长（平面的宽）', type: 'number', require: false, default: '500' },
+      { prop: 'height', desc: '地面宽（平面的高）', type: 'number', require: false, default: '500' },
+      { prop: 'opacity', desc: '地面不透明度', type: 'number', require: false, default: '1' },
+      { prop: 'position', desc: '地面中心点坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'rotation', desc: '地面旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
+      { prop: 'scale', desc: '地面缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'repeat', desc: '地面在平面内的平铺数', type: 'IVector2', require: false, default: '{ x: 10, y: 10 }', link: '../guide/types.html#ivector2' },
     ]"
 />
