@@ -72,13 +72,21 @@ modelBlastPlugin.start(model, 100)
 
 #### 定义
 ```ts
-function stop()): void
+function stop(object?: BaseObject3D): void
 ```
 
 #### 使用
 ```js
 modelBlastPlugin.stop()
 ```
-
 #### 参数
-无
+- **描述:** 要还原的模型对象，**不传参数默认还原上一次**。
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:**  `BaseObject3D`
+- **默认值:**  `undefined`
+
+::: tip 逻辑场景
+已操作一个模型，在不还原上个模型情况下继续操作第二个模型，只需要不使用 **stop** 方法连续调用俩次 **start** 即可。
+<br>
+后续想连续还原俩个模型就需要指定参数调用俩次 **stop**。
+:::
