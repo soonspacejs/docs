@@ -12,6 +12,7 @@
 
 ### 平台协同插件
 - [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
+- [soonmanager2-sync](./soonmanager2-sync.html) - 空间平台2.0 生产的场景加载及数据读取。
 
 ### 功能扩展插件
 - [sspx](./sspx.html) - `soonspacejs` 实例存储容器。

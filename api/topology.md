@@ -12,13 +12,17 @@
 
 ```ts
 interface TopologyEffectInfo {
-  linkWidth?: number;
-  renderNode?: boolean;
-  nodeColor?: IColor;
-  renderLink?: boolean;
-  linkColor?: IColor | IColor[];
-  imgUrl?: LinkInfo['imgUrl'];
-  animation?: LinkInfo['animation'];
+  // 
+  renderLink?: boolean
+  linkWidth?: number
+  linkColor?: IColor | IColor[]
+  // 
+  renderNode?: boolean
+  nodeColor?: IColor
+  nodeRadius?: number
+  // 
+  imgUrl?: LinkInfo['imgUrl']
+  animation?: LinkInfo['animation']
 }
 
 type TopologyType = 'line' | 'network';
@@ -93,11 +97,12 @@ const topology = ssp.createTopology({
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'nodes', desc: '节点坐标集合', type: 'TopologyNodeInfo[]', require: true, default: '', link: '#topologynodeinfo' },
       { prop: 'type', desc: '路径类型', type: 'line | network', require: true, default: '' },
-      { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
       { prop: 'renderLink', desc: '是否渲染连接线', type: 'boolean', require: false, default: 'true' },
+      { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
       { prop: 'linkColor', desc: '连接线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
       { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
       { prop: 'nodeColor', desc: '节点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
+      { prop: 'nodeRadius', desc: '节点半径', type: 'numbers', require: false, default: '10' },
       { prop: 'imgUrl', desc: '非纯色线时使用的图片资源路径', type: 'string', require: false, default: 'null' },
       { prop: 'animation', desc: '非纯色线时的流动动画', type: 'boolean | AnimationOptions', require: false, default: 'false', link: './animation.html#animationoptions'},
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },

@@ -152,7 +152,8 @@ module.exports = {
               title: '平台协同插件',
               collapsable: false,
               children: [
-                '/plugin/soonmanager-sync'
+                '/plugin/soonmanager-sync',
+                '/plugin/soonmanager2-sync'
               ]
             },
             {
