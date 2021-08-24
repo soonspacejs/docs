@@ -3,7 +3,7 @@
 ::: tip 提示
 `soonspacejs` 内部会在初始化时分别创建一个环境光、平行光、半球光。
 
-`id` 依次是 `defaultAmbientLight`、`defaultDirectionalLight`、`defaultHemiLight`。
+`id` 依次是 `defaultAmbientLight`、`defaultDirectionalLight`、`defaultHemisphereLight`。
 :::
 
 ### 样例：
