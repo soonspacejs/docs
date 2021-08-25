@@ -95,7 +95,7 @@ drawingShapePlugin.drawingPoint(
 <Docs-Table 
     :data="[
       {
-        prop: 'onCancel', desc: '取消时回调函数', type: '() => void', require: false, default: 'null'
+        prop: 'onCancel', desc: '取消时回调函数', type: '() =&gt; void', require: false, default: 'null'
       },
     ]"
 />
@@ -158,10 +158,10 @@ drawingShapePlugin.drawingLine(
 <Docs-Table 
     :data="[
       {
-        prop: 'onCancel', desc: '取消时回调函数', type: '() => void', require: false, default: 'null'
+        prop: 'onCancel', desc: '取消时回调函数', type: '() =&gt; void', require: false, default: 'null'
       },
       {
-        prop: 'onCancelPrev', desc: '取消上一步时回调函数', type: '() => void', require: false, default: 'null'
+        prop: 'onCancelPrev', desc: '取消上一步时回调函数', type: '() =&gt; void', require: false, default: 'null'
       },
     ]"
 />
@@ -225,10 +225,10 @@ drawingShapePlugin.drawingPolygon(
 <Docs-Table 
     :data="[
       {
-        prop: 'onCancel', desc: '取消时回调函数', type: '() => void', require: false, default: 'null'
+        prop: 'onCancel', desc: '取消时回调函数', type: '() =&gt; void', require: false, default: 'null'
       },
       {
-        prop: 'onCancelPrev', desc: '取消上一步时回调函数', type: '() => void', require: false, default: 'null'
+        prop: 'onCancelPrev', desc: '取消上一步时回调函数', type: '() =&gt; void', require: false, default: 'null'
       },
     ]"
 />
@@ -287,7 +287,7 @@ drawingShapePlugin.drawingCircle(
 <Docs-Table 
     :data="[
       {
-        prop: 'onCancel', desc: '取消时回调函数', type: '() => void', require: false, default: 'null'
+        prop: 'onCancel', desc: '取消时回调函数', type: '() =&gt; void', require: false, default: 'null'
       },
     ]"
 />
