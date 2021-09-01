@@ -50,10 +50,10 @@ function sortFile(files) {
   }))
 
 
-  for (let i = 0; i < sortDataArr.length; i++) {
-    for (let j = i; j < sortDataArr.length - i - 1; j++) {
-      if (isNeedReverse(sortDataArr[j].indexs, sortDataArr[j + 1].indexs)) {
-        [sortDataArr[j], sortDataArr[j + 1]] = [sortDataArr[j + 1], sortDataArr[j]]
+  for (let i = 0; i < sortDataArr.length - 1; i++) {
+    for (let j = i + 1; j < sortDataArr.length - i; j++) {
+      if (isNeedReverse(sortDataArr[i].indexs, sortDataArr[j].indexs)) {
+        [sortDataArr[i], sortDataArr[j]] = [sortDataArr[j], sortDataArr[i]]
       }
     }
   }
