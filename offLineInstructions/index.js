@@ -50,13 +50,12 @@ function sortFile(files) {
   }))
 
 
-  for (let i = 1; i < sortDataArr.length; i++) {
-    for (let j = 0; j < sortDataArr.length - 1; j++) {
+  for (let i = 0; i < sortDataArr.length; i++) {
+    for (let j = i; j < sortDataArr.length - i - 1; j++) {
       if (isNeedReverse(sortDataArr[j].indexs, sortDataArr[j + 1].indexs)) {
         [sortDataArr[j], sortDataArr[j + 1]] = [sortDataArr[j + 1], sortDataArr[j]]
       }
     }
-
   }
 
   return sortDataArr.map(item => files[item.dataIndex])
