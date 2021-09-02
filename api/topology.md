@@ -308,7 +308,7 @@ const shortestTopology = ssp.getShortestPathByMultipleEndPoints(
 
 #### info
 
-- **描述:** 多起点最短路径信息
+- **描述:** 多终点最短路径信息
 - **类型:** `ShortestPathByMultipleEndPoints`
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
