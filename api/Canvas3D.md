@@ -18,17 +18,15 @@ interface PointInfo extends BaseMeshInfo {
 }
 
 interface LineInfo extends BaseMeshInfo {
-  start: Position;
-  end: Position;
+  points: Position[];
   width?: number;
   color?: IColor;
   opacity?: number;
-  imgUrl?: string;
-  animation?: boolean | AnimationOptions;
 }
 
 interface PolygonInfo extends BaseMeshInfo {
-  points: Position[];
+  yHeight: number;
+  points: PlaneIVector2[];
   color?: IColor;
   opacity?: number;
 }
