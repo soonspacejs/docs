@@ -226,7 +226,7 @@ const attr = sbm.getSpaceAttribute(false);
 
 ### syncSpaceAttribute
 
-同步空间属性
+从目标对象上同步空间属性
 
 #### 定义：
 
@@ -237,7 +237,7 @@ function syncSpaceAttribute(object: Object3D, isFromWorld?: boolean): void;
 #### 用法：
 
 ```js
-sbm.getSpaceAttribute(otherSbm, true);
+sbm.getSpaceAttribute(targetSbm, true);
 ```
 
 #### 参数：
