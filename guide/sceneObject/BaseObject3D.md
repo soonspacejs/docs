@@ -102,9 +102,33 @@
 
 控制该对象显示。
 
+#### 定义：
+
+```ts
+function show(): void;
+```
+
+#### 用法：
+
+```ts
+sbm.show();
+```
+
 ### hide
 
 控制该对象隐藏。
+
+#### 定义：
+
+```ts
+function hide(): void;
+```
+
+#### 用法：
+
+```ts
+sbm.hide();
+```
 
 ### setMove
 
