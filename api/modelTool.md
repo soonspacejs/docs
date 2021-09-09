@@ -1,90 +1,10 @@
 # 模型操作
 
 ### 样例：
+
 > 四种选中效果不可叠加使用
 
 <Docs-Iframe src="modelTool/selectModel.html" />
-
-## edgeShow
-
-显示模型轮廓
-
-### 定义:
-
-```ts
-interface EdgeSelectOptions {
-  color?: IColor;
-  hideColor?: IColor;
-  edgeThickness?: number;
-  edgeStrength?: number;
-  pulsePeriod?: number;
-}
-
-function edgeShow(
-  object: BaseObject3D | BaseObject3D[],
-  options?: EdgeSelectOptions
-): Promise<void>;
-```
-
-### 用法:
-
-```js
-ssp.edgeShow(object, {
-  color: 0xff6600,
-});
-```
-
-### 参数:
-
-#### object
-
-- **描述:** 模型对象
-- **类型:** BaseObject3D | BaseObject3D[]
-- **必填:** <Base-RequireIcon />
-
-#### options
-
-- **描述:** 配置选项
-- **类型:** EdgeSelectOptions
-- **必填:** <Base-RequireIcon :isRequire="false" />
-
-#### EdgeSelectOptions
-
-<Docs-Table
-    :data="[
-      { prop: 'color', desc: '轮廓颜色', type: 'IColor', require: false, default: '#fff', link: '../guide/types.html#icolor'},
-      { prop: 'hideColor', desc: '被遮挡时的轮廓颜色', type: 'IColor', require: false, default: '#999', link: '../guide/types.html#icolor' },
-      { prop: 'edgeThickness', desc: '轮廓浓度', type: 'number', require: false, default: 3 },
-      { prop: 'edgeStrength', desc: '轮廓厚度', type: 'number', require: false, default: 10 },
-      { prop: 'pulsePeriod', desc: '脉冲周期', type: 'number', require: false, default: 0 },
-    ]"
-/>
-
-## unEdgeShow
-
-取消模型轮廓
-
-### 定义:
-
-```ts
-function unEdgeShow(
-  objects?: BaseObject3D | BaseObject3D[]
-): Promise<void | void[]>;
-```
-
-### 用法:
-
-```js
-ssp.unEdgeShow();
-```
-
-### 参数:
-
-#### object
-
-- **描述:** 如没有传参, 将取消整个场景内所有模型的轮廓
-- **类型:** BaseObject3D | BaseObject3D[]
-- **必填:** <Base-RequireIcon :isRequire="false" />
 
 ## strokeShow
 
