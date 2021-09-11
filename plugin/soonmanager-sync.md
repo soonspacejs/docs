@@ -235,6 +235,6 @@ soonmanagerSync
       { prop: 'targetId', desc: '开始加载的目标 id', type: 'number | number[]', require: false, default: '' },
       { prop: 'targetLevel', desc: '从指定节点开始，向下加载的的层级深度', type: 'number', require: false, default: '' },
       { prop: 'isIdleRest', desc: '否利用页面交互空闲时间去加载剩余模型', type: 'boolean', require: false, default: false },
-      { prop: 'loadSceneAllSuccess', desc: '所有模型加载完成的回调', type: 'Function', require: false, default: 'function(){}' },
+      { prop: 'loadSceneAllSuccess', desc: '所有模型加载完成的回调', type: '() =&gt; void', require: false, default: 'function(){}' },
     ]"
 />

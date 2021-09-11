@@ -82,12 +82,10 @@ ssp.createPoi(
       { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
       { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
-      { prop: 'onHover', desc: '鼠标悬浮事件', type: 'Function', require: false, default: 'null' },
-      { prop: 'onUnHover', desc: '鼠标悬浮后离开事件', type: 'Function', require: false, default: 'null' },
-      { prop: 'onClick', desc: '左键单击事件', type: 'Function', require: false, default: 'null' },
-      { prop: 'onDblClick', desc: '左键双击事件', type: 'Function', require: false, default: 'null' },
-      { prop: 'onRightClick', desc: '右键单击事件', type: 'Function', require: false, default: 'null' },
-      { prop: 'onLoad', desc: '创建完成事件', type: 'Function', require: false, default: 'null' },
+      { prop: 'onClick', desc: '左键单击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
+      { prop: 'onDblClick', desc: '左键双击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
+      { prop: 'onRightClick', desc: '右键单击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
+      { prop: 'onLoad', desc: '创建完成事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
     ]"
 />
 

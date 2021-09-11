@@ -385,7 +385,7 @@ ssp.setHoverEnabled(true);
 ### 定义:
 
 ```ts
-function render(fn?: Function): Promise<void>;
+function render(fn?: () => void): Promise<void>;
 ```
 
 ### 用法:
@@ -424,7 +424,7 @@ ssp
 
 #### fn
 
-- **类型:** Function
+- **类型:** () => void
 - **描述:** 在渲染之前执行
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 
