@@ -272,7 +272,7 @@ ssp.createSpotLight({
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
-      { prop: 'angle', desc: '光照方向扩散的角度（最大值为90）', type: 'number', require: false, default: '45' },
+      { prop: 'angle', desc: '光照方向扩散的角度（最大值为180）', type: 'number', require: false, default: '45' },
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
