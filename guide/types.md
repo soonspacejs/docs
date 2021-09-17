@@ -32,7 +32,7 @@ interface IVector2 {
 平面二维向量
 
 ```ts
-interface IVector2 {
+interface PlaneIVector2 {
   x: number;
   z: number;
 }
