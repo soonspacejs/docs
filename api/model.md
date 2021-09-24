@@ -509,3 +509,19 @@ ssp.stopModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 - **描述:** 动画信息
 - **类型:** number | [AnimationClip](https://threejs.org/docs/index.html?q=AnimationClip#api/en/animation/AnimationClip) | ModelAnimationFindFunc
 - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+## setModelDracoDecoderPath
+
+设置 GLTF 模型的 DRACO 解压库路径
+
+### 定义：
+
+```ts
+function setModelDracoDecoderPath(path: string): void;
+```
+
+### 用法：
+
+```js
+ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
+```
