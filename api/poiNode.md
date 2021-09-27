@@ -328,6 +328,22 @@ function getPoiNodeGroupByName(name: string): Group[];
 const groupList = ssp.getPoiNodeGroupByName('name_firstPoiNodeGroup');
 ```
 
+## getAllPoiNodeGroup
+
+获取所有 `PoiNode` 对象组
+
+### 定义：
+
+```ts
+function getAllPoiNodeGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allPoiNodeGroupList = ssp.getAllPoiNodeGroup();
+```
+
 ## removePoiNodeGroupById
 
 通过 `id` 移除 `poiNode` 组

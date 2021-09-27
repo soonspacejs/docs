@@ -5,6 +5,7 @@
 加载 `sbm` 模型。
 
 ### 样例：
+
 <Docs-Iframe src="model/loadSbm.html" />
 
 ### 定义：
@@ -163,9 +164,7 @@ const sbm = await ssp.parseSbm(new ArrayBuffer(8), sbmInfo, () => {});
 ### 定义:
 
 ```ts
-interface CloneSbmInfo extends Omit<SbmInfo, 'url'> {
-
-}
+interface CloneSbmInfo extends Omit<SbmInfo, 'url'> {}
 
 function cloneSbm(
   model: Sbm,
@@ -182,8 +181,8 @@ const sbm = await ssp.cloneSbm(model, {
   position: {
     x: 100,
     y: 0,
-    z: 0
-  }
+    z: 0,
+  },
 });
 ```
 
@@ -562,6 +561,22 @@ function getSbmGroupByName(name: string): Group[];
 
 ```js
 const groupList = ssp.getSbmGroupByName('name_firstSbmGroup');
+```
+
+## getAllSbmGroup
+
+获取所有 `Sbm` 对象组
+
+### 定义：
+
+```ts
+function getAllSbmGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allSbmGroupList = ssp.getAllSbmGroup();
 ```
 
 ## removeSbmGroupById

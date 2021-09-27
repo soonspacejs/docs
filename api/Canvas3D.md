@@ -431,6 +431,22 @@ function getCanvas3DGroupByName(name: string): Group[];
 const groupList = ssp.getCanvas3DGroupByName('name_firstCanvas3DGroup');
 ```
 
+## getAllCanvas3DGroup
+
+获取所有 `Canvas3D` 对象组
+
+### 定义：
+
+```ts
+function getAllCanvas3DGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allCanvas3DGroupList = ssp.getAllCanvas3DGroup();
+```
+
 ## removeCanvas3DGroupById
 
 通过 `id` 移除 `Canvas3D` 组

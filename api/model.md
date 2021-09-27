@@ -358,6 +358,22 @@ function getModelGroupByName(name: string): Group[];
 const groupList = ssp.getModelGroupByName('name_firstModelGroup');
 ```
 
+## getAllModelGroup
+
+获取所有 `Model` 对象组
+
+### 定义：
+
+```ts
+function getAllModelGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allModelGroupList = ssp.getAllModelGroup();
+```
+
 ## removeModelGroupById
 
 通过 `id` 移除 `model` 组

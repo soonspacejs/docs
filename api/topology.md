@@ -643,6 +643,22 @@ function getTopologyGroupByName(name: string): Group[];
 const groupList = ssp.getTopologyGroupByName('name_firstTopologyGroup');
 ```
 
+## getAllTopologyGroup
+
+获取所有 `Topology` 对象组
+
+### 定义：
+
+```ts
+function getAllTopologyGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allTopologyGroupList = ssp.getAllTopologyGroup();
+```
+
 ## removeTopologyGroupById
 
 通过 `id` 移除 `topology` 组

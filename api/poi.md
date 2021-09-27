@@ -346,6 +346,22 @@ function getPoiGroupByName(name: string): Group[];
 const groupList = ssp.getPoiGroupByName('name_firstPoiGroup');
 ```
 
+## getAllPoiGroup
+
+获取所有 `Poi` 对象组
+
+### 定义：
+
+```ts
+function getAllPoiGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allPoiGroupList = ssp.getAllPoiGroup();
+```
+
 ## removePoiGroupById
 
 通过 `id` 移除 `poi` 组
