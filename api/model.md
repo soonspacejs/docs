@@ -94,6 +94,53 @@ ssp
     ]"
 />
 
+## cloneModel
+
+克隆 Model 模型
+
+### 定义:
+
+```ts
+interface CloneModelInfo extends Omit<ModelInfo, 'url'> {}
+
+function cloneModel(
+  model: Model,
+  modelInfo: CloneModelInfo,
+  parent?: BaseObject3D | null
+): Promise<Model>;
+```
+
+### 用法:
+
+```js
+const clonedModel = await ssp.cloneModel(model, {
+  id: 'clone_model',
+  position: {
+    x: 100,
+    y: 0,
+    z: 0,
+  },
+});
+```
+
+### 参数:
+
+#### model
+
+- **描述:** Model 对象
+- **类型:** `Model`
+- **必填:** <Base-RequireIcon />
+
+#### modelInfo
+
+同 [ModelInfo](#modelinfo), 但不需要字段 `url`。
+
+#### parent
+
+- **描述:** 将 `Model` 克隆到的 `parent` 下
+- **类型:** `Model`
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
 ## getModelById
 
 通过 `id` 查找

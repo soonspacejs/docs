@@ -176,7 +176,7 @@ function cloneSbm(
 ### 用法:
 
 ```js
-const sbm = await ssp.cloneSbm(model, {
+const clonedSbm = await ssp.cloneSbm(sbm, {
   id: 'clone_sbm',
   position: {
     x: 100,
@@ -196,7 +196,7 @@ const sbm = await ssp.cloneSbm(model, {
 
 #### sbmInfo
 
-同 [Sbminfo](#sbminfo), 但不需要字段 `url`。
+同 [SbmInfo](#sbminfo), 但不需要字段 `url`。
 
 #### parent
 
