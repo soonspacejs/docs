@@ -5,7 +5,7 @@ const BASE_PORT = '9018';
 const PACKAGE_NAME = 'soonspacejs';
 
 const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`;
-const NEW_PRO_PATH = 'http://www.soonspacejs.com:8800';
+const NEW_PRO_PATH = 'http://www.xwbuilders.com:8800';
 
 module.exports = {
   base: '/',
@@ -66,7 +66,7 @@ module.exports = {
                   {
                     text: '离线文档下载',
                     link:
-                      'http://soonspacejs.com:8800/resource/离线功能说明书/SoonSpace 功能说明书.pdf',
+                      `${NEW_PRO_PATH}/resource/离线功能说明书/SoonSpace 功能说明书.pdf`,
                     target: '_blank',
                   },
                 ],
