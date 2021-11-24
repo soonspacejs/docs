@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      baseUrl: "http://www.soonspacejs.com:8800/examples/page/",
+      baseUrl: "http://www.xwbuilders.com:8800/examples/page/",
     };
   },
   computed: {
