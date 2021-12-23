@@ -26,6 +26,7 @@
 - [camera-follower](./camera-follower.html) - 相机跟随模型。
 - [clipping-controls](./clipping-controls.html) - 模型、场景切割控制器。
 - [model-blast](./model-blast.html) - 模型爆炸。
+- [effect](./effect.html) - 特效。
 
 ### 开发者插件
 - [vscode-sbm-preview](./vscode-sbm-preview.html) - vscode 插件 - sbm 模型预览

@@ -189,6 +189,7 @@ module.exports = {
                 '/plugin/camera-follower',
                 '/plugin/clipping-controls',
                 '/plugin/model-blast',
+                '/plugin/effect',
               ],
             },
             {

@@ -125,7 +125,7 @@ ssp.opacityShow(object, {
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x46ebf7' , link: '../guide/types.html#icolor'},
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff' , link: '../guide/types.html#icolor'},
       { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.2 },
     ]"
 />
