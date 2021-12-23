@@ -110,7 +110,7 @@ interface FlyToObjOptions extends AnimationOptions {
 
 function flyToObj(
   object: BaseObject3D | BaseMesh,
-  viewpoint: FlyToViewpoint = 'frontTop',
+  viewpoint: FlyToViewpoint | Rotation | Euler = 'frontTop',
   options: FlyToObjOptions = {}
 ): Promise<void>;
 ```
@@ -146,7 +146,7 @@ ssp
 
 - **描述:** 相机朝向物体对象的视角面，[可选枚举](../../guide/controls/viewpoints.html)。
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [FlyToViewpoint](../guide/types.html#flyToViewpoint)
+- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint) | [Rotation](../guide/types.html#rotation)
 - **默认值:** `frontTop`
 
 #### option
@@ -228,7 +228,7 @@ ssp.flyTo(
 
 - **描述:** 相机的旋转弧度
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [Viewpoint](../guide/types.html#Viewpoint) | [Rotation](../guide/types.html#rotation)
+- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint) | [Rotation](../guide/types.html#rotation)
 - **默认值:** `frontTop`
 
 #### option
