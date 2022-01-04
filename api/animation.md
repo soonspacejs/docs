@@ -35,6 +35,7 @@ interface AnimationOptions {
   delay?: number
   repeat?: number | boolean
   mode?: AnimationMode
+  yoyo?: boolean;
 }
 
 function Animation<PropType>(
@@ -106,6 +107,9 @@ ssp.animation(
       },
       {
         prop: 'mode', desc: '动画模式', type: 'AnimationMode', require: false, default: 'Linear.None'
+      },
+      {
+        prop: 'yoyo', desc: '反向执行，需与 repeat 一起使用', type: 'boolean', require: false, default: 'false'
       }
     ]"
 />

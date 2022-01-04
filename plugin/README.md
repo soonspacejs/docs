@@ -1,7 +1,5 @@
 # 插件
 
-<Docs-Update />
-
 ::: tip 版本提示
 **平台协同插件** 与 **功能扩展插件** 版本（ plugin-xxx ）必须与主框架 `soonsapcejs` 版本保持一致。
 :::
