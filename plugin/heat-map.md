@@ -146,10 +146,10 @@ heatMap.create({
         prop: 'yAxisHeight', desc: '空间高度', type: 'number', require: true, default: ''
       },
       {
-        prop: 'minPosition', desc: '热力图绘制区域最小点', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+        prop: 'minPosition', desc: '热力图绘制区域最小点', type: 'PlaneIVector2', require: true, default: '', link: '../guide/types.html#planeivector2'
       },
       {
-        prop: 'maxPosition', desc: '热力图绘制区域最大点', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+        prop: 'maxPosition', desc: '热力图绘制区域最大点', type: 'PlaneIVector2', require: true, default: '', link: '../guide/types.html#planeivector2'
       },
     ]"
 />
