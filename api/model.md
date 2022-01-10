@@ -575,7 +575,7 @@ ssp.stopModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 
 ## setModelDracoDecoderPath
 
-设置 GLTF 模型的 DRACO 解压库路径
+设置模型的 DRACO 解压库路径
 
 ### 定义：
 
