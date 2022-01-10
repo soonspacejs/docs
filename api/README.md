@@ -1,4 +1,4 @@
-# Api
+# API
 
 如果你掌握 [TypeScript](https://www.typescriptlang.org/)，文档中的 `定义：` 部分会更好的帮助你理解 `Api` 的使用，它是方法实现的伪代码，用来表明 **传入参数** 和 **返回值** 的类型定义。
 <br>

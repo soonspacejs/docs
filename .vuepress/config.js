@@ -49,7 +49,7 @@ module.exports = {
       '/': {
         nav: [
           { text: '教程', link: '/guide/' },
-          { text: 'Api', link: '/api/' },
+          { text: 'API', link: '/api/' },
           { text: '插件', link: '/plugin/' },
           { text: '样例', link: `${NEW_PRO_PATH}/examples/` },
           { text: '更新日志', link: `https://github.com/soonspacejs/docs/releases` },
