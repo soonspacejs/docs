@@ -80,12 +80,10 @@ heatMap.create({
   min: 1,
   minPosition: {
     x: 0,
-    y: 0,
     z: 0
   },
   maxPosition: {
     x: 200,
-    y: 0,
     z: 200
   },
   data: [
@@ -173,6 +171,13 @@ heatMap.create({
       },
     ]"
 />
+
+::: warning 注意
+`x`、`z` 的位置需要在 `minPosition` 和 `maxPosition` 之间，否则不会渲染
+
+`radius` 的显示范围会随着画布区域放大与缩小
+:::
+
 
 ### setData
 设置（重置）数据
