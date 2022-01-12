@@ -155,6 +155,7 @@ heatMap.create({
 ##### DataPoint
 
 <br>
+
 <Docs-Table 
     :data="[
       {
@@ -171,6 +172,8 @@ heatMap.create({
       },
     ]"
 />
+
+<br>
 
 ::: warning 注意
 `x`、`z` 的位置需要在 `minPosition` 和 `maxPosition` 之间，否则不会渲染
