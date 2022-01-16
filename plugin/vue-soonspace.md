@@ -6,7 +6,16 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/vue-soonspace/latest.svg)
 <br>
+
 Vue 中快速使用 soonspacejs。
+
+::: danger 警告
+不要将 `ssp` 或 插件的实例存储在 `vue` 的 `data` 中，因为这样会导致整个对象被包装为 `Observer`。
+
+当场景中有动画或 `render` 时，会触发大量的 `getter` 与 `settter`，导致页面卡顿。
+
+请查看 [sceneReady](#sceneready) 示例。
+:::
 
 <!-- 安装 -->
 
@@ -172,32 +181,34 @@ body,
 > 实例存储推荐使用插件 [Sspx](./sspx.html)，或保存在 `Vue` 原型上，你要保存在组件数据中，避免空间数据被劫持。
 
 正确写法
+
 ```js
-import Vue from 'vue'
+import Vue from 'vue';
 
 export default {
   methods: {
     sceneReady(ssp) {
       Vue.prototype.$ssp = ssp;
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 错误写法
+
 ```js
 export default {
   data() {
     return {
-      ssp: null
-    }
+      ssp: null,
+    };
   },
   methods: {
     sceneReady(ssp) {
       this.ssp = ssp;
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 <br>

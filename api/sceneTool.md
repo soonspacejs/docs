@@ -171,6 +171,7 @@ ssp.openSceneFog({ color: '0xcce0ff', near: 1, far: 1000 });
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ##### FogOptions
+
 <Docs-Table
     :data="[
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xcce0ff', link: '../guide/types.html#icolor'},
@@ -223,16 +224,19 @@ ssp.getObjectLabelPos(object, 'front', { mode: 'scene', extendScale: 1.6 });
 ### 参数:
 
 #### object
+
 - **类型:** BaseObject3D
 - **描述:** 模型对象
 - **必填:** <Base-RequireIcon />
 
 #### viewpoint
+
 - **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint)
 - **描述:** 相对模型视角枚举
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 
 #### options
+
 - **类型:** LabelOptions
 - **描述:** 配置选项
 - **必填:** <Base-RequireIcon :isRequire="false" />
@@ -393,8 +397,9 @@ function render(fn?: () => void): Promise<void>;
 ```js
 // 用法一
 model.position.x = 1000;
-ssp.render();
-console.log('场景渲染完成');
+ssp.render().then(() => {
+  console.log('场景渲染完成');
+});
 
 // 用法二
 ssp
