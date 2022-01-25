@@ -101,7 +101,7 @@ const ssp = new SoonSpace({
 - **默认值**: `false`
   ::: tip 提示
   不开启时 `modelHover` 和 `poiHover` 不会触发。
-  提供一个 `API` [setHoverEnabled](../../api/advanced/dynamicconfig.html#setHoverEnabled) 动态更改该配置。
+  提供一个 `API` [setHoverEnabled](../api/sceneTool.html#sethoverenabled) 动态更改该配置。
   :::
 
 ## closeInfoLog
