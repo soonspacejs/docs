@@ -113,7 +113,7 @@ effectPlugin.removeFlame('testFlame');
 #### 定义
 
 ```ts
-export interface SmokeInfo extends PluginObjectInfo {
+interface SmokeInfo extends PluginObjectInfo {
   imgUrl?: string;
   count?: number;
   maxAge?: number;
