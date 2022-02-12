@@ -105,3 +105,89 @@ function removeFlame(id: PluginObjectInfo['id']): boolean;
 ```js
 effectPlugin.removeFlame('testFlame');
 ```
+
+### createSmoke
+
+创建烟雾
+
+#### 定义
+
+```ts
+export interface SmokeInfo extends PluginObjectInfo {
+  imgUrl?: string;
+  count?: number;
+  maxAge?: number;
+  size?: number;
+  acceleration?: number;
+  velocity?: IVector3;
+  color?: IColor[];
+}
+
+function createSmoke(param: SmokeInfo): PluginObject;
+```
+
+#### 用法
+
+```js
+effectPlugin.createSmoke({
+  id: 'testSmoke',
+  name: 'testSmoke',
+  position: {
+    x: -300,
+    y: 0,
+    z: 300,
+  },
+});
+```
+
+#### 参数
+
+##### param
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `SmokeInfo`
+
+#### SmokeInfo
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'imgUrl', desc: '烟雾图片', type: 'string', require: false, default: '内置图片'
+      },
+       {
+        prop: 'count', desc: '烟雾粒子的数量', type: 'number', require: false, default: '1000'
+      },
+      {
+        prop: 'maxAge', desc: '烟雾粒子的显示时间（秒）', type: 'number', require: false, default: '4'
+      },
+      {
+        prop: 'size', desc: '烟雾粒子的大小', type: 'number', require: false, default: '200'
+      },
+      {
+        prop: 'acceleration', desc: '烟雾粒子的加速度', type: 'number', require: false, default: '10'
+      },
+      {
+        prop: 'velocity', desc: '烟雾粒子的扩散速率', type: 'IVector3', link: '../guide/types.html#ivector3' ,require: false, default: '{ x: 100, y: 100, z: 100 }'
+      },
+       {
+        prop: 'color', desc: '烟雾粒子的颜色', type: 'IColor[]', link: '../guide/types.html#icolor' ,require: false, default: '[0x333333, 0x111111]'
+      },
+    ]"
+/>
+
+### removeSmoke
+
+删除烟雾
+
+#### 定义
+
+```ts
+function removeSmoke(id: PluginObjectInfo['id']): boolean;
+```
+
+#### 用法
+
+```js
+effectPlugin.removeSmoke('testSmoke');
+```
