@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-effect/latest.svg)
 
-模型爆炸。
+特效。
 
 ## 样例
 
