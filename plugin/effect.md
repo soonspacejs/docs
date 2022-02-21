@@ -168,7 +168,7 @@ effectPlugin.createSmoke({
         prop: 'acceleration', desc: '烟雾粒子的加速度', type: 'number', require: false, default: '10'
       },
       {
-        prop: 'velocity', desc: '烟雾粒子的扩散速率', type: 'IVector3', link: '../guide/types.html#ivector3' ,require: false, default: '{ x: 100, y: 100, z: 100 }'
+        prop: 'velocity', desc: '烟雾粒子的扩散方向', type: 'IVector3', link: '../guide/types.html#ivector3' ,require: false, default: '{ x: 100, y: 100, z: 100 }'
       },
        {
         prop: 'color', desc: '烟雾粒子的颜色', type: 'IColor[]', link: '../guide/types.html#icolor' ,require: false, default: '[0x333333, 0x111111]'
