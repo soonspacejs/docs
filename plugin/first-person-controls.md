@@ -90,6 +90,13 @@ consolo.log(firstPersonControls);
 - 类型：`boolean`
 - 默认值：`true`
 
+### enableGravity
+
+开启重力检测。
+
+- 类型：`boolean`
+- 默认值：`true`
+
 ## 方法
 
 ### start
@@ -107,6 +114,7 @@ interface StartOptions {
   kneeHeight?: number
   jumpHeight?: number
   enableClash?: boolean
+  enableGravity?: boolean
 }
 
 function start(options: StartOptions) => void
@@ -123,6 +131,7 @@ firstPersonControls.start({
   kneeHeight: 50,
   jumpHeight: 110,
   enableClash: true,
+  enableGravity: false,
 });
 ```
 
@@ -157,6 +166,9 @@ firstPersonControls.start({
       },
       {
         prop: 'enableClash', desc: '开启碰撞检测', type: 'boolean', require: false, default: 'true'
+      },
+      {
+        prop: 'enableGravity', desc: '开启重力检测', type: 'boolean', require: false, default: 'true'
       },
     ]"
 />
