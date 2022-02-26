@@ -140,6 +140,10 @@ ssp.setSkyBackground(
 
 设置场景环境反射（用于 GLTF、SBMX 模型）
 
+### 样例：
+
+<Docs-Iframe src="sceneTool/environment.html" />
+
 ### 定义：
 
 ```ts

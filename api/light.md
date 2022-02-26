@@ -371,6 +371,10 @@ if (isUpdated) {
 
 创建矩形区域光源
 
+### 样例：
+
+<Docs-Iframe src="light/rectAreaLight.html" />
+
 ### 定义：
 
 ```ts
