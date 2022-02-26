@@ -130,11 +130,27 @@ ssp.setSkyBackground(
   <br>
   x 轴正向（px）、x 轴负向（nx）、y 轴正向（py）、y 轴负向（ny）、z 轴正向（pz）、z 轴负向（nz）。
   <br>
-  p: prev、 n: next
+  p -> positive、 n -> negative
 - 以立方体盒子的六个面为参考
   <br>
   右（right）、左（left）、上（top）、下（bottom）、前（front）、后（back）。
   :::
+
+## setEnvironment
+
+设置场景环境反射（用于 GLTF、SBMX 模型）
+
+### 定义：
+
+```ts
+function setEnvironment(): THREE.Texture;
+```
+
+### 用法：
+
+```js
+ssp.setEnvironment();
+```
 
 ## openSceneFog
 

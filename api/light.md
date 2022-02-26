@@ -97,6 +97,7 @@ interface DirectionalLightOptions extends BaseLightInfo {
   position?: Position;
   target?: Position;
   openShadow?: boolean;
+  mapSize?: number;
 }
 
 function createDirectionalLight(
@@ -132,6 +133,7 @@ ssp.createDirectionalLight({
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 1000, z: 0 }', link: '../guide/types.html#icolor'  },
       { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: -100, z: 0 }', link: '../guide/types.html#icolor'  },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
+      { prop: 'mapSize', desc: '阴影的贴图区域大小。值越大，阴影质量越好。但也会增加性能损耗', type: 'number', require: false, default: '4096'},
     ]"
 />
 
@@ -364,6 +366,68 @@ if (isUpdated) {
   console.log('点光源配置更新成功');
 }
 ```
+
+## createRectAreaLight
+
+创建矩形区域光源
+
+### 定义：
+
+```ts
+interface RectAreaLightOptions extends BaseLightInfo {
+  position?: Position;
+  width?: number;
+  height?: number;
+}
+
+function createRectAreaLight(
+  options: RectAreaLightOptions
+): THREE.RectAreaLight;
+```
+
+### 用法：
+
+```js
+ssp.createRectAreaLight({
+  id: 'rectAreaLight',
+  name: 'rectAreaLight',
+  intensity: 0.8,
+  color: 0xffff00,
+  width: 20,
+  height: 50,
+  position: {
+    x: 0,
+    y: 0,
+    z: -10,
+  },
+});
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 矩形区域光源配置项
+- **必填:** <Base-RequireIcon :isRequire="true" />
+- **类型:** RectAreaLightOptions
+
+##### RectAreaLightOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
+      { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'width', desc: '矩形区域的宽度', type: 'number', require: false, default: '10' },
+      { prop: 'height', desc: '矩形区域的高度', type: 'number', require: false, default: '10' },
+      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
+    ]"
+/>
+
+::: tip 提示
+矩形区域光源只对 PBR 材质生效。例如 GLTF、SBMX 模型
+:::
 
 ## getLightById
 

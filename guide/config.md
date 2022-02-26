@@ -54,7 +54,7 @@ const ssp = new SoonSpace({
 
 <Docs-Table 
     :data="[
-      { prop: 'color', desc: '背景色，权重低于 img、skyBox', type: 'string | number ｜ null', require: false, default: '#000000' },
+      { prop: 'color', desc: '背景色，权重低于 img、skyBox', type: 'string | number ｜ null', require: false, default: '0xaedbf4' },
       { prop: 'alpha', desc: '背景色是否透明', type: 'boolean', require: false, default: 'false' },
       { prop: 'img', desc: '背景图路径，权重低于 skyBox', type: 'string', require: false, default: 'undefined' },
       { prop: 'skyBox', desc: '背景天空盒属性', type: 'string | SkyBoxOptions', require: false, default: 'undefined' }
