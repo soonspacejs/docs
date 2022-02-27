@@ -344,20 +344,20 @@ ssp.createPointLight({ id: 'pointLight', name: 'pointLight' });
     ]"
 />
 
-## setPoinntLight
+## setPointLight
 
 设置点光源
 
 ### 定义：
 
 ```ts
-function setPoinntLight(options: PointLightOptions): boolean;
+function setPointLight(options: PointLightOptions): boolean;
 ```
 
 ### 用法：
 
 ```js
-const isUpdated = ssp.setPoinntLight({
+const isUpdated = ssp.setPointLight({
   id: 'pointLight',
   color: 0x8a8a8a,
   intensity: 0.5,
@@ -432,6 +432,31 @@ ssp.createRectAreaLight({
 ::: tip 提示
 矩形区域光源只对 PBR 材质生效。例如 GLTF、SBMX 模型
 :::
+
+## setRectAreaLight
+
+设置矩形区域光源
+
+### 定义：
+
+```ts
+function setRectAreaLight(options: RectAreaLightOptions): boolean;
+```
+
+### 用法：
+
+```js
+const isUpdated = ssp.setRectAreaLight({
+  id: 'rectAreaLight',
+  color: 0x693333,
+  intensity: 2,
+  width: 20,
+  height: 30,
+});
+if (isUpdated) {
+  console.log('矩形区域光源配置更新成功');
+}
+```
 
 ## getLightById
 
