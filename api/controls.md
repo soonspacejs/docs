@@ -49,6 +49,7 @@ interface ControlsOptions {
   enablePanAxisX?: boolean;
   enablePanAxisY?: boolean;
   enablePanAxisZ?: boolean;
+  panSpeed?: number;
 }
 
 function setControlsOptions(options: ControlsOptions): void;
@@ -94,6 +95,7 @@ ssp.setControlsOptions({
       { prop: 'enablePanAxisY', desc: '开启空间 Y轴 移动', type: 'boolean', require: false, default: 'true' },
       { prop: 'enablePanAxisZ', desc: '开启空间 Z轴 移动', type: 'boolean', require: false, default: 'true' },
       { prop: 'enableAutoRotate', desc: '开启自动旋转', type: 'boolean', require: false, default: 'true' },
+      { prop: 'panSpeed', desc: '移动速度', type: 'number', require: false, default: '1' },
       { prop: 'autoRotateSpeed', desc: '自动旋转速度', type: 'number', require: false, default: 1 },
       { prop: 'autoRotateClockwise', desc: '自动旋转顺时针', type: 'boolean', require: false, default: 'true' },
 
