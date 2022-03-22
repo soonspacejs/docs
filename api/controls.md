@@ -12,7 +12,7 @@
 
 ### 样例:
 
-<Docs-Iframe src="camera/controlsOptions.html" />
+<Docs-Iframe src="controls/setOptions.html" />
 
 ### 定义:
 ```ts
@@ -95,7 +95,7 @@ ssp.setControlsOptions({
       { prop: 'enablePanAxisY', desc: '开启空间 Y轴 移动', type: 'boolean', require: false, default: 'true' },
       { prop: 'enablePanAxisZ', desc: '开启空间 Z轴 移动', type: 'boolean', require: false, default: 'true' },
       { prop: 'enableAutoRotate', desc: '开启自动旋转', type: 'boolean', require: false, default: 'true' },
-      { prop: 'panSpeed', desc: '移动速度', type: 'number', require: false, default: '1' },
+      { prop: 'panSpeed', desc: '移动速度', type: 'number', require: false, default: '2' },
       { prop: 'autoRotateSpeed', desc: '自动旋转速度', type: 'number', require: false, default: 1 },
       { prop: 'autoRotateClockwise', desc: '自动旋转顺时针', type: 'boolean', require: false, default: 'true' },
 
