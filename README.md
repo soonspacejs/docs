@@ -24,7 +24,7 @@ yarn add soonspacejs -S
 
 ### CDN
 
-变量引入方式：`SoonSpace`
+UMD 模块：`SoonSpace`
 
 [https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)
 
