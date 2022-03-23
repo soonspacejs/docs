@@ -93,11 +93,15 @@ if (isUpdated) {
 ### 定义：
 
 ```ts
-interface DirectionalLightOptions extends BaseLightInfo {
+interface ShadowOptions {
+  openShadow?: boolean;
+  shadowAutoUpdate?: boolean;
+  mapSize?: number;
+}
+
+interface DirectionalLightOptions extends BaseLightInfo, ShadowOptions {
   position?: Position;
   target?: Position;
-  openShadow?: boolean;
-  mapSize?: number;
 }
 
 function createDirectionalLight(
@@ -133,9 +137,16 @@ ssp.createDirectionalLight({
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 1000, z: 0 }', link: '../guide/types.html#icolor'  },
       { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: -100, z: 0 }', link: '../guide/types.html#icolor'  },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
+      { prop: 'shadowAutoUpdate', desc: '阴影是否自动更新，如果为 `false` 需要调用 `updateAllShadow` 来更新阴影', type: 'boolean', require: false, default: 'false'},
       { prop: 'mapSize', desc: '阴影的贴图区域大小。值越大，阴影质量越好。但也会增加性能损耗', type: 'number', require: false, default: '4096'},
     ]"
 />
+
+::: tip 提示
+开启光源的阴影时，默认是静态的阴影。需要手动调用 [updateAllShadow](#updateallshadow) 来更新阴影。
+
+按需生成阴影，这样可以大大提升开启阴影时的场景性能。
+:::
 
 ## setDirectionalLight
 
@@ -239,11 +250,10 @@ if (isUpdated) {
 ### 定义：
 
 ```ts
-interface SpotLightOptions extends BaseLightInfo {
+interface SpotLightOptions extends BaseLightInfo, ShadowOptions {
   angle?: number;
   position?: Position;
   target?: Position;
-  openShadow?: boolean;
 }
 
 function createSpotLight(options: SpotLightOptions): THREE.SpotLight;
@@ -278,6 +288,8 @@ ssp.createSpotLight({
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
+      { prop: 'shadowAutoUpdate', desc: '阴影是否自动更新，如果为 `false` 需要调用 `updateAllShadow` 来更新阴影', type: 'boolean', require: false, default: 'false'},
+      { prop: 'mapSize', desc: '阴影的贴图区域大小。值越大，阴影质量越好。但也会增加性能损耗', type: 'number', require: false, default: '4096'},
     ]"
 />
 
@@ -311,8 +323,9 @@ if (isUpdated) {
 ### 定义：
 
 ```ts
-interface PointLightOptions extends BaseLightInfo {
+interface PointLightOptions extends BaseLightInfo, ShadowOptions {
   position?: Position;
+  distance?: number;
 }
 
 function createPointLight(options: PointLightOptions): THREE.PointLight;
@@ -341,6 +354,10 @@ ssp.createPointLight({ id: 'pointLight', name: 'pointLight' });
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'distance', desc: '光照范围', type: 'number', require: false, default: '5000' },
+      { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
+      { prop: 'shadowAutoUpdate', desc: '阴影是否自动更新，如果为 `false` 需要调用 `updateAllShadow` 来更新阴影', type: 'boolean', require: false, default: 'false'},
+      { prop: 'mapSize', desc: '阴影的贴图区域大小。值越大，阴影质量越好。但也会增加性能损耗', type: 'number', require: false, default: '4096'},
     ]"
 />
 
@@ -539,4 +556,20 @@ function hideAllLight(): void;
 
 ```js
 ssp.hideAllLight();
+```
+
+## updateAllShadow
+
+更新所有光源的阴影
+
+### 定义：
+
+```ts
+function updateAllShadow(): void;
+```
+
+### 用法：
+
+```js
+ssp.updateAllShadow();
 ```
