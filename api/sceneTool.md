@@ -136,6 +136,95 @@ ssp.setSkyBackground(
   右（right）、左（left）、上（top）、下（bottom）、前（front）、后（back）。
   :::
 
+## setColorSpace
+
+设置场景的色彩空间
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/colorSpace.html" />
+
+### 定义：
+
+```ts
+type ColorSpace = 'Linear' | 'sRGB'
+
+setColorSpace(colorSpace: ColorSpace): void
+```
+
+### 用法：
+
+```js
+ssp.setColorSpace('sRGB');
+```
+
+#### colorSpace
+
+- **类型:** `ColorSpace`
+- **描述:** 色彩值
+- **必填:** <Base-RequireIcon :isRequire="false" />，默认值为 `Linear`
+
+## setSky
+
+设置天空
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/sky.html" />
+
+### 定义：
+
+```ts
+interface SkyOptions {
+  enable?: boolean;
+  position?: Position;
+  scalar?: number;
+  turbidity?: number;
+  rayleigh?: number;
+  elevation?: number;
+  azimuth?: number;
+  exposure?: number;
+}
+
+function setSky(options?: SkyOptions): Sky | undefined;
+```
+
+### 用法：
+
+```js
+ssp.setSky({
+  enable: true,
+  position: { x: 0, y: 0, z: 0 },
+  scalar: 450000,
+  turbidity: 10,
+  rayleigh: 3,
+  elevation: 2,
+  azimuth: 180,
+  exposure: 0.5,
+});
+```
+
+#### options
+
+- **类型:** `SkyOptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### SkyOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'enable', desc: '是否开启天空', type: 'boolean', require: false, default: 'true' },
+      { prop: 'position', desc: '天空位置', type: 'Position', require: false, default: { x: 0, y: 0, z: 0 }, link: '../guide/types.html#position' },
+      { prop: 'scalar', desc: '天空范围', type: 'number', require: false, default: 450000 },
+      { prop: 'turbidity', desc: '太阳浑浊度', type: 'number', require: false, default: 10 },
+      { prop: 'rayleigh', desc: '太阳雷利值', type: 'number', require: false, default: 3 },
+      { prop: 'elevation', desc: '太阳海拔', type: 'number', require: false, default: 2 },
+      { prop: 'azimuth', desc: '太阳方位', type: 'number', require: false, default: 180 },
+      { prop: 'exposure', desc: '曝光度', type: 'number', require: false, default: 0.5 },
+    ]"
+/>
+
 ## setEnvironment
 
 设置场景环境反射（用于 GLTF、SBMX 模型）
