@@ -6,6 +6,7 @@
 const ssp = new SoonSpace({
   el: '#view',
   options: {
+    showStats: true,
     showGrid: true,
     showInfo: true,
     background: {
@@ -23,6 +24,13 @@ const ssp = new SoonSpace({
   events: {},
 });
 ```
+
+## showStats
+
+是否在左上角显示场景渲染帧率
+
+- **类型**: boolean
+- **默认值**: `false`
 
 <!-- showGrid -->
 

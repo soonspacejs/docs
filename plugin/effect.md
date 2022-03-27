@@ -44,6 +44,8 @@ const effectPlugin = ssp.registerPlugin(EffectPlugin, 'effectPlugin');
 #### 定义
 
 ```ts
+type PluginObjectInfo = BaseObject3DInfo;
+
 interface FlameInfo extends PluginObjectInfo {
   magnitude?: number;
   gain?: number;
@@ -74,7 +76,7 @@ effectPlugin.createFlame({
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 - **类型:** `FlameInfo`
 
-#### FlameInfo
+##### FlameInfo
 
 <Docs-Table 
     :data="[
@@ -90,21 +92,7 @@ effectPlugin.createFlame({
     ]"
 />
 
-### removeFlame
-
-删除火焰
-
-#### 定义
-
-```ts
-function removeFlame(id: PluginObjectInfo['id']): boolean;
-```
-
-#### 用法
-
-```js
-effectPlugin.removeFlame('testFlame');
-```
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
 
 ### createSmoke
 
@@ -148,7 +136,7 @@ effectPlugin.createSmoke({
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 - **类型:** `SmokeInfo`
 
-#### SmokeInfo
+##### SmokeInfo
 
 <Docs-Table 
     :data="[
@@ -176,18 +164,76 @@ effectPlugin.createSmoke({
     ]"
 />
 
-### removeSmoke
+### createLensFlare
 
-删除烟雾
+创建镜头光晕
+
+#### 版本：
+
+`v2.3.17`
 
 #### 定义
 
 ```ts
-function removeSmoke(id: PluginObjectInfo['id']): boolean;
+interface LensFlareInfo extends PluginObjectInfo {
+  imgUrl?: string;
+  color?: IColor;
+  size?: number;
+}
+
+function createLensFlare(param: LensFlareInfo): PluginObject;
 ```
 
 #### 用法
 
 ```js
-effectPlugin.removeSmoke('testSmoke');
+effectPlugin.createLensFlare({
+  id: 'testFlare',
+  position: {
+    x: -500,
+    y: 800,
+    z: 0,
+  },
+  size: 200,
+});
+```
+
+#### 参数
+
+##### param
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `LensFlareInfo`
+
+###### LensFlareInfo
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'imgUrl', desc: '光晕图片', type: 'string', require: false, default: '内置图片'
+      },
+      {
+        prop: 'color', desc: '光晕颜色', type: 'IColor', link: '../guide/types.html#icolor' ,require: false, default: '0xffffff'
+      },
+      {
+        prop: 'size', desc: '光晕的大小', type: 'number', require: false, default: 700
+      },
+    ]"
+/>
+
+### removeEffect
+
+删除效果
+
+#### 定义
+
+```ts
+function removeEffect(id: PluginObjectInfo['id']): boolean;
+```
+
+#### 用法
+
+```js
+effectPlugin.removeEffect('test');
 ```

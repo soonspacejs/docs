@@ -140,6 +140,10 @@ ssp.setSkyBackground(
 
 设置场景的色彩空间
 
+### 版本：
+
+`v2.3.14`
+
 ### 样例：
 
 <Docs-Iframe src="sceneTool/colorSpace.html" />
@@ -167,6 +171,10 @@ ssp.setColorSpace('sRGB');
 ## setSky
 
 设置天空
+
+### 版本：
+
+`v2.3.14`
 
 ### 样例：
 
@@ -225,9 +233,96 @@ ssp.setSky({
     ]"
 />
 
+## setBloom
+
+设置场景泛光效果
+
+### 版本：
+
+`v2.3.17`
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/bloom.html" />
+
+### 定义：
+
+```ts
+interface BloomOptions {
+  enable?: boolean;
+  strength?: number;
+  radius?: number;
+  threshold?: number;
+}
+
+function setBloom(options?: BloomOptions): void;
+```
+
+### 用法：
+
+```js
+ssp.setBloom({
+  enable: true,
+  strength: 1.2,
+  threshold: 0.9,
+  radius: 0.1,
+});
+```
+
+### 参数:
+
+#### options
+
+- **类型:** `BloomOptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### BloomOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'enable', desc: '是否开启泛光', type: 'boolean', require: false, default: 'true' },
+      { prop: 'strength', desc: '泛光强度', type: 'number', require: false, default: 1.5 },
+      { prop: 'threshold', desc: '泛光阈值', type: 'number', require: false, default: 0.5 },
+      { prop: 'radius', desc: '泛光半径', type: 'number', require: false, default: 0.1 },
+    ]"
+/>
+
+## setSobel
+
+场景边缘检测
+
+### 版本：
+
+`v2.3.17`
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/sobel.html" />
+
+### 定义：
+
+```ts
+interface SobelOptions {
+  enable?: boolean;
+}
+
+function setSobel(options?: SobelOptions): void;
+```
+
+### 用法：
+
+```js
+ssp.setSobel({ enable: true });
+```
+
 ## setEnvironment
 
 设置场景环境反射（用于 GLTF、SBMX 模型）
+
+### 版本：
+
+`v2.3.12`
 
 ### 样例：
 
