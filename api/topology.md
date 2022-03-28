@@ -134,11 +134,11 @@ const topology = ssp.createTopology({
       { prop: 'targetNodeId', desc: '目标 node ID', type: 'string | number', require: true, default: '' },
       { prop: 'linkInfo', desc: '路径信息', type: '{ id: string, name: string }', require: true, default: '' },
       { prop: 'passable', desc: '路径通行许可', type: '0 | 1 | 2 | 3', require: true, default: '' },
-      { prop: 'length', desc: '起始点到目标点距离', type: 'number', require: false, default: '' },
+      { prop: 'length', desc: '起始点到目标点距离', type: 'number', require: false, default: '' },
     ]"
 />
 
-`passable` 的枚举含义分别  为：双向通行（0）｜ 单向正向通行（1）｜ 单向方向通向（2）｜ 禁止通行（3）
+`passable` 的枚举含义分别为：双向通行（0）｜ 单向正向通行（1）｜ 单向反向通行（2）｜ 禁止通行（3）
 
 ## getShortestPath
 
