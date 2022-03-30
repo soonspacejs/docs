@@ -6,7 +6,7 @@
 
 ### 样例：
 
-<Docs-Iframe src="poi/createPoiNode.html" />
+<Docs-Iframe src="poiNode/createPoiNode.html" />
 
 ### 定义：
 
