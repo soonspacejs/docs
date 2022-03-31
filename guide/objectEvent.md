@@ -2,13 +2,15 @@
 
 `v2.3.18`
 
-支持自身绑定事件的对象有 `Sbm`、`Model`、`Poi`，除了在创建时通过传参的方式绑定对应事件。
+支持了鼠标事件的对象有 `Sbm`、`Model`、`Poi`，除了在创建对象时通过传参的方式绑定对应事件。
 
 我们现在支持了使用 [EventDispatcher](https://github.com/mrdoob/eventdispatcher.js) 的方式来绑定和触发事件。
 
-使用这种方式可以解决之前单个对象无法绑定多个事件监听器的问题，并且使用方式也更趋近与原生 `DOM` 事件的使用方式。
+使用这种方式解决了之前单个对象无法绑定多个事件监听器的问题，并且使用方式也更趋近与原生 `DOM` 事件的使用方式。
 
-`EventDispatcher` 方式支持的事件有 `click`、`rightClick`、`dblClick`、
+`EventDispatcher` 方式支持的对象事件有 `click`、`rightClick`、`dblClick`。
+
+当然你可以定义自己的事件，然后手动调用 [dispatchEvent](#dispatchevent)。
 
 ### 样例
 
@@ -50,7 +52,7 @@ sbm.removeEventListener('click', sbmClickHandle);
 
 ## dispatchEvent
 
-派发事件
+派发事件，由内部触发。
 
 ### 用法：
 
