@@ -106,6 +106,7 @@ module.exports = {
             'types',
             'config',
             'event',
+            'objectEvent',
             {
               title: '空间对象',
               children: [

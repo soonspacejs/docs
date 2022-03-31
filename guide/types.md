@@ -191,3 +191,23 @@ interface BaseSelectOptions {
   opacity?: number;
 }
 ```
+
+## Interpolate
+
+线性插值
+
+```ts
+interface Interpolate {
+  t: number;
+}
+```
+
+## ObjectEventsListener
+
+`EventDispatcher` 方式支持的事件类型
+
+```ts
+interface ObjectEventsListener {
+  type: 'click' | 'rightClick' | 'dblClick';
+}
+```
