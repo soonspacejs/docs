@@ -173,10 +173,10 @@ sbm.setMove(
 function setRotate(
   rotation: Rotation,
   options?: AnimationOptions,
-  onUpdate?: (source: Rotation, tween: Tween<Rotation>) => void,
-  onStart?: (tween: Tween<Rotation>) => void
+  onUpdate?: (source: Rotation, tween: Tween<Interpolate>) => void,
+  onStart?: (tween: Tween<Interpolate>) => void
 ): Promise<void> {
-  return Animation<Euler>(this.rotation, rotation, options, onUpdate, onStart);
+  return Animation<Interpolate>({ t: 0 }, { t: 1 }, options, onUpdate, onStart);
 }
 ```
 
