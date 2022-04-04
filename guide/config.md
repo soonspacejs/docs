@@ -48,7 +48,14 @@ const ssp = new SoonSpace({
 是否显示左下角的加载数量信息。
 
 - **类型**: boolean
-- **默认值**: `true`
+- **默认值**: `false`
+
+## showViewHelper
+
+是否显示右下角的视图辅助器。
+
+- **类型**: boolean
+- **默认值**: `false`
 
 <!-- background -->
 

@@ -6,15 +6,22 @@
 
 ### 样例：
 
-<Docs-Iframe src="canvas3D/pointLinePolygon.html" />
+<Docs-Iframe src="canvas3D/gradient.html" />
 
 ### 定义：
 
 ```ts
+interface GradientTextureOptions {
+  colors: IColor[];
+  stops?: number[];
+  size?: number;
+}
+
 interface PointInfo extends BaseMeshInfo {
   radius?: number;
   color?: IColor;
   opacity?: number;
+  gradient?: GradientTextureOptions;
 }
 
 interface LineInfo extends BaseMeshInfo {
@@ -22,6 +29,7 @@ interface LineInfo extends BaseMeshInfo {
   width?: number;
   color?: IColor;
   opacity?: number;
+  gradient?: GradientTextureOptions;
 }
 
 interface PolygonInfo extends BaseMeshInfo {
@@ -29,12 +37,14 @@ interface PolygonInfo extends BaseMeshInfo {
   points: PlaneIVector2[];
   color?: IColor;
   opacity?: number;
+  gradient?: GradientTextureOptions;
 }
 
 interface CircleInfo extends BaseMeshInfo {
   radius?: number;
   color?: IColor;
   opacity?: number;
+  gradient?: GradientTextureOptions;
 }
 
 interface Canvas3DInfo extends BaseObject3DInfo {
@@ -88,7 +98,7 @@ ssp
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'points', desc: '点信息集合', type: 'PointInfo[]', require: false, default: '[]', link: '#pointinfo' },
       { prop: 'lines', desc: '线信息集合', type: 'LineInfo[]', require: false, default: '[]', link: '#lineinfo' },
-      { prop: 'polygons', desc: '面信息集合', type: 'Polygons[]', require: false, default: '[]', link: '#faceinfo' },
+      { prop: 'polygons', desc: '面信息集合', type: 'Polygons[]', require: false, default: '[]', link: '#polygoninfo' },
       { prop: 'circles', desc: '圆信息集合', type: 'CircleInfo[]', require: false, default: '[]', link: '#circleinfo' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
@@ -104,7 +114,8 @@ ssp
       { prop: 'id', desc: '点唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '点名称', type: 'string', require: false, default: '' },
       { prop: 'radius', desc: '点半径', type: 'number', require: false, default: '10' },
-      { prop: 'color', desc: '点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '点颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'gradient', desc: '点颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '点不透明度', type: 'number', require: false, default: '1' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
@@ -122,7 +133,8 @@ ssp
       { prop: 'name', desc: '线名称', type: 'string', require: false, default: '' },
       { prop: 'points', desc: '组成面的点坐标集合', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
       { prop: 'width', desc: '线宽', type: 'number', require: false, default: '20' },
-      { prop: 'color', desc: '线颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '线颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'gradient', desc: '线颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '线不透明度', type: 'number', require: false, default: '1' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
@@ -140,7 +152,8 @@ ssp
       { prop: 'name', desc: '面名称', type: 'string', require: false, default: '' },
       { prop: 'yHeight', desc: '面空间高度', type: 'number', require: true, default: '' },
       { prop: 'points', desc: '组成面的点坐标集合', type: 'PlaneIVector2[]', require: true, default: '', link: '../guide/types.html#planeivector2' },
-      { prop: 'color', desc: '面颜色', type: 'IColor', require: false, default: '0xffff00', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '面颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'gradient', desc: '面颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '面不透明度', type: 'number', require: false, default: '1' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
@@ -157,13 +170,24 @@ ssp
       { prop: 'id', desc: '圆唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '圆名称', type: 'string', require: false, default: '' },
       { prop: 'radius', desc: '圆半径', type: 'number', require: false, default: '10' },
-      { prop: 'color', desc: '圆颜色', type: 'IColor', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '圆颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'gradient', desc: '圆颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '圆不透明度', type: 'number', require: false, default: '1' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
       { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
+    ]"
+/>
+
+##### GradientTextureOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'color', desc: '渐变色列表', type: 'IColor[]', require: true, default: '', link: '../guide/types.html#icolor' },
+      { prop: 'stops', desc: '渐变色偏移，与 color 对应，值为0 ~ 1之间', type: 'number[]', require: false, default: '根据 color 均匀分布' },
+      { prop: 'size', desc: '渐变贴图的大小', type: 'numbert', require: false, default: '1024' },
     ]"
 />
 
