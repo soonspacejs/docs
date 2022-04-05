@@ -9,6 +9,7 @@ const ssp = new SoonSpace({
     showStats: true,
     showGrid: true,
     showInfo: true,
+    showViewHelper: true,
     background: {
       color: 0x333300,
       // alpha: false,
