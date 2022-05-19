@@ -17,6 +17,7 @@ const ssp = new SoonSpace({
       // skyBox: null
     },
     hoverEnabled: false,
+    levelEnabled: false,
     closeInfoLog: false,
     closeWarnLog: false,
     fog: null,
@@ -118,6 +119,16 @@ const ssp = new SoonSpace({
   ::: tip 提示
   不开启时 `modelHover` 和 `poiHover` 不会触发。
   提供一个 `API` [setHoverEnabled](../api/sceneTool.html#sethoverenabled) 动态更改该配置。
+  :::
+
+## levelEnabled
+
+是否开启 level 检查
+
+- **类型**: boolean
+- **默认值**: `false`
+  ::: tip 提示
+  不开启时，场景对象的 level 配置无效
   :::
 
 ## closeInfoLog
