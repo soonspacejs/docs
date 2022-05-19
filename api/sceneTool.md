@@ -159,14 +159,14 @@ setColorSpace(colorSpace: ColorSpace): void
 ### 用法：
 
 ```js
-ssp.setColorSpace('sRGB');
+ssp.setColorSpace('Linear');
 ```
 
 #### colorSpace
 
 - **类型:** `ColorSpace`
 - **描述:** 色彩值
-- **必填:** <Base-RequireIcon :isRequire="false" />，默认值为 `Linear`
+- **必填:** <Base-RequireIcon :isRequire="false" />，默认值为 `sRGB`
 
 ## setSky
 
