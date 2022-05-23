@@ -185,7 +185,7 @@ ssp
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '渐变色列表', type: 'IColor[]', require: true, default: '', link: '../guide/types.html#icolor' },
+      { prop: 'colors', desc: '渐变色列表', type: 'IColor[]', require: true, default: '', link: '../guide/types.html#icolor' },
       { prop: 'stops', desc: '渐变色偏移，与 color 对应，值为0 ~ 1之间', type: 'number[]', require: false, default: '根据 color 均匀分布' },
       { prop: 'size', desc: '渐变贴图的大小', type: 'numbert', require: false, default: '1024' },
     ]"
