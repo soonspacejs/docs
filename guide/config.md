@@ -128,7 +128,7 @@ const ssp = new SoonSpace({
 - **类型**: boolean
 - **默认值**: `false`
   ::: tip 提示
-  不开启时，场景对象的 level 配置无效，show 方法和 hide 方法不会更新场景。
+  不开启时，场景对象的 level 配置无效
   
   此时可以减少场景多余的计算。
   :::
