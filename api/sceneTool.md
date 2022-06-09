@@ -184,7 +184,7 @@ ssp.setColorSpace('Linear');
 
 ```ts
 interface SkyOptions {
-  enable?: boolean;
+  enabled?: boolean;
   position?: Position;
   scalar?: number;
   turbidity?: number;
@@ -201,7 +201,7 @@ function setSky(options?: SkyOptions): Sky | undefined;
 
 ```js
 ssp.setSky({
-  enable: true,
+  enabled: true,
   position: { x: 0, y: 0, z: 0 },
   scalar: 450000,
   turbidity: 10,
@@ -222,7 +222,7 @@ ssp.setSky({
 
 <Docs-Table
     :data="[
-      { prop: 'enable', desc: '是否开启天空', type: 'boolean', require: false, default: 'true' },
+      { prop: 'enabled', desc: '是否开启天空', type: 'boolean', require: false, default: 'true' },
       { prop: 'position', desc: '天空位置', type: 'Position', require: false, default: { x: 0, y: 0, z: 0 }, link: '../guide/types.html#position' },
       { prop: 'scalar', desc: '天空范围', type: 'number', require: false, default: 450000 },
       { prop: 'turbidity', desc: '太阳浑浊度', type: 'number', require: false, default: 10 },
