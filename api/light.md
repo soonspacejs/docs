@@ -1,9 +1,7 @@
 # 灯光
 
 ::: tip 提示
-`soonspacejs` 内部会在初始化时分别创建一个环境光、平行光、半球光。
-
-`id` 依次是 `defaultAmbientLight`、`defaultDirectionalLight`、`defaultHemisphereLight`。
+v2.4.0 之后内部已经不在创建额外的灯光，控制场景的明亮度推荐使用 `setToneMapping` 控制
 :::
 
 ### 样例：
