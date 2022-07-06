@@ -136,6 +136,7 @@ module.exports = {
               title: '基础',
               collapsable: false,
               children: [
+                '/api/object',
                 '/api/sbm',
                 '/api/model',
                 '/api/poi',

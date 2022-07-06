@@ -5,6 +5,7 @@
 当然如果你不掌握 `TypeScript` 也不会影响阅读文档，`参数：`部分会详细说明每一个字段。
 
 ### 基础
+  - [通用对象](./object.html)
   - [Sbm 模型](./sbm.html)
   - [通用模型](./model.html)
   - [Poi 对象](./poi.html)
