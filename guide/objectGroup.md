@@ -10,12 +10,12 @@
 
 ## createGroup
 
-提前创建一个空组。
+提前创建一个空 `group`。
 
 ### 定义：
 
 ```ts
-type GroupInfo = BaseObject3DInfo
+type GroupInfo = BaseObject3DInfo;
 
 function createGroup(groupInfo: GroupInfo): Group;
 ```
@@ -37,10 +37,18 @@ ssp.createGroup({
 - **类型:** [GroupInfo](./types.html#baseobject3dinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## getGroupById
-
-## getGroupByName
-
 ## getAllGroup
 
-## removeGroupById
+获取所有 `group`
+
+### 定义：
+
+```ts
+function getAllGroup(): Group[];
+```
+
+### 用法：
+
+```js
+const allGroups = ssp.getAllGroup();
+```
