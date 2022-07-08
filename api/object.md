@@ -4,6 +4,8 @@
 
 ## getObjectById
 
+通过 `id` 查找
+
 ### 定义：
 
 ```ts
