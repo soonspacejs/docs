@@ -1,7 +1,7 @@
 # 通用模型
 
 ::: tip 支持格式
-支持的格式有 `gltf (glb)、fbx`
+支持的格式有 `gltf (glb)、fbx、sbmx`
 :::
 
 ## loadModel
@@ -141,7 +141,7 @@ const clonedModel = await ssp.cloneModel(model, {
 - **类型:** `Model`
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
-## getModelById
+## getModelById <Base-Deprecated />
 
 通过 `id` 查找
 
@@ -157,7 +157,7 @@ function getModelById(id: ModelInfo['id']): Model | null;
 const model = ssp.getModelById('xxx');
 ```
 
-## getModelByName
+## getModelByName <Base-Deprecated />
 
 通过 `name` 查找
 
