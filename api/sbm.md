@@ -204,7 +204,7 @@ const clonedSbm = await ssp.cloneSbm(sbm, {
 - **类型:** `Sbm`
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
-## getSbmById
+## getSbmById <Base-Deprecated />
 
 通过 `id` 查找
 
@@ -220,7 +220,11 @@ function getSbmById(id: SbmInfo['id']): Sbm | null;
 const sbm = ssp.getSbmById('xxx');
 ```
 
-## getSbmByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getSbmByName <Base-Deprecated />
 
 通过 `name` 查找
 
@@ -235,6 +239,10 @@ function getSbmByName(name: string): Sbm[];
 ```js
 const sbmList = ssp.getSbmByName('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
 
 ## getAllSbm
 
@@ -252,7 +260,7 @@ function getAllSbm(): Sbm[];
 const allSbmList = ssp.getAllSbm();
 ```
 
-## getSbmByUserDataProperty
+## getSbmByUserDataProperty <Base-Deprecated />
 
 通过 `userData` 属性查找
 
@@ -303,7 +311,11 @@ const sbmList = ssp.getSbmByUserDataProperty(
 
 :::
 
-## removeSbmById
+:::warning 弃用警告
+请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+:::
+
+## removeSbmById <Base-Deprecated />
 
 通过 `id` 移除
 
@@ -318,6 +330,10 @@ function removeSbmById(id: SbmInfo['id']): boolean;
 ```js
 ssp.removeSbmById('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## loadSbmToGroup
 
@@ -411,7 +427,7 @@ ssp
     ]"
 />
 
-## createGroupForSbm
+## createGroupForSbm <Base-Deprecated />
 
 为 `sbm` 提前创建一个空组。
 ::: tip 使用场景
@@ -441,6 +457,10 @@ ssp.createGroupForSbm({
 - **描述:** 实例组对象所需信息
 - **类型:** [GroupInfo](#groupunfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+:::warning 弃用警告
+请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+:::
 
 ## addSbmForGroup
 
@@ -531,7 +551,7 @@ const group = await ssp.createSbmGroupFromXml(
 - **类型:** `string`
 - **必填:** <Base-RequireIcon />
 
-## getSbmGroupById
+## getSbmGroupById <Base-Deprecated />
 
 通过 `id` 查找 `sbm` 组
 
@@ -547,7 +567,11 @@ function getSbmGroupById(id: GroupInfo['id']): Group | null;
 const group = ssp.getSbmGroupById('firstSbmGroup');
 ```
 
-## getSbmGroupByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getSbmGroupByName <Base-Deprecated />
 
 通过 `name` 查找 `sbm` 组
 
@@ -563,7 +587,11 @@ function getSbmGroupByName(name: string): Group[];
 const groupList = ssp.getSbmGroupByName('name_firstSbmGroup');
 ```
 
-## getAllSbmGroup
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
+
+## getAllSbmGroup <Base-Deprecated />
 
 获取所有 `Sbm` 对象组
 
@@ -579,7 +607,11 @@ function getAllSbmGroup(): Group[];
 const allSbmGroupList = ssp.getAllSbmGroup();
 ```
 
-## removeSbmGroupById
+:::warning 弃用警告
+请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+:::
+
+## removeSbmGroupById <Base-Deprecated />
 
 通过 `id` 移除 `sbm` 组
 
@@ -594,6 +626,10 @@ function removeSbmGroupById(id: GroupInfo['id']): boolean;
 ```js
 const isRemoveSuccess = ssp.removeSbmGroupById('firstSbmGroup');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## clearSbm
 
