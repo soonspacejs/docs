@@ -157,6 +157,10 @@ function getModelById(id: ModelInfo['id']): Model | null;
 const model = ssp.getModelById('xxx');
 ```
 
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
 ## getModelByName <Base-Deprecated />
 
 通过 `name` 查找
@@ -172,6 +176,10 @@ function getModelByName(name: string): Model[];
 ```js
 const modelList = ssp.getModelByName('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
 
 ## getAllModel
 
@@ -189,7 +197,7 @@ function getAllModel(): Model[];
 const allModelList = ssp.getAllModel();
 ```
 
-## getModelByUserDataProperty
+## getModelByUserDataProperty <Base-Deprecated />
 
 通过 `userData` 属性查找
 
@@ -240,7 +248,11 @@ const modelList = ssp.getModelByUserDataProperty(
 
 :::
 
-## removeModelById
+:::warning 弃用警告
+请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+:::
+
+## removeModelById <Base-Deprecated />
 
 通过 `id` 移除
 
@@ -255,6 +267,10 @@ function removeModelById(id: ModelInfo['id']): boolean;
 ```js
 ssp.removeModelById('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## loadModelToGroup
 
@@ -300,7 +316,7 @@ ssp
 - **类型:** [modelinfo](#modelinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## createGroupForModel
+## createGroupForModel <Base-Deprecated />
 
 为 `model` 提前创建一个空组。
 ::: tip 使用场景
@@ -330,6 +346,10 @@ ssp.createGroupForModel({
 - **描述:** 实例组对象所需信息
 - **类型:** [GroupInfo](./sbm.html#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+:::warning 弃用警告
+请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+:::
 
 ## addModelForGroup
 
@@ -373,7 +393,7 @@ ssp
 - **类型:** [modelinfo](#modelinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## getModelGroupById
+## getModelGroupById <Base-Deprecated />
 
 通过 `id` 查找 `model` 组
 
@@ -389,7 +409,11 @@ function getModelGroupById(id: GroupInfo['id']): Group | null;
 const group = ssp.getModelGroupById('firstModelGroup');
 ```
 
-## getModelGroupByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getModelGroupByName <Base-Deprecated />
 
 通过 `name` 查找 `model` 组
 
@@ -405,7 +429,11 @@ function getModelGroupByName(name: string): Group[];
 const groupList = ssp.getModelGroupByName('name_firstModelGroup');
 ```
 
-## getAllModelGroup
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
+
+## getAllModelGroup <Base-Deprecated />
 
 获取所有 `Model` 对象组
 
@@ -421,7 +449,11 @@ function getAllModelGroup(): Group[];
 const allModelGroupList = ssp.getAllModelGroup();
 ```
 
-## removeModelGroupById
+:::warning 弃用警告
+请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+:::
+
+## removeModelGroupById <Base-Deprecated />
 
 通过 `id` 移除 `model` 组
 
@@ -436,6 +468,10 @@ function removeModelGroupById(id: GroupInfo['id']): boolean;
 ```js
 const isRemoveSuccess = ssp.removeModelGroupById('firstModelGroup');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## clearModel
 
