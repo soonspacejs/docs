@@ -129,7 +129,7 @@ const ssp = new SoonSpace({
 - **默认值**: `false`
   ::: tip 提示
   不开启时，场景对象的 level 配置无效
-  
+
   此时可以减少场景多余的计算。
   :::
 
@@ -150,12 +150,11 @@ const ssp = new SoonSpace({
 - **默认值**: `false`
   ::: warning 注意
   在开发维护过程中发现大量来至 `threejs` 层的警告日志占用浏览器内存所导致卡顿，但未找到其提供的关闭配置，所以 `soonspacejs` 添加该配置项来默认用一个空函数赋值到 `window.console.warn` 来解决该问题。
+  :::
 
 ```js
 if (option.closeWarnLog) window.console.warn = function() {};
 ```
-
-:::
 
 <!-- useIndexedDB -->
 
