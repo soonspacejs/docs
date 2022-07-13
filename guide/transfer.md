@@ -35,7 +35,7 @@ new SoonSpace({
 ```
 2. 不再兼容 `1.x` 早期版本的 `backgroundColor`、`backgroundAlpha` 字段，使用 [background.color、 background.alpha](./config.html#background) 替代。
 
-### Api
+### API
 1. `Poi、PoiNode` 所有的 `create` 类方法，参数 `info.scale` 由 `{ width: 1, height: 1 }` 改为 `{ x: 1, y: i, z: 1 }`。
 ```js {4,10}
 // 1.x
