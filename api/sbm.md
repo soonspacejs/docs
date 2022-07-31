@@ -2,7 +2,7 @@
 
 ## loadSbm
 
-加载 `sbm` 模型。
+加载 `Sbm` 模型。
 
 ### 样例：
 
@@ -337,7 +337,7 @@ ssp.removeSbmById('xxx');
 
 ## loadSbmToGroup
 
-加载 `sbm` 到一个组内。
+加载 `Sbm` 到一个组内。
 
 ### 定义：
 
@@ -429,7 +429,7 @@ ssp
 
 ## createGroupForSbm <Base-Deprecated />
 
-为 `sbm` 提前创建一个空组。
+为 `Sbm` 提前创建一个空组。
 ::: tip 使用场景
 与 `loadSbmToGroup` 不同，有些时候可能你还没有具体的 `sbmInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addSbmForGroup](#addsbmforgroup) 插入。
 :::
@@ -464,7 +464,7 @@ ssp.createGroupForSbm({
 
 ## addSbmForGroup
 
-向一个已经存在的组内添加 `sbm` 对象。
+向一个已经存在的组内添加 `Sbm` 对象。
 
 ### 定义：
 
@@ -553,7 +553,7 @@ const group = await ssp.createSbmGroupFromXml(
 
 ## getSbmGroupById <Base-Deprecated />
 
-通过 `id` 查找 `sbm` 组
+通过 `id` 查找 `Sbm` 组
 
 ### 定义：
 
@@ -573,7 +573,7 @@ const group = ssp.getSbmGroupById('firstSbmGroup');
 
 ## getSbmGroupByName <Base-Deprecated />
 
-通过 `name` 查找 `sbm` 组
+通过 `name` 查找 `Sbm` 组
 
 ### 定义：
 
@@ -613,7 +613,7 @@ const allSbmGroupList = ssp.getAllSbmGroup();
 
 ## removeSbmGroupById <Base-Deprecated />
 
-通过 `id` 移除 `sbm` 组
+通过 `id` 移除 `Sbm` 组
 
 ### 定义：
 
@@ -633,7 +633,7 @@ const isRemoveSuccess = ssp.removeSbmGroupById('firstSbmGroup');
 
 ## clearSbm
 
-清除当前场景内所有 `sbm` 对象。
+清除当前场景内所有 `Sbm` 对象。
 
 ### 定义：
 
@@ -649,7 +649,7 @@ ssp.clearSbm();
 
 ## showAllSbm
 
-显示当前场景内所有 `sbm` 对象。
+显示当前场景内所有 `Sbm` 对象。
 
 ### 定义：
 
@@ -665,7 +665,7 @@ ssp.showAllSbm();
 
 ## hideAllSbm
 
-隐藏当前场景内所有 `sbm` 对象。
+隐藏当前场景内所有 `Sbm` 对象。
 
 ### 定义：
 

@@ -52,3 +52,35 @@ function getAllGroup(): Group[];
 ```js
 const allGroups = ssp.getAllGroup();
 ```
+
+## showAllGroup
+
+显示当前场景内所有 `Group` 对象。
+
+### 定义：
+
+```ts
+function showAllGroup(): void;
+```
+
+### 用法：
+
+```js
+ssp.showAllGroup();
+```
+
+## hideAllGroup
+
+隐藏当前场景内所有 `Group` 对象。
+
+### 定义：
+
+```ts
+function hideAllGroup(): void;
+```
+
+### 用法：
+
+```js
+ssp.hideAllGroup();
+```
