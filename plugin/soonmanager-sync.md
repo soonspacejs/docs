@@ -68,15 +68,15 @@ soonmanagerSync.setBaseUrl('http://xxx.com/back-resource/');
 ```
 
 ::: warning 注意
-必须要先调用 `setBaseUrl`, 才能加载效果、模型资源...
+必须要先调用 `setBaseUrl`， 才能加载效果、模型资源等
 
-由于内部将 `url` 与 资源路径进行拼接获取资源, 所以参数的结尾需要加上斜线防止链接出错.
+由于内部将 `url` 与 资源路径进行拼接获取资源, 所以参数的结尾需要加上斜线防止链接出错
 :::
 
 ### setGlobalSetting <Base-Deprecated />
 
 ::: warning 注意
-`v2.4.0` 之后已经不建议使用该方法, 请根据业务场景按需创建效果
+`v2.4.0` 之后已经不建议使用该方法，请根据业务场景按需创建效果
 :::
 
 同步背景、环境光、平行光、雾化效果
@@ -244,9 +244,9 @@ soonmanagerSync
 />
 
 ::: tip 提示
-当一个树节点含有子节点时，内部会创建一个 `Group` 用以包裹子节点。
+当一个树节点含有子节点时，内部会创建一个 `Group` 用以包裹子节点
 
-该 `Group` 的 `id` 为当前节点的 `id` 加上 `_group` 后缀。
+该 `Group` 的 `id` 为当前节点的 `id` 加上 `_group` 后缀
 
-可以通过 [`getObjectById`](../api/object.md#getobjectbyid) 来获取该 `Group`。
+可以通过 [`getObjectById`](../api/object.md#getobjectbyid) 来获取该 `Group`
 :::
