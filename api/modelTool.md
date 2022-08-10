@@ -20,7 +20,6 @@ interface EdgeSelectOptions {
   hideColor?: IColor;
   edgeThickness?: number;
   edgeStrength?: number;
-  pulsePeriod?: number;
 }
 function edgeShow(
   object: BaseObject3D | BaseObject3D[],
@@ -58,7 +57,6 @@ ssp.edgeShow(object, {
       { prop: 'hideColor', desc: '被遮挡时的轮廓颜色', type: 'IColor', require: false, default: '#999', link: '../guide/types.html#icolor' },
       { prop: 'edgeThickness', desc: '轮廓浓度', type: 'number', require: false, default: 3 },
       { prop: 'edgeStrength', desc: '轮廓厚度', type: 'number', require: false, default: 10 },
-      { prop: 'pulsePeriod', desc: '脉冲周期', type: 'number', require: false, default: 0 },
     ]"
 />
 
