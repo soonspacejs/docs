@@ -41,11 +41,13 @@ consolo.log(soonmanagerSync);
 
 ## 属性
 
-### poiInfo
+### poiInfo <Base-Tag title="readonly" />
+
+`只读`
 
 源数据
 
-### treeData
+### treeData <Base-Tag title="readonly" />
 
 转换之后的树结构数据
 
