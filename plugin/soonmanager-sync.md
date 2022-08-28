@@ -49,6 +49,47 @@ consolo.log(soonmanagerSync);
 
 转换之后的树结构数据
 
+### nodesShowLevel
+
+`2.5.0-rc.3`
+
+默认值为 `-1`，表示不隐藏
+
+在操作场景时显示的节点层级
+
+#### 用法
+
+```js
+/**
+ * 操作场景时只展示第 1 层，其余将会隐藏。
+ * 场景静止时，其余层级节点才会重新显示
+ */
+soonmanagerSync.nodesShowLevel = 1;
+```
+
+::: tip 提示
+设置此选项可用于在场景卡顿时的性能优化
+:::
+
+### nodesHideExlcude
+
+`2.5.0-rc.3`
+
+配合 [`nodesShowLevel`](#nodesshowlevel) 使用
+
+类型为 `Set`
+
+#### 用法
+
+```js
+const showModelId = '123';
+
+/**
+ * 当开启 nodesShowLevel 时，被剔除的 `id` 节点不会被隐藏
+ */
+soonmanagerSync.nodesHideExlcude.add(showModelId);
+```
+
 ## 方法
 
 ### setBaseUrl
