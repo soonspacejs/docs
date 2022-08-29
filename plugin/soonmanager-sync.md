@@ -43,8 +43,6 @@ consolo.log(soonmanagerSync);
 
 ### poiInfo <Base-Tag title="readonly" />
 
-`只读`
-
 源数据
 
 ### treeData <Base-Tag title="readonly" />
