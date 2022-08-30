@@ -49,6 +49,26 @@ consolo.log(soonmanagerSync);
 
 转换之后的树结构数据
 
+## isPausedRenderWhileLoadingRest
+
+``
+
+默认值为 `false`
+
+加载完第一层节点后。在加载剩余层级时，是否停止渲染场景
+
+#### 用法
+
+```js
+soonmanagerSync.isPausedRenderWhileLoadingRest = true;
+```
+
+::: tip 提示
+设置此选项后，通过减少 `render` 次数，可以缩短整体场景的加载时间
+
+但是在加载场景过程中无法操作场景
+:::
+
 ### nodesShowLevel
 
 `2.5.0-rc.3`
