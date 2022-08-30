@@ -51,7 +51,7 @@ consolo.log(soonmanagerSync);
 
 ## isPausedRenderWhileLoadingRest
 
-``
+`2.5.0-rc.4`
 
 默认值为 `false`
 
