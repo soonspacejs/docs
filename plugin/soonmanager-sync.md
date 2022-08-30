@@ -71,7 +71,7 @@ soonmanagerSync.nodesShowLevel = 1;
 设置此选项可用于在场景卡顿时的性能优化
 :::
 
-### nodesHideExlcude
+### nodesHideExclude
 
 `2.5.0-rc.3`
 
@@ -87,7 +87,7 @@ const showModelId = '123';
 /**
  * 当开启 nodesShowLevel 时，被剔除的 `id` 节点不会被隐藏
  */
-soonmanagerSync.nodesHideExlcude.add(showModelId);
+soonmanagerSync.nodesHideExclude.add(showModelId);
 ```
 
 ## 方法
