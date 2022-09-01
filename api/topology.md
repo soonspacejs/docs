@@ -197,7 +197,7 @@ const shortestTopology = ssp.getShortestPath(topologyFromOther, {
 
 ## getShortestPathByMultipleStartPoints
 
-通过多个起点获取最短路径
+通过指定 多个起点 和 一个终点，并计算每个起点 与 终点 间的最短路径，然后再从这些最短路径中 找出最短的那条 作为最终的路径 并 返回。
 
 ### 定义：
 
@@ -260,7 +260,7 @@ const shortestTopology = ssp.getShortestPathByMultipleStartPoints(
 
 ## getShortestPathByMultipleEndPoints
 
-通过多个终点获取最短路径
+通过指定 一个起点 和 多个终点，并计算这个起点 与 每个终点 间的最短路径，然后再从这些最短路径中 找出最短的那条 作为最终的路径 并 返回。
 
 ### 定义：
 
