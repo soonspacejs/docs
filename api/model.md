@@ -1,7 +1,7 @@
 # 通用模型
 
 ::: tip 支持格式
-支持的格式有 `gltf (glb)、fbx、sbmx`
+支持的格式有 `sbm、gltf (glb)、fbx、sbmx`
 :::
 
 ## loadModel
@@ -624,3 +624,25 @@ function setModelDracoDecoderPath(path: string): void;
 ```js
 ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 ```
+
+## clearIdb
+
+清空本地 indexedDB 模型缓存数据
+
+### 定义:
+
+```ts
+function clearIdb(): Promise<void>;
+```
+
+### 用法：
+
+```js
+ssp.clearIdb().then(() => {
+  console.log('本地数据已清空!!!');
+});
+```
+
+#### 手动清除 indexedDB 缓存
+
+![manual](./img/clearIdb.jpg)

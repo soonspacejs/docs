@@ -2,7 +2,7 @@
 
 `soonspacejs` 的控制器是完全通过 **属性配置** 来约定如何工作的，因此用户可以灵活修改配置来自定义控制器特性。
 
-修改配置的方式共有两种，推荐使用的优先级为：
+修改配置的方式共有两种
 
 - 场景初始配置项 [controls](../guide/config.html#controls)。
 - Api: [setControlsOptions](#setcontrolsoptions)。

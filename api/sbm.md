@@ -1,6 +1,14 @@
 # Sbm 模型
 
-## loadSbm
+::: warning 警告
+`v2.5.0` 之后 `Sbm` 相关的 API 已经合并到 `Model`
+
+您可以使用 `Model` 的相关方法替代 `Sbm`
+
+后续 `Sbm` 的相关方法将会被废弃
+:::
+
+## loadSbm <Base-Deprecated />
 
 加载 `Sbm` 模型。
 
@@ -121,7 +129,7 @@ ssp
     ]"
 />
 
-## parseSbm
+## parseSbm <Base-Deprecated />
 
 解析 Sbm 模型
 
@@ -157,7 +165,7 @@ const sbm = await ssp.parseSbm(new ArrayBuffer(8), sbmInfo, () => {});
 
 [同上](#onprogress)
 
-## cloneSbm
+## cloneSbm <Base-Deprecated />
 
 克隆 Sbm 模型
 
@@ -244,7 +252,7 @@ const sbmList = ssp.getSbmByName('xxx');
 请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
 :::
 
-## getAllSbm
+## getAllSbm <Base-Deprecated />
 
 获取所有 `Sbm` 对象
 
@@ -335,7 +343,7 @@ ssp.removeSbmById('xxx');
 请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
 :::
 
-## loadSbmToGroup
+## loadSbmToGroup <Base-Deprecated />
 
 加载 `Sbm` 到一个组内。
 
@@ -462,7 +470,7 @@ ssp.createGroupForSbm({
 请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
 :::
 
-## addSbmForGroup
+## addSbmForGroup <Base-Deprecated />
 
 向一个已经存在的组内添加 `Sbm` 对象。
 
@@ -511,7 +519,7 @@ ssp
 - **类型:** [GroupProgressCallback](#groupprogresscallback)
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 
-## createSbmGroupFromXml
+## createSbmGroupFromXml <Base-Deprecated />
 
 创建 Sbm 组，从 xml 文件资源
 
@@ -631,7 +639,7 @@ const isRemoveSuccess = ssp.removeSbmGroupById('firstSbmGroup');
 请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
 :::
 
-## clearSbm
+## clearSbm <Base-Deprecated />
 
 清除当前场景内所有 `Sbm` 对象。
 
@@ -647,7 +655,7 @@ function clearSbm(): void;
 ssp.clearSbm();
 ```
 
-## showAllSbm
+## showAllSbm <Base-Deprecated />
 
 显示当前场景内所有 `Sbm` 对象。
 
@@ -663,7 +671,7 @@ function showAllSbm(): void;
 ssp.showAllSbm();
 ```
 
-## hideAllSbm
+## hideAllSbm <Base-Deprecated />
 
 隐藏当前场景内所有 `Sbm` 对象。
 
@@ -679,7 +687,7 @@ function hideAllSbm(): void;
 ssp.hideAllSbm();
 ```
 
-## getSbmModelMaps
+## getSbmModelMaps <Base-Deprecated />
 
 获取 Sbm 模型缓存
 
@@ -695,7 +703,7 @@ function getSbmModelMaps(): Map<string, Sbm>;
 const sbmMaps = ssp.getSbmModelMaps();
 ```
 
-## setSbmModelMaps
+## setSbmModelMaps <Base-Deprecated />
 
 设置 Sbm 模型缓存
 
@@ -712,25 +720,3 @@ const maps = new Map();
 
 ssp.setSbmModelMaps(maps);
 ```
-
-## clearIdb
-
-清空本地 indexedDB 模型缓存数据
-
-### 定义:
-
-```ts
-function clearIdb(): Promise<void>;
-```
-
-### 用法：
-
-```js
-ssp.clearIdb().then(() => {
-  console.log('本地数据已清空!!!');
-});
-```
-
-#### 手动清除 indexedDB 缓存
-
-![manual](./img/clearIdb.jpg)
