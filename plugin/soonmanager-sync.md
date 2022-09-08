@@ -45,7 +45,7 @@ consolo.log(soonmanagerSync);
 
 源数据
 
-### treeData <Base-Tag title="readonly" />
+### treeData
 
 转换之后的树结构数据
 
