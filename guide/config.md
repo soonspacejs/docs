@@ -106,7 +106,7 @@ const ssp = new SoonSpace({
 控制器配置。
 
 - **类型**: [ControlsOptions](../api/controls.html#controlsoptions)
-- **默认值**: `{}`
+- **默认值**: `{ type: 'free' }`
 
 <!-- hoverEnabled -->
 
