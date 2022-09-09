@@ -3,6 +3,7 @@
 <!-- getCameraViewpoint -->
 
 ## getCameraViewpoint
+
 获取当前相机视角数据
 
 ### 定义：
@@ -27,7 +28,7 @@ console.log('cameraViewpointData', cameraViewpointData);
 ### 定义：
 
 ```ts
-function setCameraViewpoint(viewpointData: CameraViewpointData): void;
+function setCameraViewpoint(data: CameraViewpointData): void;
 ```
 
 ### 用法
@@ -38,7 +39,7 @@ ssp.setCameraViewpoint(cameraViewpointData);
 
 ### 参数：
 
-#### viewpointData
+#### data
 
 - **描述:** 由 `getCameraViewpoint` 获取到的相机视角数据。
 - **必填:** <Base-RequireIcon :isRequire="true"/>
@@ -53,9 +54,78 @@ ssp.setCameraViewpoint(cameraViewpointData);
     ]"
 />
 
+::: warning 注意
+`setCameraViewpoint` 只适用于 `free` 控制器
+:::
+
+<!-- getCameraTargetView -->
+
+## getCameraTargetView
+
+获取当前相机位置和目标点
+
+### 定义：
+
+```ts
+function getCameraTargetView(): CameraTargetViewData | null;
+```
+
+### 用法：
+
+```js
+const cameraTargetViewData = ssp.getCameraTargetView();
+if (cameraTargetViewData) {
+  console.log('cameraTargetViewData', cameraTargetViewData);
+}
+```
+
+::: warning 注意
+`getCameraTargetView` 只适用于 `orbit` 控制器
+:::
+
+<!-- setCameraTargetView -->
+
+## setCameraTargetView
+
+设置当前相机位置和目标点，数据由 `getCameraTargetView` 获取。
+
+### 定义：
+
+```ts
+function setCameraTargetView(data: CameraTargetViewData): void;
+```
+
+### 用法
+
+```js
+ssp.setCameraTargetView(cameraTargetViewData);
+```
+
+### 参数：
+
+#### data
+
+- **描述:** 由 `getCameraTargetView` 获取到的相机位置和目标点数据
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** CameraTargetViewData
+
+##### CameraTargetViewData
+
+<Docs-Table
+    :data="[
+      { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'target', desc: '相机朝向的目标点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+    ]"
+/>
+
+::: warning 注意
+`setCameraTargetView` 只适用于 `orbit` 控制器
+:::
+
 <!-- flyMainViewpoint -->
 
 ## flyMainViewpoint
+
 相机飞向主场景视角
 
 ### 定义：
@@ -95,6 +165,7 @@ ssp
 <!-- flyToObj -->
 
 ## flyToObj
+
 相机飞向对象
 
 ### 样例：
@@ -175,6 +246,7 @@ ssp
 <!-- flyTo -->
 
 ## flyTo
+
 相机飞向固定位置
 
 ### 样例：
@@ -238,9 +310,14 @@ ssp.flyTo(
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **默认值:** `{}`
 
+::: warning 注意
+`flyTo` 只适用于 `free` 控制器
+:::
+
 <!-- surroundOnTarget -->
 
 ## surroundOnTarget
+
 围绕一个目标点旋转
 
 ### 样例：
@@ -251,9 +328,9 @@ ssp.flyTo(
 
 ```ts
 interface SurroundOptions {
-  speed?: number
-  angle?: number
-  onStart?: <TweenType>(tween: TweenType) => {}
+  speed?: number;
+  angle?: number;
+  onStart?: <TweenType>(tween: TweenType) => {};
 }
 
 function surroundOnTarget(
@@ -277,9 +354,9 @@ ssp
     {
       angle: 360,
       speed: 2,
-      onStart: tween => {
-        console.log('旋转动画对象', tween)
-      }
+      onStart: (tween) => {
+        console.log('旋转动画对象', tween);
+      },
     }
   )
   .then(() => console.log('surroundOnTarget done'))
@@ -314,6 +391,7 @@ ssp
 <!-- surroundOnObject -->
 
 ## surroundOnObject
+
 围绕一个目标对象旋转
 
 ### 定义：
@@ -336,9 +414,9 @@ ssp
     {
       angle: 360,
       speed: 2,
-      onStart: tween => {
-        console.log('旋转动画对象', tween)
-      }
+      onStart: (tween) => {
+        console.log('旋转动画对象', tween);
+      },
     }
   )
   .then(() => console.log('surroundOnTarget done'))

@@ -186,6 +186,12 @@ ssp.setControlsOptions({
 { prop: 'rotateSpeed', desc: '旋转速度', type: 'number', require: false, default: '1' },
 { prop: 'zoomSpeed', desc: '缩放速度', type: 'number', require: false, default: '1' },
 { prop: 'screenSpacePanning', desc: '上下拖动时，相机垂直还是相对于 y 轴正交移动', type: 'boolean', require: false, default: 'true' },
-{ prop: 'target', desc: '控制器内部维护的中心点，也可以手动设置', type: 'Vector3', require: false, default: '{x:0,y:0,z:0}' },
+{ prop: 'target', desc: '控制器内部维护的相机的朝向点，也可以手动设置。', type: 'Vector3', require: false, default: '{x:0,y:0,z:0}' },
 ]"
 />
+
+::: warning 注意
+在使用 `orbit` 控制器时，相机的 `rotation` 无法直接修改。
+
+请通过设置 `target` 来控制相机的 `rotation`
+:::
