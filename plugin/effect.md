@@ -164,64 +164,6 @@ effectPlugin.createSmoke({
     ]"
 />
 
-### createLensFlare
-
-创建镜头光晕
-
-#### 版本：
-
-`v2.3.17`
-
-#### 定义
-
-```ts
-interface LensFlareInfo extends PluginObjectInfo {
-  imgUrl?: string;
-  color?: IColor;
-  size?: number;
-}
-
-function createLensFlare(param: LensFlareInfo): PluginObject;
-```
-
-#### 用法
-
-```js
-effectPlugin.createLensFlare({
-  id: 'testFlare',
-  position: {
-    x: -500,
-    y: 800,
-    z: 0,
-  },
-  size: 200,
-});
-```
-
-#### 参数
-
-##### param
-
-- **描述:** 配置
-- **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** `LensFlareInfo`
-
-###### LensFlareInfo
-
-<Docs-Table 
-    :data="[
-      {
-        prop: 'imgUrl', desc: '光晕图片', type: 'string', require: false, default: '内置图片'
-      },
-      {
-        prop: 'color', desc: '光晕颜色', type: 'IColor', link: '../guide/types.html#icolor' ,require: false, default: '0xffffff'
-      },
-      {
-        prop: 'size', desc: '光晕的大小', type: 'number', require: false, default: 700
-      },
-    ]"
-/>
-
 ### removeEffect
 
 删除效果
