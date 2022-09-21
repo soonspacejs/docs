@@ -69,11 +69,11 @@ const topology = ssp.createTopology({
       position: { x: 0, y: 1, z: 100 },
     },
     {
-      id: 'node1',
+      id: 'node3',
       position: { x: 100, y: 1, z: 100 },
     },
     {
-      id: 'node1',
+      id: 'node4',
       position: { x: 100, y: 1, z: -100 },
     },
   ],
