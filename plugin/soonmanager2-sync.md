@@ -203,6 +203,10 @@ soonmanager2Sync.loadScene().then(() => {
     ]"
 />
 
+::: tip 提示
+自定义属性存储在对象的 `userData.properties` 属性上
+:::
+
 ### getTopologies
 
 获取拓扑路径数据
@@ -305,7 +309,7 @@ soonmanager2SyncPlugin.playAnimationById('4H6T1H53CSFW', 0, {
     ]"
 />
 
-::: warning 注意
+::: tip 提示
 动画播放时，可以是多个 `animation` 的组合
 
 所以每次执行新的 `animation` 方法时都会执行 `onStart` 回调并且返回新的 `tween` 实例
