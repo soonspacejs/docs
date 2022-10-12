@@ -24,10 +24,6 @@ yarn add soonspacejs -S
 
 ### CDN
 
-UMD 模块：`SoonSpace`
-
-[https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)
-
 ES 模块：
 
 ```js
