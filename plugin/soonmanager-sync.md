@@ -22,7 +22,7 @@ yarn add @soonspacejs/plugin-soonmanager-sync -S
 
 ## 使用方法
 
-```js {2,10}
+```js {2,10-13}
 import SoonSpace from 'soonspacejs';
 import SoonmanagerSyncPlugin from '@soonspacejs/plugin-soonmanager-sync';
 
