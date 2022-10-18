@@ -36,7 +36,7 @@ const soonmanagerSync = ssp.registerPlugin(
   SoonmanagerSyncPlugin,
   'soonmanagerSync'
 );
-consolo.log(soonmanagerSync);
+console.log(soonmanagerSync);
 ```
 
 ## 属性
