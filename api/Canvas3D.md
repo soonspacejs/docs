@@ -60,25 +60,22 @@ function createCanvas3D(canvas3DInfo: Canvas3DInfo): Canvas3D;
 ### 用法：
 
 ```js
-ssp
-  .createCanvas3D({
-    id: 'xx',
-    name: 'xx',
-    level: {
-      max: 1000,
-      min: null,
-    },
-    points: [],
-    lines: [],
-    polygons: [],
-    circles: [],
-    position: { x: 0, y: 0, z: 0 },
-    rotation: { x: 0, y: 0, z: 0 },
-    scale: { x: 2, y: 2, z: 2 },
-    userData: {},
-  })
-  .then((Canvas3D) => console.log(Canvas3D))
-  .catch((err) => console.error(err));
+ssp.createCanvas3D({
+  id: 'xx',
+  name: 'xx',
+  level: {
+    max: 1000,
+    min: null,
+  },
+  points: [],
+  lines: [],
+  polygons: [],
+  circles: [],
+  position: { x: 0, y: 0, z: 0 },
+  rotation: { x: 0, y: 0, z: 0 },
+  scale: { x: 2, y: 2, z: 2 },
+  userData: {},
+});
 ```
 
 ### 参数：
