@@ -93,6 +93,7 @@ ssp.createCanvas3D({
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
       { prop: 'points', desc: '点信息集合', type: 'PointInfo[]', require: false, default: '[]', link: '#pointinfo' },
       { prop: 'lines', desc: '线信息集合', type: 'LineInfo[]', require: false, default: '[]', link: '#lineinfo' },
       { prop: 'polygons', desc: '面信息集合', type: 'Polygons[]', require: false, default: '[]', link: '#polygoninfo' },
