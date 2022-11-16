@@ -48,6 +48,15 @@ consolo.log(firstPersonControls);
 
 ## 属性
 
+### camera
+第一人称控制器的相机，可通过直接更改该属性值的方式来设置相机
+
+- 类型：`PerspectiveCamera`
+- 默认值：如果在调用 `start()` 时还没有设置相机，则会自动创建一个新的相机。
+
+**注意：**  
+- 如果要给每一人称控制器设置自定义的相机，则需要在在调用 `start()` 方法之前进行设置。
+
 ### rotationAngle
 
 可旋转弧度范围。
@@ -107,15 +116,85 @@ consolo.log(firstPersonControls);
 
 ```ts
 interface StartOptions {
-  position: Position
-  rotation?: Rotation
-  moveSpeed?: number
-  eyeHeight?: number
-  kneeHeight?: number
-  jumpHeight?: number
-  enableClash?: boolean
-  enableGravity?: boolean
+  position?: Position | null;
+  rotation?: Rotation | null;
+  moveSpeed?: number;
+  eyeHeight?: number;
+  kneeHeight?: number;
+  jumpHeight?: number;
+  enableClash?: boolean;
+  enableGravity?: boolean;
+  /**
+   * 模型对象的搜索半径的系数
+   * @remarks
+   * 搜索半径是 clashCheckDistance 的多少倍
+   */
+  searchRadiusFactor?: number;
+  /**
+   * 碰撞距离
+   */
+  clashDistance?: number;
+  /**
+   * 碰撞检测距离
+   */
+  clashCheckDistance?: number;
+  /**
+   * 重力速度
+   */
+  gravitySpeed?: number;
+
+
+  /**
+   * 重力搜索系数
+   * @remarks
+   * 重力搜索系数 表示 向下搜索多少个 eyeHeight 的深度
+   */
+   gravitySearchFactor?: number;
+
+  /**
+   * 碰撞对象过滤器
+   * @remarks
+   * 会在遍历对象时逐个调用该方法
+   * 
+   * @param obj - Object3D 对象
+   * @returns true：表示检测该对象的碰撞；false | null | undefined | void：表示不检测该对象的碰撞；
+   */
+   clashFilter?: ClashFilter;
+
+   /**
+    * 碰撞检测的层级
+    */
+  clashLayers?: number[];
+
+  /**
+   * 反向旋转
+   */
+  reverseRotate?: boolean | null;
+
+  /**
+   * 是否开启旋转
+   */
+   rotate?: boolean | null;
+   /**
+  /**
+   * 是否开启水平方向的旋转
+   */
+   horizontalRotate?: boolean | null;
+   /**
+    * 是否开启垂直方向旋转
+    */
+   verticalRotate?: boolean | null;
 }
+
+/**
+ * 碰撞对象过滤器
+ * @remarks
+ * 会在遍历对象时逐个调用该方法
+ * 
+ * @param obj - Object3D 对象
+ * @returns true：表示检测该对象的碰撞；false | null | undefined | void：表示不检测该对象的碰撞；
+ */
+type ClashFilter = ( obj: Object3D )=> ( boolean | null | undefined | void )
 
 function start(options: StartOptions) => void
 ```
@@ -170,6 +249,39 @@ firstPersonControls.start({
       {
         prop: 'enableGravity', desc: '开启重力检测', type: 'boolean', require: false, default: 'true'
       },
+      {
+        prop: 'searchRadiusFactor', desc: '模型对象的搜索半径的系数；搜索半径是 clashCheckDistance 的多少倍', type: 'number', require: false, default: '3'
+      },
+      {
+        prop: 'clashDistance', desc: '碰撞距离', type: 'number', require: false, default: '50'
+      },
+      {
+        prop: 'clashCheckDistance', desc: '碰撞检测距离', type: 'number', require: false, default: '200'
+      },
+      {
+        prop: 'gravitySpeed', desc: '重力速度', type: 'number', require: false, default: '10'
+      },
+      {
+        prop: 'gravitySearchFactor', desc: '重力搜索系数，表示 向下搜索多少个 eyeHeight 的深度', type: 'number', require: false, default: '3'
+      },
+      {
+        prop: 'clashFilter', desc: '碰撞对象过滤器，会在遍历对象时逐个调用该方法', type: 'ClashFilter', require: false, default: 'undefined'
+      },
+      {
+        prop: 'clashLayers', desc: '碰撞检测的层级', type: 'number[]', require: false, default: '[0]'
+      },
+      {
+        prop: 'rotate', desc: '是否开启旋转', type: 'boolean | null', require: false, default: 'true'
+      },
+      {
+        prop: 'reverseRotate', desc: '反向旋转', type: 'boolean | null', require: false, default: 'false'
+      },
+      {
+        prop: 'horizontalRotate', desc: '是否开启水平方向的旋转', type: 'boolean | null', require: false, default: 'true'
+      },
+      {
+        prop: 'verticalRotate', desc: '是否开启垂直方向旋转', type: 'boolean | null', require: false, default: 'true'
+      },
     ]"
 />
 
@@ -181,4 +293,13 @@ firstPersonControls.start({
 
 ```js
 firstPersonControls.stop();
+```
+
+### setOptions
+
+设置选项。可用于漫游时动态更改一些配置
+
+#### 类型
+```ts
+setOptions ( options: StartOptions ): void
 ```
