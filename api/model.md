@@ -632,7 +632,9 @@ ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 
 ## setTexture
 
-给 mesh 设置纹理贴图
+给 mesh 设置纹理贴图，可设置 图片、Cavans 元素、视频 等。
+
+备注：它会恢复原材质中除了贴图之外的所有配置，以保证效果尽可能与原来材质一样。
 
 ### 定义：
 
@@ -648,7 +650,9 @@ ssp.setTexture(mesh,"http://xx.com/xx.png");
 
 ## createFindObjectsInBoxNearPosition
 
-创建用于 查找位置附近的 box 空间范围内的物体 的查找器
+创建用于 查找位置附近的 box 空间范围内的物体 的查找器。
+
+当你来查找棱某个位置处 上、下、左、右、前、后 一定距离范围内的某类模型时，可以使用该方法。
 
 ### 定义：
 
@@ -708,6 +712,8 @@ const nearObjs = findObjectsNearPosition({x:100,y:100,z:100})
 
 创建用于 查找位置附近的球形区域范围内的物体 的查找器
 
+当你来查找某个位置处指定半径范围内的某类模型时，可以使用该方法。
+
 ### 定义：
 
 ```ts
@@ -752,6 +758,8 @@ const nearObjs = findObjectsNearPosition({x:100,y:100,z:100})
 ## createFindObjectsNearPath
 
 创建用于 查找路径附近的范围内的物体 的查找器
+
+当你来查找路径周围指定半径范围内的某类模型时，可以使用该方法。
 
 ### 定义：
 
