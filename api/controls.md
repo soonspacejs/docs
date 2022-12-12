@@ -175,7 +175,7 @@ ssp.setControlsOptions({
 { prop: 'enableRotate', desc: '开启旋转', type: 'boolean', require: false, default: 'true' },
 { prop: 'enableZoom', desc: '开启缩放', type: 'boolean', require: false, default: 'true' },
 { prop: 'maxAzimuthAngle', desc: '最大水平角度', type: 'number', require: false, default: 'Infinity' },
-{ prop: 'maxAzimuthAngle', desc: '最小水平角度', type: 'number', require: false, default: '-Infinity' },
+{ prop: 'minAzimuthAngle', desc: '最小水平角度', type: 'number', require: false, default: '-Infinity' },
 { prop: 'maxDistance', desc: '最远滚动距离', type: 'number', require: false, default: 'Infinity' },
 { prop: 'minDistance', desc: '最小滚动距离', type: 'number', require: false, default: '0' },
 { prop: 'maxPolarAngle', desc: '最大垂直角度', type: 'number', require: false, default: 'Math.PI' },
