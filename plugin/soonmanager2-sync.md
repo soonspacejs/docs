@@ -141,6 +141,30 @@ interface IAnimations {
 type TAnimationsMap = Map<IAnimations['modelId'], IAnimations[]>;
 ```
 
+### modelVisionsData
+
+模型视角数据，根据 `nodeId` 分组
+
+- **默认值:** `null`
+- **类型:** `TModelVisionsMap | null`
+
+#### 定义
+
+```ts
+interface IModelVisions {
+  id: string;
+  uuid: string;
+  nodeId: string;
+  name: string;
+  code?: any;
+  position: IVector3;
+  rotation: IVector3;
+  target: IVector3;
+}
+
+type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions>;
+```
+
 ## 方法
 
 ### setPath
@@ -173,7 +197,14 @@ soonmanager2Sync.setPath('http://xxx.com/models');
 
 ```ts
 interface ILoadSceneOptions {
+  /**
+   * 同步自定义属性
+   */
   syncProperties?: boolean;
+  /**
+   * 同步模型视角数据
+   */
+  syncModelVisions?: boolean;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -200,6 +231,7 @@ soonmanager2Sync.loadScene().then(() => {
 <Docs-Table
     :data="[
       { prop: 'syncProperties', desc: '是否同步自定义属性', type: 'boolean', require: false, default: 'true' },
+      { prop: 'syncModelVisions', desc: '是否同步节点视角数据', type: 'boolean', require: false, default: 'true' },
     ]"
 />
 
