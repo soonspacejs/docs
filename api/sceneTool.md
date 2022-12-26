@@ -661,3 +661,22 @@ function dispose(): void;
 ```js
 ssp.dispose();
 ```
+
+:::tip 提示
+`dispose` 常用于 react、vue 等组件的生命周期卸载阶段
+
+例如在 react 中
+
+```js
+useEffect(() => {
+  const ssp = new SoonSpace({
+    ...
+  })
+
+  return () => {
+    ssp.dispose()
+  };
+}, []);
+```
+
+:::
