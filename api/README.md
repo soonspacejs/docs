@@ -10,6 +10,7 @@
   - [通用模型](./model.html)
   - [Poi 对象](./poi.html)
   - [PoiNode 对象](./poiNode.html)
+  - [PoiMesh 对象](./poiMesh.html)
   - [空间画布对象](./canvas3D.html)
   - [拓扑路径](./topology.html)
 

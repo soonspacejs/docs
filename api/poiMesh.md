@@ -1,24 +1,25 @@
 # PoiMesh 对象
+
 PoiMesh 其实就是 3D 平面 Mesh 对象，与普通的 Mesh 对象没有几何区别。
 
-
 ## 对比
-`Poi`、`PoiNode`、`PoiMesh` 的区别如下：
-* `Poi`：
-  + 具备空间尺寸的透视特性，即：近大无小的特性
-  + 总是面向用户
-  + 但只能显示图片、文字，不能呈现 dom 元素
-* `PoiNode`：
-  + 具备空间尺寸的透视特性，即：近大无小的特性
-  + 能呈现 Dom 元素
-  + 总是显示在3维场景的最前面，即：模型遮挡不住 `PoiNode`
-  + 2D 和 2.5D 类型的 `PoiNode` 总是面向用户，而 3D 类型的 `PoiNode` 不会
-* `PoiMesh`：
-  + 就是普通的Mesh，具备空间尺寸的透视特性，即：近大无小的特性
-  + 类型于 3D 类型的 PoiNode，但可以被场景中的其它3D模型遮挡
-  + 能呈现 图片、Cavans、视频
-  + 用于可以指定任意三维多边形区域来创建多边形的 `PoiMesh`。
 
+`Poi`、`PoiNode`、`PoiMesh` 的区别如下：
+
+- `Poi`：
+  - 具备空间尺寸的透视特性，即：近大无小的特性
+  - 总是面向用户
+  - 但只能显示图片、文字，不能呈现 dom 元素
+- `PoiNode`：
+  - 具备空间尺寸的透视特性，即：近大无小的特性
+  - 能呈现 Dom 元素
+  - 总是显示在 3 维场景的最前面，即：模型遮挡不住 `PoiNode`
+  - 2D 和 2.5D 类型的 `PoiNode` 总是面向用户，而 3D 类型的 `PoiNode` 不会
+- `PoiMesh`：
+  - 就是普通的 Mesh，具备空间尺寸的透视特性，即：近大无小的特性
+  - 类型于 3D 类型的 PoiNode，但可以被场景中的其它 3D 模型遮挡
+  - 能呈现 图片、Cavans、视频
+  - 用于可以指定任意三维多边形区域来创建多边形的 `PoiMesh`。
 
 ### 样例：
 
@@ -26,7 +27,7 @@ PoiMesh 其实就是 3D 平面 Mesh 对象，与普通的 Mesh 对象没有几�
 
 ## createPoiMesh
 
-创建一个具有矩形边界的 `PoiMesh` 对象，它可用于在 3维场景中展示图片、视频、Canvas 等等
+创建一个具有矩形边界的 `PoiMesh` 对象，它可用于在 3 维场景中展示图片、视频、Canvas 等等
 
 通过 `width`、`height` 选项来确定矩形的尺寸。
 
@@ -51,13 +52,11 @@ interface PoiMeshOptions extends MeshBasicMaterialParameters, MeshPhongMaterialP
   level?: Level;
   visible?: boolean;
 
-
   /**
    * 是否使用缓存的材质
    */
   cache?: boolean;
 
-  
 }
 
 interface CreatePoiMeshOptions extends PoiMeshOptions {
@@ -79,8 +78,8 @@ ssp.createPoiMesh(
     id: 'xx',
     name: 'xx',
     image: 'http://xx.com/xx.png',
-    width:100, 
-    height:50,
+    width: 100,
+    height: 50,
     level: {
       max: 1000,
       min: null,
@@ -95,13 +94,13 @@ ssp.createPoiMesh(
 
 ### 参数：
 
-#### poiInfo
+#### options
 
 - **描述:** 实例 `PoiMesh` 对象所需信息
 - **类型:** `CreatePoiMeshOptions`
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-##### c
+##### CreatePoiMeshOptions
 
 <Docs-Table
     :data="[
@@ -120,12 +119,6 @@ ssp.createPoiMesh(
       { prop: 'cache', desc: '是否使用缓存的材质', type: 'boolean', require: false, default: 'true' },
     ]"
 />
-
-
-
-
-
-
 
 ## createPolygonPoiMesh
 
@@ -154,13 +147,11 @@ interface PoiMeshOptions extends MeshBasicMaterialParameters, MeshPhongMaterialP
   level?: Level;
   visible?: boolean;
 
-
   /**
    * 是否使用缓存的材质
    */
   cache?: boolean;
 
-  
 }
 
 interface CreatePolygonPoiMeshOptions extends PoiMeshOptions {
@@ -184,25 +175,25 @@ ssp.createPolygonPoiMesh(
       x:0,
       y:0,
       z:0,
-      
+
     },
     {
       x:0,
       y:100,
       z:0,
-      
+
     },
     {
       x:80,
       y:100,
       z:0,
-      
+
     },
     {
       x:100,
       y:30,
       z:0,
-      
+
     },
     ]
     level: {
@@ -219,13 +210,13 @@ ssp.createPolygonPoiMesh(
 
 ### 参数：
 
-#### poiInfo
+#### options
 
 - **描述:** 实例 `PoiMesh` 对象所需信息
-- **类型:** `CreatePoiMeshOptions`
+- **类型:** `CreatePolygonPoiMeshOptions`
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-##### c
+##### CreatePolygonPoiMeshOptions
 
 <Docs-Table
     :data="[
