@@ -164,6 +164,94 @@ effectPlugin.createSmoke({
     ]"
 />
 
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
+
+### createContactShadows
+
+创建接触阴影
+
+#### 样例
+
+<Docs-Iframe src="plugin/contactShadows.html" />
+
+#### 定义
+
+```ts
+interface ContactShadowsInfo extends Omit<PluginObjectInfo, 'scale'> {
+  opacity?: number;
+  width?: number;
+  height?: number;
+  blur?: number;
+  far?: number;
+  resolution?: number;
+  frames?: number;
+  scale?: number | [x: number, y: number];
+  darkness?: number;
+}
+
+function createContactShadows(param: ContactShadowsInfo): PluginObject;
+```
+
+#### 用法
+
+```js
+effectPlugin.createContactShadows({
+  id: 'shadows',
+  position: { x: 0, y: -0.1, z: 0 },
+  opacity: 1,
+  scale: [100, 100],
+  blur: 2,
+  far: 1,
+  resolution: 1024,
+  frames: 10,
+  darkness: 2,
+});
+```
+
+#### 参数
+
+##### param
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `ContactShadowsInfo`
+
+##### ContactShadowsInfo
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: '1'
+      },
+      {
+        prop: 'width', desc: '平面宽度', type: 'number', require: false, default: '1'
+      },
+      {
+        prop: 'height', desc: '平面高度', type: 'number', require: false, default: '1'
+      },
+      {
+        prop: 'blur', desc: '模糊', type: 'number', require: false, default: '1'
+      },
+      {
+        prop: 'far', desc: '向上取样的阴影距离', type: 'number', require: false, default: '10'
+      },
+      {
+        prop: 'resolution', desc: '阴影平面的分辨率', type: 'number', require: false, default: '512'
+      },
+      {
+        prop: 'frames', desc: '阴影的渲染帧数', type: 'number', require: false, default: 'Infinity'
+      },
+      {
+        prop: 'scale', desc: '用于乘以宽高', type: 'number', require: false, default: '10'
+      },
+      {
+        prop: 'darkness', desc: '阴影的黑暗程度', type: 'number', require: false, default: '1'
+      },
+    ]"
+/>
+
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
+
 ### removeEffect
 
 删除效果
