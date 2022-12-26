@@ -168,6 +168,46 @@ ssp.setColorSpace('Linear');
 - **描述:** 色彩值
 - **必填:** <Base-RequireIcon :isRequire="false" />，默认值为 `sRGB`
 
+## setToneMapping
+
+设置场景色调
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/toneMapping.html" />
+
+### 定义：
+
+```ts
+interface ToneMappingOptions {
+  type?: 'None' | 'Linear' | 'Reinhard' | 'Cineon' | 'ACESFilmic';
+  exposure?: number;
+}
+
+setToneMapping(options?: ToneMappingOptions): void
+```
+
+### 用法：
+
+```js
+ssp.setToneMapping({ type: 'ACESFilmic', exposure: 0.8 });
+```
+
+#### options
+
+- **类型:** `ToneMappingOptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### ToneMappingOptions
+
+<Docs-Table
+:data="[
+{ prop: 'type', desc: '色调类型', type: 'ToneMappingOptions[type]', require: false, default: 'ACESFilmic' },
+{ prop: 'exposure', desc: '曝光度', type: 'number', require: false, default: 0.5 },
+]"
+/>
+
 ## setSky
 
 设置天空
