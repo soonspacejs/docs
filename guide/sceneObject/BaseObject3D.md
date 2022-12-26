@@ -111,7 +111,7 @@ function show(): void;
 #### 用法：
 
 ```ts
-sbm.show();
+object.show();
 ```
 
 ### hide
@@ -127,7 +127,7 @@ function hide(): void;
 #### 用法：
 
 ```ts
-sbm.hide();
+object.hide();
 ```
 
 ### setMove
@@ -156,7 +156,7 @@ function setMove(
 #### 用法：
 
 ```js
-sbm.setMove(
+object.setMove(
   // target
   { x: 1000, y: 0, z: 1000 }
   // ... args
@@ -183,7 +183,7 @@ function setRotate(
 #### 用法：
 
 ```js
-sbm.setRotate(
+object.setRotate(
   // target
   // Math.PI 表示半圈
   { x: 0, y: Math.PI, z: 0 }
@@ -211,7 +211,7 @@ function setScale(
 #### 用法：
 
 ```js
-sbm.setScale(
+object.setScale(
   // target
   { x: 10, y: 10, z: 10 }
   // ... args
@@ -237,7 +237,7 @@ function getSpaceAttribute(
 #### 用法：
 
 ```js
-const attr = sbm.getSpaceAttribute(false);
+const attr = object.getSpaceAttribute(false);
 ```
 
 #### 参数：
@@ -261,7 +261,7 @@ function syncSpaceAttribute(object: Object3D, isFromWorld?: boolean): void;
 #### 用法：
 
 ```js
-sbm.getSpaceAttribute(targetSbm, true);
+object.getSpaceAttribute(targetObject, true);
 ```
 
 #### 参数：
