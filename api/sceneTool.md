@@ -374,6 +374,66 @@ ssp.setSSR({
     ]"
 />
 
+## setBloom
+
+设置泛光
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/bloom.html" />
+
+### 定义：
+
+```ts
+interface BloomOptions {
+  enabled?: boolean;
+  radius?: number;
+  intensity?: number;
+  threshold?: number;
+  smoothing?: number;
+  scalar?: number;
+  opacity?: number;
+  selection?: Object3D[];
+}
+
+function setBloom(options?: BloomOptions): void;
+```
+
+### 用法：
+
+```js
+ssp.setBloom({
+  enabled: true,
+  threshold: 0.1,
+  intensity: 2,
+  radius: 0.1,
+  opacity: 1,
+});
+```
+
+### 参数:
+
+#### options
+
+- **类型:** `BloomOptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### BloomOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'enabled', desc: '是否开启', type: 'boolean', require: false, default: 'true' },
+      { prop: 'radius', desc: '泛光半径', type: 'number', require: false, default: '0.85' },
+      { prop: 'intensity', desc: '泛光强度', type: 'number', require: false, default: '3' },
+      { prop: 'threshold', desc: '泛光阈值（颜色）', type: 'number', require: false, default: '1' },
+      { prop: 'smoothing', desc: '泛光的平滑度', type: 'number', require: false, default: '0' },
+      { prop: 'scalar', desc: '配合 `selection` 使用，选中的材质颜色会乘以 `scalar` 使色值超出 `threshold`', type: 'number', require: false, default: '2' },
+      { prop: 'opacity', desc: '泛光的不透明度', type: 'number', require: false, default: '1' },
+      { prop: 'selection', desc: '选中的泛光对象', type: 'Object3D[]', require: false, default: '[]' },
+    ]"
+/>
+
 ## setEnvironment
 
 设置场景环境反射（用于 GLTF、SBMX 模型）
