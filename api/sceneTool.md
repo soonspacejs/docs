@@ -273,6 +273,107 @@ ssp.setSky({
     ]"
 />
 
+## setSSR
+
+设置空间反射
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/SSR.html" />
+
+### 定义：
+
+```ts
+interface SSROptions {
+  enabled?: boolean;
+  intensity?: number;
+  exponent?: number;
+  distance?: number;
+  fade?: number;
+  roughnessFade?: number;
+  thickness?: number;
+  ior?: number;
+  maxRoughness?: number;
+  maxDepthDifference?: number;
+  blend?: number;
+  correction?: number;
+  correctionRadius?: number;
+  blur?: number;
+  blurKernel?: number;
+  blurSharpness?: number;
+  jitter?: number;
+  jitterRoughness?: number;
+  steps?: number;
+  refineSteps?: number;
+  missedRays?: boolean;
+  useNormalMap?: boolean;
+  useRoughnessMap?: boolean;
+  resolutionScale?: number;
+  velocityResolutionScale?: number;
+}
+
+function setSSR(options?: SSROptions): void;
+```
+
+### 用法：
+
+```js
+ssp.setSSR({
+  enabled: true,
+  intensity: 1,
+  thickness: 5,
+  distance: 10,
+  steps: 10,
+  refineSteps: 8,
+  maxRoughness: 0.1,
+  blend: 1,
+  maxDepthDifference: 40,
+  blur: 1,
+  fade: 0.1,
+  jitter: 0,
+});
+```
+
+### 参数:
+
+#### options
+
+- **类型:** `SSROptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### SSROptions
+
+<Docs-Table
+    :data="[
+      { prop: 'enabled', desc: '是否开启', type: 'boolean', require: false, default: 'true' },
+      { prop: 'intensity', desc: '强度', type: 'number', require: false, default: '1' },
+      { prop: 'exponent', desc: '增强指数', type: 'number', require: false, default: '1.75' },
+      { prop: 'distance', desc: '反射到达的最远距离', type: 'number', require: false, default: '20' },
+      { prop: 'fade', desc: '淡出的距离', type: 'number', require: false, default: '0' },
+      { prop: 'roughnessFade', desc: '粗糙点的反射强度', type: 'number', require: false, default: '1' },
+      { prop: 'thickness', desc: '反射浓度', type: 'number', require: false, default: '3.5' },
+      { prop: 'ior', desc: '折射率', type: 'number', require: false, default: '1.75' },
+      { prop: 'maxRoughness', desc: '材质的最大粗糙度', type: 'number', require: false, default: '0.1' },
+      { prop: 'maxDepthDifference', desc: '最大深度差', type: 'number', require: false, default: '20' },
+      { prop: 'blend', desc: '混合度[0-1]', type: 'number', require: false, default: '0.95' },
+      { prop: 'correction', desc: '像素校正', type: 'number', require: false, default: '1' },
+      { prop: 'correctionRadius', desc: '像素校正半径', type: 'number', require: false, default: '1' },
+      { prop: 'blur', desc: '模糊', type: 'number', require: false, default: '1' },
+      { prop: 'blurKernel', desc: '模糊滤镜大小', type: 'number', require: false, default: '1' },
+      { prop: 'blurSharpness', desc: '模糊指数', type: 'number', require: false, default: '10' },
+      { prop: 'jitter', desc: '反射抖动', type: 'number', require: false, default: '0' },
+      { prop: 'jitterRoughness', desc: '反射抖动的材质粗糙度', type: 'number', require: false, default: '2' },
+      { prop: 'steps', desc: '查找的反射相交步数', type: 'number', require: false, default: '20' },
+      { prop: 'refineSteps', desc: '精确查找', type: 'number', require: false, default: '10' },
+      { prop: 'missedRays', desc: '查找不到时，拉伸反射', type: 'boolean', require: false, default: 'false' },
+      { prop: 'useNormalMap', desc: '是否计算法线贴图', type: 'boolean', require: false, default: 'true' },
+      { prop: 'useRoughnessMap', desc: '是否计算粗糙贴图', type: 'boolean', require: false, default: 'true' },
+      { prop: 'resolutionScale', desc: '分辨率', type: 'number', require: false, default: '1' },
+      { prop: 'velocityResolutionScale', desc: '速度分辨率', type: 'number', require: false, default: '1' },
+    ]"
+/>
+
 ## setEnvironment
 
 设置场景环境反射（用于 GLTF、SBMX 模型）
