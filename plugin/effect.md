@@ -242,7 +242,7 @@ effectPlugin.createContactShadows({
         prop: 'frames', desc: '阴影的渲染帧数', type: 'number', require: false, default: 'Infinity'
       },
       {
-        prop: 'scale', desc: '用于乘以宽高', type: 'number', require: false, default: '10'
+        prop: 'scale', desc: '用于乘以宽高', type: 'number | [x: number, y: number]', require: false, default: '10'
       },
       {
         prop: 'darkness', desc: '阴影的黑暗程度', type: 'number', require: false, default: '1'
