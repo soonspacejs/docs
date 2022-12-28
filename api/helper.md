@@ -302,6 +302,57 @@ ssp.addDirectionalLightHelper({
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '平行光对象', type: 'DirectionalLight', require: true, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '平行光的颜色', link: '../guide/types.html#icolor' },
-      { prop: 'size', desc: '大小', type: 'DirectionalLight', require: false, default: '1' },
+      { prop: 'size', desc: '大小', type: 'number', require: false, default: '50' },
+    ]"
+/>
+
+## addHemisphereLightHelper
+
+添加半球光辅助器
+
+### 定义：
+
+```ts
+interface HemisphereLightHelperOptions extends BaseHelperOptions {
+  light: HemisphereLight;
+  color?: IColor;
+  size?: number;
+}
+
+function addHemisphereLightHelper(
+  options: HemisphereLightHelperOptions
+): THREE.HemisphereLightHelper;
+```
+
+### 用法：
+
+```js
+const light = ssp.createHemisphereLight({
+  id: 'hemisphere_light',
+});
+
+ssp.addHemisphereLightHelper({
+  id: 'hemisphere_light_helper',
+  light,
+  color: 'yellow',
+});
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `HemisphereLightHelperOptions`
+
+###### HemisphereLightHelperOptions
+
+<Docs-Table 
+    :data="[
+      { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
+      { prop: 'light', desc: '半球光对象', type: 'HemisphereLight', require: true, default: '' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '半球光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'size', desc: '大小', type: 'number', require: false, default: '20' },
     ]"
 />
