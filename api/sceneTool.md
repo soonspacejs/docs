@@ -518,6 +518,31 @@ function closeSceneFog(): void;
 ssp.closeSceneFog();
 ```
 
+## screenshot
+
+截取场景快照
+
+### 定义:
+
+```ts
+function screenshot(): Promise<Blob | null>;
+```
+
+### 用法:
+
+```js
+ssp.screenshot().then((blob) => {
+  const newImg = document.createElement('img');
+  const url = URL.createObjectURL(blob);
+
+  newImg.onload = () => {
+    URL.revokeObjectURL(url);
+  };
+
+  newImg.src = url;
+});
+```
+
 ## getObjectLabelPos
 
 获取对象的标签位置坐标
