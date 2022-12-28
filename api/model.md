@@ -626,10 +626,6 @@ function setModelDracoDecoderPath(path: string): void;
 ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 ```
 
-
-
-
-
 ## setTexture
 
 给 mesh 设置纹理贴图，可设置 图片、Cavans 元素、视频 等。
@@ -645,7 +641,7 @@ setTexture ( mesh: Mesh, image: string | HTMLImageElement | HTMLCanvasElement | 
 ### 用法：
 
 ```js
-ssp.setTexture(mesh,"http://xx.com/xx.png");
+ssp.setTexture(mesh, 'http://xx.com/xx.png');
 ```
 
 ## createFindObjectsInBoxNearPosition
@@ -681,11 +677,13 @@ createFindObjectsInBoxNearPosition ( boxSpace: BoxSpace, objects: Object3D[] ): 
 ```
 
 ### boxSpace
+
 通过上、下、左、右、前、后来描述查找区域。
 
 - 类型：`BoxSpace`
 
 ### objects
+
 被查找的空间对象。只会从这些对象中进行查找。
 
 - 类型：`Object3D`
@@ -694,19 +692,21 @@ createFindObjectsInBoxNearPosition ( boxSpace: BoxSpace, objects: Object3D[] ): 
 
 ```js
 //合建一个查找器，需要指定查找的区域 和 从哪些对象中进行查找
-const findObjectsNearPosition = ssp.createFindObjectsInBoxNearPosition({
-  top: 20,
-  bottom: 20,
-  left: 30,
-  right: 40,
-  front: 50,
-  back: 60,
-},objArr);
+const findObjectsNearPosition = ssp.createFindObjectsInBoxNearPosition(
+  {
+    top: 20,
+    bottom: 20,
+    left: 30,
+    right: 40,
+    front: 50,
+    back: 60,
+  },
+  objArr
+);
 
 // 使用查找器查找指定位置附近区域的对象
-const nearObjs = findObjectsNearPosition({x:100,y:100,z:100})
+const nearObjs = findObjectsNearPosition({ x: 100, y: 100, z: 100 });
 ```
-
 
 ## createFindObjectsInSphereNearPosition
 
@@ -726,7 +726,7 @@ export type FindObjectsNearPosition = ( position: Vector3 ) => Object3D[]
 
 /**
  * 创建用于 查找位置附近的球形区域范围内的物体 的查找器
- * 
+ *
  * @param radius - 描述查找半径
  * @param objects - 所有需要被查找的对象
  * @returns 用于查找的函数
@@ -735,11 +735,13 @@ createFindObjectsInSphereNearPosition ( radius: number, objects: Object3D[] ): F
 ```
 
 ### radius
+
 查找区域的半径
 
 - 类型：`number`
 
 ### objects
+
 被查找的空间对象。只会从这些对象中进行查找。
 
 - 类型：`Object3D`
@@ -748,12 +750,14 @@ createFindObjectsInSphereNearPosition ( radius: number, objects: Object3D[] ): F
 
 ```js
 //合建一个查找器，需要指定查找的区域 和 从哪些对象中进行查找
-const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(20,objArr);
+const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(
+  20,
+  objArr
+);
 
 // 使用查找器查找指定位置附近区域的对象
-const nearObjs = findObjectsNearPosition({x:100,y:100,z:100})
+const nearObjs = findObjectsNearPosition({ x: 100, y: 100, z: 100 });
 ```
-
 
 ## createFindObjectsNearPath
 
@@ -772,7 +776,7 @@ export type FindNearbyObjects = ( objs: Object3D[] ) => Object3D[]
 
 /**
  *  创建用于 查找路径附近的范围内的物体 的查找器
- * 
+ *
  * @param points - 描述路径的点
  * @param radius - 描述查找半径
  * @returns 用于查找的函数
@@ -781,11 +785,13 @@ createFindObjectsNearPath ( points: Vector3[], radius: number ): FindNearbyObjec
 ```
 
 ### points
+
 组成路径的顶点
 
 - 类型：`Vector3[]`
 
 ### radius
+
 路径附近的查找区域的半径
 
 - 类型：`number`
@@ -794,15 +800,18 @@ createFindObjectsNearPath ( points: Vector3[], radius: number ): FindNearbyObjec
 
 ```js
 //合建一个查找器，需要指定查找的区域 和 和被查找的路径
-const findNearbyObjects = ssp.createFindObjectsNearPath([
-  {x:0,y:0,z:0},
-  {x:10,y:0,z:0},
-  {x:10,y:10,z:0},
-  {x:10,y:10,z:10},
-],20);
+const findNearbyObjects = ssp.createFindObjectsNearPath(
+  [
+    { x: 0, y: 0, z: 0 },
+    { x: 10, y: 0, z: 0 },
+    { x: 10, y: 10, z: 0 },
+    { x: 10, y: 10, z: 10 },
+  ],
+  20
+);
 
 // 使用查找器查找指定的对象集中进行查找
-const nearObjs = findNearbyObjects({x:100,y:100,z:100})
+const nearObjs = findNearbyObjects({ x: 100, y: 100, z: 100 });
 ```
 
 ## clearIdb
