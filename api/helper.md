@@ -403,3 +403,54 @@ ssp.addSpotLightHelper({
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '聚光灯的颜色', link: '../guide/types.html#icolor' },
     ]"
 />
+
+## addPointLightHelper
+
+添加点光辅助器
+
+### 定义：
+
+```ts
+interface PointLightHelperOptions extends BaseHelperOptions {
+  light: PointLight;
+  color?: IColor;
+  size?: number;
+}
+
+function addPointLightHelper(
+  options: PointLightHelperOptions
+): THREE.PointLightHelper;
+```
+
+### 用法：
+
+```js
+const light = ssp.createPointLight({
+  id: 'point_light',
+});
+
+ssp.addPointLightHelper({
+  id: 'point_light_helper',
+  light,
+  color: 'yellow',
+});
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `PointLightHelperOptions`
+
+###### PointLightHelperOptions
+
+<Docs-Table 
+    :data="[
+      { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
+      { prop: 'light', desc: '点光对象', type: 'HemisphereLight', require: true, default: '' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '点光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'size', desc: '大小', type: 'number', require: false, default: '20' },
+    ]"
+/>
