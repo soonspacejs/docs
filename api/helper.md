@@ -449,8 +449,57 @@ ssp.addPointLightHelper({
 <Docs-Table 
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
-      { prop: 'light', desc: '点光对象', type: 'HemisphereLight', require: true, default: '' },
+      { prop: 'light', desc: '点光对象', type: 'PointLight', require: true, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '点光的颜色', link: '../guide/types.html#icolor' },
       { prop: 'size', desc: '大小', type: 'number', require: false, default: '20' },
+    ]"
+/>
+
+## addRectAreaLightHelper
+
+添加矩形区域光辅助器
+
+### 定义：
+
+```ts
+interface RectAreaLightHelperOptions extends BaseHelperOptions {
+  light: RectAreaLight;
+  color?: IColor;
+}
+
+function addRectAreaLightHelper(
+  options: RectAreaLightHelperOptions
+): RectAreaLightHelper;
+```
+
+### 用法：
+
+```js
+const light = ssp.createRectAreaLight({
+  id: 'rect_area_light',
+});
+
+ssp.addRectAreaLightHelper({
+  id: 'rect_area_light_helper',
+  light,
+  color: 'yellow',
+});
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `RectAreaLightHelperOptions`
+
+###### RectAreaLightHelperOptions
+
+<Docs-Table 
+    :data="[
+      { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
+      { prop: 'light', desc: '矩形区域光对象', type: 'RectAreaLight', require: true, default: '' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '矩形区域光的颜色', link: '../guide/types.html#icolor' },
     ]"
 />
