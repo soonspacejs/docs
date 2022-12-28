@@ -503,3 +503,51 @@ ssp.addRectAreaLightHelper({
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '矩形区域光的颜色', link: '../guide/types.html#icolor' },
     ]"
 />
+
+## clearHelper
+
+清空辅助器
+
+### 定义：
+
+```ts
+function clearHelper(): void;
+```
+
+### 用法：
+
+```js
+ssp.clearHelper();
+```
+
+## showAllHelper
+
+显示所有辅助器
+
+### 定义：
+
+```ts
+function showAllHelper(): void;
+```
+
+### 用法：
+
+```js
+ssp.showAllHelper();
+```
+
+## hideAllHelper
+
+隐藏所有辅助器
+
+### 定义：
+
+```ts
+function hideAllHelper(): void;
+```
+
+### 用法：
+
+```js
+ssp.hideAllHelper();
+```
