@@ -302,6 +302,6 @@ ssp.addDirectionalLightHelper({
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '平行光对象', type: 'DirectionalLight', require: true, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '平行光的颜色', link: '../guide/types.html#icolor' },
-      { prop: 'size', desc: '大小', type: 'DirectionalLight', require: true, default: '1' },
+      { prop: 'size', desc: '大小', type: 'DirectionalLight', require: false, default: '1' },
     ]"
 />
