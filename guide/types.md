@@ -200,6 +200,16 @@ interface BaseSelectOptions {
 }
 ```
 
+## BaseHelperOptions
+
+helper 的基础参数
+
+```ts
+interface BaseHelperOptions {
+  id: string | number;
+}
+```
+
 ## Interpolate
 
 线性插值

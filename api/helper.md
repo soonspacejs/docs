@@ -11,9 +11,8 @@
 ### 定义：
 
 ```ts
-interface AxesHelperOptions {
-  id: string | number
-  axesLength?: number
+interface AxesHelperOptions extends BaseHelperOptions {
+  axesLength?: number;
 }
 
 function addAxesHelper(options: AxesHelperOptions): AxesHelper;
@@ -52,14 +51,13 @@ ssp.addAxesHelper({
 ### 定义：
 
 ```ts
-interface GridHelperOptions {
-  id: string | number
-  size?: number
-  divisions?: number
-  color?: IColor
-  position?: Position
-  rotation?: Rotation
-  scale?: Scale
+interface GridHelperOptions extends BaseHelperOptions {
+  size?: number;
+  divisions?: number;
+  color?: IColor;
+  position?: Position;
+  rotation?: Rotation;
+  scale?: Scale;
 }
 
 function addGridHelper(options: GridHelperOptions): GridHelper;
@@ -89,7 +87,7 @@ ssp.addGridHelper({
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'size', desc: '网格尺寸', type: 'number', require: false, default: '1000' },
       { prop: 'divisions', desc: '网格横纵向分割格数', type: 'number', require: false, default: '20' },
-      { prop: 'color', desc: '网格颜色', type: 'IColor', require: false, default: '#ffffff' },
+      { prop: 'color', desc: '网格颜色', type: 'IColor', require: false, default: '#ffffff', link: '../guide/types.html#icolor' },
       { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
       { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
@@ -103,15 +101,14 @@ ssp.addGridHelper({
 ### 定义：
 
 ```ts
-interface PlaneHelperOptions {\
-  id: string | number
-  width?: number
-  height?: number
-  color?: IColor
-  opacity?: number
-  position?: Position
-  rotation?: Rotation
-  scale?: Scale
+interface PlaneHelperOptions extends BaseHelperOptions {
+  width?: number;
+  height?: number;
+  color?: IColor;
+  opacity?: number;
+  position?: Position;
+  rotation?: Rotation;
+  scale?: Scale;
 }
 
 function addPlaneHelper(options: PlaneHelperOptions): BaseMesh;
@@ -161,10 +158,9 @@ ssp.addPlaneHelper({
 ### 定义：
 
 ```ts
-interface BoxHelperOptions {
-  id: string | number
-  box: Box3
-  color?: IColor
+interface BoxHelperOptions extends BaseHelperOptions {
+  box: Box3;
+  color?: IColor;
 }
 
 function addBoxHelper(options: BoxHelperOptions): Box3Helper;
@@ -175,7 +171,7 @@ function addBoxHelper(options: BoxHelperOptions): Box3Helper;
 ```js
 ssp.addBoxHelper({
   id: 'test_boxHelper',
-  box: ssp.getSbmById('xxx').getBoundingBox(),
+  box: ssp.getObjectById('xxx_model').getBoundingBox(),
   color: '#00ff00',
 });
 ```
@@ -209,16 +205,15 @@ ssp.addBoxHelper({
 ### 定义：
 
 ```ts
-interface GroundHelperOptions {
-  id: string | number
-  imgUrl: string
-  width?: number
-  height?: number
-  opacity?: number
-  position?: Position
-  rotation?: Rotation
-  scale?: Scale
-  repeat?: IVector2
+interface GroundHelperOptions extends BaseHelperOptions {
+  imgUrl: string;
+  width?: number;
+  height?: number;
+  opacity?: number;
+  position?: Position;
+  rotation?: Position;
+  scale?: Scale;
+  repeat?: IVector2;
 }
 
 function addGroundHelper(options: GroundHelperOptions): BaseMesh;
@@ -257,5 +252,56 @@ ssp.addGroundHelper({
       { prop: 'rotation', desc: '地面旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
       { prop: 'scale', desc: '地面缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'repeat', desc: '地面在平面内的平铺数', type: 'IVector2', require: false, default: '{ x: 10, y: 10 }', link: '../guide/types.html#ivector2' },
+    ]"
+/>
+
+## addDirectionalLightHelper
+
+添加平行光辅助器
+
+### 定义：
+
+```ts
+interface DirectionalLightHelperOptions extends BaseHelperOptions {
+  light: DirectionalLight;
+  color?: IColor;
+  size?: number;
+}
+
+function addDirectionalLightHelper(
+  options: DirectionalLightHelperOptions
+): THREE.DirectionalLightHelper;
+```
+
+### 用法：
+
+```js
+const light = ssp.createDirectionalLight({
+  id: 'directional_light',
+});
+
+ssp.addDirectionalLightHelper({
+  id: 'directional_light_helper',
+  light,
+  color: 'yellow',
+});
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 配置项
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `DirectionalLightHelperOptions`
+
+##### DirectionalLightHelperOptions
+
+<Docs-Table 
+    :data="[
+      { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
+      { prop: 'light', desc: '平行光对象', type: 'DirectionalLight', require: true, default: '' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '平行光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'size', desc: '大小', type: 'DirectionalLight', require: true, default: '1' },
     ]"
 />
