@@ -481,7 +481,7 @@ const groupList = ssp.getCanvas3DGroupByName('name_firstCanvas3DGroup');
 请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
 :::
 
-## getAllCanvas3DGroup
+## getAllCanvas3DGroup <Base-Deprecated />
 
 获取所有 `Canvas3D` 对象组
 
@@ -496,6 +496,10 @@ function getAllCanvas3DGroup(): Group[];
 ```js
 const allCanvas3DGroupList = ssp.getAllCanvas3DGroup();
 ```
+
+:::warning 弃用警告
+请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+:::
 
 ## removeCanvas3DGroupById <Base-Deprecated />
 

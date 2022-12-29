@@ -321,7 +321,7 @@ const shortestTopology = ssp.getShortestPathByMultipleEndPoints(
 
 部分配置参考 [TopologyInfo](#topologyinfo-2)
 
-## getTopologyById
+## getTopologyById <Base-Deprecated />
 
 通过 `id` 查找
 
@@ -337,7 +337,11 @@ function getTopologyById(id: TopologyInfo['id']): Topology | null;
 const topology = ssp.getTopologyById('xxx');
 ```
 
-## getTopologyByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getTopologyByName <Base-Deprecated />
 
 通过 `name` 查找
 
@@ -352,6 +356,10 @@ function getTopologyByName(name: string): Topology[];
 ```js
 const topologyList = ssp.getTopologyByName('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
 
 ## getAllTopology
 
@@ -369,7 +377,7 @@ function getAllTopology(): Topology[];
 const allTopologyList = ssp.getAllTopology();
 ```
 
-## getTopologyByUserDataProperty
+## getTopologyByUserDataProperty <Base-Deprecated />
 
 通过 `userData` 属性查找
 
@@ -420,7 +428,11 @@ const topologyList = ssp.getTopologyByUserDataProperty(
 
 :::
 
-## removeTopologyById
+:::warning 弃用警告
+请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+:::
+
+## removeTopologyById <Base-Deprecated />
 
 通过 `id` 移除
 
@@ -435,6 +447,10 @@ function removeTopologyById(id: TopologyInfo['id']): boolean;
 ```js
 ssp.removeTopologyById('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## createTopologyToGroup
 
@@ -540,7 +556,7 @@ ssp
     ]"
 />
 
-## createGroupForTopology
+## createGroupForTopology <Base-Deprecated />
 
 为 `topology` 提前创建一个空组。
 ::: tip 使用场景
@@ -570,6 +586,10 @@ ssp.createGroupForTopology({
 - **描述:** 实例组对象所需信息
 - **类型:** [GroupInfo](./sbm.html#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+:::warning 弃用警告
+请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+:::
 
 ## addTopologyForGroup
 
@@ -611,7 +631,7 @@ ssp.addTopologyForGroup(
 - **类型:** [topologyinfo](#topologyinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## getTopologyGroupById
+## getTopologyGroupById <Base-Deprecated />
 
 通过 `id` 查找 `topology` 组
 
@@ -627,7 +647,11 @@ function getTopologyGroupById(id: GroupInfo['id']): Group | null;
 const group = ssp.getTopologyGroupById('firstTopologyGroup');
 ```
 
-## getTopologyGroupByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getTopologyGroupByName <Base-Deprecated />
 
 通过 `name` 查找 `topology` 组
 
@@ -643,7 +667,11 @@ function getTopologyGroupByName(name: string): Group[];
 const groupList = ssp.getTopologyGroupByName('name_firstTopologyGroup');
 ```
 
-## getAllTopologyGroup
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
+
+## getAllTopologyGroup <Base-Deprecated />
 
 获取所有 `Topology` 对象组
 
@@ -659,7 +687,11 @@ function getAllTopologyGroup(): Group[];
 const allTopologyGroupList = ssp.getAllTopologyGroup();
 ```
 
-## removeTopologyGroupById
+:::warning 弃用警告
+请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+:::
+
+## removeTopologyGroupById <Base-Deprecated />
 
 通过 `id` 移除 `topology` 组
 
@@ -674,6 +706,10 @@ function removeTopologyGroupById(id: GroupInfo['id']): boolean;
 ```js
 const isRemoveSuccess = ssp.removeTopologyGroupById('firstTopologyGroup');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## clearTopology
 
