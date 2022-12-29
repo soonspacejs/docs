@@ -656,6 +656,10 @@ function clearSbm(): void;
 ssp.clearSbm();
 ```
 
+:::warning 弃用警告
+请使用 [`clearModel`](./model.html#clearmodel) 替代
+:::
+
 ## showAllSbm <Base-Deprecated />
 
 显示当前场景内所有 `Sbm` 对象。
@@ -672,6 +676,10 @@ function showAllSbm(): void;
 ssp.showAllSbm();
 ```
 
+:::warning 弃用警告
+请使用 [`showAllModel`](./model.html#showallmodel) 替代
+:::
+
 ## hideAllSbm <Base-Deprecated />
 
 隐藏当前场景内所有 `Sbm` 对象。
@@ -687,6 +695,10 @@ function hideAllSbm(): void;
 ```js
 ssp.hideAllSbm();
 ```
+
+:::warning 弃用警告
+请使用 [`hideAllModel`](./model.html#hideallmodel) 替代
+:::
 
 ## getSbmModelMaps <Base-Deprecated />
 

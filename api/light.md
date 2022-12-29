@@ -1,7 +1,7 @@
 # 灯光
 
 ::: tip 提示
-v2.4.0 之后内部已经不在创建额外的灯光，控制场景的明亮度推荐使用 `setToneMapping` 控制
+v2.4.0 之后内部已经不在创建额外的灯光，控制场景的明亮度推荐使用 [`setToneMapping`](./sceneTool.html#settonemapping) 控制
 :::
 
 ### 样例：

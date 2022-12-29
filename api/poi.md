@@ -93,7 +93,7 @@ ssp.createPoi(
     ]"
 />
 
-## getPoiById
+## getPoiById <Base-Deprecated />
 
 通过 `id` 查找
 
@@ -109,7 +109,11 @@ function getPoiById(id: PoiInfo['id']): Poi | null;
 const poi = ssp.getPoiById('xxx');
 ```
 
-## getPoiByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getPoiByName <Base-Deprecated />
 
 通过 `name` 查找
 
@@ -124,6 +128,10 @@ function getPoiByName(name: string): Poi[];
 ```js
 const poiList = ssp.getPoiByName('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
 
 ## getAllPoi
 
@@ -141,7 +149,7 @@ function getAllPoi(): Poi[];
 const allPoiList = ssp.getAllPoi();
 ```
 
-## getPoiByUserDataProperty
+## getPoiByUserDataProperty <Base-Deprecated />
 
 通过 `userData` 属性查找
 
@@ -192,7 +200,11 @@ const poiList = ssp.getPoiByUserDataProperty(
 
 :::
 
-## removePoiById
+:::warning 弃用警告
+请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+:::
+
+## removePoiById <Base-Deprecated />
 
 通过 `id` 移除
 
@@ -207,6 +219,10 @@ function removePoiById(id: PoiInfo['id']): boolean;
 ```js
 ssp.removePoiById('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## createPoiToGroup
 
@@ -247,7 +263,7 @@ ssp.createPoiToGroup(
 - **类型:** [poiinfo](#poiinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## createGroupForPoi
+## createGroupForPoi <Base-Deprecated />
 
 为 `poi` 提前创建一个空组。
 ::: tip 使用场景
@@ -277,6 +293,10 @@ ssp.createGroupForPoi({
 - **描述:** 实例组对象所需信息
 - **类型:** [GroupInfo](./sbm.html#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+:::warning 弃用警告
+请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+:::
 
 ## addPoiForGroup
 
@@ -318,7 +338,7 @@ ssp.addPoiForGroup(
 - **类型:** [poiinfo](#poiinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## getPoiGroupById
+## getPoiGroupById <Base-Deprecated />
 
 通过 `id` 查找 `poi` 组
 
@@ -334,7 +354,11 @@ function getPoiGroupById(id: GroupInfo['id']): Group | null;
 const group = ssp.getPoiGroupById('firstPoiGroup');
 ```
 
-## getPoiGroupByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getPoiGroupByName <Base-Deprecated />
 
 通过 `name` 查找 `poi` 组
 
@@ -350,7 +374,11 @@ function getPoiGroupByName(name: string): Group[];
 const groupList = ssp.getPoiGroupByName('name_firstPoiGroup');
 ```
 
-## getAllPoiGroup
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
+
+## getAllPoiGroup <Base-Deprecated />
 
 获取所有 `Poi` 对象组
 
@@ -366,7 +394,11 @@ function getAllPoiGroup(): Group[];
 const allPoiGroupList = ssp.getAllPoiGroup();
 ```
 
-## removePoiGroupById
+:::warning 弃用警告
+请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+:::
+
+## removePoiGroupById <Base-Deprecated />
 
 通过 `id` 移除 `poi` 组
 
@@ -381,6 +413,10 @@ function removePoiGroupById(id: GroupInfo['id']): boolean;
 ```js
 const isRemoveSuccess = ssp.removePoiGroupById('firstPoiGroup');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## clearPoi
 
