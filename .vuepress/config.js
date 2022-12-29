@@ -142,7 +142,7 @@ module.exports = {
                 '/api/poi',
                 '/api/poiNode',
                 '/api/poiMesh',
-                '/api/Canvas3D',
+                '/api/canvas3D',
                 '/api/topology',
               ],
             },
