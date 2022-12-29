@@ -665,7 +665,9 @@ function addObject(object: Object3D, parent?: Object3D): void;
 
 ```js
 ssp.addObject(object);
+
 // or
+
 const group = ssp.createGroup({
   id: 'group',
 });
@@ -701,6 +703,12 @@ function removeObject(object: Object3D): void;
 
 ```js
 ssp.removeObject(object);
+
+// or
+
+const model = ssp.getObjectById('xxx_model');
+
+ssp.removeObject(model);
 ```
 
 ### 参数:
