@@ -189,7 +189,7 @@ ssp.createCanvas3D({
     ]"
 />
 
-## getCanvas3DById
+## getCanvas3DById <Base-Deprecated />
 
 通过 `id` 查找
 
@@ -205,7 +205,11 @@ function getCanvas3DById(id: Canvas3DInfo['id']): Canvas3D | null;
 const Canvas3D = ssp.getCanvas3DById('xxx');
 ```
 
-## getCanvas3DByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getCanvas3DByName <Base-Deprecated />
 
 通过 `name` 查找
 
@@ -220,6 +224,10 @@ function getCanvas3DByName(name: string): Canvas3D[];
 ```js
 const Canvas3DList = ssp.getCanvas3DByName('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
 
 ## getAllCanvas3D
 
@@ -237,7 +245,7 @@ function getAllCanvas3D(): Canvas3D[];
 const allCanvas3DList = ssp.getAllCanvas3D();
 ```
 
-## getCanvas3DByUserDataProperty
+## getCanvas3DByUserDataProperty <Base-Deprecated />
 
 通过 `userData` 属性查找
 
@@ -288,7 +296,11 @@ const Canvas3DList = ssp.getCanvas3DByUserDataProperty(
 
 :::
 
-## removeCanvas3DById
+:::warning 弃用警告
+请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+:::
+
+## removeCanvas3DById <Base-Deprecated />
 
 通过 `id` 移除
 
@@ -303,6 +315,10 @@ function removeCanvas3DById(id: Canvas3DInfo['id']): boolean;
 ```js
 ssp.removeCanvas3DById('xxx');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## createCanvas3DToGroup
 
@@ -348,7 +364,7 @@ ssp
 - **类型:** [Canvas3Dinfo](#Canvas3Dinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## createGroupForCanvas3D
+## createGroupForCanvas3D <Base-Deprecated />
 
 为 `Canvas3D` 提前创建一个空组。
 ::: tip 使用场景
@@ -378,6 +394,10 @@ ssp.createGroupForCanvas3D({
 - **描述:** 实例组对象所需信息
 - **类型:** [GroupInfo](./sbm.html#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
+
+:::warning 弃用警告
+请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+:::
 
 ## addCanvas3DForGroup
 
@@ -421,7 +441,7 @@ ssp
 - **类型:** [Canvas3Dinfo](#Canvas3Dinfo)[]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-## getCanvas3DGroupById
+## getCanvas3DGroupById <Base-Deprecated />
 
 通过 `id` 查找 `Canvas3D` 组
 
@@ -437,7 +457,11 @@ function getCanvas3DGroupById(id: GroupInfo['id']): Group | null;
 const group = ssp.getCanvas3DGroupById('firstCanvas3DGroup');
 ```
 
-## getCanvas3DGroupByName
+:::warning 弃用警告
+请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+:::
+
+## getCanvas3DGroupByName <Base-Deprecated />
 
 通过 `name` 查找 `Canvas3D` 组
 
@@ -452,6 +476,10 @@ function getCanvas3DGroupByName(name: string): Group[];
 ```js
 const groupList = ssp.getCanvas3DGroupByName('name_firstCanvas3DGroup');
 ```
+
+:::warning 弃用警告
+请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+:::
 
 ## getAllCanvas3DGroup
 
@@ -469,7 +497,7 @@ function getAllCanvas3DGroup(): Group[];
 const allCanvas3DGroupList = ssp.getAllCanvas3DGroup();
 ```
 
-## removeCanvas3DGroupById
+## removeCanvas3DGroupById <Base-Deprecated />
 
 通过 `id` 移除 `Canvas3D` 组
 
@@ -484,6 +512,10 @@ function removeCanvas3DGroupById(id: GroupInfo['id']): boolean;
 ```js
 const isRemoveSuccess = ssp.removeCanvas3DGroupById('firstCanvas3DGroup');
 ```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ## clearCanvas3D
 

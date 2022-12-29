@@ -653,7 +653,7 @@ ssp.getPositionByOffset({ offsetX: 10, offsetY: 10 });
 
 ## addObject
 
- 添加对象
+添加对象
 
 ### 定义:
 
@@ -665,6 +665,12 @@ function addObject(object: Object3D, parent?: Object3D): void;
 
 ```js
 ssp.addObject(object);
+// or
+const group = ssp.createGroup({
+  id: 'group',
+});
+
+ssp.addObject(object, group);
 ```
 
 ### 参数:
@@ -672,7 +678,7 @@ ssp.addObject(object);
 #### object
 
 - **类型:** Object3D
-- **描述:** 要添加的模型对象
+- **描述:** 要添加的空间对象
 - **必填:** <Base-RequireIcon />
 
 #### parent
@@ -702,7 +708,7 @@ ssp.removeObject(object);
 #### object
 
 - **类型:** Object3D
-- **描述:** 要移除的模型对象
+- **描述:** 要移除的空间对象
 - **必填:** <Base-RequireIcon />
 
 ## setHoverEnabled
