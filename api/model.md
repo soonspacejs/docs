@@ -814,6 +814,152 @@ const findNearbyObjects = ssp.createFindObjectsNearPath(
 const nearObjs = findNearbyObjects({ x: 100, y: 100, z: 100 });
 ```
 
+
+
+## createPathAnimation
+创建路径动画
+
+### 定义：
+
+```ts
+/**
+ * 路径动画选项
+ */
+interface PathAnimationOptions {
+  /**
+   * 移动速度
+   */
+  speed?: number;
+
+  /**
+   * 位置更新回调
+   * @remarks
+   * 每当目标位置有更新时会触发
+   */
+  onUpdate?: ( position: Vector3, tween: Tween<Vector3> ) => void;
+
+  /**
+   * 动画开始时回调
+   */
+  onStart?: ( tween: Tween<Vector3> ) => void;
+  /**
+   * 当到达一个点时回调
+   */
+  onPoint?: ( index: number, point: Vector3 ) => void;
+}
+
+
+/**
+ * 创建路径动画
+ * @param target - 被动画的目标对象
+ * @param points - 路径的点列表
+ * @param options - 选项
+ * @returns 
+ */
+createPathAnimation ( target: Object3D, points: Vector3[], options?: PathAnimationOptions ): PathAnimation
+```
+
+### target
+被动画的目标对象
+
+- 类型：`Object3D`
+
+### points
+路径的点列表
+
+- 类型：`Vector3[]`
+
+### 用法：
+
+```js
+//创建路径动画对象
+const animation = ssp.createPathAnimation(model,[
+  {x:0,y:0,z:0},
+  {x:10,y:0,z:0},
+  {x:10,y:10,z:0},
+  {x:10,y:10,z:10},
+],{
+  speed:10
+});
+
+// 播放动画
+animation.play()
+
+// 暂停动画
+animation.pause()
+```
+
+
+
+
+## createTopologyAnimation
+创建沿拓扑路径运动的动画
+
+### 定义：
+
+```ts
+/**
+ * 路径动画选项
+ */
+interface PathAnimationOptions {
+  /**
+   * 移动速度
+   */
+  speed?: number;
+
+  /**
+   * 位置更新回调
+   * @remarks
+   * 每当目标位置有更新时会触发
+   */
+  onUpdate?: ( position: Vector3, tween: Tween<Vector3> ) => void;
+
+  /**
+   * 动画开始时回调
+   */
+  onStart?: ( tween: Tween<Vector3> ) => void;
+  /**
+   * 当到达一个点时回调
+   */
+  onPoint?: ( index: number, point: Vector3 ) => void;
+}
+
+
+  /**
+   * 创建沿拓扑路径动画的动画
+   * @param target - 被动画的目标对象
+   * @param topology - 路径点列表
+   * @param options - 选项
+   * @returns 
+   */
+createTopologyAnimation ( target: Object3D, topology: Topology, options?: PathAnimationOptions ): PathAnimation
+```
+
+### target
+被动画的目标对象
+
+- 类型：`Object3D`
+
+### topology
+拓扑路径
+
+- 类型：`Topology`
+
+### 用法：
+
+```js
+//创建沿拓扑路径动画的动画
+const animation = ssp.createTopologyAnimation(model,topology,{
+  speed:10
+});
+
+// 播放动画
+animation.play()
+
+// 暂停动画
+animation.pause()
+```
+
 ## clearIdb
 
 清空本地 indexedDB 模型缓存数据

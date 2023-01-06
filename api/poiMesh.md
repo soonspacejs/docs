@@ -1,6 +1,6 @@
 # PoiMesh 对象
+PoiMesh 其实就是 3D 平面 Mesh 对象，与普通的 Mesh 对象没有任何区别。
 
-PoiMesh 其实就是 3D 平面 Mesh 对象，与普通的 Mesh 对象没有几何区别。
 
 ## 对比
 
