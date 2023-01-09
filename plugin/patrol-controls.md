@@ -48,13 +48,13 @@ consolo.log(patrolControls);
 #### 定义
 
 ```ts
-interface StartOptions {
-  eyeHeight?: number
-  naviSpeed?: number
-  rotateSpeed?: number
-  flyToStartPoint?: boolean
-  onUpdate?: (e: Position) => {}
-  onEnd?: (endPosition: Position) => {}
+interface StartOptions = {
+    eyeHeight?: number | undefined;
+    naviSpeed?: number | undefined;
+    rotateSpeed?: number | undefined;
+    flyToStartPoint?: boolean | undefined;
+    onUpdate?: ((realTimePosition: Position, realTimeRotation: Euler, nextNode: Node, toNextNodeDistance: number) => void) | undefined;
+    onEnd?: ((endPosition: Position) => void) | undefined;
 }
 
 function start(path: Topology, options: StartOptions) => void
@@ -75,8 +75,8 @@ patrolControls.start(
     onUpdate: (realTimePosition) => {
       console.log(realTimePosition)
     },
-    onEnd: (position) => {
-      console.log('巡检结束！', position)
+    onEnd: (endPosition) => {
+      console.log('巡检结束！', endPosition)
     }
   }
 )
