@@ -28,6 +28,36 @@ ssp.setBackgroundColor(0xff0000);
 - **描述:** 颜色值
 - **必填:** <Base-RequireIcon />
 
+## setBackgroundColorAlpha
+
+设置背景色（不透明度）
+
+### 定义：
+
+```ts
+function setBackgroundColorAlpha(color: IColor, alpha?: number): void;
+```
+
+### 用法：
+
+```js
+ssp.setBackgroundColorAlpha(0xff0000, 0.5);
+```
+
+### 参数：
+
+#### color
+
+- **类型:** [IColor](../guide/types.html#icolor)
+- **描述:** 颜色值
+- **必填:** <Base-RequireIcon />
+
+#### alpha
+
+- **类型:** number
+- **描述:** 不透明度
+- **必填:** <Base-RequireIcon :isRequire="false" />，默认值为1
+
 ## setBackgroundImage
 
 设置背景图
