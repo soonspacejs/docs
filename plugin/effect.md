@@ -35,6 +35,24 @@ const ssp = new SoonSpace({
 const effectPlugin = ssp.registerPlugin(EffectPlugin, 'effectPlugin');
 ```
 
+## 属性
+
+### weatherPresetImgs
+
+天气效果预设图片
+
+#### 雨滴图片
+
+```js
+effectPlugin.weatherPresetImgs.rain;
+```
+
+#### 下雪图片
+
+```js
+effectPlugin.weatherPresetImgs.snow;
+```
+
 ## 方法
 
 ### createFlame
@@ -52,7 +70,7 @@ interface FlameInfo extends PluginObjectInfo {
   imgUrl?: string;
 }
 
-function createFlame(param: FlameInfo): PluginObject;
+function createFlame(params: FlameInfo): PluginObject;
 ```
 
 #### 使用
@@ -70,7 +88,7 @@ effectPlugin.createFlame({
 
 #### 参数
 
-##### param
+##### params
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
@@ -111,7 +129,7 @@ interface SmokeInfo extends PluginObjectInfo {
   color?: IColor[];
 }
 
-function createSmoke(param: SmokeInfo): PluginObject;
+function createSmoke(params: SmokeInfo): PluginObject;
 ```
 
 #### 用法
@@ -130,7 +148,7 @@ effectPlugin.createSmoke({
 
 #### 参数
 
-##### param
+##### params
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
@@ -189,7 +207,7 @@ interface ContactShadowsInfo extends Omit<PluginObjectInfo, 'scale'> {
   darkness?: number;
 }
 
-function createContactShadows(param: ContactShadowsInfo): PluginObject;
+function createContactShadows(params: ContactShadowsInfo): PluginObject;
 ```
 
 #### 用法
@@ -210,7 +228,7 @@ effectPlugin.createContactShadows({
 
 #### 参数
 
-##### param
+##### params
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
@@ -251,6 +269,106 @@ effectPlugin.createContactShadows({
 />
 
 其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
+
+### openWeather
+
+开启天气效果
+
+#### 样例
+
+<Docs-Iframe src="plugin/weatherEffect.html" />
+
+#### 定义
+
+```ts
+interface WeatherInfo {
+  imgUrl?: string;
+  color?: IColor;
+  size?: number;
+  opacity?: number;
+  count?: number;
+  range?: number;
+  velocityX?: [number, number];
+  velocityY?: [number, number];
+}
+
+function openWeather(params?: WeatherInfo): void;
+```
+
+#### 用法
+
+```js
+effectPlugin.openWeather({
+  imgUrl: effectPlugin.weatherPresetImgs.snow,
+  count: 500,
+  color: 0xffffff,
+  size: 1.4,
+  opacity: 0.8,
+  velocityX: [-0.01, 0.01],
+  velocityY: [0.2, 0.3],
+});
+```
+
+#### 参数
+
+##### params
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `WeatherInfo`
+
+##### WeatherInfo
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'imgUrl', desc: '粒子贴图', type: 'string', require: false, default: '内置雨滴图',
+      },
+      {
+         prop: 'color', desc: '粒子颜色', type: 'IColor', link: '../guide/types.html#icolor', require: false, default: '0xffffff',
+      },
+      {
+        prop: 'size', desc: '粒子大小', type: 'number', require: false, default: '1',
+      },
+      {
+        prop: 'opacity', desc: '粒子不透明度', type: 'number', require: false, default: '0.9',
+      },
+      {
+        prop: 'count', desc: '粒子数量', type: 'number', require: false, default: '500',
+      },
+      {
+        prop: 'range', desc: '生成范围', type: 'number', require: false, default: '100',
+      },
+      {
+        prop: 'velocityX', desc: '左右浮动的随机范围', type: '[number, number]', require: false, default: '[-0.02, 0.02]',
+      },
+      {
+        prop: 'velocityY', desc: '下降速度的随机范围', type: '[number, number]', require: false, default: '[0.4, 0.8]',
+      },
+    ]"
+/>
+
+::: tip 提示
+重复调用 `openWeather` 方法自动会将之前的天气效果关闭。
+
+关闭天气需要使用 `closeWeather` 方法
+:::
+
+### closeWeather
+
+关闭天气效果
+
+#### 定义
+
+```ts
+function closeWeather(): void;
+```
+
+#### 用法
+
+```js
+effectPlugin.closeWeather();
+```
 
 ### removeEffect
 
