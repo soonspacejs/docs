@@ -93,7 +93,7 @@ patrolControls.start(
 ##### options
 
 - **描述:** 可配置项
-- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **必填:** <Base-RequireIcon :isRequire="true"/>
 - **类型:** `StartOptions`
 
 ###### StartOptions
