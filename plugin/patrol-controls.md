@@ -114,13 +114,38 @@ patrolControls.start(
         prop: 'flyToStartPoint', desc: '是否飞向起始点位置', type: 'boolean', require: false, default: 'true'
       },
       {
-        prop: 'onUpdate', desc: '巡检时实时更新回调函数', type: '(realTimePosition: Position) => void', require: false, default: ''
+        prop: 'onUpdate', desc: '巡检时实时更新回调函数', type: '( realTimePosition: Position, realTimeRotation: Euler, nextNode: Node, toNextNodeDistance: number ) => void;', require: false, default: ''
       },
       {
-        prop: 'onEnd', desc: '巡检结束回调函数', type: '(position: Position) => void', require: false, default: ''
+        prop: 'onEnd', desc: '巡检结束回调函数', type: '(endPosition: Position) => void', require: false, default: ''
       }
     ]"
 />
+
+### setOptions
+
+动态设置巡检参数
+
+#### 定义
+
+```ts
+type ResetOptions = Pick<
+  StartOptions,
+  'eyeHeight' | 'naviSpeed' | 'rotateSpeed'
+>;
+
+function setOptions(options: ResetOptions): void;
+```
+
+#### 用法
+
+```js
+patrolControls.setOptions({
+  naviSpeed: 1,
+  rotateSpeed: 1,
+  eyeHeight: 100,
+});
+```
 
 ### stop
 
