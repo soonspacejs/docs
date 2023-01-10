@@ -62,8 +62,16 @@ yarn add soonspacejs -S
   <body>
     <div id="view"></div>
 
-    <script src="https://unpkg.com/soonspacejs/dist/index.js"></script>
-    <script>
+    <script type="importmap">
+      {
+        "imports": {
+          "soonspacejs": "https://unpkg.com/soonspacejs/dist/index.esm.js",
+        }
+      }
+    </script>
+    <script type="module">
+      import SoonSpace from 'soonspacejs';
+
       const ssp = new SoonSpace({
         // 绑定场景的元素选择器
         el: '#view',
