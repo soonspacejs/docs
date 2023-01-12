@@ -546,7 +546,7 @@ function playModelAnimation(
 ### 用法：
 
 ```js
-const model = ssp.getModelById('xxxx');
+const model = ssp.getObjectById('xxxx');
 
 // number
 ssp.playModelAnimation(model, 0);
@@ -586,7 +586,7 @@ function stopModelAnimation(
 ### 用法：
 
 ```js
-const model = ssp.getModelById('xxxx');
+const model = ssp.getObjectById('xxxx');
 
 // number
 ssp.stopModelAnimation(model, 0);
