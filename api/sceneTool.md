@@ -56,7 +56,7 @@ ssp.setBackgroundColorAlpha(0xff0000, 0.5);
 
 - **类型:** number
 - **描述:** 不透明度
-- **必填:** <Base-RequireIcon :isRequire="false" />，默认值为1
+- **必填:** <Base-RequireIcon :isRequire="false" />，默认值为 1
 
 ## setBackgroundImage
 
@@ -69,13 +69,15 @@ ssp.setBackgroundColorAlpha(0xff0000, 0.5);
 ### 定义：
 
 ```ts
-function setBackgroundImage(imgUrl: string): void;
+function setBackgroundImage(imgUrl: string): Promise<void>;
 ```
 
 ### 用法：
 
 ```js
-ssp.setBackgroundImage('http://xx.com/xx.png');
+await ssp.setBackgroundImage('http://xx.com/xx.png');
+
+console.log('背景图替换成功');
 ```
 
 ### 参数：
@@ -94,16 +96,18 @@ ssp.setBackgroundImage('http://xx.com/xx.png');
 
 <Docs-Iframe src="sceneTool/sphereSkyBox.html" />
 
-### 用法：
-
-```js
-ssp.setSphereSkyBackground('http://xx.com/xx.png');
-```
-
 ### 定义：
 
 ```ts
-function setSphereSkyBackground(imgUrl: string): void;
+function setSphereSkyBackground(imgUrl: string): Promise<void>;
+```
+
+### 用法：
+
+```js
+await ssp.setSphereSkyBackground('http://xx.com/xx.png');
+
+console.log('球体天空盒替换成功');
 ```
 
 ### 参数：
@@ -116,7 +120,7 @@ function setSphereSkyBackground(imgUrl: string): void;
 
 ## setSkyBackground
 
-设置天空盒 ( [天空盒模版资源下载](../resource/skyBox.zip) )
+设置天空盒 ( [HDR 天空盒模版资源下载](https://polyhaven.com/hdris) )
 
 ### 样例：
 
@@ -125,18 +129,20 @@ function setSphereSkyBackground(imgUrl: string): void;
 ### 定义：
 
 ```ts
-function setSkyBackground(dirPath: string, fileNames: string[]): void;
+function setSkyBackground(dirPath: string, fileNames: string[]): Promise<void>;
 ```
 
 ### 用法：
 
 ```js
-ssp.setSkyBackground(
+await ssp.setSkyBackground(
   // 文件夹路径
   'http://www.xwbuilders.com:9018/soonspacejs/skybox/sunny/',
   // 有序的图片名集合
   ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg']
 );
+
+console.log('天空盒替换成功');
 ```
 
 ### 参数：
