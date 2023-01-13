@@ -90,7 +90,7 @@ console.log('背景图替换成功');
 
 ## setSphereSkyBackground
 
-设置球体天空盒，球体天空盒的图片资源是一张全景图。( [球体天空盒模版资源下载](../resource/sphereSkyBox.zip) )
+设置球体天空盒，球体天空盒的图片资源是一张全景图。( [HDR 天空盒模版资源下载](https://polyhaven.com/hdris) ) )
 
 ### 样例：
 
@@ -120,7 +120,7 @@ console.log('球体天空盒替换成功');
 
 ## setSkyBackground
 
-设置天空盒 ( [HDR 天空盒模版资源下载](https://polyhaven.com/hdris) )
+设置天空盒 ( [天空盒模版资源下载](../resource/skyBox.zip) )
 
 ### 样例：
 
