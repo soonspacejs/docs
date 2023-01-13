@@ -48,6 +48,29 @@ console.log(soonmanager2Sync);
 - **默认值:** `''`
 - **类型:** `string`
 
+### metaData
+
+场景元数据
+
+- **默认值:** `null`
+- **类型:** `IMetadata | null`
+
+#### 定义
+
+```ts
+interface IMetadata {
+  platformVersion: number;
+  version: number;
+  name: string;
+  projectId: string;
+  sceneId: string;
+  cover: string | null;
+  flatModel: string;
+  treeModel: string;
+  exportTime: number;
+}
+```
+
 ### treeData
 
 场景树数据
@@ -346,3 +369,97 @@ soonmanager2SyncPlugin.playAnimationById('4H6T1H53CSFW', 0, {
 
 所以每次执行新的 `animation` 方法时都会执行 `onStart` 回调并且返回新的 `tween` 实例
 :::
+
+### fetchMetaData
+
+根据当前 `path` 获取场景元数据
+
+#### 定义
+
+```ts
+function fetchMetaData(): Promise<IMetadata>;
+```
+
+#### 用法
+
+```ts
+soonmanager2SyncPlugin.fetchMetaData().then((metaData) => {
+  console.log(fetchMetaData);
+});
+```
+
+### fetchTreeData
+
+根据当前 `path` 获取场景树数据
+
+#### 定义
+
+```ts
+function fetchTreeData(): Promise<ITreeData[]>;
+```
+
+#### 用法
+
+```ts
+soonmanager2SyncPlugin.fetchTreeData().then((treeData) => {
+  console.log(treeData);
+});
+```
+
+::: tip 提示
+调用 `loadScene` 时，内部会使用此方法获取场景树数据
+:::
+
+### fetchPropertiesData
+
+根据当前 `path` 获取自定义属性数据
+
+#### 定义
+
+```ts
+function fetchPropertiesData(): Promise<TPropertiesMap>;
+```
+
+#### 用法
+
+```ts
+soonmanager2SyncPlugin.fetchPropertiesData().then((propertiesData) => {
+  console.log(propertiesData);
+});
+```
+
+### fetchAnimationsData
+
+根据当前 `path` 获取补间动画数据
+
+#### 定义
+
+```ts
+function fetchAnimationsData(): Promise<TAnimationsMap>;
+```
+
+#### 用法
+
+```ts
+soonmanager2SyncPlugin.fetchAnimationsData().then((animationsData) => {
+  console.log(animationsData);
+});
+```
+
+### fetchModelVisions
+
+根据当前 `path` 获取模型视角数据
+
+#### 定义
+
+```ts
+function fetchModelVisions(): Promise<TModelVisionsMap>;
+```
+
+#### 用法
+
+```ts
+soonmanager2SyncPlugin.fetchModelVisions().then((modelVisions) => {
+  console.log(modelVisions);
+});
+```
