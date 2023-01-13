@@ -417,6 +417,7 @@ ssp.setSSR({
 ```ts
 interface BloomOptions {
   enabled?: boolean;
+  mipmapBlur?: boolean;
   radius?: number;
   intensity?: number;
   threshold?: number;
@@ -454,7 +455,8 @@ ssp.setBloom({
 <Docs-Table
     :data="[
       { prop: 'enabled', desc: '是否开启', type: 'boolean', require: false, default: 'true' },
-      { prop: 'radius', desc: '泛光半径', type: 'number', require: false, default: '0.85' },
+      { prop: 'mipmapBlur', desc: '是否开启 mipmap 模糊', type: 'boolean', require: false, default: 'true' },
+      { prop: 'radius', desc: 'mipmap 模糊半径', type: 'number', require: false, default: '0.85' },
       { prop: 'intensity', desc: '泛光强度', type: 'number', require: false, default: '3' },
       { prop: 'threshold', desc: '泛光阈值（颜色）', type: 'number', require: false, default: '1' },
       { prop: 'smoothing', desc: '泛光的平滑度', type: 'number', require: false, default: '0' },
