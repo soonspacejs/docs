@@ -17,6 +17,7 @@ sidebarDepth: 2
 空格跳跃
 
 ## 样例
+
 由于键盘事件无法直接跨过 `iframe`，样例请看[这里](http://www.xwbuilders.com:8800/examples/page/plugin/firstPersonControls.html)。
 
 ## 安装
@@ -49,12 +50,14 @@ consolo.log(firstPersonControls);
 ## 属性
 
 ### camera
+
 第一人称控制器的相机，可通过直接更改该属性值的方式来设置相机
 
 - 类型：`PerspectiveCamera`
 - 默认值：如果在调用 `start()` 时还没有设置相机，则会自动创建一个新的相机。
 
-**注意：**  
+**注意：**
+
 - 如果要给每一人称控制器设置自定义的相机，则需要在在调用 `start()` 方法之前进行设置。
 
 ### rotationAngle
@@ -124,6 +127,7 @@ interface StartOptions {
   jumpHeight?: number;
   enableClash?: boolean;
   enableGravity?: boolean;
+
   /**
    * 模型对象的搜索半径的系数
    * @remarks
@@ -143,23 +147,22 @@ interface StartOptions {
    */
   gravitySpeed?: number;
 
-
   /**
    * 重力搜索系数
    * @remarks
    * 重力搜索系数 表示 向下搜索多少个 eyeHeight 的深度
    */
-   gravitySearchFactor?: number;
+  gravitySearchFactor?: number;
 
   /**
    * 碰撞对象过滤器
    * @remarks
    * 会在遍历对象时逐个调用该方法
-   * 
+   *
    * @param obj - Object3D 对象
    * @returns true：表示检测该对象的碰撞；false | null | undefined | void：表示不检测该对象的碰撞；
    */
-   clashFilter?: ClashFilter;
+  clashFilter?: ClashFilter;
 
    /**
     * 碰撞检测的层级
@@ -175,11 +178,12 @@ interface StartOptions {
    * 是否开启旋转
    */
    rotate?: boolean | null;
-   /**
+
   /**
    * 是否开启水平方向的旋转
    */
    horizontalRotate?: boolean | null;
+
    /**
     * 是否开启垂直方向旋转
     */
@@ -190,11 +194,11 @@ interface StartOptions {
  * 碰撞对象过滤器
  * @remarks
  * 会在遍历对象时逐个调用该方法
- * 
+ *
  * @param obj - Object3D 对象
  * @returns true：表示检测该对象的碰撞；false | null | undefined | void：表示不检测该对象的碰撞；
  */
-type ClashFilter = ( obj: Object3D )=> ( boolean | null | undefined | void )
+type ClashFilter = ( obj: Object3D ) => ( boolean | null | undefined | void )
 
 function start(options: StartOptions) => void
 ```
@@ -226,7 +230,7 @@ firstPersonControls.start({
 <Docs-Table 
     :data="[
       {
-        prop: 'position', desc: '起始相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position'
+        prop: 'position', desc: '起始相机位置', type: 'Position', require: false, default: '', link: '../guide/types.html#position'
       },
       {
         prop: 'rotation', desc: '起始相机弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation'
@@ -300,6 +304,7 @@ firstPersonControls.stop();
 设置选项。可用于漫游时动态更改一些配置
 
 #### 类型
+
 ```ts
 setOptions ( options: StartOptions ): void
 ```
