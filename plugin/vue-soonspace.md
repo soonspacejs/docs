@@ -22,13 +22,13 @@ Vue 中快速使用 soonspacejs。
 ## 安装
 
 ```bash
-npm install vue-soonspace soonspacejs -S
+npm install vue-soonspace three soonspacejs
 # or
-yarn add vue-soonspace soonspacejs -S
+yarn add vue-soonspace three soonspacejs
 ```
 
 ::: tip 提示
-安装 `vue-soonspace` 插件时，要同时安装 `soonspacejs`，但是注册 **前者** 组件时不必手动引入 **后者**，内部自动引入。这样做是为了保证 **后者** 版本最新，不受版本依赖限制。
+安装 `vue-soonspace` 插件时，要同时安装 `three` 和 `soonspacejs`，但是注册 **前者** 组件时不必手动引入 **后者**，内部自动引入。这样做是为了保证 **后者** 版本最新，不受版本依赖限制。
 :::
 
 <!-- 使用方式 -->

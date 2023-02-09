@@ -17,17 +17,28 @@ footer: 浙ICP备16043491号 | © Copyright 2018 xwbuilders - All rights reserve
 
 ```bash
 # 安装
-npm install soonspacejs -S
+npm install three soonspacejs
 # 或者
-yarn add soonspacejs -S
+yarn add three soonspacejs
+```
+
+如果你在使用 `typesscript` 需要额外安装 [threejs](https://threejs.org/) 的声明文件
+
+```bash
+# 安装
+npm install @types/three
+# 或者
+yarn add @types/three
 ```
 
 ### CDN
 
 ES 模块：
 
-```js
-import SoonSpace from 'https://unpkg.com/soonspacejs/dist/index.esm.js';
-```
-
 [https://unpkg.com/soonspacejs/dist/index.esm.js](https://unpkg.com/soonspacejs/dist/index.esm.js)
+
+::: tip 提示
+在 HTML 中直接使用 `soonspacejs` 时需要指定 `three` 依赖地址
+
+用法请参考 [在 html 中使用](./guide/start.html#在-html-中使用)
+:::

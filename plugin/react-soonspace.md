@@ -15,13 +15,13 @@ React 中快速使用 soonspacejs。
 ## 安装
 
 ```bash
-npm install react-soonspace soonspacejs -S
+npm install react-soonspace three soonspacejs
 # or
-yarn add react-soonspace soonspacejs -S
+yarn add react-soonspace three soonspacejs
 ```
 
 ::: tip 提示
-安装 `react-soonspace` 插件时，要同时安装 `soonspacejs`，但在使用 **前者** 组件时不必手动引入 **后者**，内部自动引入。这样做是为了保证 **后者** 版本最新，不受版本依赖限制。
+安装 `react-soonspace` 插件时，要同时安装 `three` 和 `soonspacejs`，但在使用 **前者** 组件时不必手动引入 **后者**，内部自动引入。这样做是为了保证 **后者** 版本最新，不受版本依赖限制。
 :::
 
 <!-- 使用方法 -->
@@ -63,9 +63,9 @@ export default function SoonspaceTest() {
   }, []);
 
   return (
-    <div className='App'>
+    <div className="App">
       <ReactSoonspace
-        className='soonspace-view'
+        className="soonspace-view"
         options={options}
         events={events}
         sceneReady={sceneReady}
@@ -142,4 +142,5 @@ export default function SoonspaceTest() {
 ##### ssp
 
 `soonspace` 实例
+
 > 实例存储推荐使用插件 [Sspx](./sspx.html)。

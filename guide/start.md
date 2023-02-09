@@ -5,6 +5,7 @@ collapsable: true
 # 快速上手
 
 ## hello-world
+
 <Docs-Iframe src="start/helloWorld.html" />
 
 ## 快速搭建
@@ -45,7 +46,7 @@ yarn add soonspacejs -S
 
 #### CDN
 
-[https://unpkg.com/soonspacejs/dist/index.js](https://unpkg.com/soonspacejs/dist/index.js)
+[https://unpkg.com/soonspacejs/dist/index.esm.js](https://unpkg.com/soonspacejs/dist/index.esm.js)
 
 ### 在 html 中使用
 
@@ -65,7 +66,8 @@ yarn add soonspacejs -S
     <script type="importmap">
       {
         "imports": {
-          "soonspacejs": "https://unpkg.com/soonspacejs/dist/index.esm.js",
+          "three": "https://unpkg.com/three/build/three.module.js",
+          "soonspacejs": "https://unpkg.com/soonspacejs/dist/index.esm.js"
         }
       }
     </script>
