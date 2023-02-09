@@ -626,6 +626,57 @@ function setModelDracoDecoderPath(path: string): void;
 ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 ```
 
+## computeModelsBoundsTree
+
+计算所有 model 的 [BVH](https://github.com/gkjohnson/three-mesh-bvh)
+
+调用次方法可减少控制器、模型事件的计算时间
+
+### 定义：
+
+```ts
+type ModelsBoundsTreeOptions = {
+  /**
+   * block 为阻塞计算，'slice' 为每帧分片计算
+   */
+  type?: 'block' | 'slice';
+  force?: boolean;
+  frameSliceCount?: number;
+};
+
+function computeModelsBoundsTree(
+  options?: ModelsBoundsTreeOptions
+): Promise<void>;
+```
+
+### 用法：
+
+```js
+ssp.computeModelsBoundsTree({
+  type: 'slice',
+  force: false,
+  frameSliceCount: 1000,
+});
+```
+
+### 参数：
+
+#### options
+
+- **描述:** 配置选项
+- **类型:** ModelsBoundsTreeOptions
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+
+##### ModelsBoundsTreeOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'type', desc: '计算的类型', type: 'block | slice', require: false, default: 'slice' },
+      { prop: 'force', desc: '是否强制重新计算', type: 'boolean', require: false, default: 'false' },
+      { prop: 'frameSliceCount', desc: '配合 `slice` 使用，每帧的几何结构计算数量', type: 'boolean', require: false, default: '500' },
+    ]"
+/>
+
 ## setTexture
 
 给 mesh 设置纹理贴图，可设置 图片、Cavans 元素、视频 等。
@@ -814,9 +865,8 @@ const findNearbyObjects = ssp.createFindObjectsNearPath(
 const nearObjs = findNearbyObjects({ x: 100, y: 100, z: 100 });
 ```
 
-
-
 ## createPathAnimation
+
 创建路径动画
 
 ### 定义：
@@ -854,17 +904,19 @@ interface PathAnimationOptions {
  * @param target - 被动画的目标对象
  * @param points - 路径的点列表
  * @param options - 选项
- * @returns 
+ * @returns
  */
 createPathAnimation ( target: Object3D, points: Vector3[], options?: PathAnimationOptions ): PathAnimation
 ```
 
 ### target
+
 被动画的目标对象
 
 - 类型：`Object3D`
 
 ### points
+
 路径的点列表
 
 - 类型：`Vector3[]`
@@ -873,26 +925,28 @@ createPathAnimation ( target: Object3D, points: Vector3[], options?: PathAnimati
 
 ```js
 //创建路径动画对象
-const animation = ssp.createPathAnimation(model,[
-  {x:0,y:0,z:0},
-  {x:10,y:0,z:0},
-  {x:10,y:10,z:0},
-  {x:10,y:10,z:10},
-],{
-  speed:10
-});
+const animation = ssp.createPathAnimation(
+  model,
+  [
+    { x: 0, y: 0, z: 0 },
+    { x: 10, y: 0, z: 0 },
+    { x: 10, y: 10, z: 0 },
+    { x: 10, y: 10, z: 10 },
+  ],
+  {
+    speed: 10,
+  }
+);
 
 // 播放动画
-animation.play()
+animation.play();
 
 // 暂停动画
-animation.pause()
+animation.pause();
 ```
 
-
-
-
 ## createTopologyAnimation
+
 创建沿拓扑路径运动的动画
 
 ### 定义：
@@ -930,17 +984,19 @@ interface PathAnimationOptions {
    * @param target - 被动画的目标对象
    * @param topology - 路径点列表
    * @param options - 选项
-   * @returns 
+   * @returns
    */
 createTopologyAnimation ( target: Object3D, topology: Topology, options?: PathAnimationOptions ): PathAnimation
 ```
 
 ### target
+
 被动画的目标对象
 
 - 类型：`Object3D`
 
 ### topology
+
 拓扑路径
 
 - 类型：`Topology`
@@ -949,15 +1005,15 @@ createTopologyAnimation ( target: Object3D, topology: Topology, options?: PathAn
 
 ```js
 //创建沿拓扑路径动画的动画
-const animation = ssp.createTopologyAnimation(model,topology,{
-  speed:10
+const animation = ssp.createTopologyAnimation(model, topology, {
+  speed: 10,
 });
 
 // 播放动画
-animation.play()
+animation.play();
 
 // 暂停动画
-animation.pause()
+animation.pause();
 ```
 
 ## clearIdb
