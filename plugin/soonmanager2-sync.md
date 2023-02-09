@@ -228,6 +228,10 @@ interface ILoadSceneOptions {
    * 同步模型视角数据
    */
   syncModelVisions?: boolean;
+  /**
+   * 计算 bounds tree
+   */
+  needsModelsBoundsTree?: boolean;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -255,6 +259,7 @@ soonmanager2Sync.loadScene().then(() => {
     :data="[
       { prop: 'syncProperties', desc: '是否同步自定义属性', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据', type: 'boolean', require: false, default: 'true' },
+      { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
     ]"
 />
 
