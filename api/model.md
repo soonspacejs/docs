@@ -630,7 +630,7 @@ ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 
 计算所有 model 的 [BVH](https://github.com/gkjohnson/three-mesh-bvh)
 
-调用次方法可减少控制器、模型事件的计算时间
+调用此方法可减少控制器、模型事件的计算时间
 
 ### 定义：
 
