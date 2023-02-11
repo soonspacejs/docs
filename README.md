@@ -22,7 +22,7 @@ npm install three soonspacejs
 yarn add three soonspacejs
 ```
 
-如果你在使用 `typesscript` 需要额外安装 [threejs](https://threejs.org/) 的声明文件
+如果你在使用 `typescript` 需要额外安装 [threejs](https://threejs.org/) 的声明文件
 
 ```bash
 # 安装
