@@ -48,12 +48,19 @@ consolo.log(patrolControls);
 #### 定义
 
 ```ts
+type ProgressParams = {
+  patrolled: number;
+  total: number;
+  percent: number;
+}
+
 interface StartOptions = {
     eyeHeight?: number | undefined;
     naviSpeed?: number | undefined;
     rotateSpeed?: number | undefined;
     flyToStartPoint?: boolean | undefined;
     onUpdate?: ((realTimePosition: Position, realTimeRotation: Euler, nextNode: Node, toNextNodeDistance: number) => void) | undefined;
+    onProgress?: ((params: ProgressParams) => void) | undefined;
     onEnd?: ((endPosition: Position) => void) | undefined;
 }
 
@@ -74,6 +81,9 @@ patrolControls.start(
     flyToStartPoint: true,
     onUpdate: (realTimePosition) => {
       console.log(realTimePosition)
+    },
+    onProgress: ({ percent }) => {
+      console.log('巡检进度', percent)
     },
     onEnd: (endPosition) => {
       console.log('巡检结束！', endPosition)
@@ -117,10 +127,34 @@ patrolControls.start(
         prop: 'onUpdate', desc: '巡检时实时更新回调函数', type: '( realTimePosition: Position, realTimeRotation: Euler, nextNode: Node, toNextNodeDistance: number ) => void;', require: false, default: ''
       },
       {
+        prop: 'onEnd', desc: '巡检进度回调', type: '(params: ProgressParams) => void', require: false, default: ''
+      },
+      {
         prop: 'onEnd', desc: '巡检结束回调函数', type: '(endPosition: Position) => void', require: false, default: ''
       }
     ]"
 />
+
+### setProgress
+
+`v2.6.1`
+
+设置巡检进度
+
+#### 定义
+
+```ts
+/**
+ * @param percent 0 - 1（不包含 1）
+ */
+function setProgress(percent: number): void;
+```
+
+#### 用法
+
+```js
+patrolControls.setProgress(0.5);
+```
 
 ### setOptions
 
