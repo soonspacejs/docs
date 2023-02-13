@@ -127,7 +127,7 @@ patrolControls.start(
         prop: 'onUpdate', desc: '巡检时实时更新回调函数', type: '( realTimePosition: Position, realTimeRotation: Euler, nextNode: Node, toNextNodeDistance: number ) => void;', require: false, default: ''
       },
       {
-        prop: 'onEnd', desc: '巡检进度回调', type: '(params: ProgressParams) => void', require: false, default: ''
+        prop: 'onProgress', desc: '巡检进度回调', type: '(params: ProgressParams) => void', require: false, default: ''
       },
       {
         prop: 'onEnd', desc: '巡检结束回调函数', type: '(endPosition: Position) => void', require: false, default: ''
