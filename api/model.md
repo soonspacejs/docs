@@ -876,10 +876,21 @@ const nearObjs = findNearbyObjects({ x: 100, y: 100, z: 100 });
  * 路径动画选项
  */
 interface PathAnimationOptions {
+
   /**
    * 移动速度
    */
   speed?: number;
+
+  /**
+   * 反向播放
+   */
+  reverse?: boolean;
+
+  /**
+   * 是否需要旋转
+   */
+  needsRotate?: boolean;
 
   /**
    * 位置更新回调
@@ -892,6 +903,13 @@ interface PathAnimationOptions {
    * 动画开始时回调
    */
   onStart?: ( tween: Tween<Vector3> ) => void;
+
+  /**
+   * 每段 tween 动画开始时回调
+   * @param tween
+   */
+  onEveryStart?: ( tween: Tween<Vector3> ) => void;
+
   /**
    * 当到达一个点时回调
    */
@@ -925,7 +943,7 @@ createPathAnimation ( target: Object3D, points: Vector3[], options?: PathAnimati
 
 ```js
 //创建路径动画对象
-const animation = ssp.createPathAnimation(
+const pathAnimation = ssp.createPathAnimation(
   model,
   [
     { x: 0, y: 0, z: 0 },
@@ -939,15 +957,19 @@ const animation = ssp.createPathAnimation(
 );
 
 // 播放动画
-animation.play();
+pathAnimation.play();
 
 // 暂停动画
-animation.pause();
+pathAnimation.pause();
 ```
 
 ## createTopologyAnimation
 
 创建沿拓扑路径运动的动画
+
+### 样例：
+
+<Docs-Iframe src="topology/pathAnimation.html" />
 
 ### 定义：
 
@@ -956,10 +978,21 @@ animation.pause();
  * 路径动画选项
  */
 interface PathAnimationOptions {
+
   /**
    * 移动速度
    */
   speed?: number;
+
+  /**
+   * 反向播放
+   */
+  reverse?: boolean;
+
+  /**
+   * 是否需要旋转
+   */
+  needsRotate?: boolean;
 
   /**
    * 位置更新回调
@@ -972,6 +1005,13 @@ interface PathAnimationOptions {
    * 动画开始时回调
    */
   onStart?: ( tween: Tween<Vector3> ) => void;
+
+  /**
+   * 每段 tween 动画开始时回调
+   * @param tween
+   */
+  onEveryStart?: ( tween: Tween<Vector3> ) => void;
+
   /**
    * 当到达一个点时回调
    */
@@ -1005,15 +1045,34 @@ createTopologyAnimation ( target: Object3D, topology: Topology, options?: PathAn
 
 ```js
 //创建沿拓扑路径动画的动画
-const animation = ssp.createTopologyAnimation(model, topology, {
+const pathAnimation = ssp.createTopologyAnimation(model, topology, {
   speed: 10,
 });
 
+/**
+ * 所有的 options 可以直接修改
+ */
+pathAnimation.speed = 1;
+pathAnimation.reverse = false;
+
 // 播放动画
-animation.play();
+pathAnimation
+  .play()
+  .then(() => {
+    console.log('动画结束');
+  })
+  .catch(() => {
+    console.log('stop方法被调用');
+  });
 
 // 暂停动画
-animation.pause();
+pathAnimation.pause();
+
+// 恢复动画
+pathAnimation.resume();
+
+// 停止动画
+pathAnimation.stop();
 ```
 
 ## clearIdb
