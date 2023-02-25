@@ -187,6 +187,7 @@ module.exports = {
                 '/plugin/drawing-shape',
                 '/plugin/patrol-controls',
                 '/plugin/drawing-topology',
+                '/plugin/pathfinding',
                 '/plugin/transform-controls',
                 '/plugin/follow-mouse',
                 '/plugin/first-person-controls',
