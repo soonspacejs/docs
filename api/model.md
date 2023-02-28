@@ -626,6 +626,10 @@ function setModelDracoDecoderPath(path: string): void;
 ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 ```
 
+::: tip 提示
+`draco` 目录在 `soonspacejs/dist/lib/draco` 中
+:::
+
 ## computeModelsBoundsTree
 
 计算所有 model 的 [BVH](https://github.com/gkjohnson/three-mesh-bvh)
