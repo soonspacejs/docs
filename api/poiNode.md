@@ -14,6 +14,9 @@
 interface PoiNodeInfo extends BaseObject3DInfo {
   type: PoiNodeType;
   element: HTMLElement;
+  elementAutoDisplay?: boolean;
+  occlude?: boolean;
+  onChange?: (visible: boolean) => null;
 }
 
 function createPoiNode(poiNodeInfo: PoiNodeInfo): PoiNode;
@@ -30,6 +33,10 @@ ssp.createPoiNode(
   {
     type: '3d',
     element: el,
+    occlude: true,
+    onChange(visible) {
+      console.log(visible);
+    },
     id: 'xx',
     name: 'xx',
     level: {
@@ -58,6 +65,9 @@ ssp.createPoiNode(
     :data="[
       { prop: 'type', desc: '展示模式', type: 'PoiNodeType', require: true, default: '', link: '../guide/types.html#poinodetype' },
       { prop: 'element', desc: 'DOM 元素', type: 'HTMLElement', require: true, default: '' },
+      { prop: 'elementAutoDisplay', desc: 'element 自动显示隐藏', type: 'boolean', require: false, default: 'true' },
+      { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean', require: false, default: 'false' },
+      { prop: 'onChange', desc: '元素可见性变化时的回调', type: '( visible: boolean ) =&gt; null', require: false, default: '' },
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
