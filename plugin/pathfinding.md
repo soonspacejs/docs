@@ -88,7 +88,7 @@ pathfinding.createNavMesh(ssp.getAllModel(), {
 
 ##### objects
 
-- **描述:** 用于计算 `navigation-mesh` 的场景对象
+- **描述:** 用于计算 `navigation-mesh` 的场景对象，默认值是 `ssp.getAllModel()`
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `Object3D[]`
 
