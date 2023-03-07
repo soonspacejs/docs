@@ -8,6 +8,12 @@
 
 <Docs-Iframe src="poiNode/createPoiNode.html" />
 
+模型遮挡
+<Docs-Iframe src="poiNode/poiNodeOcclude.html" />
+
+显隐过渡
+<Docs-Iframe src="poiNode/poiNodeTransition.html" />
+
 ### 定义：
 
 ```ts
