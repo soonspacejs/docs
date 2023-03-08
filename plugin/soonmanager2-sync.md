@@ -245,6 +245,22 @@ soonmanager2Sync.loadScene().then(() => {
 });
 ```
 
+::: tip 提示
+如果你需要使用 Worker 计算 BVH，可以关闭默认行为
+
+```js
+soonmanager2Sync.loadScene({ needsModelsBoundsTree: false }).then(() => {
+  ssp.computeModelsBoundsTree({
+    type: 'worker',
+    workerCreator,
+  });
+});
+```
+
+具体请查看 [computeModelsBoundsTree](../api/model.html#computemodelsboundstree)
+
+:::
+
 #### 参数
 
 ##### options

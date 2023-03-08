@@ -623,11 +623,11 @@ function setModelDracoDecoderPath(path: string): void;
 ### 用法：
 
 ```js
-ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
+ssp.setModelDracoDecoderPath('/libs/draco/');
 ```
 
 ::: tip 提示
-`draco` 目录在 `soonspacejs/dist/lib/draco` 中
+`draco` 目录在 `node_modules/three/examples/jsm/libs/draco` 中
 :::
 
 ## computeModelsBoundsTree
@@ -641,11 +641,12 @@ ssp.setModelDracoDecoderPath('/examples/js/libs/draco/');
 ```ts
 type ModelsBoundsTreeOptions = {
   /**
-   * block 为阻塞计算，'slice' 为每帧分片计算
+   * block 为阻塞计算，slice 为每帧分片计算，worker 使用 Worker 计算
    */
-  type?: 'block' | 'slice';
+  type?: 'block' | 'slice' | 'worker';
   force?: boolean;
   frameSliceCount?: number;
+  workerCreator?: () => Worker;
 };
 
 function computeModelsBoundsTree(
@@ -678,8 +679,45 @@ ssp.computeModelsBoundsTree({
       { prop: 'type', desc: '计算的类型', type: 'block | slice', require: false, default: 'slice' },
       { prop: 'force', desc: '是否强制重新计算', type: 'boolean', require: false, default: 'false' },
       { prop: 'frameSliceCount', desc: '配合 `slice` 使用，每帧的几何结构计算数量', type: 'boolean', require: false, default: '500' },
+      { prop: 'workerCreator', desc: '配合 `worker` 使用，请参考下方示例', type: '() =&gt; Worker', require: false, default: '' },
     ]"
 />
+
+::: tip Worker 示例
+
+```js
+function workerCreator() {
+  const worker = new Worker(
+    new URL(
+      /**
+       * 路径填写 generateBVH.worker.js 文件位于项目中的位置
+       * 可以填写填写 node_modules 中的相对位置或将文件拷贝至项目 src 目录中
+       */
+      './xx/xx/generateBVH.worker.js',
+      import.meta.url
+    ),
+    { type: 'module', name: 'ssp-bvh-worker' }
+  );
+
+  return worker;
+}
+
+ssp.computeModelsBoundsTree({
+  type: 'worker',
+  workerCreator,
+});
+```
+
+文件位于 `node_modules/soonspacejs/dist/generateBVH.worker.js`
+:::
+
+::: warning 注意
+使用 `workerCreator` 时需要项目的构建工具支持 `new Worker()` 语法
+
+在 [Webpack5](https://webpack.js.org/guides/web-workers/#root)、[Vite](https://vitejs.dev/guide/features.html#web-workers) 中无需特殊处理
+
+如果你使用的是 Webpack4，你可能需要 [worker-loader](https://v4.webpack.js.org/loaders/worker-loader/)
+:::
 
 ## setTexture
 
