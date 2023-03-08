@@ -68,6 +68,7 @@ yarn add soonspacejs -S
         "imports": {
           "three": "https://unpkg.com/three/build/three.module.js",
           "three/examples/": "https://unpkg.com/three/examples/",
+          "three-mesh-bvh": "https://unpkg.com/three-mesh-bvh@0.5.23/build/index.module.js",
           "soonspacejs": "https://unpkg.com/soonspacejs/dist/index.esm.js"
         }
       }
