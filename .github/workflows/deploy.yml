@@ -40,3 +40,4 @@ jobs:
           source: "dist,!dist/resource"
           target: "/mnt/soonspacejs"
           strip_components: 1
+          timeout: 120s
