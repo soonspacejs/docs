@@ -690,8 +690,8 @@ function workerCreator() {
   const worker = new Worker(
     new URL(
       /**
-       * 路径填写 generateBVH.worker.js 文件位于项目中的位置
-       * 可以填写填写 node_modules 中的相对位置或将文件拷贝至项目 src 目录中
+       * 路径填写 generateBVH.worker.js 文件相对于当前文件的位置
+       * 可以填写 node_modules 中的相对路径或将文件拷贝至项目的 src 目录中
        */
       './xx/xx/generateBVH.worker.js',
       import.meta.url
