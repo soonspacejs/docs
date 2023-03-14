@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-soonmanager2-sync/latest.svg)
 
-[SoonManager 2.0 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
+[SoonManager2.0 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
 
 ## 样例
 
