@@ -385,3 +385,155 @@ function removeEffect(id: PluginObjectInfo['id']): boolean;
 ```js
 effectPlugin.removeEffect('test');
 ```
+
+
+
+### createParticleCluster
+
+创建粒子簇
+
+#### 定义
+
+```ts
+function createParticleCluster ( options: ParticleClusterOptions ):ParticleCluster
+```
+
+参数类型：
+
+```ts
+/**
+ * 粒子簇特征
+ */
+export interface ParticleClusterFeature {
+    /**
+     * 半径
+     *
+     * @defaultValue 10
+     */
+    radius?: number;
+    /**
+     * 值
+     *
+     * @defaultValue 100
+     */
+    value?: number;
+    /**
+     * 实心因子
+     *
+     * @defaultValue 0.7
+     */
+    solid?: number;
+    /**
+     * 空心因子
+     *
+     * @defaultValue 0
+     */
+    hollow?: number;
+    /**
+     * 中心点的密度
+     * @remarks
+     * 单位空间中有多少个点
+     *
+     * @defaultValue 1
+     */
+    density?: number;
+    /**
+     * 粒子云的形状
+     */
+    shape?: ParticleClusterShape;
+    /**
+     * 密度梯度函数
+     */
+    densityGradient?: GetGradientValue;
+    valueGradient?: GetGradientValue;
+    /**
+     * 映射区间
+     * @remarks
+     * x 为最小值，y 为最大值
+     *
+     * @defaultValue {x:0,y:100}
+     */
+    clim?: IVector2;
+    /**
+     * 生成粒子时使用的距离步长
+     * @remarks
+     * 这个也会影响粒子的密度 和 粒子个数；
+     * 建议所有粒子的步长一样；
+     *
+     * @defaultValue 3
+     */
+    step?: number;
+}
+
+/**
+ * 粒子簇特性点
+ */
+export type ParticleClusterFeaturePoint<IVec extends IVector> = ParticleClusterFeature & IVec;
+/**
+ * 很多点粒子族
+ */
+export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector> extends ParticleClusterFeature {
+    points: ParticleClusterFeaturePoint<IVec>[];
+}
+
+export interface CreateLineParticleClusterDataArrOptions<IVec extends IVector> extends CreatePointParticleClusterDataArrOptions<IVec> {
+    radiusGradient?: GetLineGradientValue;
+    lineDensityGradient?: GetLineGradientValue;
+    lineValueGradient?: GetLineGradientValue;
+    lineStep?: number;
+}
+
+/**
+ * 很多点粒子族
+ */
+export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector> extends ParticleClusterFeature {
+    points: ParticleClusterFeaturePoint<IVec>[];
+}
+
+/**
+ * ParticleClusterGeometry 的选项
+ */
+export type ParticleClusterGeometryOptions = CreatePointParticleClusterDataArrOptions<IVector3> & CreateLineParticleClusterDataArrOptions<IVector3> & CreateHeatParticleClusterDataArrOptions<IVector3> & Omit<ClusterGeometryOptions, "clusters"> & {
+    clusterType?: ClusterType;
+};
+export type ParticleClusterOptions = ParticleClusterGeometryOptions & PointsMaterialParameters;
+
+```
+
+ParticleCluster
+```ts
+
+export declare class ParticleCluster extends Points {
+    readonly isParticleCluster = true;
+    constructor(options?: ParticleClusterOptions);
+    get options(): ParticleClusterGeometryOptions;
+    set options(value: ParticleClusterGeometryOptions);
+    setOptions(options: ParticleClusterGeometryOptions): void;
+    addPoint(point: ParticleClusterFeaturePoint<IVector3>[] | ParticleClusterFeaturePoint<IVector3>, options?: Omit<ParticleClusterGeometryOptions, "points">): void;
+    convertPoints(points: ParticleClusterFeaturePoint<IVector3>[]): ParticleClusterFeatureVector<IVector3>[];
+}
+```
+
+#### 用法
+
+```js
+// 创建粒子簇
+const particle = effectPlugin.createParticleCluster({
+    points: [
+    { x: 0, y: 0, z: 0, value: 80, radius: 100 },
+    { x: 0, y: 50, z: 0, value: 20, radius: 40 },
+    ],
+    clim: { x: 0, y: 50 },
+    gradient: [[0, "#ff0000ff"],  [0.4, "#00ff00aa"], [0.9, "#0000ff77"]],
+    size: 0.01,
+    opacity: 0.3,
+    clusterType: ClusterType.Point,
+});
+
+// 继承添加点
+particle.addPoint([
+    { x: 30, y: 0, z: 0, value: 40, radius: 60 },
+    { x: 0, y: 20, z: 10, value: 30, radius: 40 },
+  ]);
+
+```
