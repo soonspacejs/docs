@@ -392,6 +392,10 @@ effectPlugin.removeEffect('test');
 
 创建粒子簇
 
+#### 样例
+
+<Docs-Iframe src="plugin/particle.html" />
+
 #### 定义
 
 ```ts
