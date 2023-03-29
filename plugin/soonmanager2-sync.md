@@ -85,7 +85,7 @@ interface ITreeData {
   id: string;
   pid: string | null;
   name: string;
-  renderType: 'GROUP' | '3D' | 'ROOM';
+  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB';
   matrix: number[];
   path: string | null;
   children: ITreeData[];
