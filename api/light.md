@@ -444,10 +444,6 @@ ssp.createRectAreaLight({
     ]"
 />
 
-::: tip 提示
-矩形区域光源只对 PBR 材质生效。例如 GLTF、SBMX 模型
-:::
-
 ## setRectAreaLight
 
 设置矩形区域光源

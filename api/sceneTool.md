@@ -474,7 +474,7 @@ ssp.setBloom({
 
 ## setEnvironment
 
-设置场景环境反射（用于 GLTF、SBMX 模型）
+设置场景环境反射
 
 ### 版本：
 
