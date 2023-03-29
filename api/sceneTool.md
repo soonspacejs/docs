@@ -487,14 +487,54 @@ ssp.setBloom({
 ### 定义：
 
 ```ts
-function setEnvironment(): THREE.Texture;
+interface GetTextureOptions {
+  path?: string;
+  file: string | string[];
+}
+
+interface EnvironmentOptions extends GetTextureOptions {
+  background?: boolean;
+}
+
+setEnvironment(options?: EnvironmentOptions): Promise<THREE.Texture>
 ```
 
 ### 用法：
 
 ```js
+/**
+ * 设置默认环境
+ */
 ssp.setEnvironment();
+
+// or
+ssp.setEnvironment({ file: './xxx.hdr', background: true });
+
+// or
+ssp.setEnvironment({
+  path: './imgs/',
+  file: ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'],
+  background: true,
+});
 ```
+
+### 参数:
+
+#### options
+
+- **类型:** `EnvironmentOptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### EnvironmentOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'path', desc: '基础路径', type: 'string', require: false, default: '' },
+      { prop: 'file', desc: '文件路径', type: 'string | string[]', require: true, default: '' },
+      { prop: 'background', desc: '是否同步至背景', type: 'boolean', require: false, default: false },
+    ]"
+/>
 
 ## openSceneFog
 
