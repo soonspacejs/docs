@@ -131,7 +131,9 @@ type PoiNodeType = PoiType | '3d' | '3D';
 颜色
 
 ```ts
-type IColor = string | number;
+import type { ColorRepresentation } from 'three';
+
+type IColor = ColorRepresentation;
 ```
 
 ## FlyToViewpoint
