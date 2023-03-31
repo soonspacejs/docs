@@ -1,13 +1,12 @@
-路径动画
-========
-
 # 路径动画
+
+## 路径动画
 让物体沿指定路径进行运动的动画
 
-## 示例
+### 示例
 <Docs-Iframe src="animation/createPathAnimationAction.html" />
 
-## 定义
+### 定义
 ```ts
   /**
    * 创建沿路径运动的动画 action
@@ -21,7 +20,7 @@
 
 ```
 
-### AnimationPath
+#### AnimationPath
 ```ts
 /**
  * 动画的路径
@@ -31,7 +30,7 @@
 export type AnimationPath = IVector3[] | Curve<Vector3> | Topology
 ```
 
-### CreatePathAnimationOptions
+#### CreatePathAnimationOptions
 ```ts
 /**
  * createPathAnimationAction 的选项
@@ -240,15 +239,15 @@ export interface SampleOptions {
 
 
 
-# 相机路径动画
+## 相机路径动画
 让相机沿指定路径进行运动的动画；
 
 _该方法是针对相机的便利方法，内部是调用 `createPathAnimationAction` 来实现的；_
 
-## 示例
+### 示例
 <Docs-Iframe src="animation/createPathAnimationActionForCamera.html" />
 
-## 定义
+### 定义
 ```ts
   /**
    * 创建沿路径运动的动画 action
@@ -261,7 +260,7 @@ _该方法是针对相机的便利方法，内部是调用 `createPathAnimationA
 createPathAnimationActionForCamera ( path: AnimationPath, options?: CreatePathAnimationActionForCameraOptions & {camera?: Camera} ):AnimationOperate;
 ```
 
-### AnimationPath
+#### AnimationPath
 ```ts
 /**
  * 动画的路径
@@ -271,7 +270,7 @@ createPathAnimationActionForCamera ( path: AnimationPath, options?: CreatePathAn
 export type AnimationPath = IVector3[] | Curve<Vector3> | Topology
 ```
 
-### CreatePathAnimationForCameraOptions
+#### CreatePathAnimationForCameraOptions
 ```ts
 export interface CreatePathAnimationForCameraOptions extends Omit<CreatePathAnimationActionForCameraOptions,"target"> {
   /**
@@ -291,13 +290,13 @@ export interface CreatePathAnimationForCameraOptions extends Omit<CreatePathAnim
 
 
 
-# 路径骨骼动画
+## 路径骨骼动画
 让物体沿指定路径进行运动并变形以贴合路径的动画
 
-## 示例
+### 示例
 <Docs-Iframe src="animation/createBonePathAnimation.html" />
 
-## 定义
+### 定义
 ```ts
 /**
  * 创建骨骼路径动画
@@ -308,7 +307,7 @@ createBonePathAnimation ( model: Object3D, path: AnimationPath, options: CreateB
 ```
 
 
-### AnimationPath
+#### AnimationPath
 ```ts
 /**
  * 动画的路径
@@ -321,7 +320,7 @@ export type AnimationPath = IVector3[] | Curve<Vector3> | Topology
 
 
 
-### CreateBonePathAnimationOptions
+#### CreateBonePathAnimationOptions
 ```ts
 export type CreateBonePathAnimationOptions = CreateBonePathAnimationOptions_Base & CreateChainBonesOptionsByAxials & EqualChainBoneOptions & CreateChainBonesOptions & Omit<CreateCurveAnimationClipOptions,"front"|"target">
 
@@ -434,7 +433,7 @@ export type CreateChainBonesOptions = {
 
 
 
-### BonePathAnimationInfo
+#### BonePathAnimationInfo
 ```ts
 /**
  * createBonePathAnimation 返回的结果
