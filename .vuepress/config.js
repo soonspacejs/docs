@@ -156,6 +156,7 @@ module.exports = {
                 '/api/camera',
                 '/api/light',
                 '/api/helper',
+                '/api/path-animation',
               ],
             },
             {
