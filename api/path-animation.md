@@ -27,7 +27,7 @@
  * @remarks
  * 可以是一组点，或者一个曲线 Curve，或者拓扑路径 Topology
  */
-export type AnimationPath = IVector3[] | Curve<Vector3> | Topology
+export type AnimationPath = IVector3[] | Curve<IVector3> | Topology
 ```
 
 #### CreatePathAnimationOptions
@@ -59,7 +59,7 @@ export interface GetKeyframeTransformDatasOptions_Base {
      * 
      * @defaultValue 默认曲线起始处的切线方向
      */
-    front?:Vector3|null;
+    front?:IVector3|null;
 
 
     /**
@@ -82,11 +82,19 @@ export interface GetKeyframeTransformDatasOptions_Base {
     enableUp?:boolean|null;
 
     /**
+     * 是否固定 up 方向
+     * @remarks
+     * 默认情况下，会优先 front 方向，然后在 front 方向的基础上再调整 up 方向；
+     * 如果 fixUp 为 true，则会优先保证  up 方向，然后再调整 front 方向
+     */
+    fixUp?:boolean|null;
+
+    /**
      * 局部坐标系下 up 方向的向量
      * @remarks
      * target 的局部坐标系
      */
-    up?:Vector3|null;
+    up?:IVector3|null;
 
 
     /**
@@ -96,7 +104,7 @@ export interface GetKeyframeTransformDatasOptions_Base {
      * 
      * @defaultValue 局部坐标系的原点
      */
-    anchor?:Vector3|null;
+    anchor?:IVector3|null;
     
 }
 
@@ -112,7 +120,7 @@ export interface CurveOptions {
      * @remarks
      * 用来描述路径的曲线
      */
-    curve:Curve<Vector3>;
+    curve:Curve<IVector3>;
 
 }
 
@@ -125,7 +133,7 @@ export interface PolylineOptions {
     /**
      * 描述拆线路径的顶点列表
      */
-    points:Vector3[];
+    points:IVector3[];
     /**
      * 描述拆线路径的线段列表
      */
@@ -267,7 +275,7 @@ createPathAnimationActionForCamera ( path: AnimationPath, options?: CreatePathAn
  * @remarks
  * 可以是一组点，或者一个曲线 Curve，或者拓扑路径 Topology
  */
-export type AnimationPath = IVector3[] | Curve<Vector3> | Topology
+export type AnimationPath = IVector3[] | Curve<IVector3> | Topology
 ```
 
 #### CreatePathAnimationForCameraOptions
@@ -314,7 +322,7 @@ createBonePathAnimation ( model: Object3D, path: AnimationPath, options: CreateB
  * @remarks
  * 可以是一组点，或者一个曲线 Curve，或者拓扑路径 Topology
  */
-export type AnimationPath = IVector3[] | Curve<Vector3> | Topology
+export type AnimationPath = IVector3[] | Curve<IVector3> | Topology
 ```
 
 
@@ -377,12 +385,12 @@ export interface CreateChainBonesOptionsByAxials {
     /**
      * 根骨骼的起始点
      */
-    start?:Vector3|null;
+    start?:IVector3|null;
 
     /**
      * 所有骨骼的轴向量列表
      */
-    axials:Vector3[];
+    axials:IVector3[];
 }
 
 
@@ -398,14 +406,14 @@ export interface EqualChainBoneOptions {
     /**
      * 根骨骼的起始点
      */
-    start?:Vector3|null;
+    start?:IVector3|null;
 
     /**
      * 单个骨骼的轴向量
      * @remarks
      * 该向量的方向会作为骨骼的方向，向量的长度会作为骨骼的长度
      */
-    axial:Vector3;
+    axial:IVector3;
 
     /**
      * 骨骼的数量
@@ -423,7 +431,7 @@ export type CreateChainBonesOptions = {
     /**
      * 关节位置列表
      */
-    joints?:Vector3[]|null;
+    joints?:IVector3[]|null;
 }
 ```
 
