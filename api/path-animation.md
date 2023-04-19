@@ -519,24 +519,7 @@ export type CreateBonePathAnimationOptions = {
      */
     anchor?: Vector3 | null;
 
-    /**
-     * 要绑定的骨架对象
-     */
-    skeleton: Skeleton;
-    /**
-     * 可伸缩的
-     */
-    stretch?: boolean | null;
-    /**
-     * 距离容差因子
-     * @remarks
-     * 取值为范围为 [0-1]
-     * 容差范围 = 距离容差因子 * 距离
-     * 在容差范围呢视为等距
-     *
-     * @defaultValue 0.1
-     */
-    tolerance?: number;
+
 
 
 
