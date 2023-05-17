@@ -761,6 +761,7 @@ const action = ssp.createChainSkeletalModel(model,{
     },
     stretch: true,
     tolerance: 0.1
+    
 
 })
 
