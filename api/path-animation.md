@@ -40,6 +40,7 @@ PathAnimationTimeOptions & CurveOptions & PolylineOptions & SampleOptions & GetK
 
 
 
+
 /**
  * getKeyframeTransformDatas 的基础选项
  */
@@ -243,6 +244,21 @@ export interface SampleOptions {
 
 }
 ```
+#### AnimationOperate
+```ts
+export type AnimationOperate =  AnimationClip & {
+    /**
+     * 前进
+     * @param scale - 比例因子
+     */
+    forward(scale?: number | null): void;
+    /**
+     * 后退
+     * @param scale - 比例因子
+     */
+    backward(scale?: number | null): void;
+}
+```
 
 
 
@@ -294,7 +310,21 @@ export interface CreatePathAnimationForCameraOptions extends Omit<CreatePathAnim
 } 
 ```
 
-
+#### AnimationOperate
+```ts
+export type AnimationOperate =  AnimationClip & {
+    /**
+     * 前进
+     * @param scale - 比例因子
+     */
+    forward(scale?: number | null): void;
+    /**
+     * 后退
+     * @param scale - 比例因子
+     */
+    backward(scale?: number | null): void;
+}
+```
 
 
 
@@ -622,6 +652,9 @@ const { model: skinModel, skeleton }  = ssp.createChainSkeletalModel(model,{
 ```ts
 export function createPathAnimationForBones ( model: Object3D, skeleton: Skeleton, options: CreateCurveAnimationClipForBonesOptions ):AnimationOperate
 
+```
+### CreateCurveAnimationClipForBonesOptions
+```ts
 export interface CreateCurveAnimationClipForBonesOptions{
     /**
      * 动画的名字
@@ -726,7 +759,21 @@ export interface CreateCurveAnimationClipForBonesOptions{
 
 }
 ```
-
+#### AnimationOperate
+```ts
+export type AnimationOperate =  AnimationClip & {
+    /**
+     * 前进
+     * @param scale - 比例因子
+     */
+    forward(scale?: number | null): void;
+    /**
+     * 后退
+     * @param scale - 比例因子
+     */
+    backward(scale?: number | null): void;
+}
+```
 ### 用法
 
 ```ts
