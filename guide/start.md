@@ -58,6 +58,15 @@ yarn add soonspacejs -S
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SoonSpace Example</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #view {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
   </head>
 
   <body>
