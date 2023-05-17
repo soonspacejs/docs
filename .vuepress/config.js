@@ -8,7 +8,7 @@ const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`;
 const NEW_PRO_PATH = 'http://www.xwbuilders.com:8800';
 
 module.exports = {
-  base: './',
+  base: '/',
   dest: 'dist',
   locales: {
     '/': {
