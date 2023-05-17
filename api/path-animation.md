@@ -565,8 +565,8 @@ export interface BonePathAnimationInfo {
 
 
 
-## createChainSkeletalModel
-为指定的模型创建其对应的链式骨骼模型
+## 创建链式骨骼模型
+`createChainSkeletalModel`  为指定的模型创建其对应的链式骨骼模型
 
 ### 定义
 
@@ -614,13 +614,14 @@ const { model: skinModel, skeleton }  = ssp.createChainSkeletalModel(model,{
 ### 示例
 <Docs-Iframe src="animation/createChainSkeletalModel.html" />
 
-## createPathAnimationForBones
-创建骨骼沿曲线路径运动的动画
+## 创建骨骼动画
+`createPathAnimationForBones` 创建骨骼沿曲线路径运动的动画,纯 Bone 动画方案
 
 ### 定义
 
 ```ts
 export function createPathAnimationForBones ( model: Object3D, skeleton: Skeleton, options: CreateCurveAnimationClipForBonesOptions ):AnimationOperate
+
 export interface CreateCurveAnimationClipForBonesOptions{
     /**
      * 动画的名字
