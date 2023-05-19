@@ -370,7 +370,87 @@ function closeWeather(): void;
 effectPlugin.closeWeather();
 ```
 
-### removeEffect
+### createSparkles
+
+创建星星
+
+#### 样例
+
+<Docs-Iframe src="plugin/sparkles.html" />
+
+#### 定义
+
+```ts
+interface SparklesInfo extends PluginObjectInfo {
+  count?: number;
+  speed?: number | Float32Array;
+  opacity?: number | Float32Array;
+  color?: IColor | Float32Array;
+  size?: number | Float32Array;
+  scalar?: number | [number, number, number] | IVector3;
+  noise?: number | [number, number, number] | IVector3 | Float32Array;
+}
+
+function createSparkles(params: SparklesInfo): PluginObject;
+```
+
+#### 用法
+
+```js
+effectPlugin.createSparkles({
+  id: 'testSparkles',
+  position: {
+    x: 0,
+    y: 2,
+    z: 0,
+  },
+  count: 100,
+  scalar: 8,
+  size: 2,
+  speed: 0.8,
+  opacity: 0.5,
+  noise: 1,
+  color: '#ff0',
+});
+```
+
+#### 参数
+
+##### params
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `SparklesInfo`
+
+##### SparklesInfo
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'count', desc: '粒子的数量', type: 'number', require: false, default: '100',
+      },
+      {
+         prop: 'speed', desc: '粒子的速度', type: 'number | Float32Array', require: false, default: '1',
+      },
+      {
+        prop: 'opacity', desc: '粒子的不透明度', type: 'number | Float32Array', require: false, default: '1',
+      },
+      {
+         prop: 'color', desc: '粒子颜色', type: 'IColor | Float32Array', link: '../guide/types.html#icolor', require: false, default: '0xffffff',
+      },
+      {
+        prop: 'size', desc: '粒子大小', type: 'number', require: false, default: '2',
+      },
+      {
+        prop: 'scalar', desc: '粒子扩散范围', type: 'number | [number, number, number] | IVector3', require: false, default: '8',
+      },
+       {
+        prop: 'noise', desc: '粒子运动系数', type: 'number | [number, number, number] | IVector3 | Float32Array', require: false, default: '1',
+      },
+    ]"
+/>
+
+### removeEffect <Base-Deprecated />
 
 删除效果
 
@@ -386,7 +466,9 @@ function removeEffect(id: PluginObjectInfo['id']): boolean;
 effectPlugin.removeEffect('test');
 ```
 
-
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
 
 ### createParticleCluster
 
@@ -399,7 +481,9 @@ effectPlugin.removeEffect('test');
 #### 定义
 
 ```ts
-function createParticleCluster ( options: ParticleClusterOptions ):ParticleCluster
+function createParticleCluster(
+  options: ParticleClusterOptions
+): ParticleCluster;
 ```
 
 参数类型：
@@ -409,112 +493,129 @@ function createParticleCluster ( options: ParticleClusterOptions ):ParticleClust
  * 粒子簇特征
  */
 export interface ParticleClusterFeature {
-    /**
-     * 半径
-     *
-     * @defaultValue 10
-     */
-    radius?: number;
-    /**
-     * 值
-     *
-     * @defaultValue 100
-     */
-    value?: number;
-    /**
-     * 实心因子
-     *
-     * @defaultValue 0.7
-     */
-    solid?: number;
-    /**
-     * 空心因子
-     *
-     * @defaultValue 0
-     */
-    hollow?: number;
-    /**
-     * 中心点的密度
-     * @remarks
-     * 单位空间中有多少个点
-     *
-     * @defaultValue 1
-     */
-    density?: number;
-    /**
-     * 粒子云的形状
-     */
-    shape?: ParticleClusterShape;
-    /**
-     * 密度梯度函数
-     */
-    densityGradient?: GetGradientValue;
-    valueGradient?: GetGradientValue;
-    /**
-     * 映射区间
-     * @remarks
-     * x 为最小值，y 为最大值
-     *
-     * @defaultValue {x:0,y:100}
-     */
-    clim?: IVector2;
-    /**
-     * 生成粒子时使用的距离步长
-     * @remarks
-     * 这个也会影响粒子的密度 和 粒子个数；
-     * 建议所有粒子的步长一样；
-     *
-     * @defaultValue 3
-     */
-    step?: number;
+  /**
+   * 半径
+   *
+   * @defaultValue 10
+   */
+  radius?: number;
+  /**
+   * 值
+   *
+   * @defaultValue 100
+   */
+  value?: number;
+  /**
+   * 实心因子
+   *
+   * @defaultValue 0.7
+   */
+  solid?: number;
+  /**
+   * 空心因子
+   *
+   * @defaultValue 0
+   */
+  hollow?: number;
+  /**
+   * 中心点的密度
+   * @remarks
+   * 单位空间中有多少个点
+   *
+   * @defaultValue 1
+   */
+  density?: number;
+  /**
+   * 粒子云的形状
+   */
+  shape?: ParticleClusterShape;
+  /**
+   * 密度梯度函数
+   */
+  densityGradient?: GetGradientValue;
+  valueGradient?: GetGradientValue;
+  /**
+   * 映射区间
+   * @remarks
+   * x 为最小值，y 为最大值
+   *
+   * @defaultValue {x:0,y:100}
+   */
+  clim?: IVector2;
+  /**
+   * 生成粒子时使用的距离步长
+   * @remarks
+   * 这个也会影响粒子的密度 和 粒子个数；
+   * 建议所有粒子的步长一样；
+   *
+   * @defaultValue 3
+   */
+  step?: number;
 }
 
 /**
  * 粒子簇特性点
  */
-export type ParticleClusterFeaturePoint<IVec extends IVector> = ParticleClusterFeature & IVec;
+export type ParticleClusterFeaturePoint<
+  IVec extends IVector
+> = ParticleClusterFeature & IVec;
 /**
  * 很多点粒子族
  */
-export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector> extends ParticleClusterFeature {
-    points: ParticleClusterFeaturePoint<IVec>[];
+export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector>
+  extends ParticleClusterFeature {
+  points: ParticleClusterFeaturePoint<IVec>[];
 }
 
-export interface CreateLineParticleClusterDataArrOptions<IVec extends IVector> extends CreatePointParticleClusterDataArrOptions<IVec> {
-    radiusGradient?: GetLineGradientValue;
-    lineDensityGradient?: GetLineGradientValue;
-    lineValueGradient?: GetLineGradientValue;
-    lineStep?: number;
+export interface CreateLineParticleClusterDataArrOptions<IVec extends IVector>
+  extends CreatePointParticleClusterDataArrOptions<IVec> {
+  radiusGradient?: GetLineGradientValue;
+  lineDensityGradient?: GetLineGradientValue;
+  lineValueGradient?: GetLineGradientValue;
+  lineStep?: number;
 }
 
 /**
  * 很多点粒子族
  */
-export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector> extends ParticleClusterFeature {
-    points: ParticleClusterFeaturePoint<IVec>[];
+export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector>
+  extends ParticleClusterFeature {
+  points: ParticleClusterFeaturePoint<IVec>[];
 }
 
 /**
  * ParticleClusterGeometry 的选项
  */
-export type ParticleClusterGeometryOptions = CreatePointParticleClusterDataArrOptions<IVector3> & CreateLineParticleClusterDataArrOptions<IVector3> & CreateHeatParticleClusterDataArrOptions<IVector3> & Omit<ClusterGeometryOptions, "clusters"> & {
+export type ParticleClusterGeometryOptions = CreatePointParticleClusterDataArrOptions<
+  IVector3
+> &
+  CreateLineParticleClusterDataArrOptions<IVector3> &
+  CreateHeatParticleClusterDataArrOptions<IVector3> &
+  Omit<ClusterGeometryOptions, 'clusters'> & {
     clusterType?: ClusterType;
-};
-export type ParticleClusterOptions = ParticleClusterGeometryOptions & PointsMaterialParameters;
-
+  };
+export type ParticleClusterOptions = ParticleClusterGeometryOptions &
+  PointsMaterialParameters;
 ```
 
 ParticleCluster
-```ts
 
+```ts
 export declare class ParticleCluster extends Points {
-    readonly isParticleCluster = true;
-    constructor(options?: ParticleClusterOptions);
-    get options(): ParticleClusterGeometryOptions;
-    set options(value: ParticleClusterGeometryOptions);
-    setOptions(options: ParticleClusterGeometryOptions): void;
-    addPoint(point: ParticleClusterFeaturePoint<IVector3>[] | ParticleClusterFeaturePoint<IVector3>, options?: Omit<ParticleClusterGeometryOptions, "points">): void;
-    convertPoints(points: ParticleClusterFeaturePoint<IVector3>[]): ParticleClusterFeatureVector<IVector3>[];
+  readonly isParticleCluster = true;
+  constructor(options?: ParticleClusterOptions);
+  get options(): ParticleClusterGeometryOptions;
+  set options(value: ParticleClusterGeometryOptions);
+  setOptions(options: ParticleClusterGeometryOptions): void;
+  addPoint(
+    point:
+      | ParticleClusterFeaturePoint<IVector3>[]
+      | ParticleClusterFeaturePoint<IVector3>,
+    options?: Omit<ParticleClusterGeometryOptions, 'points'>
+  ): void;
+  convertPoints(
+    points: ParticleClusterFeaturePoint<IVector3>[]
+  ): ParticleClusterFeatureVector<IVector3>[];
 }
 ```
 
@@ -523,21 +624,24 @@ export declare class ParticleCluster extends Points {
 ```js
 // 创建粒子簇
 const particle = effectPlugin.createParticleCluster({
-    points: [
+  points: [
     { x: 0, y: 0, z: 0, value: 80, radius: 100 },
     { x: 0, y: 50, z: 0, value: 20, radius: 40 },
-    ],
-    clim: { x: 0, y: 50 },
-    gradient: [[0, "#ff0000ff"],  [0.4, "#00ff00aa"], [0.9, "#0000ff77"]],
-    size: 0.01,
-    opacity: 0.3,
-    clusterType: ClusterType.Point,
+  ],
+  clim: { x: 0, y: 50 },
+  gradient: [
+    [0, '#ff0000ff'],
+    [0.4, '#00ff00aa'],
+    [0.9, '#0000ff77'],
+  ],
+  size: 0.01,
+  opacity: 0.3,
+  clusterType: ClusterType.Point,
 });
 
 // 继承添加点
 particle.addPoint([
-    { x: 30, y: 0, z: 0, value: 40, radius: 60 },
-    { x: 0, y: 20, z: 10, value: 30, radius: 40 },
-  ]);
-
+  { x: 30, y: 0, z: 0, value: 40, radius: 60 },
+  { x: 0, y: 20, z: 10, value: 30, radius: 40 },
+]);
 ```
