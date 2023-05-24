@@ -97,6 +97,8 @@ interface StrokeSelectOptions extends BaseSelectOptions {
   isOpacityShow?: boolean;
   edgeColor?: IColor;
   edgeOpacity?: number;
+  modelCache?: boolean;
+  firstChild?: boolean;
 }
 
 function strokeShow(
@@ -108,7 +110,12 @@ function strokeShow(
 ### 用法:
 
 ```js
-ssp.strokeShow(object);
+const models = ssp.getAllModel();
+ssp.strokeShow(models, {
+  edgeOpacity: 0.5,
+  isOpacityShow: false,
+  firstChild: true,
+});
 ```
 
 ### 参数:
@@ -136,8 +143,20 @@ ssp.strokeShow(object);
       { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.2 },
       { prop: 'edgeColor', desc: '边缘颜色', type: 'IColor', require: false, default: '0x00eeff', link: '../guide/types.html#icolor' },
       { prop: 'edgeOpacity', desc: '边缘透明度', type: 'number', require: false, default: 1 },
+      { prop: 'modelCache', desc: '当传入 Model 时是否缓存计算结果', type: 'boolean', require: false, default: true },
+      { prop: 'firstChild', desc: '是否只作用第一个子节点', type: 'boolean', require: false, default: false },
     ]"
 />
+
+::: warning 注意
+计算边缘线框比较耗时，建议使用默认的 `modelCache` 减少重复计算。
+
+该选项将使用 Model 的 url 作为缓存 key。
+:::
+
+::: tip 提示
+由于模型可能存在嵌套结构，要独立计算每个 Model 对象本身时需要开启 `firstChild`，否则将包含所有子节点。
+:::
 
 ## unStrokeShow
 
