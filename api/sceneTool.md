@@ -240,7 +240,7 @@ ssp.setToneMapping({ type: 'ACESFilmic', exposure: 0.8 });
 <Docs-Table
 :data="[
 { prop: 'type', desc: '色调类型', type: 'ToneMappingOptions[type]', require: false, default: 'ACESFilmic' },
-{ prop: 'exposure', desc: '曝光度', type: 'number', require: false, default: 0.5 },
+{ prop: 'exposure', desc: '曝光度', type: 'number', require: false, default: 0.8 },
 ]"
 />
 
