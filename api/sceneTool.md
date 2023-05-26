@@ -472,6 +472,73 @@ ssp.setBloom({
     ]"
 />
 
+## setSSAO
+
+设置环境光遮蔽
+
+### 样例：
+
+<Docs-Iframe src="sceneTool/SSAO.html" />
+
+### 定义：
+
+```ts
+interface SSAOOptions {
+  enabled?: boolean;
+  aoRadius?: number;
+  distanceFalloff?: number;
+  intensity?: number;
+  aoSamples?: number;
+  denoiseSamples?: number;
+  denoiseRadius?: number;
+  color?: IColor;
+}
+
+setSSAO(options?: SSAOOptions): void
+```
+
+### 用法：
+
+```js
+ssp.setSSAO({
+  enabled: true,
+  aoSamples: 8,
+  intensity: 3,
+});
+```
+
+### 参数:
+
+#### options
+
+- **类型:** `SSAOOptions`
+- **描述:** 配置选项
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### SSAOOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'enabled', desc: '是否开启', type: 'boolean', require: false, default: 'true' },
+      { prop: 'aoRadius', desc: 'AO 半径', type: 'number', require: false, default: '5' },
+      { prop: 'aoSamples', desc: 'AO 采样数量', type: 'number', require: false, default: '16' },
+      { prop: 'denoiseSamples', desc: '降噪采样数量', type: 'number', require: false, default: '4' },
+      { prop: 'denoiseRadius', desc: '降噪采样半径', type: 'number', require: false, default: '12' },
+      { prop: 'distanceFalloff', desc: '遮挡阴影的消失距离，通常是半径的1/5', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: 'AO 强度', type: 'number', require: false, default: '5' },
+      { prop: 'color', desc: 'AO 颜色', type: 'IColor', require: false, default: '#333' },
+    ]"
+/>
+
+_推荐配置表_
+| 质量 | aoSamples | denoiseSamples | denoiseRadius | 适用终端
+|:---:|:---:|:---:|:---:|:---:|
+| 高性能模式 (不稳定，有部分噪点) | 8 | 4 | 12 | 移动端，集成显卡，笔记本 |
+| 低 (暂时稳定，有低频噪点) | 16 | 4 | 12 | 高端移动机型，集成显卡，笔记本 |
+| 中等 (暂时稳定，几乎没有噪点) | 16 | 8 | 12 | 高端移动机型，笔记本，桌面设备 |
+| 高 (更清晰的 AO，几乎没有噪点) | 64 | 8 | 6 | 桌面端，独立显卡 |
+| 极高 (没有噪点) | 64 | 16 | 6 | 桌面端，独立显卡 |
+
 ## setEnvironment
 
 设置场景环境反射
