@@ -888,6 +888,32 @@ ssp.setHoverEnabled(true);
 - **描述:** 是否开启
 - **必填:** <Base-RequireIcon />
 
+## setFileCacheEnabled
+
+`v2.6.34`
+
+设置开启文件请求缓存
+
+### 定义:
+
+```ts
+function setFileCacheEnabled(enabled: boolean): void;
+```
+
+### 用法:
+
+```js
+ssp.setFileCacheEnabled(false);
+```
+
+### 参数:
+
+#### object
+
+- **类型:** boolean
+- **描述:** 是否开启
+- **必填:** <Base-RequireIcon />
+
 ## render
 
 手动渲染一次场景

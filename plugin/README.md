@@ -5,14 +5,18 @@
 :::
 
 ### 前端框架插件
+
 - [vue-soonspace](./vue-soonspace.html) - Vue 中快速使用 soonspacejs。
 - [react-soonspace](./react-soonspace.html) - React 中快速使用 soonspacejs。
 
 ### 平台协同插件
+
 - [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
-- [soonmanager2-sync](./soonmanager2-sync.html) - 空间平台2.0 生产的场景加载及数据读取。
+- [soonmanager2-sync](./soonmanager2-sync.html) - 空间平台 2.0 生产的场景加载及数据读取。（旧版）
+- [cps-soonmanager](./cps-soonmanager.html) - [CPS平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
 
 ### 功能扩展插件
+
 - [sspx](./sspx.html) - `soonspacejs` 实例存储容器。
 - [heat-map](./heat-map.html) - 热力图。
 - [drawing-shape](./drawing-shape.html) - 绘制基础图形。
@@ -26,6 +30,8 @@
 - [clipping-controls](./clipping-controls.html) - 模型、场景切割控制器。
 - [model-blast](./model-blast.html) - 模型爆炸。
 - [effect](./effect.html) - 特效。
+- [navigation](./navigation.html) - 导航。
 
 ### 开发者插件
+
 - [vscode-sbm-preview](./vscode-sbm-preview.html) - vscode 插件 - sbm 模型预览

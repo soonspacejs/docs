@@ -2,33 +2,31 @@
 sidebarDepth: 2
 ---
 
-# plugin-soonmanager2-sync
+# plugin-cps-soonmanager
 
-![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-soonmanager2-sync/latest.svg)
+![beta](https://img.shields.io/npm/v/@soonspacejs/plugin-cps-soonmanager/latest.svg)
 
-[SoonManager2.0 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
+[CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
 
-::: warning 注意
-此插件为 CPS 平台旧版资源使用，新版资源包请使用 [cps-soonmanager](./cps-soonmanager.html) 插件
-:::
+此插件是基于 [soonmanager2-sync](./soonmanager2-sync.html) 插件的扩展，并完全向下兼容。
 
 ## 样例
 
-<Docs-Iframe src="plugin/soonmanager2Sync.html" />
+<Docs-Iframe src="plugin/cpsSoonmanager.html" />
 
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-soonmanager2-sync -S
+npm install @soonspacejs/plugin-cps-soonmanager
 # or
-yarn add @soonspacejs/plugin-soonmanager2-sync -S
+yarn add @soonspacejs/plugin-cps-soonmanager
 ```
 
 ## 使用方法
 
 ```js {2,10-13}
 import SoonSpace from 'soonspacejs';
-import Soonmanager2SyncPlugin from '@soonspacejs/plugin-soonmanager2-sync';
+import CpsSoonmanagerPlugin from '@soonspacejs/plugin-soonmanager2-sync';
 
 const ssp = new SoonSpace({
   el: '#view',
@@ -36,11 +34,11 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const soonmanager2Sync = ssp.registerPlugin(
-  Soonmanager2SyncPlugin,
-  'soonmanager2Sync'
+const cpsSoonmanagerPlugin = ssp.registerPlugin(
+  CpsSoonmanagerPlugin,
+  'cpsSoonmanagerPlugin'
 );
-console.log(soonmanager2Sync);
+console.log(cpsSoonmanagerPlugin);
 ```
 
 ## 属性
@@ -71,7 +69,9 @@ interface IMetadata {
   cover: string | null;
   flatModel: string;
   treeModel: string;
+  resource: string;
   exportTime: number;
+  environment?: string;
 }
 ```
 
@@ -207,13 +207,102 @@ function setPath(path: string): void;
 #### 用法
 
 ```js
-soonmanager2Sync.setPath('./models');
+cpsSoonmanagerPlugin.setPath('./models');
 // or
-soonmanager2Sync.setPath('http://xxx.com/models');
+cpsSoonmanagerPlugin.setPath('http://xxx.com/models');
 ```
 
 ::: warning 注意
 插件的其他方法依赖于 `path`，需要先设置才能使用
+:::
+
+### setKey
+
+设置秘钥
+
+只有使用**安装包**时才需要设置此方法
+
+_导出资源包分类_
+| 资源包类型 | 是否需要设置秘钥 | 是否携带水印 |
+|:---:|:---:|:---:|
+| 调试包 | 否 | 是 |
+| 安装包 | 是 | 否 |
+| 旧版资源包 | 否 | 否 |
+
+#### 定义
+
+```ts
+function setKey(key: string): void;
+```
+
+#### 用法
+
+```js
+cpsSoonmanagerPlugin.setKey('xxxxxxxxxxxxxxxx');
+```
+
+::: warning 注意
+需要在调用 `loadScene` 之前调用 `setKey` 方法，否则安装包将无法正常加载
+:::
+
+::: tip 提示
+请联系 CPS 平台企业管理员获取秘钥
+:::
+
+### presetEffects
+
+设置预设效果
+
+#### 定义
+
+```ts
+interface IPresetEffectsOptions {
+  hdr?: boolean;
+  ssao?: boolean;
+  directionalLightShadow?: boolean | { angle?: number };
+}
+
+function presetEffects(options?: IPresetEffectsOptions): Promise<void>;
+```
+
+#### 用法
+
+```js
+await cpsSoonmanagerPlugin.loadScene();
+await cpsSoonmanagerPlugin.presetEffects({
+  hdr: true,
+  ssao: true,
+  directionalLightShadow: true,
+});
+```
+
+#### 参数
+
+##### options
+
+- **描述:** 场景加载选项
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `IPresetEffectsOptions`
+
+##### IPresetEffectsOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'hdr', desc: '使用资源包中预设的 hdr 环境', type: 'boolean', require: false, default: 'true' },
+      { prop: 'ssao', desc: '开启 SSAO  效果', type: 'boolean', require: false, default: 'true' },
+      { prop: 'directionalLightShadow', desc: '开启平行光阴影', type: 'boolean', require: false, default: 'true' },
+    ]"
+/>
+
+_各参数对应的方法_
+| 参数 | 对应的内部方法 |
+| :--------------------: | :----------------------------------------------------: |
+| hdr | [setEnvironment](../api/sceneTool.html#setenvironment) |
+| ssao | [setSSAO](../api/sceneTool.html#setssao) |
+| directionalLightShadow | [createDirectionalLight](../api/light.html#createdirectionallight) |
+
+::: warning 注意
+presetEffects 需要等待场景加载完调用
 :::
 
 ### loadScene
@@ -236,6 +325,10 @@ interface ILoadSceneOptions {
    * 计算 bounds tree
    */
   needsModelsBoundsTree?: boolean;
+  /**
+   * 应用预设效果
+   */
+  applyPresetEffects?: boolean;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -244,7 +337,7 @@ function loadScene(options?: ILoadSceneOptions): Promise<void>;
 #### 用法
 
 ```js
-soonmanager2Sync.loadScene().then(() => {
+cpsSoonmanagerPlugin.loadScene().then(() => {
   console.log('场景对象加载完成');
 });
 ```
@@ -253,7 +346,7 @@ soonmanager2Sync.loadScene().then(() => {
 如果你需要使用 Worker 计算 BVH，可以关闭默认行为
 
 ```js
-soonmanager2Sync.loadScene({ needsModelsBoundsTree: false }).then(() => {
+cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false }).then(() => {
   ssp.computeModelsBoundsTree({
     type: 'worker',
     workerCreator,
@@ -279,7 +372,8 @@ soonmanager2Sync.loadScene({ needsModelsBoundsTree: false }).then(() => {
     :data="[
       { prop: 'syncProperties', desc: '是否同步自定义属性', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据', type: 'boolean', require: false, default: 'true' },
-      { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
     ]"
 />
 
@@ -300,7 +394,7 @@ function getTopologies(): Promise<TopologyInfo[]>;
 #### 用法
 
 ```js
-soonmanager2Sync.getTopologies().then((topologies) => {
+cpsSoonmanagerPlugin.getTopologies().then((topologies) => {
   const [t1] = topologies;
 
   /**

@@ -17,6 +17,7 @@ const ssp = new SoonSpace({
       // skyBox: null
     },
     hoverEnabled: false,
+    fileCacheEnabled: true,
     levelEnabled: false,
     closeInfoLog: false,
     closeWarnLog: false,
@@ -118,7 +119,21 @@ const ssp = new SoonSpace({
 - **默认值**: `false`
   ::: tip 提示
   不开启时 `modelHover` 和 `poiHover` 不会触发。
+
   提供一个 `API` [setHoverEnabled](../api/sceneTool.html#sethoverenabled) 动态更改该配置。
+  :::
+
+## fileCacheEnabled
+
+是否将文件请求缓存至内存
+
+- **类型**: boolean
+- **默认值**: `true`
+
+  ::: tip 提示
+  开启时将防止重复的网络请求
+
+  提供一个 `API` [setFileCacheEnabled](../api/sceneTool.html#setfilecacheenabled) 动态更改该配置。
   :::
 
 ## levelEnabled
