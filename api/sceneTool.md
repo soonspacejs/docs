@@ -491,6 +491,7 @@ interface SSAOOptions {
   aoSamples?: number;
   denoiseSamples?: number;
   denoiseRadius?: number;
+  halfRes?: boolean;
   color?: IColor;
 }
 
@@ -520,12 +521,13 @@ ssp.setSSAO({
 <Docs-Table
     :data="[
       { prop: 'enabled', desc: '是否开启', type: 'boolean', require: false, default: 'true' },
-      { prop: 'aoRadius', desc: 'AO 半径', type: 'number', require: false, default: '5' },
+      { prop: 'aoRadius', desc: 'AO 半径', type: 'number', require: false, default: '3' },
       { prop: 'aoSamples', desc: 'AO 采样数量', type: 'number', require: false, default: '16' },
       { prop: 'denoiseSamples', desc: '降噪采样数量', type: 'number', require: false, default: '4' },
       { prop: 'denoiseRadius', desc: '降噪采样半径', type: 'number', require: false, default: '12' },
       { prop: 'distanceFalloff', desc: '遮挡阴影的消失距离，通常是半径的1/5', type: 'number', require: false, default: '1' },
-      { prop: 'intensity', desc: 'AO 强度', type: 'number', require: false, default: '5' },
+      { prop: 'intensity', desc: 'AO 强度', type: 'number', require: false, default: '3' },
+      { prop: 'halfRes', desc: '只计算屏幕的一半分辨率，降低质量但提升性能', type: 'boolean', require: false, default: false },
       { prop: 'color', desc: 'AO 颜色', type: 'IColor', require: false, default: '#333' },
     ]"
 />

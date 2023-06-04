@@ -64,13 +64,13 @@ effectPlugin.weatherPresetImgs.snow;
 ```ts
 type PluginObjectInfo = BaseObject3DInfo;
 
-interface FlameInfo extends PluginObjectInfo {
+interface FlameOptions extends PluginObjectInfo {
   magnitude?: number;
   gain?: number;
   imgUrl?: string;
 }
 
-function createFlame(params: FlameInfo): PluginObject;
+function createFlame(options: FlameOptions): PluginObject;
 ```
 
 #### 使用
@@ -88,13 +88,13 @@ effectPlugin.createFlame({
 
 #### 参数
 
-##### params
+##### options
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** `FlameInfo`
+- **类型:** `FlameOptions`
 
-##### FlameInfo
+##### FlameOptions
 
 <Docs-Table 
     :data="[
@@ -119,7 +119,7 @@ effectPlugin.createFlame({
 #### 定义
 
 ```ts
-interface SmokeInfo extends PluginObjectInfo {
+interface SmokeOptions extends PluginObjectInfo {
   imgUrl?: string;
   count?: number;
   maxAge?: number;
@@ -129,7 +129,7 @@ interface SmokeInfo extends PluginObjectInfo {
   color?: IColor[];
 }
 
-function createSmoke(params: SmokeInfo): PluginObject;
+function createSmoke(options: SmokeOptions): PluginObject;
 ```
 
 #### 用法
@@ -148,13 +148,13 @@ effectPlugin.createSmoke({
 
 #### 参数
 
-##### params
+##### options
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** `SmokeInfo`
+- **类型:** `SmokeOptions`
 
-##### SmokeInfo
+##### SmokeOptions
 
 <Docs-Table 
     :data="[
@@ -195,7 +195,7 @@ effectPlugin.createSmoke({
 #### 定义
 
 ```ts
-interface ContactShadowsInfo extends Omit<PluginObjectInfo, 'scale'> {
+interface ContactShadowsOptions extends Omit<PluginObjectInfo, 'scale'> {
   opacity?: number;
   width?: number;
   height?: number;
@@ -207,7 +207,7 @@ interface ContactShadowsInfo extends Omit<PluginObjectInfo, 'scale'> {
   darkness?: number;
 }
 
-function createContactShadows(params: ContactShadowsInfo): PluginObject;
+function createContactShadows(options: ContactShadowsOptions): PluginObject;
 ```
 
 #### 用法
@@ -228,13 +228,13 @@ effectPlugin.createContactShadows({
 
 #### 参数
 
-##### params
+##### options
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** `ContactShadowsInfo`
+- **类型:** `ContactShadowsOptions`
 
-##### ContactShadowsInfo
+##### ContactShadowsOptions
 
 <Docs-Table 
     :data="[
@@ -281,7 +281,7 @@ effectPlugin.createContactShadows({
 #### 定义
 
 ```ts
-interface WeatherInfo {
+interface WeatherOptions {
   imgUrl?: string;
   color?: IColor;
   size?: number;
@@ -292,7 +292,7 @@ interface WeatherInfo {
   velocityY?: [number, number];
 }
 
-function openWeather(params?: WeatherInfo): void;
+function openWeather(options?: WeatherOptions): void;
 ```
 
 #### 用法
@@ -311,13 +311,13 @@ effectPlugin.openWeather({
 
 #### 参数
 
-##### params
+##### options
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** `WeatherInfo`
+- **类型:** `WeatherOptions`
 
-##### WeatherInfo
+##### WeatherOptions
 
 <Docs-Table 
     :data="[
@@ -381,7 +381,7 @@ effectPlugin.closeWeather();
 #### 定义
 
 ```ts
-interface SparklesInfo extends PluginObjectInfo {
+interface SparklesOptions extends PluginObjectInfo {
   count?: number;
   speed?: number | Float32Array;
   opacity?: number | Float32Array;
@@ -391,7 +391,7 @@ interface SparklesInfo extends PluginObjectInfo {
   noise?: number | [number, number, number] | IVector3 | Float32Array;
 }
 
-function createSparkles(params: SparklesInfo): PluginObject;
+function createSparkles(options: SparklesOptions): PluginObject;
 ```
 
 #### 用法
@@ -416,13 +416,13 @@ effectPlugin.createSparkles({
 
 #### 参数
 
-##### params
+##### options
 
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** `SparklesInfo`
+- **类型:** `SparklesOptions`
 
-##### SparklesInfo
+##### SparklesOptions
 
 <Docs-Table 
     :data="[
@@ -450,25 +450,7 @@ effectPlugin.createSparkles({
     ]"
 />
 
-### removeEffect <Base-Deprecated />
-
-删除效果
-
-#### 定义
-
-```ts
-function removeEffect(id: PluginObjectInfo['id']): boolean;
-```
-
-#### 用法
-
-```js
-effectPlugin.removeEffect('test');
-```
-
-:::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
-:::
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
 
 ### createParticleCluster
 
@@ -645,3 +627,202 @@ particle.addPoint([
   { x: 0, y: 20, z: 10, value: 30, radius: 40 },
 ]);
 ```
+
+### createPointsWave
+
+创建粒子波浪
+
+#### 样例
+
+<Docs-Iframe src="plugin/createPointsWave.html" />
+
+#### 定义
+
+```ts
+interface PointsWaveOptions extends PluginObjectInfo {
+  xAxisCount?: number;
+  zAxisCount?: number;
+  showDistance?: number;
+  separation?: number;
+  size?: number;
+  maxFluctua?: number;
+  color?: IColor;
+  opacity?: number;
+}
+
+function createPointsWave(options: PointsWaveOptions): PluginObject;
+```
+
+#### 用法
+
+```js
+const pointsWave = effectPlugin.createPointsWave({
+  id: 'pointsWave',
+  position: {
+    x: 0,
+    y: -20,
+    z: 0,
+  },
+  xAxisCount: 100,
+  zAxisCount: 100,
+  showDistance: 0,
+  separation: 20,
+  size: 5,
+  maxFluctua: 0.1,
+  color: '#485c7c',
+  opacity: 1,
+});
+```
+
+#### 参数
+
+##### options
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `PointsWaveOptions`
+
+##### PointsWaveOptions
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'xAxisCount', desc: 'x轴粒子数量', type: 'number', require: false, default: '100'
+      },
+      {
+        prop: 'xAxisCount', desc: 'y轴粒子数量', type: 'number', require: false, default: '100'
+      },
+      {
+        prop: 'showDistance', desc: '开始显示粒子的距离', type: 'number', require: false, default: '0'
+      },
+      {
+        prop: 'separation', desc: '分隔距离', type: 'number', require: false, default: '20'
+      },
+      {
+        prop: 'size', desc: '大小', type: 'number', require: false, default: '5'
+      },
+      {
+        prop: 'maxFluctua', desc: '最大波动系数', type: 'number', require: false, default: '0.1'
+      },
+      {
+         prop: 'color', desc: '颜色', type: 'IColor', link: '../guide/types.html#icolor', require: false, default: '#485c7c',
+      },
+      {
+        prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: '1'
+      },
+    ]"
+/>
+
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
+
+### createBuilds
+
+创建建筑
+
+#### 样例
+
+同上
+
+#### 定义
+
+```ts
+interface BuildsOptions extends PluginObjectInfo {
+  buildWidth?: number;
+  buildHeigh?: number;
+  buildDepth?: number;
+  count?: number;
+  gapX?: number;
+  gapZ?: number;
+  showDistance?: number;
+  randShift?: number;
+  color?: IColor;
+}
+
+function createBuilds(options: BuildsOptions): PluginObject;
+```
+
+#### 用法
+
+```js
+const builds = effectPlugin.createBuilds({
+  id: 'builds',
+  position: {
+    x: 0,
+    y: -50,
+    z: 0,
+  },
+  buildWidth: 100,
+  buildDepth: 100,
+  buildHeigh: 200,
+  count: 12,
+  gapX: 2,
+  gapZ: 2,
+  showDistance: 1000,
+  randShift: 0.5,
+  color: '#485c7c',
+});
+```
+
+#### 参数
+
+##### options
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `BuildsOptions`
+
+##### BuildsOptions
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'buildWidth', desc: '建筑宽度（x）', type: 'number', require: false, default: '100'
+      },
+      {
+        prop: 'buildDepth', desc: '建筑深度（z）', type: 'number', require: false, default: '100'
+      },
+      {
+        prop: 'buildHeigh', desc: '建筑高度（y）', type: 'number', require: false, default: '200'
+      },
+      {
+        prop: 'count', desc: '数量（实际数量为count平方）', type: 'number', require: false, default: '12'
+      },
+      {
+        prop: 'gapX', desc: 'x轴间隔（配合randShift）', type: 'number', require: false, default: '2'
+      },
+      {
+        prop: 'gapZ', desc: 'z轴间隔（配合randShift）', type: 'number', require: false, default: '2'
+      },
+      {
+        prop: 'showDistance', desc: '开始显示建筑的距离', type: 'number', require: false, default: '1000'
+      },
+      {
+        prop: 'randShift', desc: '随机分布系数', type: 'number', require: false, default: '0.5'
+      },
+      {
+         prop: 'color', desc: '颜色', type: 'IColor', link: '../guide/types.html#icolor', require: false, default: '#485c7c',
+      }
+    ]"
+/>
+
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
+
+### removeEffect <Base-Deprecated />
+
+删除效果
+
+#### 定义
+
+```ts
+function removeEffect(id: PluginObjectInfo['id']): boolean;
+```
+
+#### 用法
+
+```js
+effectPlugin.removeEffect('test');
+```
+
+:::warning 弃用警告
+请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+:::
