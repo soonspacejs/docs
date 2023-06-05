@@ -824,5 +824,5 @@ effectPlugin.removeEffect('test');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](../api/object.html#removeobjectbyid) 替代
 :::
