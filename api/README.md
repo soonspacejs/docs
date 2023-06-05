@@ -21,6 +21,7 @@
   - [相机](./camera.html)
   - [灯光](./light.html)
   - [辅助器](./helper.html)
+  - [路径动画](./path-animation.html)
 
 ### 高阶
   - [补间动画](./animation.html)
