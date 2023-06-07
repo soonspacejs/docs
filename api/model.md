@@ -636,6 +636,8 @@ ssp.setModelDracoDecoderPath('/libs/draco/');
 
 调用此方法可减少控制器、模型事件的计算时间
 
+需要在模型加载完成后调用此方法
+
 ### 定义：
 
 ```ts
@@ -657,6 +659,11 @@ function computeModelsBoundsTree(
 ### 用法：
 
 ```js
+await ssp.loadModel({
+  id: 'model',
+  url: 'xxxx',
+});
+
 ssp.computeModelsBoundsTree({
   type: 'slice',
   force: false,
