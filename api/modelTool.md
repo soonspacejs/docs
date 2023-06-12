@@ -324,7 +324,7 @@ ssp.unHighlightShow();
 ### 定义:
 
 ```ts
-interface EmissiveSelectOptions extends BaseSelectOptions {
+interface EmissiveSelectOptions extends Omit<BaseSelectOptions, 'opacity'> {
   minOpacity?: number;
   maxOpacity?: number;
   duration?: number;
@@ -363,7 +363,6 @@ ssp.emissiveShow(object);
 <Docs-Table
     :data="[
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: 'red',  link: '../guide/types.html#icolor'},
-      { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.3 },
       { prop: 'minOpacity', desc: '动画透明度最小值', type: 'number', require: false, default: 0 },
       { prop: 'maxOpacity', desc: '动画透明度最大值', type: 'number', require: false, default: 1 },
       { prop: 'duration', desc: '动画周期时长(ms)', type: 'number', require: false, default: 1000 },
