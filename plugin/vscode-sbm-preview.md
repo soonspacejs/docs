@@ -19,10 +19,10 @@ vscode 插件 - sbm 模型预览
 
 在文件后缀为 `.sbm` 的模型文件目录右键打开操作菜单，会显示 **预览 Sbm 模型** 功能项。
 
-![install](./images/vscode-sbm-preview/use.jpg)
+![use](./images/vscode-sbm-preview/use.jpg)
 
 ## 页面展示
 
 点击功能项自动在模型文件同目录生成页面文件，同时启动本地服务打开页面预览。
 
-![install](./images/vscode-sbm-preview/page.jpg)
+![page](./images/vscode-sbm-preview/page.jpg)

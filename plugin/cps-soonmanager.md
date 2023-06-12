@@ -194,6 +194,43 @@ type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions>;
 
 ## 方法
 
+### setKey
+
+设置企业公钥
+
+::: tip 提示
+如下图，只有使用 **安装包** 需去除场景水印时才需要设置企业公钥。
+![page](./images/cps-soonmanager/use-scene.jpeg)
+
+获取企业公钥, 请联系 CPS 平台企业 **管理员** 按下图提示操作获取。
+![page](./images/cps-soonmanager/getkey.jpeg)
+
+整体设计逻辑
+   
+| 资源包类型 | 是否需要设置企业公钥 | 是否携带水印 |
+|:---:|:---:|:---:|
+| 调试包 | 否 | 是 |
+| 安装包 | 是 | 否 |
+| 旧版资源包 | 否 | 否 |
+:::
+
+#### 定义
+
+```ts
+function setKey(key: string): void;
+```
+
+#### 用法
+
+```js
+cpsSoonmanagerPlugin.setKey('xxxxxxxxxxxxxxxx');
+```
+
+::: warning 注意
+需要在调用 `loadScene` 之前调用 `setKey` 方法，否则安装包将无法正常加载
+:::
+
+
 ### setPath
 
 设置加载资源的基础路径
@@ -214,39 +251,6 @@ cpsSoonmanagerPlugin.setPath('http://xxx.com/models');
 
 ::: warning 注意
 插件的其他方法依赖于 `path`，需要先设置才能使用
-:::
-
-### setKey
-
-设置秘钥
-
-只有使用**安装包**时才需要设置此方法
-
-_导出资源包分类_
-| 资源包类型 | 是否需要设置秘钥 | 是否携带水印 |
-|:---:|:---:|:---:|
-| 调试包 | 否 | 是 |
-| 安装包 | 是 | 否 |
-| 旧版资源包 | 否 | 否 |
-
-#### 定义
-
-```ts
-function setKey(key: string): void;
-```
-
-#### 用法
-
-```js
-cpsSoonmanagerPlugin.setKey('xxxxxxxxxxxxxxxx');
-```
-
-::: warning 注意
-需要在调用 `loadScene` 之前调用 `setKey` 方法，否则安装包将无法正常加载
-:::
-
-::: tip 提示
-请联系 CPS 平台企业管理员获取秘钥
 :::
 
 ### presetEffects
