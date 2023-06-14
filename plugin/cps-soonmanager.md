@@ -26,7 +26,7 @@ yarn add @soonspacejs/plugin-cps-soonmanager
 
 ```js {2,10-13}
 import SoonSpace from 'soonspacejs';
-import CpsSoonmanagerPlugin from '@soonspacejs/plugin-soonmanager2-sync';
+import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
 
 const ssp = new SoonSpace({
   el: '#view',
@@ -206,12 +206,13 @@ type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions>;
 ![page](./images/cps-soonmanager/getkey.jpeg)
 
 整体设计逻辑
-   
+
 | 资源包类型 | 是否需要设置企业公钥 | 是否携带水印 |
-|:---:|:---:|:---:|
-| 调试包 | 否 | 是 |
-| 安装包 | 是 | 否 |
-| 旧版资源包 | 否 | 否 |
+| :--------: | :------------------: | :----------: |
+|   调试包   |          否          |      是      |
+|   安装包   |          是          |      否      |
+| 旧版资源包 |          否          |      否      |
+
 :::
 
 #### 定义
@@ -229,7 +230,6 @@ cpsSoonmanagerPlugin.setKey('xxxxxxxxxxxxxxxx');
 ::: warning 注意
 需要在调用 `loadScene` 之前调用 `setKey` 方法，否则安装包将无法正常加载
 :::
-
 
 ### setPath
 
@@ -251,62 +251,6 @@ cpsSoonmanagerPlugin.setPath('http://xxx.com/models');
 
 ::: warning 注意
 插件的其他方法依赖于 `path`，需要先设置才能使用
-:::
-
-### presetEffects
-
-设置预设效果
-
-#### 定义
-
-```ts
-interface IPresetEffectsOptions {
-  hdr?: boolean;
-  ssao?: boolean;
-  directionalLightShadow?: boolean | { angle?: number };
-}
-
-function presetEffects(options?: IPresetEffectsOptions): Promise<void>;
-```
-
-#### 用法
-
-```js
-await cpsSoonmanagerPlugin.loadScene();
-await cpsSoonmanagerPlugin.presetEffects({
-  hdr: true,
-  ssao: true,
-  directionalLightShadow: true,
-});
-```
-
-#### 参数
-
-##### options
-
-- **描述:** 场景加载选项
-- **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** `IPresetEffectsOptions`
-
-##### IPresetEffectsOptions
-
-<Docs-Table
-    :data="[
-      { prop: 'hdr', desc: '使用资源包中预设的 hdr 环境', type: 'boolean', require: false, default: 'true' },
-      { prop: 'ssao', desc: '开启 SSAO  效果', type: 'boolean', require: false, default: 'true' },
-      { prop: 'directionalLightShadow', desc: '开启平行光阴影', type: 'boolean', require: false, default: 'true' },
-    ]"
-/>
-
-_各参数对应的方法_
-| 参数 | 对应的内部方法 |
-| :--------------------: | :----------------------------------------------------: |
-| hdr | [setEnvironment](../api/sceneTool.html#setenvironment) |
-| ssao | [setSSAO](../api/sceneTool.html#setssao) |
-| directionalLightShadow | [createDirectionalLight](../api/light.html#createdirectionallight) |
-
-::: warning 注意
-presetEffects 需要等待场景加载完调用
 :::
 
 ### loadScene
@@ -383,6 +327,62 @@ cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false }).then(() => {
 
 ::: tip 提示
 自定义属性存储在对象的 `userData.properties` 属性上
+:::
+
+### presetEffects
+
+设置预设效果
+
+#### 定义
+
+```ts
+interface IPresetEffectsOptions {
+  hdr?: boolean;
+  ssao?: boolean;
+  directionalLightShadow?: boolean | { angle?: number };
+}
+
+function presetEffects(options?: IPresetEffectsOptions): Promise<void>;
+```
+
+#### 用法
+
+```js
+await cpsSoonmanagerPlugin.loadScene();
+await cpsSoonmanagerPlugin.presetEffects({
+  hdr: true,
+  ssao: true,
+  directionalLightShadow: true,
+});
+```
+
+#### 参数
+
+##### options
+
+- **描述:** 效果参数
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `IPresetEffectsOptions`
+
+##### IPresetEffectsOptions
+
+<Docs-Table
+    :data="[
+      { prop: 'hdr', desc: '使用资源包中预设的 hdr 环境', type: 'boolean', require: false, default: 'true' },
+      { prop: 'ssao', desc: '开启 SSAO  效果', type: 'boolean', require: false, default: 'true' },
+      { prop: 'directionalLightShadow', desc: '开启平行光阴影', type: 'boolean', require: false, default: 'true' },
+    ]"
+/>
+
+_各参数对应的方法_
+| 参数 | 对应的内部方法 |
+| :--------------------: | :----------------------------------------------------: |
+| hdr | [setEnvironment](../api/sceneTool.html#setenvironment) |
+| ssao | [setSSAO](../api/sceneTool.html#setssao) |
+| directionalLightShadow | [createDirectionalLight](../api/light.html#createdirectionallight) |
+
+::: warning 注意
+presetEffects 需要等待场景加载完调用
 :::
 
 ### getTopologies
