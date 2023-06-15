@@ -18,7 +18,7 @@ sidebarDepth: 2
 
 ## 样例
 
-由于键盘事件无法直接跨过 `iframe`，样例请看[这里](http://www.xwbuilders.com:8800/examples/page/plugin/firstPersonControls.html)。
+<Docs-Iframe src="plugin/firstPersonControls.html" />
 
 ## 安装
 
@@ -127,7 +127,6 @@ interface StartOptions {
   jumpHeight?: number;
   enableClash?: boolean;
   enableGravity?: boolean;
-
   /**
    * 模型对象的搜索半径的系数
    * @remarks
@@ -164,9 +163,9 @@ interface StartOptions {
    */
   clashFilter?: ClashFilter;
 
-   /**
-    * 碰撞检测的层级
-    */
+  /**
+   * 碰撞检测的层级
+   */
   clashLayers?: number[];
 
   /**
@@ -177,17 +176,24 @@ interface StartOptions {
   /**
    * 是否开启旋转
    */
-   rotate?: boolean | null;
+  rotate?: boolean | null;
 
+  /**
+   * 旋转速度
+   */
+  rotateSpeed?: number;
   /**
    * 是否开启水平方向的旋转
    */
-   horizontalRotate?: boolean | null;
-
-   /**
-    * 是否开启垂直方向旋转
-    */
-   verticalRotate?: boolean | null;
+  horizontalRotate?: boolean | null;
+  /**
+   * 是否开启垂直方向旋转
+   */
+  verticalRotate?: boolean | null;
+  /**
+   * 开启双击前进
+   */
+  dblClickForward?: boolean;
 }
 
 /**
@@ -207,14 +213,22 @@ function start(options: StartOptions) => void
 
 ```js
 firstPersonControls.start({
-  position: { x: 132, y: 5, z: 91 },
-  rotation: { x: 0, y: 0, z: 0 },
-  moveSpeed: 1.0,
-  eyeHeight: 160,
-  kneeHeight: 50,
-  jumpHeight: 110,
+  position: { x: 37, y: 5, z: 4 },
+  rotation: { x: 0, y: Math.PI, z: 0 },
+  eyeHeight: 1.5,
+  kneeHeight: 0.5,
+  jumpHeight: 1,
+  moveSpeed: 0.4,
+  gravitySpeed: 0.5,
   enableClash: true,
-  enableGravity: false,
+  clashCheckDistance: 5,
+  searchRadiusFactor: 1,
+  clashDistance: 0.1,
+  enableGravity: true,
+  rotateSpeed: 0.5,
+  horizontalRotate: true,
+  verticalRotate: true,
+  dblClickForward: true,
 });
 ```
 
@@ -278,6 +292,9 @@ firstPersonControls.start({
         prop: 'rotate', desc: '是否开启旋转', type: 'boolean | null', require: false, default: 'true'
       },
       {
+        prop: 'rotateSpeed', desc: '旋转速度', type: 'number', require: false, default: '1'
+      },
+      {
         prop: 'reverseRotate', desc: '反向旋转', type: 'boolean | null', require: false, default: 'false'
       },
       {
@@ -285,6 +302,9 @@ firstPersonControls.start({
       },
       {
         prop: 'verticalRotate', desc: '是否开启垂直方向旋转', type: 'boolean | null', require: false, default: 'true'
+      },
+      {
+        prop: 'dblClickForward', desc: '是否开启双击前进', type: 'boolean', require: false, default: 'false'
       },
     ]"
 />
