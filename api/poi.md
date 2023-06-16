@@ -11,10 +11,11 @@
 ### 定义：
 
 ```ts
-interface PoiInfo extends BaseObject3DInfo, ObjectEvents<Poi> {
+interface PoiInfo extends BaseObject3DInfo {
   url: string;
   type?: PoiType;
-  nameScale?: Scale;
+  namePosition?: IVector3;
+  nameScale?: IVector3;
 }
 
 function createPoi(poiInfo: PoiInfo): Poi;
@@ -78,6 +79,7 @@ ssp.createPoi(
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'type', desc: '类型', type: 'PoiType', require: false, default: '2.5d', link: '../guide/types.html#poitype' },
+      { prop: 'namePosition', desc: '展示名称的位置偏移', type: 'Position', require: false, default: '{ x: 0, y: 10, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'nameScale', desc: '展示名称的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'url', desc: '图片资源路径', type: 'string', require: true, default: '' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },

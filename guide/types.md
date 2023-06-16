@@ -164,8 +164,10 @@ type FlyToViewpoint =
 基础空间对象创建时的参入参数
 
 ```ts
-interface BaseObject3DInfo {
-  //
+type BaseObject3DInfo = BaseObjectInfo<BaseObject3D>;
+
+interface BaseObjectInfo<ObjectType = Object3D>
+  extends BaseObjectEvents<ObjectType> {
   id: string | number;
   name?: string;
 
@@ -181,6 +183,16 @@ interface BaseObject3DInfo {
   //
   userData?: any;
 }
+
+interface BaseObjectEvents<ObjectType> {
+  //
+  onLoad?: ((object: ObjectType) => void) | null;
+
+  //
+  onClick?: ((object: ObjectType) => void) | null;
+  onDblClick?: ((object: ObjectType) => void) | null;
+  onRightClick?: ((object: ObjectType) => void) | null;
+}
 ```
 
 ## BaseMeshInfo
@@ -188,7 +200,7 @@ interface BaseObject3DInfo {
 基础网格对象创建时的参入参数
 
 ```ts
-interface BaseMeshInfo extends BaseObject3DInfo {}
+type BaseMeshInfo = BaseObjectInfo<BaseMesh>;
 ```
 
 ## BaseSelectOptions
