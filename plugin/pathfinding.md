@@ -112,13 +112,13 @@ pathfinding.createNavMesh(ssp.getAllModel(), {
         prop: 'walkableSlopeAngle', desc: '最大可行走坡度', type: 'number', require: false, default: '89'
       },
       {
-        prop: 'walkableHeight', desc: '允许进入的体素单位的高度', type: 'number', require: false, default: '1'
+        prop: 'walkableHeight', desc: '允许进入的体素单位的高度', type: 'number', require: false, default: '15'
       },
       {
-        prop: 'walkableClimb', desc: '可以被攀爬的体素单位', type: 'number', require: false, default: '1'
+        prop: 'walkableClimb', desc: '可以被攀爬的体素单位', type: 'number', require: false, default: '2'
       },
       {
-        prop: 'walkableRadius', desc: '体素单位的半径', type: 'number', require: false, default: '1'
+        prop: 'walkableRadius', desc: '体素单位的半径', type: 'number', require: false, default: '2'
       },
       {
         prop: 'maxEdgeLen', desc: '沿网格边界的轮廓边的最大允许长度。体素单位', type: 'number', require: false, default: '12'
@@ -130,10 +130,10 @@ pathfinding.createNavMesh(ssp.getAllModel(), {
         prop: 'minRegionArea', desc: '允许形成独立区域的最小单元格数量。体素单元', type: 'number', require: false, default: '8'
       },
       {
-        prop: 'mergeRegionArea', desc: '如果可能的话，任何跨度计数小于此值的区域都将与更大的区域合并。体素单元', type: 'number', require: false, default: '20'
+        prop: 'mergeRegionArea', desc: '如果可能的话，任何跨度计数小于此值的区域都将与更大的区域合并。体素单元', type: 'number', require: false, default: '100'
       },
       {
-        prop: 'maxVertsPerPoly', desc: '在轮廓到多边形转换过程中生成的多边形所允许的最大顶点数。必须是&gt;3.', type: 'number', require: false, default: '6'
+        prop: 'maxVertsPerPoly', desc: '在轮廓到多边形转换过程中生成的多边形所允许的最大顶点数。必须是&gt;3.', type: 'number', require: false, default: '5'
       },
       {
         prop: 'detailSampleDist', desc: '设置生成细节网格时要使用的采样距离。世界单位', type: 'number', require: false, default: '6'
@@ -168,6 +168,10 @@ const debugMesh = pathfinding.createDebugNavMesh();
 ssp.removeObject(debugMesh);
 ```
 
+::: tip 提示
+重复创建时会自动将之前的辅助 mesh 删除
+:::
+
 ### getClosestPoint
 
 在 navigation-mesh 上获得一个接近世界位置的点
@@ -175,7 +179,7 @@ ssp.removeObject(debugMesh);
 #### 定义
 
 ```ts
-function getClosestPoint(position: IVector3): Vector3 | null;
+function getClosestPoint(position: IVector3): IVector3 | null;
 ```
 
 #### 用法
@@ -193,7 +197,7 @@ const closestPoint = pathfinding.getClosestPoint(p);
 #### 定义
 
 ```ts
-function computePath(start: IVector3, end: IVector3): Vector3[] | null;
+function computePath(start: IVector3, end: IVector3): IVector3[] | null;
 ```
 
 #### 用法
