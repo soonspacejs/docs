@@ -72,7 +72,7 @@ heatCloudPlugin.defaultGradientVolumeMaterialOptions = {
 
 ```ts
 defaultGradientVolumeMaterialOptions.gradient = createLinearGradientTexture(
-  this.defaultColorGradient
+  defaultColorGradient
 );
 ```
 
