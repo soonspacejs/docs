@@ -159,7 +159,10 @@ interface TopologyPassableInfo {
   passable: number;
 }
 
-function setTopologyPassable(topology: Topology, info: TopologyPassableInfo[]): void
+function setTopologyPassable(
+  topology: Topology,
+  info: TopologyPassableInfo[]
+): void;
 ```
 
 ### 用法：
@@ -198,7 +201,23 @@ ssp.setTopologyPassable(topology, [
       { prop: 'passable', desc: '路径通行许可', type: '0 | 1 | 2 | 3', require: true, default: '', },
     ]"
 />
+
 `passable` 的枚举含义分别为：双向通行（0）｜ 单向正向通行（1）｜ 单向反向通行（2）｜ 禁止通行（3）
+
+::: tip 提示
+如果需要获取拓扑路径中的 node 对象时，可临时绑定一个点击事件
+
+```js
+ssp.signals.click.add((event) => {
+  const [intersect] = ssp.viewport.getIntersects(event, topology.nodes);
+
+  if (intersect) {
+    console.log('node对象 id', intersect.object.sid);
+  }
+});
+```
+
+:::
 
 ## getShortestPath
 
