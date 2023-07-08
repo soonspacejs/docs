@@ -196,7 +196,7 @@ ssp.setTopologyPassable(topology, [
 
 <Docs-Table
     :data="[
-      { prop: 'sourceNodeId', desc: '原始节点id', type: '	string | number', require: true, default: '', },
+      { prop: 'sourceNodeId', desc: '原始节点id', type: 'string | number', require: true, default: '', },
       { prop: 'targetNodeId', desc: '目标节点id', type: 'string | number', require: true, default: '', },
       { prop: 'passable', desc: '路径通行许可', type: '0 | 1 | 2 | 3', require: true, default: '', },
     ]"
