@@ -38,10 +38,9 @@ interface TopologyNodeGraph {
   targetNodeId: string;
   linkInfo: {
     id: string;
-    name: string;
+    name?: string;
   };
   passable: number;
-  length?: number;
 }
 
 interface TopologyInfo extends BaseObject3DInfo, TopologyEffectInfo {
@@ -132,12 +131,73 @@ const topology = ssp.createTopology({
 <Docs-Table
     :data="[
       { prop: 'targetNodeId', desc: '目标 node ID', type: 'string | number', require: true, default: '' },
-      { prop: 'linkInfo', desc: '路径信息', type: '{ id: string, name: string }', require: true, default: '' },
+      { prop: 'linkInfo', desc: '路径信息', type: '{ id: string, name?: string }', require: true, default: '' },
       { prop: 'passable', desc: '路径通行许可', type: '0 | 1 | 2 | 3', require: true, default: '' },
-      { prop: 'length', desc: '起始点到目标点距离', type: 'number', require: false, default: '' },
     ]"
 />
 
+`passable` 的枚举含义分别为：双向通行（0）｜ 单向正向通行（1）｜ 单向反向通行（2）｜ 禁止通行（3）
+
+::: warning 注意
+此处的 `passable` 数据是配合 `linkColor` 使用，直接设置无法影响 `getShortestPath` 等方法的结果
+
+需要动态设置链路的通行属性请使用 [setTopologyPassable](#settopologypassable) 方法
+:::
+
+## setTopologyPassable
+
+### 样例
+
+<Docs-Iframe src="topology/topologyPassable.html" />
+
+### 定义：
+
+```ts
+interface TopologyPassableInfo {
+  sourceNodeId: BaseObject3DInfo['id'];
+  targetNodeId: BaseObject3DInfo['id'];
+  passable: number;
+}
+
+function setTopologyPassable(topology: Topology, info: TopologyPassableInfo[]): void
+```
+
+### 用法：
+
+```js
+ssp.setTopologyPassable(topology, [
+  {
+    sourceNodeId: '8NM2FFLB40ZD',
+    targetNodeId: '8NM2Z1GHW1OK',
+    /**
+     * 禁止通行，当使用 getShortestPath 等方法时会避开此链路
+     */
+    passable: 3,
+  },
+]);
+```
+
+### 参数：
+
+#### topology
+
+- **描述:** 拓扑路径对象
+- **类型:** `Topology`
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+
+#### info
+
+- **描述:** 最短路径信息
+- **类型:** `TopologyPassableInfo[]`
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+
+<Docs-Table
+    :data="[
+      { prop: 'sourceNodeId', desc: '原始节点id', type: '	string | number', require: true, default: '', },
+      { prop: 'targetNodeId', desc: '目标节点id', type: 'string | number', require: true, default: '', },
+      { prop: 'passable', desc: '路径通行许可', type: '0 | 1 | 2 | 3', require: true, default: '', },
+    ]"
+/>
 `passable` 的枚举含义分别为：双向通行（0）｜ 单向正向通行（1）｜ 单向反向通行（2）｜ 禁止通行（3）
 
 ## getShortestPath
@@ -176,7 +236,7 @@ const shortestTopology = ssp.getShortestPath(topologyFromOther, {
 
 #### topology
 
-- **描述:** 拓扑路径对象，一般是从 gml 文件加载的拓扑路径图
+- **描述:** 拓扑路径对象
 - **类型:** `Topology`
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
@@ -239,7 +299,7 @@ const shortestTopology = ssp.getShortestPathByMultipleStartPoints(
 
 #### topology
 
-- **描述:** 拓扑路径对象，一般是从 gml 文件加载的拓扑路径图
+- **描述:** 拓扑路径对象
 - **类型:** `Topology`
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
