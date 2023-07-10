@@ -267,8 +267,8 @@ const shortestTopology = ssp.getShortestPath(topologyFromOther, {
 
 <Docs-Table
     :data="[
-      { prop: 'start', desc: '路径的起始点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'end', desc: '路径的结束点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
     ]"
 />
 
@@ -330,8 +330,8 @@ const shortestTopology = ssp.getShortestPathByMultipleStartPoints(
 
 <Docs-Table
     :data="[
-      { prop: 'start', desc: '路径的起始点', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'end', desc: '路径的结束点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
     ]"
 />
 
@@ -393,8 +393,8 @@ const shortestTopology = ssp.getShortestPathByMultipleEndPoints(
 
 <Docs-Table
     :data="[
-      { prop: 'start', desc: '路径的起始点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'end', desc: '路径的结束点', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
     ]"
 />
 
