@@ -291,6 +291,10 @@ cpsSoonmanagerPlugin.loadScene().then(() => {
 ```
 
 ::: tip 提示
+某些模型文件可能应用了 [DRACO](https://google.github.io/draco/) 压缩，建议调用 loadScene 方法之前调用 [setModelDracoDecoderPath](../api/model.md#setmodeldracodecoderpath) 方法设置 DRACO 解压路径
+:::
+
+::: tip 提示
 如果你需要使用 Worker 计算 BVH，可以关闭默认行为
 
 ```js
