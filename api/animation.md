@@ -50,27 +50,47 @@ function Animation<PropType>(
 ### 用法：
 
 ```js
-ssp.animation(
-  // source
-  model.position,
-  // target
-  { x: 2000, y: 2000, z: 2000 },
-  // options
-  {
-    duration: 3000,
-    delay: 1000,
-    repeat: 1,
-  },
-  // onUpdate
-  (source, tween) => {
-    console.log('onUpdate', source, tween);
-  },
-  // onStart
-  (tween) => {
-    console.log('onStart', tween);
-  }
-);
+let tween;
+
+ssp
+  .animation(
+    // source
+    model.position,
+    // target
+    { x: 2000, y: 2000, z: 2000 },
+    // options
+    {
+      duration: 3000,
+      delay: 1000,
+      repeat: 1,
+    },
+    // onUpdate
+    (source, _tween) => {
+      console.log('onUpdate', source, _tween);
+    },
+    // onStart
+    (_tween) => {
+      tween = _tween;
+      console.log('onStart', _tween);
+    }
+  )
+  .catch(() => {
+    // 动画终止了
+  });
+
+// 暂停
+tween.pause();
+
+// 恢复
+tween.resume();
+
+// 停止
+tween.stop();
 ```
+
+::: warning 注意
+调用 `tween.stop` 方法后，状态会变为 `reject`
+:::
 
 ### 参数：
 
