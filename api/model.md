@@ -623,11 +623,13 @@ function setModelDracoDecoderPath(path: string): void;
 ### 用法：
 
 ```js
-ssp.setModelDracoDecoderPath('/libs/draco/');
+ssp.setModelDracoDecoderPath('/draco/');
 ```
 
 ::: tip 提示
 `draco` 目录在 `node_modules/three/examples/jsm/libs/draco` 中
+
+然后将 `draco` 目录拷贝至所在项目的静态资源目录中，一般是 `public` 目录
 :::
 
 ## computeModelsBoundsTree
