@@ -444,7 +444,7 @@ ssp.createTopology({
 ```
 
 ::: tip 提示
-在播放路径动画或使用[巡检插件](./patrol-controls.html)时会按照 nodes 数组的循序执行
+在播放路径动画或使用[巡检插件](./patrol-controls.html)时会按照 nodes 数组的顺序执行
 
 所以可能需要使用此方法对线路的 nodes 排序
 :::
