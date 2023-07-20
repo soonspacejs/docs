@@ -16,6 +16,11 @@ interface PoiInfo extends BaseObject3DInfo {
   type?: PoiType;
   namePosition?: IVector3;
   nameScale?: IVector3;
+  scaleFixed?: {
+    originScale: number;
+    fixedScale: number;
+    distance: number;
+  };
 }
 
 function createPoi(poiInfo: PoiInfo): Poi;
@@ -72,7 +77,7 @@ ssp.createPoi(
 - **类型:** poiInfo
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
-##### c
+##### poiInfo
 
 <Docs-Table
     :data="[
@@ -81,6 +86,7 @@ ssp.createPoi(
       { prop: 'type', desc: '类型', type: 'PoiType', require: false, default: '2.5d', link: '../guide/types.html#poitype' },
       { prop: 'namePosition', desc: '展示名称的位置偏移', type: 'Position', require: false, default: '{ x: 0, y: 10, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'nameScale', desc: '展示名称的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'scaleFixed', desc: '相机超过设定距离时的固定缩放比例', type: 'PoiInfo[scaleFixed]', require: false, default: '', link: '#scalefixed' },
       { prop: 'url', desc: '图片资源路径', type: 'string', require: true, default: '' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
@@ -92,6 +98,18 @@ ssp.createPoi(
       { prop: 'onDblClick', desc: '左键双击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
       { prop: 'onRightClick', desc: '右键单击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
       { prop: 'onLoad', desc: '创建完成事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
+    ]"
+/>
+
+###### scaleFixed
+
+<Docs-Iframe src="poi/poiScaleFixed.html" />
+
+<Docs-Table
+    :data="[
+      { prop: 'originScale', desc: '小于 distance 时的 scale', type: 'number', require: true, default: '' },
+      { prop: 'fixedScale', desc: '大于 distance 时的固定 scale', type: 'number', require: true, default: '' },
+      { prop: 'distance', desc: '距离阈值', type: 'number', require: true, default: '' },
     ]"
 />
 
