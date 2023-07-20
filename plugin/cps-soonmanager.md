@@ -402,15 +402,52 @@ function getTopologies(): Promise<TopologyInfo[]>;
 #### 用法
 
 ```js
-cpsSoonmanagerPlugin.getTopologies().then((topologies) => {
-  const [t1] = topologies;
+const topologiesInfo = await cpsSoonmanagerPlugin.getTopologies();
 
-  /**
-   * 使用获取到的数据直接创建拓扑路径
-   */
-  ssp.createTopology(t1);
+/**
+ * 每个数组元素对应一个拓扑路径
+ * 使用获取到的数据直接创建拓扑路径
+ */
+ssp.createTopology(topologiesInfo[0]);
+ssp.createTopology(topologiesInfo[1]);
+ssp.createTopology(topologiesInfo[2]);
+```
+
+### sortTopologyNodes
+
+对拓扑路径数据的 nodes 进行排序（只适用于线路）
+
+#### 定义
+
+```ts
+function sortTopologyNodes(
+  topologyInfo: TopologyInfo,
+  startNodeId?: TopologyNodeInfo['id']
+): TopologyInfo | undefined;
+```
+
+#### 用法
+
+```js
+const [topologyInfo] = await cpsSoonmanagerPlugin.getTopologies();
+
+/**
+ * 没有 startNodeId 则默认第0个 node 为起始 node
+ */
+const sortedToplogyInfo = cpsSoonmanagerPlugin.sortTopologyNodes(topologyInfo);
+
+ssp.createTopology({
+  sortedToplogyInfo,
+  imgUrl: 'xxx.png',
+  animation: true,
 });
 ```
+
+::: tip 提示
+在播放路径动画或使用[巡检插件](./patrol-controls.html)时会按照 nodes 数组的循序执行
+
+所以可能需要使用此方法对线路的 nodes 排序
+:::
 
 ### playAnimationById
 
