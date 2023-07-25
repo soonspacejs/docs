@@ -83,6 +83,20 @@ interface Level {
 }
 ```
 
+## ScaleFixed
+
+缩放比例固定
+
+支持 Poi、PoiNode
+
+```ts
+interface ScaleFixed {
+  originScale: number;
+  fixedScale: number;
+  distance: number;
+}
+```
+
 ## OffsetPoint
 
 偏移量
@@ -159,15 +173,12 @@ type FlyToViewpoint =
   | 'rightBackTop';
 ```
 
-## BaseObject3DInfo
+## BaseObjectInfo
 
-基础空间对象创建时的参入参数
+基础对象创建时的参入参数（BaseMesh、Point 等等）
 
 ```ts
-type BaseObject3DInfo = BaseObjectInfo<BaseObject3D>;
-
-interface BaseObjectInfo<ObjectType = Object3D>
-  extends BaseObjectEvents<ObjectType> {
+interface BaseObjectInfo {
   id: string | number;
   name?: string;
 
@@ -183,24 +194,22 @@ interface BaseObjectInfo<ObjectType = Object3D>
   //
   userData?: any;
 }
-
-interface BaseObjectEvents<ObjectType> {
-  //
-  onLoad?: ((object: ObjectType) => void) | null;
-
-  //
-  onClick?: ((object: ObjectType) => void) | null;
-  onDblClick?: ((object: ObjectType) => void) | null;
-  onRightClick?: ((object: ObjectType) => void) | null;
-}
 ```
 
-## BaseMeshInfo
+## BaseObject3DInfo
 
-基础网格对象创建时的参入参数
+基础 3D 对象创建时的参入参数（BaseObject3D、Poi、PoiNode 等等）
 
 ```ts
-type BaseMeshInfo = BaseObjectInfo<BaseMesh>;
+interface BaseObject3DInfo extends BaseObjectInfo {
+  //
+  onLoad?: ((object: Object3D) => void) | null;
+
+  //
+  onClick?: ((object: Object3D) => void) | null;
+  onDblClick?: ((object: Object3D) => void) | null;
+  onRightClick?: ((object: Object3D) => void) | null;
+}
 ```
 
 ## BaseSelectOptions
@@ -231,15 +240,5 @@ interface BaseHelperOptions {
 ```ts
 interface Interpolate {
   t: number;
-}
-```
-
-## ObjectEventsListener
-
-`EventDispatcher` 方式支持的事件类型
-
-```ts
-interface ObjectEventsListener {
-  type: 'click' | 'rightClick' | 'dblClick';
 }
 ```

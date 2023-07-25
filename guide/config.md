@@ -138,12 +138,24 @@ const ssp = new SoonSpace({
 
 ## levelEnabled
 
-是否开启 level 检查
+是否开启 level 检测
 
 - **类型**: boolean
 - **默认值**: `false`
   ::: tip 提示
   不开启时，场景对象的 level 配置无效
+
+  此时可以减少场景多余的计算。
+  :::
+
+## scaleFixedEnabled
+
+是否开启 scaleFixed 检测
+
+- **类型**: boolean
+- **默认值**: `false`
+  ::: tip 提示
+  不开启时，场景 Poi、PoiNode 的 scaleFixed 配置无效
 
   此时可以减少场景多余的计算。
   :::

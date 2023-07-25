@@ -23,6 +23,7 @@ interface PoiNodeInfo extends BaseObject3DInfo {
   elementAutoDisplay?: boolean;
   occlude?: boolean;
   onChange?: (visible: boolean) => void;
+  scaleFixed?: ScaleFixed;
 }
 
 function createPoiNode(poiNodeInfo: PoiNodeInfo): PoiNode;
@@ -39,7 +40,7 @@ ssp.createPoiNode(
   {
     type: '3d',
     element: el,
-    occlude: true,
+    occlude: false,
     onChange(visible) {
       console.log(visible);
     },
@@ -77,6 +78,7 @@ ssp.createPoiNode(
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'scaleFixed', desc: '相机超过设定距离时的固定缩放比例', type: 'ScaleFixed', require: false, default: '', link: '../guide/types.html#scalefixed' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
@@ -84,6 +86,22 @@ ssp.createPoiNode(
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
+
+###### scaleFixed
+
+<Docs-Iframe src="poiNode/poiNodeScaleFixed.html" />
+
+<Docs-Table
+    :data="[
+      { prop: 'originScale', desc: '小于 distance 时的 scale', type: 'number', require: true, default: '' },
+      { prop: 'fixedScale', desc: '大于 distance 时的固定 scale', type: 'number', require: true, default: '' },
+      { prop: 'distance', desc: '距离阈值', type: 'number', require: true, default: '' },
+    ]"
+/>
+
+::: tip 提示
+使用 `scaleFixed` 需要开启 [scaleFixedEnabled](../guide/config.html#scalefixedenabled) 配置
+:::
 
 ## getPoiNodeById <Base-Deprecated />
 
