@@ -333,7 +333,7 @@ cpsSoonmanagerPlugin
   .then(() => {
     ssp.flyMainViewpoint();
 
-    console.log("load scene complete");
+    console.log("场景对象加载完成");
   });
 ```
 
