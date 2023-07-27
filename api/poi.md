@@ -11,11 +11,20 @@
 ### 定义：
 
 ```ts
+interface NameCanvasInfo {
+  font?: string;
+  fillStyle?: CanvasFillStrokeStyles['fillStyle'];
+  strokeStyle?: CanvasFillStrokeStyles['strokeStyle'];
+  textAlign?: CanvasTextAlign;
+  textBaseline?: CanvasTextBaseline;
+}
+
 interface PoiInfo extends BaseObject3DInfo {
   url: string;
   type?: PoiType;
   namePosition?: IVector3;
   nameScale?: IVector3;
+  nameCanvasInfo?: NameCanvasInfo;
   iconScale?: IVector3;
   scaleFixed?: ScaleFixed;
 }
@@ -31,6 +40,10 @@ ssp.createPoi(
   {
     id: 'xx',
     name: 'xx',
+    nameCanvasInfo: {
+      fillStyle: '#fff',
+      strokeStyle: '#000',
+    },
     type: '2.5d',
     url: 'http://xx.com/xx.png',
     level: {
@@ -83,6 +96,7 @@ ssp.createPoi(
       { prop: 'type', desc: '类型', type: 'PoiType', require: false, default: '2.5d', link: '../guide/types.html#poitype' },
       { prop: 'namePosition', desc: '展示名称的位置偏移', type: 'Position', require: false, default: '{ x: 0, y: 10, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'nameScale', desc: '展示名称的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'nameCanvasInfo', desc: '展示名称 canvas 配置', type: 'NameCanvasInfo', require: false, default: '参考下方' },
       { prop: 'iconScale', desc: '图片的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'scaleFixed', desc: '相机超过设定距离时的固定缩放比例', type: 'ScaleFixed', require: false, default: '', link: '../guide/types.html#scalefixed' },
       { prop: 'url', desc: '图片资源路径', type: 'string', require: true, default: '' },
@@ -96,6 +110,18 @@ ssp.createPoi(
       { prop: 'onDblClick', desc: '左键双击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
       { prop: 'onRightClick', desc: '右键单击事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
       { prop: 'onLoad', desc: '创建完成事件', type: '(object: Poi) =&gt; void', require: false, default: 'null' },
+    ]"
+/>
+
+##### nameCanvasInfo
+
+<Docs-Table
+    :data="[
+      { prop: 'font', desc: '字体', type: 'string', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font', default: '32px Microsoft YaHei' },
+      { prop: 'fillStyle', desc: '填充色', type: 'CanvasFillStrokeStyles[fillStyle]', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle', default: '#fff' },
+      { prop: 'strokeStyle', desc: '描边色', type: 'CanvasFillStrokeStyles[strokeStyle]', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle',default: '#000' },
+      { prop: 'textAlign', desc: '文本对齐', type: 'CanvasTextAlign', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign',default: 'center' },
+      { prop: 'textBaseline', desc: '文本基线', type: 'CanvasTextBaseline', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline',default: 'bottom' },
     ]"
 />
 
