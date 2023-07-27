@@ -764,7 +764,7 @@ prop: 'steps', desc: '体积材质渲染的采样数', type: 'number | null', re
 prop: 'accFactor', desc: '颜色累积系数', type: 'number | null', require: false, default: '1'
 },
 {
-prop: 'range', desc: '数值的映射区间 l', type: 'IVector2 | null', require: false, default: '{x:0,y:100}'
+prop: 'range', desc: '数值的映射区间', type: 'IVector2 | null', require: false, default: '{x:0,y:100}'
 },
 {
 prop: 'discardOut', desc: '否丢弃超出映射范围的数值', type: 'boolean | null', require: false, default: 'false'
@@ -1121,7 +1121,7 @@ prop: 'steps', desc: '体积材质渲染的采样数', type: 'number | null', re
 prop: 'accFactor', desc: '颜色累积系数', type: 'number | null', require: false, default: '1'
 },
 {
-prop: 'range', desc: '数值的映射区间 l', type: 'IVector2 | null', require: false, default: '{x:0,y:100}'
+prop: 'range', desc: '数值的映射区间', type: 'IVector2 | null', require: false, default: '{x:0,y:100}'
 },
 {
 prop: 'discardOut', desc: '否丢弃超出映射范围的数值', type: 'boolean | null', require: false, default: 'false'

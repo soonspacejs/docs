@@ -4,7 +4,7 @@
 
 ```js
 const ssp = new SoonSpace({
-  el: '#view',
+  el: "#view",
   options: {},
   events: {
     // 鼠标点击模型
@@ -191,7 +191,7 @@ const ssp = new SoonSpace({
 
 ## selectPosition
 
-通过点击在空间内获取坐标点。
+通过点击在空间内获取坐标点(世界坐标)。
 
 ### 回调参数
 
