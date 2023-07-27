@@ -640,20 +640,20 @@ soonmanager2SyncPlugin.fetchAnimationsData().then((animationsData) => {
 });
 ```
 
-### fetchModelVisions
+### fetchModelVisionsData
 
 根据当前 `path` 获取模型视角数据
 
 #### 定义
 
 ```ts
-function fetchModelVisions(): Promise<TModelVisionsMap>;
+function fetchModelVisionsData(): Promise<TModelVisionsMap>;
 ```
 
 #### 用法
 
 ```ts
-soonmanager2SyncPlugin.fetchModelVisions().then((modelVisions) => {
+soonmanager2SyncPlugin.fetchModelVisionsData().then((modelVisions) => {
   console.log(modelVisions);
 });
 ```
