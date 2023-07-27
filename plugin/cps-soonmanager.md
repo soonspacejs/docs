@@ -25,18 +25,18 @@ yarn add @soonspacejs/plugin-cps-soonmanager
 ## 使用方法
 
 ```js {2,10-13}
-import SoonSpace from 'soonspacejs';
-import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
+import SoonSpace from "soonspacejs";
+import CpsSoonmanagerPlugin from "@soonspacejs/plugin-cps-soonmanager";
 
 const ssp = new SoonSpace({
-  el: '#view',
+  el: "#view",
   options: {},
   events: {},
 });
 
 const cpsSoonmanagerPlugin = ssp.registerPlugin(
   CpsSoonmanagerPlugin,
-  'cpsSoonmanagerPlugin'
+  "cpsSoonmanagerPlugin"
 );
 console.log(cpsSoonmanagerPlugin);
 ```
@@ -89,7 +89,7 @@ interface ITreeData {
   id: string;
   pid: string | null;
   name: string;
-  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB';
+  renderType: "GROUP" | "3D" | "ROOM" | "STUB";
   matrix: number[];
   path: string | null;
   children: ITreeData[];
@@ -121,7 +121,7 @@ interface IProperties {
   label: string | null;
 }
 
-type TPropertiesMap = Map<IProperties['modelId'], IProperties[]>;
+type TPropertiesMap = Map<IProperties["modelId"], IProperties[]>;
 ```
 
 ### animationsData
@@ -165,7 +165,7 @@ interface IAnimations {
   keyframes: IKeyframe[];
 }
 
-type TAnimationsMap = Map<IAnimations['modelId'], IAnimations[]>;
+type TAnimationsMap = Map<IAnimations["modelId"], IAnimations[]>;
 ```
 
 ### modelVisionsData
@@ -189,7 +189,7 @@ interface IModelVisions {
   target: IVector3;
 }
 
-type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions>;
+type TModelVisionsMap = Map<IModelVisions["nodeId"], IModelVisions>;
 ```
 
 ## 方法
@@ -224,7 +224,7 @@ function setKey(key: string): void;
 #### 用法
 
 ```js
-cpsSoonmanagerPlugin.setKey('xxxxxxxxxxxxxxxx');
+cpsSoonmanagerPlugin.setKey("xxxxxxxxxxxxxxxx");
 ```
 
 ::: warning 注意
@@ -244,9 +244,9 @@ function setPath(path: string): void;
 #### 用法
 
 ```js
-cpsSoonmanagerPlugin.setPath('./models');
+cpsSoonmanagerPlugin.setPath("./models");
 // or
-cpsSoonmanagerPlugin.setPath('http://xxx.com/models');
+cpsSoonmanagerPlugin.setPath("http://xxx.com/models");
 ```
 
 ::: warning 注意
@@ -258,6 +258,13 @@ cpsSoonmanagerPlugin.setPath('http://xxx.com/models');
 加载场景对象
 
 #### 定义
+
+```ts
+export enum LoadSceneAlgorithm {
+  BFS = "BFS", // 广度优先
+  DFS = "DFS", // 深度优先
+}
+```
 
 ```ts
 interface ILoadSceneOptions {
@@ -277,6 +284,10 @@ interface ILoadSceneOptions {
    * 应用预设效果
    */
   applyPresetEffects?: boolean;
+  /**
+   * 加载场景算法
+   */
+  loadSceneAlgorithm?: LoadSceneAlgorithm;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -286,7 +297,7 @@ function loadScene(options?: ILoadSceneOptions): Promise<void>;
 
 ```js
 cpsSoonmanagerPlugin.loadScene().then(() => {
-  console.log('场景对象加载完成');
+  console.log("场景对象加载完成");
 });
 ```
 
@@ -300,13 +311,31 @@ cpsSoonmanagerPlugin.loadScene().then(() => {
 ```js
 cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false }).then(() => {
   ssp.computeModelsBoundsTree({
-    type: 'worker',
+    type: "worker",
     workerCreator,
   });
 });
 ```
 
 具体请查看 [computeModelsBoundsTree](../api/model.html#computemodelsboundstree)
+
+:::
+
+::: tip 提示
+
+初始化加载大场景时，可以通过 `loadSceneAlgorithm` 参数设置加载场景算法为`BFS`，可以优化加载性能
+
+```ts
+cpsSoonmanagerPlugin
+  .loadScene({
+    loadSceneAlgorithm: LoadSceneAlgorithm.BFS,
+  })
+  .then(() => {
+    ssp.flyMainViewpoint();
+
+    console.log("load scene complete");
+  });
+```
 
 :::
 
@@ -326,6 +355,7 @@ cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false }).then(() => {
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
+       { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
     ]"
 />
 
@@ -422,7 +452,7 @@ ssp.createTopology(topologiesInfo[2]);
 ```ts
 function sortTopologyNodes(
   topologyInfo: TopologyInfo,
-  startNodeId?: TopologyNodeInfo['id']
+  startNodeId?: TopologyNodeInfo["id"]
 ): TopologyInfo | undefined;
 ```
 
@@ -438,7 +468,7 @@ const sortedToplogyInfo = cpsSoonmanagerPlugin.sortTopologyNodes(topologyInfo);
 
 ssp.createTopology({
   sortedToplogyInfo,
-  imgUrl: 'xxx.png',
+  imgUrl: "xxx.png",
   animation: true,
 });
 ```
@@ -458,15 +488,15 @@ ssp.createTopology({
 ```ts
 type TAnimationsTweenProps = Pick<
   IKeyframe,
-  | 'x'
-  | 'y'
-  | 'z'
-  | 'rotationX'
-  | 'rotationY'
-  | 'rotationZ'
-  | 'scaleX'
-  | 'scaleY'
-  | 'scaleZ'
+  | "x"
+  | "y"
+  | "z"
+  | "rotationX"
+  | "rotationY"
+  | "rotationZ"
+  | "scaleX"
+  | "scaleY"
+  | "scaleZ"
 >;
 
 interface IPlayAnimationByIdOptions {
@@ -487,7 +517,7 @@ function playAnimationById(
 #### 用法
 
 ```js
-soonmanager2SyncPlugin.playAnimationById('4H6T1H53CSFW', 0, {
+soonmanager2SyncPlugin.playAnimationById("4H6T1H53CSFW", 0, {
   onUpdate: (source, tween) => {},
   onStart: (tween) => {
     /**
