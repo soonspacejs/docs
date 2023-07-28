@@ -13,12 +13,13 @@
 
 - [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
 - [soonmanager2-sync](./soonmanager2-sync.html) - 空间平台 2.0 生产的场景加载及数据读取。（旧版）
-- [cps-soonmanager](./cps-soonmanager.html) - [CPS平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
+- [cps-soonmanager](./cps-soonmanager.html) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
 
 ### 功能扩展插件
 
 - [sspx](./sspx.html) - `soonspacejs` 实例存储容器。
 - [heat-map](./heat-map.html) - 热力图。
+- [heat-cloud](./heat-cloud.html) - 热力云。
 - [drawing-shape](./drawing-shape.html) - 绘制基础图形。
 - [patrol-controls](./patrol-controls.html) - 路径巡检控制器。
 - [drawing-topology](./drawing-topology.html) - 绘制拓扑路径。
