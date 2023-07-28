@@ -549,12 +549,16 @@ function playModelAnimation(
 const model = ssp.getObjectById('xxxx');
 
 // number
-ssp.playModelAnimation(model, 0);
+const action = ssp.playModelAnimation(model, 0);
 // or AnimationClip
 ssp.playModelAnimation(model, model.animations[0]);
 // or ModelAnimationFindFunc
 ssp.playModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 ```
+
+::: tip 提示
+返回的 `action` 对象请参考 [three.js AnimationAction](https://threejs.org/docs/index.html#api/en/animation/AnimationAction)
+:::
 
 ### 参数：
 
