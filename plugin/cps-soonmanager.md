@@ -582,6 +582,8 @@ soonmanager2SyncPlugin.playAnimationById('4H6T1H53CSFW', 0, {
 
 根据当前 `path` 获取场景元数据
 
+由 [loadScene](#loadscene) 方法调用
+
 #### 定义
 
 ```ts
@@ -600,6 +602,8 @@ soonmanager2SyncPlugin.fetchMetaData().then((metaData) => {
 
 根据当前 `path` 获取场景树数据
 
+由 [loadScene](#loadscene) 方法调用
+
 #### 定义
 
 ```ts
@@ -613,10 +617,6 @@ soonmanager2SyncPlugin.fetchTreeData().then((treeData) => {
   console.log(treeData);
 });
 ```
-
-::: tip 提示
-调用 `loadScene` 时，内部会使用此方法获取场景树数据
-:::
 
 ### fetchPropertiesData
 
@@ -639,6 +639,8 @@ soonmanager2SyncPlugin.fetchPropertiesData().then((propertiesData) => {
 ### fetchAnimationsData
 
 根据当前 `path` 获取补间动画数据
+
+由 [playAnimationById](#playanimationbyid) 方法调用
 
 #### 定义
 
