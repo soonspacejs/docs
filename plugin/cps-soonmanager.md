@@ -50,9 +50,11 @@ console.log(cpsSoonmanagerPlugin);
 - **默认值:** `''`
 - **类型:** `string`
 
-### metaData
+### metaData <Base-Tag title="readonly" />
 
 场景元数据
+
+调用 [fetchMetaData](#fetchmetadata) 方法时会设置此属性
 
 - **默认值:** `null`
 - **类型:** `IMetadata | null`
@@ -75,9 +77,11 @@ interface IMetadata {
 }
 ```
 
-### treeData
+### treeData <Base-Tag title="readonly" />
 
 场景树数据
+
+调用 [loadScene](#loadscene) 方法时会设置此属性
 
 - **默认值:** `null`
 - **类型:** `ITreeData[] | null`
@@ -96,16 +100,20 @@ interface ITreeData {
 }
 ```
 
-### topologyData
+### topologyData <Base-Tag title="readonly" />
 
 拓扑路径数据
+
+调用 [getTopologies](#gettopologies) 方法时会设置此属性
 
 - **默认值:** `null`
 - **类型:** [`TopologyInfo[]`](../api/topology.html#topologyinfo) | `null`
 
-### propertiesData
+### propertiesData <Base-Tag title="readonly" />
 
 自定义属性数据，根据 `modelId` 分组
+
+调用 [fetchPropertiesData](#fetchpropertiesdata) 方法时会设置此属性
 
 - **默认值:** `null`
 - **类型:** `TPropertiesMap | null`
@@ -124,9 +132,11 @@ interface IProperties {
 type TPropertiesMap = Map<IProperties['modelId'], IProperties[]>;
 ```
 
-### animationsData
+### animationsData <Base-Tag title="readonly" />
 
 补间动画数据，根据 `modelId` 分组
+
+调用 [fetchAnimationsData](#fetchanimationsdata) 方法时会设置此属性
 
 - **默认值:** `null`
 - **类型:** `TAnimationsMap | null`
@@ -168,9 +178,11 @@ interface IAnimations {
 type TAnimationsMap = Map<IAnimations['modelId'], IAnimations[]>;
 ```
 
-### modelVisionsData
+### modelVisionsData <Base-Tag title="readonly" />
 
 模型视角数据，根据 `nodeId` 分组
+
+调用 [fetchModelVisionsData](#fetchmodelvisionsdata) 方法时会设置此属性
 
 - **默认值:** `null`
 - **类型:** `TModelVisionsMap | null`
@@ -353,8 +365,8 @@ cpsSoonmanagerPlugin
 
 <Docs-Table
     :data="[
-      { prop: 'syncProperties', desc: '是否同步自定义属性', type: 'boolean', require: false, default: 'true' },
-      { prop: 'syncModelVisions', desc: '是否同步节点视角数据', type: 'boolean', require: false, default: 'true' },
+      { prop: 'syncProperties', desc: '是否同步自定义属性，调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'syncModelVisions', desc: '是否同步节点视角数据，调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
        { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
