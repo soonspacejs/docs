@@ -216,7 +216,7 @@ interface IModelVisions {
   target: IVector3;
 }
 
-type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions>;
+type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions[]>;
 ```
 
 ## 方法
