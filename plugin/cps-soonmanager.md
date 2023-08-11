@@ -94,11 +94,26 @@ interface ITreeData {
   pid: string | null;
   name: string;
   renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB';
+  deviceName: string | null;
+  deviceCode: string | null;
   matrix: number[];
   path: string | null;
+  familyId: string | null;
   children: ITreeData[];
 }
 ```
+
+::: tip 提示
+除了 `children` 其他字段都会存在每个对象的 `userData` 上
+
+```js
+// 假设定义了一个 deviceCode 为 kx-1
+// 你可以使用 getObjectByUserDataProperty 方法获取该对象
+
+const deviceModel = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
+```
+
+:::
 
 ### topologyData <Base-Tag title="readonly" />
 
