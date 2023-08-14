@@ -407,9 +407,9 @@ function surroundOnObject(
 
 ```js
 ssp
-  .surroundOnTarget(
+  .surroundOnObject(
     // object
-    ssp.getSbmById('xxx'),
+    ssp.getObjectById('xxx'),
     // option
     {
       angle: 360,
@@ -419,7 +419,7 @@ ssp
       },
     }
   )
-  .then(() => console.log('surroundOnTarget done'))
+  .then(() => console.log('surroundOnObject done'))
   .catch((err) => console.error(err));
 ```
 
