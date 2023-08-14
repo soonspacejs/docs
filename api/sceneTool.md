@@ -465,7 +465,7 @@ ssp.setBloom({
       { prop: 'radius', desc: 'mipmap 模糊半径', type: 'number', require: false, default: '0.85' },
       { prop: 'intensity', desc: '泛光强度', type: 'number', require: false, default: '3' },
       { prop: 'threshold', desc: '泛光阈值（颜色）', type: 'number', require: false, default: '1' },
-      { prop: 'smoothing', desc: '泛光的平滑度', type: 'number', require: false, default: '0' },
+      { prop: 'smoothing', desc: '泛光的平滑度', type: 'number', require: false, default: '0.01' },
       { prop: 'scalar', desc: '配合 `selection` 使用，选中的材质颜色会乘以 `scalar` 使色值超出 `threshold`', type: 'number', require: false, default: '2' },
       { prop: 'opacity', desc: '泛光的不透明度', type: 'number', require: false, default: '1' },
       { prop: 'selection', desc: '选中的泛光对象', type: 'Object3D[]', require: false, default: '[]' },
