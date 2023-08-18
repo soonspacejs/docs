@@ -328,6 +328,7 @@ interface EmissiveSelectOptions extends Omit<BaseSelectOptions, 'opacity'> {
   minOpacity?: number;
   maxOpacity?: number;
   duration?: number;
+  yoyo?: boolean;
 }
 
 function emissiveShow(
@@ -366,6 +367,7 @@ ssp.emissiveShow(object);
       { prop: 'minOpacity', desc: '动画透明度最小值', type: 'number', require: false, default: 0 },
       { prop: 'maxOpacity', desc: '动画透明度最大值', type: 'number', require: false, default: 1 },
       { prop: 'duration', desc: '动画周期时长(ms)', type: 'number', require: false, default: 1000 },
+        prop: 'yoyo', desc: '反向播放动画', type: 'boolean', require: false, default: 'false'
     ]"
 />
 

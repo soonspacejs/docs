@@ -328,9 +328,11 @@ ssp.flyTo(
 
 ```ts
 interface SurroundOptions {
-  speed?: number;
-  angle?: number;
-  onStart?: <TweenType>(tween: TweenType) => {};
+  duration?: number;
+  startAngle?: number;
+  endAngle?: number;
+  end?: number;
+  onStart?: (tween: Tween<{ radian: number }>) => void;
 }
 
 function surroundOnTarget(
@@ -352,8 +354,9 @@ ssp
     },
     // option
     {
-      angle: 360,
-      speed: 2,
+      startAngle: 0,
+      endAngle: 360,
+      duration: 2000,
       onStart: (tween) => {
         console.log('旋转动画对象', tween);
       },
@@ -382,8 +385,9 @@ ssp
 
 <Docs-Table
     :data="[
-      { prop: 'angle', desc: '旋转角度', type: 'number', require: false, default: '360' },
-      { prop: 'speed', desc: '旋转速度', type: 'number', require: false, default: '1' },
+      { prop: 'startAngle', desc: '起始旋转角度', type: 'number', require: false, default: '0' },
+      { prop: 'endAngle', desc: '结束旋转角度', type: 'number', require: false, default: '360' },
+      { prop: 'duration', desc: '旋转动画过渡时间', type: 'number', require: false, default: '3000' },
       { prop: 'onStart', desc: '旋转开始回调函数', type: 'function(tween){}', require: false, default: '' },
     ]"
 />
@@ -412,8 +416,9 @@ ssp
     ssp.getObjectById('xxx'),
     // option
     {
-      angle: 360,
-      speed: 2,
+      startAngle: 0,
+      endAngle: 360,
+      duration: 2000,
       onStart: (tween) => {
         console.log('旋转动画对象', tween);
       },
@@ -429,7 +434,7 @@ ssp
 
 - **描述:** 目标对象
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** [BaseObject3D](../sceneObject/BaseObject3D.html) | [BaseMesh](../sceneObject/BaseMesh.html)
+- **类型:** `Object3D`
 
 #### options
 
