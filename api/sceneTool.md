@@ -216,7 +216,7 @@ ssp.setColorSpace('Linear');
 
 ```ts
 interface ToneMappingOptions {
-  type?: 'None' | 'Linear' | 'Reinhard' | 'Cineon' | 'ACESFilmic';
+  type?: 'Reinhard' | 'Cineon' | 'ACESFilmic';
   exposure?: number;
 }
 
