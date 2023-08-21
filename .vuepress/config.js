@@ -180,6 +180,7 @@ module.exports = {
 								"/plugin/soonmanager-sync",
 								"/plugin/soonmanager2-sync",
 								"/plugin/cps-soonmanager",
+								"/plugin/cps-scheme",
 							],
 						},
 						{

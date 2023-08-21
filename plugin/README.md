@@ -14,6 +14,7 @@
 - [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
 - [soonmanager2-sync](./soonmanager2-sync.html) - 空间平台 2.0 生产的场景加载及数据读取。（旧版）
 - [cps-soonmanager](./cps-soonmanager.html) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
+- [cps-scheme](./cps-scheme.html) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 预案插件
 
 ### 功能扩展插件
 
