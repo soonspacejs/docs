@@ -22,8 +22,9 @@ interface PoiNodeInfo extends BaseObject3DInfo {
   element: HTMLElement;
   elementAutoDisplay?: boolean;
   occlude?: boolean;
+  occludeThrottle?: number;
   onChange?: (visible: boolean) => void;
-  scaleFixed?: ScaleFixed;
+  scaleFixed?: ScaleFixed | null;
 }
 
 function createPoiNode(poiNodeInfo: PoiNodeInfo): PoiNode;
@@ -56,6 +57,14 @@ ssp.createPoiNode(
     userData: {},
   }
 );
+
+// 遮挡查询
+ssp.createPoiNode({
+  type: '3d',
+  element: el,
+  occlude: true,
+  occludeThrottle: 300,
+});
 ```
 
 ### 参数：
@@ -74,6 +83,7 @@ ssp.createPoiNode(
       { prop: 'element', desc: 'DOM 元素', type: 'HTMLElement', require: true, default: '' },
       { prop: 'elementAutoDisplay', desc: 'element 自动显示隐藏', type: 'boolean', require: false, default: 'true' },
       { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean', require: false, default: 'false' },
+      { prop: 'occludeThrottle', desc: '遮挡查询的节流时间(s)', type: 'number', require: false, default: '0' },
       { prop: 'onChange', desc: '元素可见性变化时的回调', type: '( visible: boolean ) =&gt; void', require: false, default: '' },
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
