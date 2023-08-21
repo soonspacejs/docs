@@ -284,6 +284,8 @@ cpsSoonmanagerPlugin.setPath('http://xxx.com/models');
 
 加载场景对象
 
+配合 `loadTargetId` 或 `loadLevel` 使用可以重复调用
+
 #### 定义
 
 ```ts
@@ -295,6 +297,14 @@ export enum LoadSceneAlgorithm {
 
 ```ts
 interface ILoadSceneOptions {
+  /**
+   * 平台解密公钥
+   */
+  key?: string;
+  /**
+   * 资源包路径
+   */
+  path?: string;
   /**
    * 同步自定义属性
    */
@@ -312,9 +322,17 @@ interface ILoadSceneOptions {
    */
   applyPresetEffects?: boolean;
   /**
-   * 加载场景算法
+   * 同步场景算法 BFS | DFS
    */
   loadSceneAlgorithm?: LoadSceneAlgorithm;
+  /**
+   * 目标节点 id（DFS时有效）
+   */
+  loadTargetId?: ITreeData['id'];
+  /**
+   * 需要加载的层级（DFS时有效）
+   */
+  loadLevel?: number;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -380,17 +398,25 @@ cpsSoonmanagerPlugin
 
 <Docs-Table
     :data="[
+      { prop: 'key', desc: '等价于 setKey 方法', type: 'string', require: false, default: '' },
+      { prop: 'path', desc: '等价于 setPath 方法', type: 'string', require: false, default: '' },
       { prop: 'syncProperties', desc: '是否同步自定义属性，调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据，调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
        { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
+       { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
+       { prop: 'loadLevel', desc: '加载的树层级。如果设置了loadTargetId，则以此为起始层。从1开始计算', type: 'number', require: false, default: 'Infinity' },
     ]"
 />
 
 ::: tip 提示
 自定义属性存储在对象的 `userData.properties` 属性上
 :::
+
+###### 分层加载示例
+
+<Docs-Iframe src="plugin/cpsSoonmanagerLevel.html" />
 
 ### presetEffects
 
@@ -613,11 +639,9 @@ soonmanager2SyncPlugin.fetchMetaData().then((metaData) => {
 });
 ```
 
-### fetchTreeData
+### fetchTreeData <Base-Deprecated />
 
 根据当前 `path` 获取场景树数据
-
-由 [loadScene](#loadscene) 方法调用
 
 #### 定义
 
@@ -632,6 +656,10 @@ soonmanager2SyncPlugin.fetchTreeData().then((treeData) => {
   console.log(treeData);
 });
 ```
+
+::: warning 注意
+此方法已不适用于加密资源包
+:::
 
 ### fetchPropertiesData
 
