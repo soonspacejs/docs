@@ -418,6 +418,12 @@ cpsSoonmanagerPlugin
 
 <Docs-Iframe src="plugin/cpsSoonmanagerLevel.html" />
 
+::: warning 警告
+由于场景模型是嵌套的树结构，内部对象的矩阵变换依赖父级，如果先加载内部，可能会出现位置、旋转、缩放的错乱
+
+建议 `loadTargetId` 设置为上层节点的 id
+:::
+
 ### presetEffects
 
 设置预设效果
