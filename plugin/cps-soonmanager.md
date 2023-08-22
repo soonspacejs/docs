@@ -219,6 +219,10 @@ interface IModelVisions {
 type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions[]>;
 ```
 
+::: tip 提示
+Map 的 key 为 "" 时，表示场景视角数据
+:::
+
 ## 方法
 
 ### setKey
@@ -578,7 +582,7 @@ function playAnimationById(
 #### 用法
 
 ```js
-soonmanager2SyncPlugin.playAnimationById('4H6T1H53CSFW', 0, {
+cpsSoonmanagerPlugin.playAnimationById('4H6T1H53CSFW', 0, {
   onUpdate: (source, tween) => {},
   onStart: (tween) => {
     /**
@@ -625,6 +629,81 @@ soonmanager2SyncPlugin.playAnimationById('4H6T1H53CSFW', 0, {
 所以每次执行新的 `animation` 方法时都会执行 `onStart` 回调并且返回新的 `tween` 实例
 :::
 
+### flyToSceneFromVisionsData
+
+根据场景视角视角数据飞向
+
+#### 定义
+
+```ts
+function flyToSceneFromVisionsData(
+  index?: number,
+  options?: AnimationOptions
+): Promise<void>;
+```
+
+#### 用法
+
+```js
+cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
+```
+
+#### 参数
+
+##### index
+
+- **描述:** 该视角所在数据列表中的下标
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `number`
+
+##### options
+
+- **描述:** 动画参数配置
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** [`AnimationOptions`](../api/animation.html#animationoptions)
+
+### flyToObjectFromVisionsData
+
+根据对象视角数据飞向
+
+#### 定义
+
+```ts
+function flyToObjectFromVisionsData(
+  object: BaseObject3D,
+  index?: number,
+  options?: AnimationOptions
+): Promise<void>;
+```
+
+#### 用法
+
+```js
+const model = ssp.getObjectByUserDataProperty('device', 'xxx');
+
+cpsSoonmanagerPlugin.flyToObjectFromVisionsData(model, 0);
+```
+
+#### 参数
+
+##### object
+
+- **描述:** 场景对象
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `BaseObject3D`
+
+##### index
+
+- **描述:** 该视角所在数据列表中的下标
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `number`
+
+##### options
+
+- **描述:** 动画参数配置
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** [`AnimationOptions`](../api/animation.html#animationoptions)
+
 ### fetchMetaData
 
 根据当前 `path` 获取场景元数据
@@ -640,7 +719,7 @@ function fetchMetaData(): Promise<IMetadata>;
 #### 用法
 
 ```ts
-soonmanager2SyncPlugin.fetchMetaData().then((metaData) => {
+cpsSoonmanagerPlugin.fetchMetaData().then((metaData) => {
   console.log(fetchMetaData);
 });
 ```
@@ -658,7 +737,7 @@ function fetchTreeData(): Promise<ITreeData[]>;
 #### 用法
 
 ```ts
-soonmanager2SyncPlugin.fetchTreeData().then((treeData) => {
+cpsSoonmanagerPlugin.fetchTreeData().then((treeData) => {
   console.log(treeData);
 });
 ```
@@ -680,7 +759,7 @@ function fetchPropertiesData(): Promise<TPropertiesMap>;
 #### 用法
 
 ```ts
-soonmanager2SyncPlugin.fetchPropertiesData().then((propertiesData) => {
+cpsSoonmanagerPlugin.fetchPropertiesData().then((propertiesData) => {
   console.log(propertiesData);
 });
 ```
@@ -700,7 +779,7 @@ function fetchAnimationsData(): Promise<TAnimationsMap>;
 #### 用法
 
 ```ts
-soonmanager2SyncPlugin.fetchAnimationsData().then((animationsData) => {
+cpsSoonmanagerPlugin.fetchAnimationsData().then((animationsData) => {
   console.log(animationsData);
 });
 ```
@@ -708,6 +787,8 @@ soonmanager2SyncPlugin.fetchAnimationsData().then((animationsData) => {
 ### fetchModelVisionsData
 
 根据当前 `path` 获取模型视角数据
+
+由 [flyToSceneFromVisionsData](#flytoscenefromvisionsdata) 和 [flyToObjectFromVisionsData](#flytoobjectfromvisionsdata) 方法调用
 
 #### 定义
 
@@ -718,7 +799,7 @@ function fetchModelVisionsData(): Promise<TModelVisionsMap>;
 #### 用法
 
 ```ts
-soonmanager2SyncPlugin.fetchModelVisionsData().then((modelVisions) => {
+cpsSoonmanagerPlugin.fetchModelVisionsData().then((modelVisions) => {
   console.log(modelVisions);
 });
 ```
