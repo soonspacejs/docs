@@ -750,6 +750,8 @@ cpsSoonmanagerPlugin.fetchTreeData().then((treeData) => {
 
 根据当前 `path` 获取自定义属性数据
 
+由 [loadScene](#loadscene) 方法调用
+
 #### 定义
 
 ```ts
