@@ -94,7 +94,7 @@ ssp.createPoi(
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'type', desc: '类型', type: 'PoiType', require: false, default: '2.5d', link: '../guide/types.html#poitype' },
-      { prop: 'namePosition', desc: '展示名称的位置偏移', type: 'Position', require: false, default: '{ x: 0, y: 10, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'namePosition', desc: '展示名称的位置偏移（相对于poi）', type: 'Position', require: false, default: '{ x: 0, y: 10, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'nameScale', desc: '展示名称的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'nameCanvasInfo', desc: '展示名称 canvas 配置', type: 'NameCanvasInfo', require: false, default: '参考下方' },
       { prop: 'iconScale', desc: '图片的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
