@@ -544,9 +544,9 @@ ssp.createTopology({
 所以可能需要使用此方法对线路的 nodes 排序
 :::
 
-### playAnimationById
+### playObjectAnimation
 
-根据对象 `id` 播放补间动画
+根据动画数据播放对象的补间动画
 
 #### 定义
 
@@ -565,6 +565,7 @@ type TAnimationsTweenProps = Pick<
 >;
 
 interface IPlayAnimationByIdOptions {
+  autoStopPrevious?: boolean;
   onUpdate?: (
     source: TAnimationsTweenProps,
     tween: Tween<TAnimationsTweenProps>
@@ -572,8 +573,8 @@ interface IPlayAnimationByIdOptions {
   onStart?: (tween: Tween<TAnimationsTweenProps>) => void;
 }
 
-function playAnimationById(
-  id: string,
+function playObjectAnimation(
+  object: BaseObject3D,
   animationIndex?: number,
   options?: IPlayAnimationByIdOptions
 ): Promise<void>;
@@ -582,7 +583,9 @@ function playAnimationById(
 #### 用法
 
 ```js
-cpsSoonmanagerPlugin.playAnimationById('4H6T1H53CSFW', 0, {
+const object = ssp.getObjectByUserDataProperty('deviceCode', '111');
+cpsSoonmanagerPlugin.playObjectAnimation(object, 0, {
+  autoStopPrevious: true,
   onUpdate: (source, tween) => {},
   onStart: (tween) => {
     /**
@@ -595,11 +598,11 @@ cpsSoonmanagerPlugin.playAnimationById('4H6T1H53CSFW', 0, {
 
 #### 参数
 
-##### id
+##### object
 
-- **描述:** 要播放动画的对象 `id`
+- **描述:** 要播放动画的对象
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** `string`
+- **类型:** `BaseObject3D`
 
 ##### animationIndex
 
@@ -618,6 +621,7 @@ cpsSoonmanagerPlugin.playAnimationById('4H6T1H53CSFW', 0, {
 
 <Docs-Table
     :data="[
+      { prop: 'autoStopPrevious', desc: '是否自动停止之前的动画', type: 'boolean', require: false, default: 'true' },
       { prop: 'onUpdate', desc: '动画更新回调', type: 'IPlayAnimationByIdOptions[\'onUpdate\']', require: false, default: '' },
       { prop: 'onStart', desc: '动画开始回调', type: 'IPlayAnimationByIdOptions[\'onStart\']', require: false, default: '' },
     ]"
@@ -628,6 +632,22 @@ cpsSoonmanagerPlugin.playAnimationById('4H6T1H53CSFW', 0, {
 
 所以每次执行新的 `animation` 方法时都会执行 `onStart` 回调并且返回新的 `tween` 实例
 :::
+
+### stopObjectAnimation
+
+停止由 [playObjectAnimation](#playobjectanimation) 方法触发的补间动画
+
+#### 定义
+
+```ts
+function stopObjectAnimation(object: BaseObject3D): Promise<void>;
+```
+
+#### 用法
+
+```js
+cpsSoonmanagerPlugin.stopObjectAnimation(object);
+```
 
 ### flyToSceneFromVisionsData
 
