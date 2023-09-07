@@ -115,6 +115,46 @@ const deviceModel = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
 
 :::
 
+### poiData <Base-Tag title="readonly" />
+
+场景内配置 Poi 数据
+
+- **默认值:** `null`
+- **类型:** `IPoiData[] | null`
+
+#### 定义
+
+```ts
+export enum PoiContentTypeEnum {
+  PANEL = 'PANEL',
+  VIDEO = 'VIDEO',
+  VIDEO_STREAM = 'VIDEO_STREAM',
+}
+
+interface IPoiData {
+  projectId: string;
+  sceneId: string;
+  nodeId: string;
+  poiId: string;
+  name: string;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  z: number;
+  rotationX: number;
+  rotationY: number;
+  rotationZ: number;
+  scale: number;
+  dimensional: PoiNodeType;
+  content: string;
+  media: Record<string, string> | null;
+  contentType: PoiContentTypeEnum;
+  display: boolean;
+  style: string;
+}
+```
+
 ### topologyData <Base-Tag title="readonly" />
 
 拓扑路径数据
@@ -318,6 +358,10 @@ interface ILoadSceneOptions {
    */
   syncModelVisions?: boolean;
   /**
+   * 自动加载 poi
+   */
+  autoLoadPoi?: boolean;
+  /**
    * 计算 bounds tree
    */
   needsModelsBoundsTree?: boolean;
@@ -404,8 +448,9 @@ cpsSoonmanagerPlugin
     :data="[
       { prop: 'key', desc: '等价于 setKey 方法', type: 'string', require: false, default: '' },
       { prop: 'path', desc: '等价于 setPath 方法', type: 'string', require: false, default: '' },
-      { prop: 'syncProperties', desc: '是否同步自定义属性，调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
-      { prop: 'syncModelVisions', desc: '是否同步节点视角数据，调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'syncProperties', desc: '是否同步自定义属性，开启时自动调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'syncModelVisions', desc: '是否同步节点视角数据，开启时自动调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'autoLoadPoi', desc: '自动加载场景配置 Poi，开启时自动调用 fetchPoiData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
        { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
@@ -765,6 +810,25 @@ cpsSoonmanagerPlugin.fetchTreeData().then((treeData) => {
 ::: warning 注意
 此方法已不适用于加密资源包
 :::
+
+### fetchPoiData
+
+根据当前 `path` 获取场景 Poi 数据
+
+#### 定义
+
+```ts
+function fetchPoiData(): Promise<IPoiData[]>;
+```
+
+#### 用法
+
+```ts
+cpsSoonmanagerPlugin.fetchPoiData().then((poiData) => {
+  console.log(poiData);
+});
+```
+
 
 ### fetchPropertiesData
 

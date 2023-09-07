@@ -1,7 +1,7 @@
 {
   "name": "soonspacejs-docs",
   "scripts": {
-    "dev": "vuepress dev .",
+    "start": "vuepress dev .",
     "build": "vuepress build .",
     "build:offLine": "node ./offLineInstructions/index.js"
   },
