@@ -267,7 +267,7 @@ Map 的 key 为 "" 时，表示场景视角数据
 
 流程执行引擎实例
 
-- **类型:** [SoonFlow](npmjs.com/package/@soonflow/core)
+- **类型:** [SoonFlow](https://www.npmjs.com/package/@soonflow/core)
 
 
 ### flowData <Base-Tag title="readonly" />
