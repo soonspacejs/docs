@@ -1,5 +1,7 @@
 # 相机
 
+`next` 版本之后，相机所有的方法都基于 [controls](./controls.html) 实现。
+
 <!-- getCameraViewpoint -->
 
 ## getCameraViewpoint
