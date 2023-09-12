@@ -102,12 +102,22 @@ const ssp = new SoonSpace({
 
 <!-- controls -->
 
-## controls
+## controls（废弃）
 
 控制器配置。
 
-- **类型**: [ControlsOptions](../api/controls.html#controlsoptions)
+- **类型**: [ControlsOptions](../api/controls-legacy.html#controlsoptions)
 - **默认值**: `{ type: 'free' }`
+
+## controls（新版）
+
+控制器配置。
+
+- **默认值**: `{}`
+
+::: warning 警告
+不推荐传参设置，请直接设置 [ssp.controls](../api/controls.html#属性) 属性
+:::
 
 <!-- hoverEnabled -->
 

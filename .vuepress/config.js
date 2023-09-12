@@ -152,6 +152,7 @@ module.exports = {
 							title: "进阶",
 							collapsable: false,
 							children: [
+								"/api/controls-legacy",
 								"/api/controls",
 								"/api/modelTool",
 								"/api/sceneTool",
