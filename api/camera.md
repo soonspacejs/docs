@@ -104,7 +104,6 @@ ssp
 - **描述:** 可配置参数
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** [FlyToObjOptions](#flytoobjoptions)
-- **默认值:** ``
 
 <!-- flyToObj -->
 
