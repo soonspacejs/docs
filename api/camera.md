@@ -54,72 +54,17 @@ ssp.setCameraViewpoint(cameraViewpointData);
     ]"
 />
 
-::: warning 注意
-`setCameraViewpoint` 只适用于 `free` 控制器
-:::
-
-<!-- getCameraTargetView -->
-
-## getCameraTargetView
-
-获取当前相机位置和目标点
-
-### 定义：
-
-```ts
-function getCameraTargetView(): CameraTargetViewData | null;
-```
-
-### 用法：
-
-```js
-const cameraTargetViewData = ssp.getCameraTargetView();
-if (cameraTargetViewData) {
-  console.log('cameraTargetViewData', cameraTargetViewData);
-}
-```
-
-::: warning 注意
-`getCameraTargetView` 只适用于 `orbit` 控制器
-:::
-
-<!-- setCameraTargetView -->
-
-## setCameraTargetView
-
-设置当前相机位置和目标点，数据由 `getCameraTargetView` 获取。
-
-### 定义：
-
-```ts
-function setCameraTargetView(data: CameraTargetViewData): void;
-```
-
-### 用法
-
-```js
-ssp.setCameraTargetView(cameraTargetViewData);
-```
-
-### 参数：
-
-#### data
-
-- **描述:** 由 `getCameraTargetView` 获取到的相机位置和目标点数据
-- **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** CameraTargetViewData
-
-##### CameraTargetViewData
+`next` 版本之后数据格式发生变化
 
 <Docs-Table
     :data="[
       { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'target', desc: '相机朝向的目标点', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'target', desc: '相机朝向位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
     ]"
 />
 
-::: warning 注意
-`setCameraTargetView` 只适用于 `orbit` 控制器
+::: tip 提示
+也可以直接使用 [setLookAt](../api/controls.md#setlookat) 方法
 :::
 
 <!-- flyMainViewpoint -->
@@ -131,10 +76,7 @@ ssp.setCameraTargetView(cameraTargetViewData);
 ### 定义：
 
 ```ts
-function flyMainViewpoint(
-  viewpoint: FlyToViewpoint = 'frontTop',
-  options: FlyToObjOptions = {}
-): Promise<void>;
+function flyMainViewpoint(viewpoint: FlyToViewpoint = 'frontTop', options: FlyToObjOptions = {}): Promise<void>;
 ```
 
 ### 用法：
@@ -160,7 +102,7 @@ ssp
 - **描述:** 可配置参数
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** [FlyToObjOptions](#flytoobjoptions)
-- **默认值:** `frontTop`
+- **默认值:** ``
 
 <!-- flyToObj -->
 
@@ -179,16 +121,24 @@ interface FlyToObjOptions extends AnimationOptions {
   padding?: number | string;
 }
 
-function flyToObj(
-  object: BaseObject3D | BaseMesh,
-  viewpoint: FlyToViewpoint | Rotation | Euler = 'frontTop',
-  options: FlyToObjOptions = {}
-): Promise<void>;
+function flyToObj(object: BaseObject3D | BaseMesh, viewpoint: FlyToViewpoint | Rotation | Euler = 'frontTop', options: FlyToObjOptions = {}): Promise<void>;
+```
+
+`next` 版本之后更新了类型
+
+```ts
+interface FlyToObjOptions {
+  enableTransition?: boolean;
+  padding?: number | string;
+}
+
+function flyToObj(object: Object3D | Box3, viewpoint?: FlyToViewpoint, options?: FlyToObjOptions): Promise<void>;
 ```
 
 ### 用法：
 
 ```js
+// v2.9.7
 ssp
   .flyToObj(
     // object
@@ -203,6 +153,9 @@ ssp
   )
   .then((object) => console.log('flyToObj done', object))
   .catch((err) => console.error(err));
+
+// next
+ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 ```
 
 ### 参数：
@@ -211,13 +164,13 @@ ssp
 
 - **描述:** 相机飞向的空间对象
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** [BaseObject3D](../sceneObject/BaseObject3D.html) | [BaseMesh](../sceneObject/BaseMesh.html)
+- **类型:** `Object3D` | `Box3`
 
 #### viewpoint
 
 - **描述:** 相机朝向物体对象的视角面，[可选枚举](../../guide/controls/viewpoints.html)。
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint) | [Rotation](../guide/types.html#rotation)
+- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint)
 - **默认值:** `frontTop`
 
 #### option
@@ -228,6 +181,18 @@ ssp
 
 ##### FlyToObjOptions
 
+`next`
+<Docs-Table
+    :data="[
+      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
+      { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
+    ]"
+/>
+::: tip 提示
+内部是调用 `controls.fitToBox` 方法
+:::
+
+`v2.9.7`
 <Docs-Table
     :data="[
       { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
@@ -245,7 +210,7 @@ ssp
 
 <!-- flyTo -->
 
-## flyTo
+## flyTo（废弃） <Base-Deprecated />
 
 相机飞向固定位置
 
@@ -256,11 +221,7 @@ ssp
 ### 定义：
 
 ```ts
-function flyTo(
-  position: Position,
-  rotation: FlyToViewpoint | Rotation | Euler = 'frontTop',
-  options?: AnimationOptions
-): Promise<void>;
+function flyTo(position: Position, rotation: FlyToViewpoint | Rotation | Euler = 'frontTop', options?: AnimationOptions): Promise<void>;
 ```
 
 ### 用法：
@@ -311,7 +272,7 @@ ssp.flyTo(
 - **默认值:** `{}`
 
 ::: warning 注意
-`flyTo` 只适用于 `free` 控制器
+`flyTo` 在 next 版本中已废弃，请使用 [setLookAt](../api/controls.md#setlookat) 替代
 :::
 
 <!-- surroundOnTarget -->
@@ -335,10 +296,7 @@ interface SurroundOptions {
   onStart?: (tween: Tween<{ radian: number }>) => void;
 }
 
-function surroundOnTarget(
-  target: Position,
-  options: SurroundOptions = {}
-): Promise<void>;
+function surroundOnTarget(target: Position, options: SurroundOptions = {}): Promise<void>;
 ```
 
 ### 用法：
@@ -401,10 +359,7 @@ ssp
 ### 定义：
 
 ```ts
-function surroundOnObject(
-  object: BaseObject3D | BaseMesh,
-  options: SurroundOptions = {}
-): Promise<void>;
+function surroundOnObject(object: BaseObject3D | BaseMesh, options: SurroundOptions = {}): Promise<void>;
 ```
 
 ### 用法：

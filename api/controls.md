@@ -2,6 +2,8 @@
 
 `v2.10.0-rc.0` 之后发布了全新的控制器，增加了属性配置、方法、事件等。
 
+并且重构了相机相关的所有方法。`setCameraViewpoint`、`flyToObj` 等方法内部都是基于控制器的方法实现。
+
 通过 next 标签安装
 
 ```bash
@@ -129,7 +131,7 @@ console.log(controls.azimuthAngle);
 
 ## 用户操作配置
 
-`ACTION` 这个常量请从 `SoonSpace` 中获取
+`ACTION` 常量请从 `SoonSpace` 中获取
 
 ```js
 import SoonSpace from 'soonspacejs';
@@ -138,6 +140,9 @@ const { ACTION } = SoonSpace;
 
 controls.mouseButtons.left = ACTION.ROTATE;
 controls.mouseButtons.right = ACTION.TRUCK;
+
+controls.touches.one = ACTION.TOUCH_ROTATE;
+controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
 ```
 
 表格中 \* 表示默认值
@@ -164,6 +169,8 @@ controls.mouseButtons.right = ACTION.TRUCK;
   - `TOUCH_ZOOM_TRUCK` 用于 `OrthographicCamera`，并且无法设置 `TOUCH_DOLLY_TRUCK` 和 `TOUCH_DOLLY`
 
 ## 方法
+
+coding...
 
 ### rotate( azimuthAngle, polarAngle, enableTransition )
 
@@ -199,7 +206,13 @@ controls.mouseButtons.right = ACTION.TRUCK;
 
 ### fitToSphere( sphereOrMesh, enableTransition )
 
-### setLookAt( positionX, positionY, positionZ, targetX, targetY, targetZ, enableTransition )
+### setLookAt
+
+#### 定义
+
+```ts
+function setLookAt(positionX: number, positionY: number, positionZ: number, targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
+```
 
 ### lerpLookAt( positionAX, positionAY, positionAZ, targetAX, targetAY, targetAZ, positionBX, positionBY, positionBZ, targetBX, targetBY, targetBZ, t, enableTransition )
 
