@@ -92,3 +92,149 @@ controls.addEventListener('update', () => {
 { prop: 'restThreshold', desc: '相机减速时rest事件触发的速度', type: 'number', require: false, default: '0.0025' },
 ]"
 />
+
+- 每当 360 度的旋转被添加到 `azimuthAngle` 时，这是累积的。`360º = 360 * THREE.MathUtils.DEG2RAD = Math.PI * 2`，`720º = Math.PI * 4`。
+
+```js
+controls.normalizeRotations();
+
+console.log(controls.azimuthAngle);
+```
+
+- 注意 `colliderMeshes` 可能会降低性能。碰撞测试使用来自相机的 4 个光线投射器，因为近平面有 4 个角。
+- 如果 Dolly 的距离小于（或大于）minDistance （或 maxDistance ），则 infinityDolly 将保持距离并推动目标（target）位置。
+
+## 事件
+
+`controls` 发出以下事件。
+
+订阅方式：通过 `controls.addEventListener( 'eventname', function )`
+
+如需取消订阅：请使用 `controls.removeEventListener( 'eventname', function )`
+
+| 事件名称            | 触发时机                                                     |
+| ------------------- | ------------------------------------------------------------ |
+| `'controlstart'`    | 当用户开始通过鼠标或手指操作时                               |
+| `'control'`         | 当用户正在操作时                                             |
+| `'controlend'`      | 用户结束操作时                                               |
+| `'transitionstart'` | 任意过渡开始时，用户操作或方法调用 `enableTransition = true` |
+| `'update'`          | 当相机 `position` 发生变化                                   |
+| `'wake'`            | 当相机开始移动时                                             |
+| `'rest'`            | 当相机将要停止时 由 `restThreshold` 控制                     |
+| `'sleep'`           | 当相机结束移动                                               |
+
+- `mouseButtons.wheel` (鼠标滚轮控制)不发出 `controlstart` 和 `controlend`。`mouseButtons.wheel` 在内部使用滚动事件，并且滚动事件间歇性地发生。这意味着无法检测到 start 和 end。
+
+- 由于阻尼，`sleep` 通常会在相机看起来已经停止移动的几秒钟后触发。如果你想在相机停止的时候做一些事情(例如，启用 UI，执行另一个过渡)，你可能想要 rest 事件。这可以使用 `restthreshold` 参数进行微调。
+
+## 用户操作配置
+
+`ACTION` 这个常量请从 `SoonSpace` 中获取
+
+```js
+import SoonSpace from 'soonspacejs';
+
+const { ACTION } = SoonSpace;
+
+controls.mouseButtons.left = ACTION.ROTATE;
+controls.mouseButtons.right = ACTION.TRUCK;
+```
+
+表格中 \* 表示默认值
+
+| 鼠标键位              | 行为                                                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `mouseButtons.left`   | `ACTION.ROTATE`\* \| `ACTION.TRUCK` \| `ACTION.OFFSET` \| `ACTION.DOLLY` \| `ACTION.ZOOM` \| `ACTION.NONE` |
+| `mouseButtons.right`  | `ACTION.ROTATE` \| `ACTION.TRUCK`\* \| `ACTION.OFFSET` \| `ACTION.DOLLY` \| `ACTION.ZOOM` \| `ACTION.NONE` |
+| `mouseButtons.wheel`  | `ACTION.ROTATE` \| `ACTION.TRUCK` \| `ACTION.OFFSET` \| `ACTION.DOLLY`\* \| `ACTION.ZOOM` \| `ACTION.NONE` |
+| `mouseButtons.middle` | `ACTION.ROTATE` \| `ACTION.TRUCK` \| `ACTION.OFFSET` \| `ACTION.DOLLY`\* \| `ACTION.ZOOM` \| `ACTION.NONE` |
+
+- `mouseButtons.wheel` 的默认行为是：
+  - `DOLLY` 用于 `PerspectiveCamera`
+  - `ZOOM` 用于 `OrthographicCamera`， 并且无法设置 `DOLLY`.
+
+| 触控操作        | 行为                                                                                                                                                                                                                                                                                                                        |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `touches.one`   | `ACTION.TOUCH_ROTATE`\* \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.DOLLY`                                                                                                                                                                                                                                  | `ACTION.ZOOM` | `ACTION.NONE` |
+| `touches.two`   | `ACTION.TOUCH_DOLLY_TRUCK` \| `ACTION.TOUCH_DOLLY_OFFSET` \| `ACTION.TOUCH_DOLLY_ROTATE` \| `ACTION.TOUCH_ZOOM_TRUCK` \| `ACTION.TOUCH_ZOOM_OFFSET` \| `ACTION.TOUCH_ZOOM_ROTATE` \| `ACTION.TOUCH_DOLLY` \| `ACTION.TOUCH_ZOOM` \| `ACTION.TOUCH_ROTATE` \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.NONE` |
+| `touches.three` | `ACTION.TOUCH_DOLLY_TRUCK` \| `ACTION.TOUCH_DOLLY_OFFSET` \| `ACTION.TOUCH_DOLLY_ROTATE` \| `ACTION.TOUCH_ZOOM_TRUCK` \| `ACTION.TOUCH_ZOOM_OFFSET` \| `ACTION.TOUCH_ZOOM_ROTATE` \| `ACTION.TOUCH_ROTATE` \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.NONE`                                                |
+
+- `touches.two` 和 `touches.three` 的默认行为分别是：
+  - `TOUCH_DOLLY_TRUCK` 用于 `PerspectiveCamera`
+  - `TOUCH_ZOOM_TRUCK` 用于 `OrthographicCamera`，并且无法设置 `TOUCH_DOLLY_TRUCK` 和 `TOUCH_DOLLY`
+
+## 方法
+
+### rotate( azimuthAngle, polarAngle, enableTransition )
+
+### rotatePolarTo( polarAngle, enableTransition )
+
+### rotateTo( azimuthAngle, polarAngle, enableTransition )
+
+### dolly( distance, enableTransition )
+
+### dollyTo( distance, enableTransition )
+
+### dollyInFixed( distance, enableTransition )
+
+### zoom( zoomStep, enableTransition )
+
+### zoomTo( zoom, enableTransition )
+
+### truck( x, y, enableTransition )
+
+### lookInDirectionOf( x, y, z, enableTransition )
+
+### setFocalOffset( x, y, z, enableTransition )
+
+### setOrbitPoint( targetX, targetY, targetZ )
+
+### forward( distance, enableTransition )
+
+### moveTo( x, y, z, enableTransition )
+
+### elevate( height, enableTransition )
+
+### fitToBox( box3OrMesh, enableTransition, { paddingTop, paddingLeft, paddingBottom, paddingRight } )
+
+### fitToSphere( sphereOrMesh, enableTransition )
+
+### setLookAt( positionX, positionY, positionZ, targetX, targetY, targetZ, enableTransition )
+
+### lerpLookAt( positionAX, positionAY, positionAZ, targetAX, targetAY, targetAZ, positionBX, positionBY, positionBZ, targetBX, targetBY, targetBZ, t, enableTransition )
+
+### setPosition( positionX, positionY, positionZ, enableTransition )
+
+### setTarget( targetX, targetY, targetZ, enableTransition )
+
+### setBoundary( box3? )
+
+### setViewport( vector4? )
+
+### setViewport( x, y, width, height )
+
+### getTarget( out, receiveEndValue )
+
+### getPosition( out, receiveEndValue )
+
+### getSpherical( out, receiveEndValue )
+
+### getFocalOffset( out, receiveEndValue )
+
+### saveState()
+
+### normalizeRotations()
+
+### reset( enableTransition )
+
+### addEventListener( type: string, listener: function )
+
+添加一个事件监听
+
+### removeEventListener( type: string, listener: function )
+
+移除一个事件监听
+
+### removeAllEventListeners( type: string )
+
+移除所有改类型的事件监听
