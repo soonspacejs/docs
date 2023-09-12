@@ -240,7 +240,7 @@ export type AnimationOperate = AnimationAction & {
 };
 ```
 
-## 相机路径动画
+<!-- ## 相机路径动画
 
 让相机沿指定路径进行运动的动画；
 
@@ -307,7 +307,7 @@ export type AnimationOperate = AnimationAction & {
    */
   backward(scale?: number | null): void;
 };
-```
+``` -->
 
 ## 路径骨骼动画
 
