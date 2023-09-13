@@ -95,9 +95,22 @@ controls.addEventListener('update', () => {
 ]"
 />
 
-- 每当 360 度的旋转被添加到 `azimuthAngle` 时，这是累积的。`360º = 360 * THREE.MathUtils.DEG2RAD = Math.PI * 2`，`720º = Math.PI * 4`。
+- 角度与弧度的相互转换推荐使用 `MathUtils`
 
 ```js
+import { MathUtils } from 'three';
+
+// 角度转弧度
+360 * MathUtils.DEG2RAD;
+
+// 弧度转弧度
+Math.PI * MathUtils.RAD2DEG;
+```
+
+- 每当 360 度的旋转被添加到 `azimuthAngle` 时，这是累积的。`360º = 360 * MathUtils.DEG2RAD = Math.PI * 2`，`720º = Math.PI * 4`。
+
+```js
+// 将 azimuthAngle 限制到 0 - Math.PI * 2 之间
 controls.normalizeRotations();
 
 console.log(controls.azimuthAngle);
