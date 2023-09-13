@@ -741,6 +741,8 @@ function setBoundary(x: number, y: number, width: number, height: number): void;
 
 返回当前 `target`
 
+[getCameraViewpoint](./camera.html#getcameraviewpoint) 方法基于此方法实现
+
 #### 定义
 
 ```ts
@@ -757,6 +759,8 @@ function getTarget(out?: Vector3, receiveEndValue?: boolean): Vector3;
 ### getPosition
 
 返回当前 `position`
+
+[getCameraViewpoint](./camera.html#getcameraviewpoint) 方法基于此方法实现
 
 #### 定义
 
