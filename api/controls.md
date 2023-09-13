@@ -45,7 +45,7 @@ controls.addEventListener('update', () => {
 
 ### Dolly 和 Zoom
 
-- Dolly 实际上是移动相机来改变帧中图像的组成（移动）。
+- Dolly 实际上是移动相机来改变每一帧中图像的组成（移动）。
 - Zoom 包括改变镜头焦距。在 three.js 中，Zoom 实际上是改变相机的 FOV，而相机是静止的（不移动）。
 
 ![dolly](/images/dolly-zoom.png)
@@ -183,19 +183,164 @@ controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
 
 ## 方法
 
-coding...
+### rotate
 
-### rotate( azimuthAngle, polarAngle, enableTransition )
+旋转方位角(水平)和极角(垂直)。每个值都被添加到当前值中。
 
-### rotatePolarTo( polarAngle, enableTransition )
+#### 定义
 
-### rotateTo( azimuthAngle, polarAngle, enableTransition )
+```ts
+function rotate(azimuthAngle: number, polarAngle: number, enableTransition?: boolean): Promise<void>;
+```
 
-### dolly( distance, enableTransition )
+<Docs-Table
+:data="[
+{ prop: 'azimuthAngle', desc: '方位角旋转（弧度）', type: 'number', require: true, default: '' },
+{ prop: 'polarAngle', desc: '极角旋转（弧度）', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
-### dollyTo( distance, enableTransition )
+如果只是要旋转其中一个轴，只需将另一个参数设置为 `0`
 
-### dollyInFixed( distance, enableTransition )
+```js
+controls.rotate(Math.PI / 4, 0, true);
+```
+
+### rotateAzimuthTo
+
+将方位角(水平)旋转到给定角度，并保持的极角(垂直)不变。
+
+#### 定义
+
+```ts
+function rotateAzimuthTo(azimuthAngle: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'azimuthAngle', desc: '方位角旋转（弧度）', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### rotatePolarTo
+
+将极角(垂直)旋转到给定角度，并保持的方位角(水平)不变。
+
+#### 定义
+
+```ts
+function rotatePolarTo(polarAngle: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'polarAngle', desc: '极角旋转（弧度）', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### rotateTo
+
+将极角(垂直)和方位角(水平)旋转到给定角度
+
+方位角
+
+```
+       0º
+         \
+ 90º -----+----- -90º
+           \
+           180º
+```
+
+0º 表示朝向前方, 90º (`Math.PI / 2`) 表示朝向左边, -90º (`- Math.PI / 2`) 朝向右边, 180º (`Math.PI`) 朝向背面
+
+---
+
+极角
+
+```
+     180º
+      |
+      90º
+      |
+      0º
+```
+
+180º (`Math.PI`) 表示朝向天空/天花板, 90º (`Math.PI / 2`) 是水平, 0º 朝向地面/地板
+
+#### 定义
+
+```ts
+function rotateTo(azimuthAngle: number, polarAngle: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'azimuthAngle', desc: '方位角旋转（弧度）', type: 'number', require: true, default: '' },
+{ prop: 'polarAngle', desc: '极角旋转（弧度）', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### dolly
+
+将相机拉进或拉远
+
+负值将拉远
+
+#### 定义
+
+```ts
+function dolly(distance: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'distance', desc: '拉进（远）的距离', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### dollyTo
+
+将相机拉进或拉远到给定的距离
+
+#### 定义
+
+```ts
+function dollyTo(distance: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'distance', desc: '给定的拉进（远）的距离', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### dollyInFixed
+
+将相机拉进或拉远，但不改变目标（target）和相机之间的距离，而是移动目标（target）的位置。
+
+#### 样例
+
+<Docs-Iframe src="controls/infinity-dolly.html" />
+
+#### 定义
+
+```ts
+function dollyInFixed(distance: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'distance', desc: '拉进（远）的距离（target）', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
 ### zoom( zoomStep, enableTransition )
 

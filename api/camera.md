@@ -139,7 +139,7 @@ function flyToObj(object: Object3D | Box3, viewpoint?: FlyToViewpoint, options?:
 ### 用法：
 
 ```js
-// v2.9.7
+// latest version
 ssp
   .flyToObj(
     // object
@@ -155,7 +155,7 @@ ssp
   .then((object) => console.log('flyToObj done', object))
   .catch((err) => console.error(err));
 
-// next
+// next version
 ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 ```
 
@@ -193,7 +193,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 内部是调用 `controls.fitToBox` 方法
 :::
 
-`v2.9.7`
+`latest`
 <Docs-Table
     :data="[
       { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
