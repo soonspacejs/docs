@@ -180,3 +180,23 @@ cpsSchemePlugin.dispose();
 ::: tip 提示
 必须调用 `dispose()` 才能再次调用 `init()`
 :::
+
+### fetchSchemeData
+
+根据当前 `cpsSoonmanagerPlugin.path` 获取预案数据
+
+[init](#init) 方法会调用此方法
+
+#### 定义
+
+```ts
+function fetchSchemeData(): Promise<ISchemeData[]>;
+```
+
+#### 用法
+
+```ts
+cpsSoonmanagerPlugin.fetchSchemeData().then((ISchemeData) => {
+  console.log(ISchemeData);
+});
+```
