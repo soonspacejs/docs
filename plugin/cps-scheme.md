@@ -37,21 +37,18 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const cpsSoonmanagerPlugin = ssp.registerPlugin(
-  CpsSoonmanagerPlugin,
-  'cpsSoonmanagerPlugin'
-);
-cpsSoonmanagerPlugin.setPath('xxxx')
+const cpsSoonmanagerPlugin = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cpsSoonmanagerPlugin');
+cpsSoonmanagerPlugin.setPath('xxxx');
 await cpsSoonmanagerPlugin.loadScene({
   // ...
-})
+});
 
 const cpsSchemePlugin = ssp.registerPlugin(CpsSchemePlugin, 'cpsSchemePlugin');
 await cpsSchemePlugin.init({
   el: '#platter',
   schemeId: '8SPBFEXLC850',
   dependentPlugins: {
-    cpsSoonmanagerPlugin: cpsSoonmanagerPlugin
+    cpsSoonmanagerPlugin: cpsSoonmanagerPlugin,
   },
   placeholder: '占位符',
   // 执行回调（只有配置过数据才会触发）
@@ -62,6 +59,13 @@ await cpsSchemePlugin.init({
 ```
 
 ## 属性
+
+### cpsSoonmanagerPlugin
+
+上游 CPS 插件
+
+- **默认值:** `undefined`
+- **类型:** [`CpsSoonmanagerPlugin`](./cps-soonmanager.html)
 
 ### schemeData
 
@@ -106,7 +110,7 @@ interface ISchemeData {
 #### 定义
 
 ```ts
-import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager'
+import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
 
 type TInitOptions = {
   el: string;
@@ -132,7 +136,7 @@ await cpsSchemePlugin.init({
   el: '#platter',
   schemeId: '8SPBFEXLC850',
   dependentPlugins: {
-    cpsSoonmanagerPlugin: cpsSoonmanagerPlugin
+    cpsSoonmanagerPlugin: cpsSoonmanagerPlugin,
   },
   placeholder: '占位符',
   // 执行回调（只有配置过数据才会触发）

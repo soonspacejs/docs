@@ -140,7 +140,7 @@ console.log(controls.azimuthAngle);
 
 - `mouseButtons.wheel` (鼠标滚轮控制)不发出 `controlstart` 和 `controlend`。`mouseButtons.wheel` 在内部使用滚动事件，并且滚动事件间歇性地发生。这意味着无法检测到 start 和 end。
 
-- 由于阻尼，`sleep` 通常会在相机看起来已经停止移动的几秒钟后触发。如果你想在相机停止的时候做一些事情(例如，启用 UI，执行另一个过渡)，你可能想要 rest 事件。这可以使用 `restthreshold` 参数进行微调。
+- 由于阻尼，`sleep` 通常会在相机看起来已经停止移动的几秒钟后触发。如果你想在相机停止的时候做一些事情(例如，启用 UI，执行另一个过渡)，你可能想要 `rest` 事件。这可以使用 `restthreshold` 参数进行微调。
 
 ## 用户操作配置
 
@@ -342,29 +342,247 @@ function dollyInFixed(distance: number, enableTransition?: boolean): Promise<voi
 ]"
 />
 
-### zoom( zoomStep, enableTransition )
+### zoom
 
-### zoomTo( zoom, enableTransition )
+相机变焦，该值添加到相机 `zoom` 属性上。
+
+#### 定义
+
+```ts
+function zoom(zoomStep: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'zoomStep', desc: '变焦比例', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+你可以直接读取相机的 `zoom` 属性实现 in/out
+
+```js
+const zoomIn = () => controls.zoom(controls.camera.zoom / 2, true);
+const zoomOut = () => controls.zoom(-controls.camera.zoom / 2, true);
+```
+
+### zoomTo
+
+相机变焦，该值会覆盖相机 `zoom` 属性。
+
+通过设置 `minZoom` 和 `maxZoom` 限制
+
+#### 定义
+
+```ts
+function zoomTo(zoomStep: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'zoomStep', desc: '变焦比例', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
 ### truck( x, y, enableTransition )
 
-### lookInDirectionOf( x, y, z, enableTransition )
+基于当前方位角平移
 
-### setFocalOffset( x, y, z, enableTransition )
+#### 定义
 
-### setOrbitPoint( targetX, targetY, targetZ )
+```ts
+function truck(x: number, y: number, enableTransition?: boolean): Promise<void>;
+```
 
-### forward( distance, enableTransition )
+<Docs-Table
+:data="[
+{ prop: 'x', desc: '水平偏移量', type: 'number', require: true, default: '' },
+{ prop: 'y', desc: '垂直偏移量', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
-### moveTo( x, y, z, enableTransition )
+### lookInDirectionOf
+
+看向给定点的方向
+
+只改变相机的 `position`
+
+#### 定义
+
+```ts
+function lookInDirectionOf(x: number, y: number, z: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'x', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'y', desc: 'y 位置', type: 'number', require: true, default: '' },
+{ prop: 'z', desc: 'z 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### setFocalOffset
+
+使用屏幕平行坐标设置焦点偏移
+
+相机的旋转中心点不变
+
+#### 定义
+
+```ts
+function setFocalOffset(x: number, y: number, z: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'x', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'y', desc: 'y 位置', type: 'number', require: true, default: '' },
+{ prop: 'z', desc: 'z 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### setOrbitPoint
+
+设置旋转中心点
+
+相机的位置和朝向不变，一般配合 [setFocalOffset](#setfocaloffset) 方法使用
+
+#### 定义
+
+```ts
+function setOrbitPoint(targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'targetX', desc: '旋转 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetY', desc: '旋转 y 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetZ', desc: '旋转 z 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### forward
+
+向前或向后移动
+
+#### 定义
+
+```ts
+function forward(distance: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'distance', desc: '移动距离', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### moveTo
+
+移动 `target` 到给定的点，`position` 到 `target` 的距离不会改变
+
+相机的 `position` 和 朝向都会改变
+
+#### 定义
+
+```ts
+function moveTo(x: number, y: number, z: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'x', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'y', desc: 'y 位置', type: 'number', require: true, default: '' },
+{ prop: 'z', desc: 'z 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
 ### elevate( height, enableTransition )
 
-### fitToBox( box3OrMesh, enableTransition, { paddingTop, paddingLeft, paddingBottom, paddingRight } )
+上下移动
 
-### fitToSphere( sphereOrMesh, enableTransition )
+#### 定义
+
+```ts
+function elevate(height: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'height', desc: '移动距离', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### fitToBox
+
+使用相机最近的轴将视口与对象的包围盒或 `Box3` 对齐
+
+[flyToObj](./camera.html#flytoobj) 方法基于此方法实现
+
+#### 定义
+
+```ts
+interface FitToOptions {
+  cover: boolean;
+  paddingLeft: number;
+  paddingRight: number;
+  paddingBottom: number;
+  paddingTop: number;
+}
+
+function fitToBox(box3OrObject: Box3 | Object3D, enableTransition: boolean, { cover, paddingLeft, paddingRight, paddingBottom, paddingTop }?: Partial<FitToOptions>): Promise<void[]>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'box3OrObject', desc: '场景对象或 Box3', type: 'Box3 | Object3D', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+{ prop: 'options', desc: '选项', type: 'boolean', require: false, default: '{}' },
+]"
+/>
+
+###### options
+
+<Docs-Table
+:data="[
+{ prop: 'cover', desc: '是否填满屏幕', type: 'boolean', require: false, default: 'false' },
+{ prop: 'paddingLeft', desc: '左侧填充距离', type: 'number', require: false, default: '0' },
+{ prop: 'paddingRight', desc: '右侧填充距离', type: 'number', require: false, default: '0' },
+{ prop: 'paddingBottom', desc: '底部填充距离', type: 'number', require: false, default: '0' },
+{ prop: 'paddingTop', desc: '顶部填充距离', type: 'number', require: false, default: '0' },
+]"
+/>
+
+### fitToSphere
+
+将视口与对象包围球匹配
+
+#### 定义
+
+```ts
+function fitToSphere(sphereOrMesh: Sphere | Object3D, enableTransition: boolean): Promise<void[]>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'sphereOrMesh', desc: '场景对象或 Sphere', type: 'Sphere | Object3D', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
 ### setLookAt
+
+从 `position` 看向 `target`
+
+[setCameraViewpoint](./camera.html#setcameraviewpoint) 方法基于此方法实现
 
 #### 定义
 
@@ -372,35 +590,273 @@ function dollyInFixed(distance: number, enableTransition?: boolean): Promise<voi
 function setLookAt(positionX: number, positionY: number, positionZ: number, targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
 ```
 
-### lerpLookAt( positionAX, positionAY, positionAZ, targetAX, targetAY, targetAZ, positionBX, positionBY, positionBZ, targetBX, targetBY, targetBZ, t, enableTransition )
+<Docs-Table
+:data="[
+{ prop: 'positionX', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionY', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionZ', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetX', desc: '朝向 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetY', desc: '朝向 y 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetZ', desc: '朝向 z 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
-### setPosition( positionX, positionY, positionZ, enableTransition )
+### lerpLookAt
 
-### setTarget( targetX, targetY, targetZ, enableTransition )
+类似于 [setLookAt](#setlookat)，不过是基于两个状态之间插值
 
-### setBoundary( box3? )
+#### 定义
 
-### setViewport( vector4? )
+```ts
+function lerpLookAt(
+  positionAX: number,
+  positionAY: number,
+  positionAZ: number,
+  targetAX: number,
+  targetAY: number,
+  targetAZ: number,
+  positionBX: number,
+  positionBY: number,
+  positionBZ: number,
+  targetBX: number,
+  targetBY: number,
+  targetBZ: number,
+  t: number,
+  enableTransition?: boolean
+): Promise<void>;
+```
 
-### setViewport( x, y, width, height )
+<Docs-Table
+:data="[
+{ prop: 'positionAX', desc: '原始 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionAY', desc: '原始 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionAZ', desc: '原始 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetAX', desc: '原始朝向 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetAY', desc: '原始朝向 y 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetAZ', desc: '原始朝向 z 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionBX', desc: '插值 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionBY', desc: '插值 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionBZ', desc: '插值 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetBX', desc: '插值朝向 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetBY', desc: '插值朝向 y 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetBZ', desc: '插值朝向 z 位置', type: 'number', require: true, default: '' },
+{ prop: 't', desc: '插值系数，必须在 0 - 1 之间', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
-### getTarget( out, receiveEndValue )
+### setPosition
 
-### getPosition( out, receiveEndValue )
+设置相机 `position`，但会保持相机仍然看向 `target`
+
+相机的位置和朝向都会改变
+
+类似于 [setLookAt](#setlookat)，但是 `target` 保留
+
+#### 定义
+
+```ts
+function setPosition(positionX: number, positionY: number, positionZ: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'positionX', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionY', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'positionZ', desc: 'x 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### setTarget
+
+设置 `target`
+
+相机的位置不会改变，会朝向新的目标点
+
+类似于 [setLookAt](#setlookat)，但是 `position` 保留
+
+#### 定义
+
+```ts
+function setTarget(targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'targetX', desc: '朝向 x 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetY', desc: '朝向 y 位置', type: 'number', require: true, default: '' },
+{ prop: 'targetZ', desc: '朝向 z 位置', type: 'number', require: true, default: '' },
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
+
+### setBoundary
+
+设置摄像机 `target` 的边界框，`target` 无法超出这个边界
+
+#### 定义
+
+```ts
+function setBoundary(box3?: Box3): void;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'box3', desc: '限制区域的 box3', type: 'Box3', require: false, default: '' },
+]"
+/>
+
+- `box3` 可以通过以下方法获取
+
+```js
+// 或者手动创建
+import { Box3 } from 'three';
+const box3 = new Box3();
+// 获取3d对象的box3
+const objectBox3 = ssp.utils.getBoundingBox(object);
+```
+
+### setViewport
+
+设置画面的展示区域
+
+#### 定义
+
+```ts
+function setBoundary(x: number, y: number, width: number, height: number): void;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'x', desc: '视口的最左边位置', type: 'number', require: true, default: '' },
+{ prop: 'y', desc: '视口的最底部位置', type: 'number', require: true, default: '' },
+{ prop: 'width', desc: '视口的宽度', type: 'number', require: true, default: '' },
+{ prop: 'height', desc: '视口的高度', type: 'number', require: true, default: '' },
+]"
+/>
+
+### getTarget
+
+返回当前 `target`
+
+#### 定义
+
+```ts
+function getTarget(out?: Vector3, receiveEndValue?: boolean): Vector3;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'out', desc: '接收数据的 Vector3', type: 'number', require: false, default: '' },
+{ prop: 'receiveEndValue', desc: '是否获取过渡结束的值', type: 'number', require: false, default: 'true' },
+]"
+/>
+
+### getPosition
+
+返回当前 `position`
+
+#### 定义
+
+```ts
+function getPosition(out?: Vector3, receiveEndValue?: boolean): Vector3;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'out', desc: '接收数据的 Vector3', type: 'number', require: false, default: '' },
+{ prop: 'receiveEndValue', desc: '是否获取过渡结束的值', type: 'number', require: false, default: 'true' },
+]"
+/>
 
 ### getSpherical( out, receiveEndValue )
 
+返回轨道的球坐标。
+
+#### 定义
+
+```ts
+function getSpherical(out?: Spherical, receiveEndValue?: boolean): Spherical;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'out', desc: '接收数据的 Spherical', type: 'number', require: false, default: '' },
+{ prop: 'receiveEndValue', desc: '是否获取过渡结束的值', type: 'number', require: false, default: 'true' },
+]"
+/>
+
 ### getFocalOffset( out, receiveEndValue )
+
+返回焦点偏移量，这是相机在屏幕平行坐标中平移的程度。
+
+#### 定义
+
+```ts
+function getFocalOffset(out?: Vector3, receiveEndValue?: boolean): Vector3;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'out', desc: '接收数据的 Vector3', type: 'number', require: false, default: '' },
+{ prop: 'receiveEndValue', desc: '是否获取过渡结束的值', type: 'number', require: false, default: 'true' },
+]"
+/>
 
 ### saveState()
 
+保存当前状态
+
+#### 定义
+
+```ts
+function saveState(): void;
+```
+
 ### normalizeRotations()
 
-### reset( enableTransition )
+格式化方位角旋转角度到 0° - 360° 之间
+
+#### 定义
+
+```ts
+function normalizeRotations(): void;
+```
+
+### reset
+
+重置回默认状态，可以配合 [saveState](#savestate) 使用
+
+#### 定义
+
+```ts
+function reset(enableTransition?: boolean): Promise<void[]>;
+```
+
+<Docs-Table
+:data="[
+{ prop: 'enableTransition', desc: '是否开启平滑过渡', type: 'boolean', require: false, default: 'false' },
+]"
+/>
 
 ### addEventListener( type: string, listener: function )
 
 添加一个事件监听
+
+```js
+const updateHandler = (event) => {
+  event.type; // update
+};
+
+// 添加一个事件监听
+controls.addEventListener('update', updateHandler);
+// 移除一个事件监听
+controls.removeEventListener('update', updateHandler);
+// 移除该类型所有的事件监听
+controls.removeAllEventListeners('update');
+```
 
 ### removeEventListener( type: string, listener: function )
 
