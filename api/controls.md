@@ -87,7 +87,7 @@ controls.addEventListener('update', () => {
 { prop: 'truckSpeed', desc: '平移速度', type: 'number', require: false, default: '1' },
 { prop: 'verticalDragToForward', desc: '拖拽时是否前后移动，默认为上下', type: 'boolean', require: false, default: 'false' },
 { prop: 'dollyToCursor', desc: '是否以光标点为 Dolly 目标', type: 'boolean', require: false, default: 'false' },
-{ prop: 'dollyDragInverted', desc: '当移动或通过拖动 Dolly 时反转方向', type: 'boolean', require: false, default: false },
+{ prop: 'dollyDragInverted', desc: '当通过拖动触发 Dolly 和 Zoom 时反转方向', type: 'boolean', require: false, default: false },
 { prop: 'interactiveArea', desc: '在domElement中设置拖拽、触摸和滚轮启用区域。每个值都在0到1之间，其中0表示屏幕的左/上，1表示屏幕的右/下', type: 'DOMRect', require: false, default: '' },
 { prop: 'colliderMeshes', desc: '与相机碰撞的场景对象', type: 'Object3D[]', require: false, default: '[]' },
 { prop: 'infinityDolly', desc: '启用无限 Dolly。与minDistance和maxDistance一起使用', type: 'boolean', require: false, default: 'false' },
