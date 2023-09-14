@@ -31,10 +31,6 @@ controls.addEventListener('update', () => {
 });
 ```
 
-### 样例:
-
-<Docs-Iframe src="controls/basic.html" />
-
 ## 术语
 
 ### Orbit 旋转
@@ -58,6 +54,10 @@ controls.addEventListener('update', () => {
 ![truck](/images/truck-pan.png)
 
 ## 属性
+
+### 样例:
+
+<Docs-Iframe src="controls/properties.html" />
 
 <Docs-Table
 :data="[
@@ -182,6 +182,10 @@ controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
   - `TOUCH_ZOOM_TRUCK` 用于 `OrthographicCamera`，并且无法设置 `TOUCH_DOLLY_TRUCK` 和 `TOUCH_DOLLY`
 
 ## 方法
+
+### 样例:
+
+<Docs-Iframe src="controls/methods.html" />
 
 `enableTransition = true` 时，调整 `controls.smoothTime` 控制过渡时间
 
