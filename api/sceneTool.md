@@ -267,7 +267,6 @@ interface SkyOptions {
   rayleigh?: number;
   elevation?: number;
   azimuth?: number;
-  exposure?: number;
 }
 
 function setSky(options?: SkyOptions): Sky | undefined;
@@ -284,7 +283,6 @@ ssp.setSky({
   rayleigh: 3,
   elevation: 2,
   azimuth: 180,
-  exposure: 0.5,
 });
 ```
 
@@ -305,7 +303,6 @@ ssp.setSky({
       { prop: 'rayleigh', desc: '太阳雷利值', type: 'number', require: false, default: 3 },
       { prop: 'elevation', desc: '太阳海拔', type: 'number', require: false, default: 2 },
       { prop: 'azimuth', desc: '太阳方位', type: 'number', require: false, default: 180 },
-      { prop: 'exposure', desc: '曝光度', type: 'number', require: false, default: 0.5 },
     ]"
 />
 
