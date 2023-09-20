@@ -1,6 +1,6 @@
 # 相机
 
-`next` 版本之后，相机所有的方法都基于 [controls](./controls.html) 实现。
+`v2.10.x` 版本之后，相机所有的方法都基于 [controls](./controls.html) 实现。
 
 <!-- getCameraViewpoint -->
 
@@ -30,13 +30,46 @@ console.log('cameraViewpointData', cameraViewpointData);
 ### 定义：
 
 ```ts
+// v2.9.x
 function setCameraViewpoint(data: CameraViewpointData): void;
+
+// v2.10.x
+function setCameraViewpoint(data: CameraViewpointData | CameraViewpointDataLegacy, enableTransition?: boolean): Promise<void>;
 ```
 
 ### 用法
 
 ```js
-ssp.setCameraViewpoint(cameraViewpointData);
+// v2.9.x
+ssp.setCameraViewpoint({
+  position: {
+    x: 100,
+    y: 100,
+    z: 100,
+  },
+  rotation: {
+    x: 0,
+    y: Math.PI / 2,
+    z: 0,
+  },
+});
+
+// v2.10.x
+await ssp.setCameraViewpoint(
+  {
+    position: {
+      x: 100,
+      y: 100,
+      z: 100,
+    },
+    target: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
+  },
+  true
+);
 ```
 
 ### 参数：
@@ -56,7 +89,7 @@ ssp.setCameraViewpoint(cameraViewpointData);
     ]"
 />
 
-`next` 版本之后数据格式发生变化
+`v2.10.x` 版本之后数据格式发生变化
 
 <Docs-Table
     :data="[
@@ -64,6 +97,12 @@ ssp.setCameraViewpoint(cameraViewpointData);
       { prop: 'target', desc: '相机朝向位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
     ]"
 />
+
+#### enableTransition
+
+- **描述:** 是否开启过渡效果，默认值为 `false`
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `boolean`
 
 ::: tip 提示
 也可以直接使用 [setLookAt](../api/controls.md#setlookat) 方法
@@ -125,7 +164,7 @@ interface FlyToObjOptions extends AnimationOptions {
 function flyToObj(object: BaseObject3D | BaseMesh, viewpoint: FlyToViewpoint | Rotation | Euler = 'frontTop', options: FlyToObjOptions = {}): Promise<void>;
 ```
 
-`next` 版本之后更新了类型
+`v2.10.x` 版本之后更新了类型
 
 ```ts
 interface FlyToObjOptions {
@@ -139,7 +178,7 @@ function flyToObj(object: Object3D | Box3, viewpoint?: FlyToViewpoint, options?:
 ### 用法：
 
 ```js
-// latest version
+// v2.9.x
 ssp
   .flyToObj(
     // object
@@ -155,7 +194,7 @@ ssp
   .then((object) => console.log('flyToObj done', object))
   .catch((err) => console.error(err));
 
-// next version
+// v2.10.x
 ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 ```
 
@@ -182,7 +221,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 
 ##### FlyToObjOptions
 
-`next`
+`v2.10.x`
 <Docs-Table
     :data="[
       { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
@@ -273,7 +312,7 @@ ssp.flyTo(
 - **默认值:** `{}`
 
 ::: warning 注意
-`flyTo` 在 next 版本中已废弃，请使用 [setLookAt](../api/controls.md#setlookat) 替代
+`flyTo` 在 `v2.10.x` 版本中已废弃，请使用 [setLookAt](../api/controls.md#setlookat) 替代
 :::
 
 <!-- surroundOnTarget -->
