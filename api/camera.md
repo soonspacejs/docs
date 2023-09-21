@@ -250,7 +250,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 
 <!-- flyTo -->
 
-## flyTo（废弃） <Base-Deprecated />
+## flyTo
 
 相机飞向固定位置
 
@@ -264,9 +264,21 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 function flyTo(position: Position, rotation: FlyToViewpoint | Rotation | Euler = 'frontTop', options?: AnimationOptions): Promise<void>;
 ```
 
+`v2.10.x` 版本之后更新了类型
+
+```ts
+interface FlyToOptions {
+  enableTransition?: boolean;
+}
+
+function flyTo(position: Position, rotation: FlyToViewpoint | Rotation | Euler = 'frontTop', options?: FlyToOptions): Promise<void>;
+```
+
 ### 用法：
 
 ```js
+
+// v2.9.x
 ssp.flyTo(
   // position
   {
@@ -287,6 +299,26 @@ ssp.flyTo(
 )
   .then(res => console.log(res)
   .catch(err => console.error(err))
+
+// v2.10.x
+await ssp.flyTo(
+   // position
+  {
+    x: 0,
+    y: 1000,
+    z: 1000
+  },
+  // rotation
+  {
+    x: 0,
+    y: 0,
+    z: 0
+  },
+   // option
+  {
+    enableTransition: true
+  }
+)
 ```
 
 ### 参数：
@@ -306,13 +338,22 @@ ssp.flyTo(
 
 #### option
 
+`v2.9.x`
+
 - **描述:** 可配置项
 - **类型:** [AnimationOptions](./animation.html#animationoptions)
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **默认值:** `{}`
 
+`v2.10.x`
+
+- **描述:** 可配置项
+- **类型:** `FlyToOptions`
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **默认值:** `{ enableTransition: true }`
+
 ::: warning 注意
-`flyTo` 在 `v2.10.x` 版本中已废弃，请使用 [setCameraViewpoint](#setcameraviewpoint) 替代
+`flyTo` 以向后兼容保留，你也可以使用 [setCameraViewpoint](#setcameraviewpoint) 替代
 :::
 
 <!-- surroundOnTarget -->
