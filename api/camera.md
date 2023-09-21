@@ -89,7 +89,7 @@ await ssp.setCameraViewpoint(
     ]"
 />
 
-`v2.10.x` 版本之后数据格式发生变化
+`v2.10.x` 版本之后数据格式发生变化，但也兼容了旧版的 `rotation` 参数
 
 <Docs-Table
     :data="[
@@ -312,7 +312,7 @@ ssp.flyTo(
 - **默认值:** `{}`
 
 ::: warning 注意
-`flyTo` 在 `v2.10.x` 版本中已废弃，请使用 [setLookAt](../api/controls.md#setlookat) 替代
+`flyTo` 在 `v2.10.x` 版本中已废弃，请使用 [setCameraViewpoint](#setcameraviewpoint) 替代
 :::
 
 <!-- surroundOnTarget -->
