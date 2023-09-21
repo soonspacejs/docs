@@ -221,17 +221,6 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 
 ##### FlyToObjOptions
 
-`v2.10.x`
-<Docs-Table
-    :data="[
-      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
-      { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
-    ]"
-/>
-::: tip 提示
-内部是调用 `controls.fitToBox` 方法
-:::
-
 `v2.9.x`
 <Docs-Table
     :data="[
@@ -247,6 +236,17 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
       }
     ]"
 />
+
+`v2.10.x`
+<Docs-Table
+    :data="[
+      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
+      { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
+    ]"
+/>
+::: tip 提示
+内部是调用 `controls.fitToBox` 方法
+:::
 
 <!-- flyTo -->
 
@@ -336,7 +336,7 @@ await ssp.flyTo(
 - **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint) | [Rotation](../guide/types.html#rotation)
 - **默认值:** `frontTop`
 
-#### option
+#### options
 
 `v2.9.x`
 
