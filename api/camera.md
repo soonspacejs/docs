@@ -232,7 +232,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 内部是调用 `controls.fitToBox` 方法
 :::
 
-`latest`
+`v2.9.x`
 <Docs-Table
     :data="[
       { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
