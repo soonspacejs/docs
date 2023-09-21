@@ -34,10 +34,7 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const cpsSoonmanagerPlugin = ssp.registerPlugin(
-  CpsSoonmanagerPlugin,
-  'cpsSoonmanagerPlugin'
-);
+const cpsSoonmanagerPlugin = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cpsSoonmanagerPlugin');
 console.log(cpsSoonmanagerPlugin);
 ```
 
@@ -269,14 +266,12 @@ Map 的 key 为 "" 时，表示场景视角数据
 
 - **类型:** [SoonFlow](https://www.npmjs.com/package/@soonflow/core)
 
-
 ### flowData <Base-Tag title="readonly" />
 
 场景中配置好的流程数据，数据可提供给 [runFlowById](#runflowbyid) 使用。
 
 - **默认值:** `[]`
 - **类型:** `Array`
-
 
 ## 方法
 
@@ -392,6 +387,14 @@ interface ILoadSceneOptions {
    * 需要加载的层级（DFS时有效）
    */
   loadLevel?: number;
+  /**
+   * 加载 poi
+   */
+  loadPoi?: boolean;
+  /**
+   * 通过数据源刷新 poi
+   */
+  refreshPoiByDataSource?: boolean;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -466,6 +469,8 @@ cpsSoonmanagerPlugin
        { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
        { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
        { prop: 'loadLevel', desc: '加载的树层级。如果设置了loadTargetId，则以此为起始层。从1开始计算', type: 'number', require: false, default: 'Infinity' },
+       { prop: 'loadPoi', desc: '调用 loadPoi 方法', type: 'boolean', require: false, default: 'false' },
+       { prop: 'refreshPoiByDataSource', desc: '调用 refreshPoiByDataSource 方法', type: 'boolean', require: false, default: 'false' },
     ]"
 />
 
@@ -570,10 +575,7 @@ ssp.createTopology(topologiesInfo[2]);
 #### 定义
 
 ```ts
-function sortTopologyNodes(
-  topologyInfo: TopologyInfo,
-  startNodeId?: TopologyNodeInfo['id']
-): TopologyInfo | undefined;
+function sortTopologyNodes(topologyInfo: TopologyInfo, startNodeId?: TopologyNodeInfo['id']): TopologyInfo | undefined;
 ```
 
 #### 用法
@@ -606,33 +608,15 @@ ssp.createTopology({
 #### 定义
 
 ```ts
-type TAnimationsTweenProps = Pick<
-  IKeyframe,
-  | 'x'
-  | 'y'
-  | 'z'
-  | 'rotationX'
-  | 'rotationY'
-  | 'rotationZ'
-  | 'scaleX'
-  | 'scaleY'
-  | 'scaleZ'
->;
+type TAnimationsTweenProps = Pick<IKeyframe, 'x' | 'y' | 'z' | 'rotationX' | 'rotationY' | 'rotationZ' | 'scaleX' | 'scaleY' | 'scaleZ'>;
 
 interface IPlayAnimationByIdOptions {
   autoStopPrevious?: boolean;
-  onUpdate?: (
-    source: TAnimationsTweenProps,
-    tween: Tween<TAnimationsTweenProps>
-  ) => void;
+  onUpdate?: (source: TAnimationsTweenProps, tween: Tween<TAnimationsTweenProps>) => void;
   onStart?: (tween: Tween<TAnimationsTweenProps>) => void;
 }
 
-function playObjectAnimation(
-  object: BaseObject3D,
-  animationIndex?: number,
-  options?: IPlayAnimationByIdOptions
-): Promise<void>;
+function playObjectAnimation(object: BaseObject3D, animationIndex?: number, options?: IPlayAnimationByIdOptions): Promise<void>;
 ```
 
 #### 用法
@@ -711,10 +695,7 @@ cpsSoonmanagerPlugin.stopObjectAnimation(object);
 #### 定义
 
 ```ts
-function flyToSceneFromVisionsData(
-  index?: number,
-  options?: AnimationOptions
-): Promise<void>;
+function flyToSceneFromVisionsData(index?: number, options?: AnimationOptions): Promise<void>;
 ```
 
 #### 用法
@@ -744,11 +725,7 @@ cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
 #### 定义
 
 ```ts
-function flyToObjectFromVisionsData(
-  object: BaseObject3D,
-  index?: number,
-  options?: AnimationOptions
-): Promise<void>;
+function flyToObjectFromVisionsData(object: BaseObject3D, index?: number, options?: AnimationOptions): Promise<void>;
 ```
 
 #### 用法
@@ -793,7 +770,48 @@ function runFlowById(id: string): void;
 
 ```ts
 // 假设执行第一条流程
-cpsSoonmanagerPlugin.runFlowById(cpsSoonmanagerPlugin.flowData[0].id)
+cpsSoonmanagerPlugin.runFlowById(cpsSoonmanagerPlugin.flowData[0].id);
+```
+
+### loadPoi
+
+根据 poiData 渲染 Poi
+
+#### 定义
+
+```ts
+function loadPoi(refreshByDataSource: boolean): Promise<void>;
+```
+
+#### 用法
+
+```ts
+cpsSoonmanagerPlugin.loadPoi(true);
+```
+
+#### 参数
+
+##### refreshByDataSource
+
+- **描述:** 加载完调用 [refreshPoiByDataSource](#refreshbydatasource)
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `boolean`
+
+### refreshPoiByDataSource
+
+通过数据源刷新 Poi
+
+#### 定义
+
+```ts
+function refreshPoiByDataSource(): Promise<void>;
+```
+
+#### 用法
+
+```ts
+cpsSoonmanagerPlugin.loadPoi();
+cpsSoonmanagerPlugin.refreshPoiByDataSource();
 ```
 
 ### fetchMetaData
