@@ -388,6 +388,11 @@ interface ILoadSceneOptions {
    */
   loadLevel?: number;
   /**
+   * v2.10.x
+   * 需要隐藏的对象 id
+   */
+  hiddenObjects?: Set<string>;
+  /**
    * 加载 poi
    */
   loadPoi?: boolean;
@@ -469,6 +474,7 @@ cpsSoonmanagerPlugin
        { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
        { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
        { prop: 'loadLevel', desc: '加载的树层级。如果设置了loadTargetId，则以此为起始层。从1开始计算', type: 'number', require: false, default: 'Infinity' },
+       { prop: 'hiddenObjects', desc: '初始化隐藏的对象 id 集合', type: 'Set&lt;string&gt;', require: false, default: '' },
        { prop: 'loadPoi', desc: '调用 loadPoi 方法', type: 'boolean', require: false, default: 'false' },
        { prop: 'refreshPoiByDataSource', desc: '调用 refreshPoiByDataSource 方法', type: 'boolean', require: false, default: 'false' },
     ]"

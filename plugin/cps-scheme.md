@@ -26,7 +26,7 @@ yarn add @soonspacejs/plugin-cps-scheme
 预案插件强依赖 CPS 场景加载插件，所以必须先注册 [plugin-cps-soonmanager](./cps-soonmanager.html) 插件及加载场景步骤。
 :::
 
-```js {2,20-32}
+```js
 import SoonSpace from 'soonspacejs';
 import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
 import CpsSchemePlugin from '@soonspacejs/plugin-cps-scheme';
@@ -101,6 +101,25 @@ interface ISchemeData {
 - **默认值:** `null`
 - **类型:** `SVGElement | null`
 
+### autoRunFlow
+
+`v2.10.x`
+
+点击八卦盘按钮时自动执行流程
+
+##### 用法
+
+```js
+cpsSchemePlugin.autoRunFlow = false;
+```
+
+- **默认值:** `true`
+- **类型:** `boolean`
+
+::: tip 提示
+设置为 `false` 后，你可以手动调用执行流程的方法 [runFlowById](./cps-soonmanager.html#runflowbyid)
+:::
+
 ## 方法
 
 ### init
@@ -166,6 +185,38 @@ await cpsSchemePlugin.init({
       { prop: 'execCallback', desc: '按钮点击回调', type: 'TInitOptions[execCallback]', require: false, default: '' },
     ]"
 />
+
+### setBtnReady
+
+设置八卦盘按钮就绪状态
+
+#### 定义
+
+```ts
+function setBtnReady(btnId: string, ready?: boolean): void;
+```
+
+#### 用法
+
+```js
+cpsSchemePlugin.setBtnReady('bn_p4_s1_9', true);
+```
+
+### setBtnHover
+
+设置八卦盘按钮 Hover 状态
+
+#### 定义
+
+```ts
+function setBtnHover(btnId: string, hover?: boolean): void;
+```
+
+#### 用法
+
+```js
+cpsSchemePlugin.setBtnHover('bn_p4_s1_9', true);
+```
 
 ### dispose
 
