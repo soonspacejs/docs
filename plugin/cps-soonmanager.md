@@ -847,7 +847,7 @@ cpsSoonmanagerPlugin
 手动执行场景流程，流程 id 可在 [flowData](#flowdata) 中获取。
 
 ::: warning 使用提示
-使用该方法时必须确保 `loadFlowData` 已执行完成，`loadFlowData` 可通过 `loadScene` 参数 `runFlowById` 配置开启自动加载 或 手动调用 `loadFlowData` 方法。
+使用该方法时必须确保 `loadFlowData` 已执行完成，`loadFlowData` 可通过 `loadScene` 参数 `loadFlowData` 配置开启自动加载 或 手动调用 `loadFlowData` 方法。
 :::
 
 #### 定义
