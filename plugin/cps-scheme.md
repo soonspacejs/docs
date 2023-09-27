@@ -41,7 +41,13 @@ const cpsSoonmanagerPlugin = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cpsSoonma
 cpsSoonmanagerPlugin.setPath('xxxx');
 await cpsSoonmanagerPlugin.loadScene({
   // ...
+
+  // 加载场景时必须开启流程数据加载，或通过手动方法执行
+  loadFlowData: true
 });
+
+// 加载场景时 loadFlowData 未开启时，必须在预案执行前手动加载流程数据
+await cpsSoonmanagerPlugin.loadFlowData()
 
 const cpsSchemePlugin = ssp.registerPlugin(CpsSchemePlugin, 'cpsSchemePlugin');
 await cpsSchemePlugin.init({

@@ -400,6 +400,10 @@ interface ILoadSceneOptions {
    * 通过数据源刷新 poi
    */
   refreshPoiByDataSource?: boolean;
+  /**
+   * 加载流程数据
+   */
+  loadFlowData?: boolean;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -471,12 +475,13 @@ cpsSoonmanagerPlugin
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据，开启时自动调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
-       { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
-       { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
-       { prop: 'loadLevel', desc: '加载的树层级。如果设置了loadTargetId，则以此为起始层。从1开始计算', type: 'number', require: false, default: 'Infinity' },
-       { prop: 'hiddenObjects', desc: '初始化隐藏的对象 id 集合', type: 'Set&lt;string&gt;', require: false, default: '' },
-       { prop: 'loadPoi', desc: '调用 loadPoi 方法', type: 'boolean', require: false, default: 'false' },
-       { prop: 'refreshPoiByDataSource', desc: '调用 refreshPoiByDataSource 方法', type: 'boolean', require: false, default: 'false' },
+      { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
+      { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
+      { prop: 'loadLevel', desc: '加载的树层级。如果设置了loadTargetId，则以此为起始层。从1开始计算', type: 'number', require: false, default: 'Infinity' },
+      { prop: 'hiddenObjects', desc: '初始化隐藏的对象 id 集合', type: 'Set&lt;string&gt;', require: false, default: '' },
+      { prop: 'loadPoi', desc: '默认执行 loadPoi 方法', type: 'boolean', require: false, default: 'false' },
+      { prop: 'refreshPoiByDataSource', desc: '默认执行 refreshPoiByDataSource 方法', type: 'boolean', require: false, default: 'false' },
+      { prop: 'loadFlowData', desc: '默认执行 loadFlowData 方法', type: 'boolean', require: false, default: 'false' },
     ]"
 />
 
@@ -762,26 +767,14 @@ cpsSoonmanagerPlugin.flyToObjectFromVisionsData(model, 0);
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** [`AnimationOptions`](../api/animation.html#animationoptions)
 
-### runFlowById
-
-手动执行场景流程，流程 id 可在 [flowData](#flowdata) 中获取。
-
-#### 定义
-
-```ts
-function runFlowById(id: string): void;
-```
-
-#### 用法
-
-```ts
-// 假设执行第一条流程
-cpsSoonmanagerPlugin.runFlowById(cpsSoonmanagerPlugin.flowData[0].id);
-```
 
 ### loadPoi
 
-根据 poiData 渲染 Poi
+根据 poiData 渲染 Poi。
+
+::: tip 使用提示
+如果 `loadScene` 时参数 `loadPoi` 已设置开启将自动执行，无需手动调用。
+:::
 
 #### 定义
 
@@ -807,6 +800,10 @@ cpsSoonmanagerPlugin.loadPoi(true);
 
 通过数据源刷新 Poi
 
+::: tip 使用提示
+如果 `loadScene` 时参数 `refreshPoiByDataSource` 或手动执行 `loadPoi` 时 `refreshPoiByDataSource` 已设置开启都将自动执行，无需手动调用。
+:::
+
 #### 定义
 
 ```ts
@@ -818,6 +815,56 @@ function refreshPoiByDataSource(): Promise<void>;
 ```ts
 cpsSoonmanagerPlugin.loadPoi();
 cpsSoonmanagerPlugin.refreshPoiByDataSource();
+```
+
+### loadFlowData
+
+加载场景的流程数据
+
+::: tip 使用提示
+如果 `loadScene` 时参数 `loadFlowData` 已设置开启将自动执行，无需手动调用。
+:::
+
+#### 定义
+
+```ts
+function loadFlowData(): Promise<void>;
+```
+
+#### 用法
+
+```ts
+// 假设执行第一条流程
+cpsSoonmanagerPlugin
+  .loadFlowData()
+  .then(() => {
+    console.log('流程数据加载完成')
+  })
+```
+
+### runFlowById
+
+手动执行场景流程，流程 id 可在 [flowData](#flowdata) 中获取。
+
+::: warning 使用提示
+使用该方法时必须确保 `loadFlowData` 已执行完成，`loadFlowData` 可通过 `loadScene` 参数 `runFlowById` 配置开启自动加载 或 手动调用 `loadFlowData` 方法。
+:::
+
+#### 定义
+
+```ts
+function runFlowById(id: string): Promise<void>;
+```
+
+#### 用法
+
+```ts
+// 假设执行第一条流程
+cpsSoonmanagerPlugin
+  .runFlowById(cpsSoonmanagerPlugin.flowData[0].id)
+  .then(() => {
+    console.log('流程执行结束')
+  })
 ```
 
 ### fetchMetaData
