@@ -21,3 +21,23 @@
 - **默认值：** `-`
 
 [TopologyLinkInfo](../api/topology.html#topologylinkinfo)
+
+## 方法
+
+### getLength
+
+获取路径的总长度
+
+只适用于 `line`
+
+#### 定义：
+
+```ts
+function getLength(): number;
+```
+
+#### 用法：
+
+```ts
+topology.getLength();
+```
