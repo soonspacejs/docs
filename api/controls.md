@@ -79,7 +79,7 @@ controls.addEventListener('update', () => {
 { prop: 'boundaryFriction', desc: '边界摩擦比', type: 'number', require: false, default: '0' },
 { prop: 'boundaryEnclosesCamera', desc: '相机位置是否应该被封闭在边界内', type: 'boolean', require: false, default: 'false' },
 { prop: 'smoothTime', desc: '到达目标的过渡时间，以秒为单位。数值越小，到达目标的速度越快', type: 'number', require: false, default: '0.25' },
-{ prop: 'draggingSmoothTime', desc: '操控时的过渡时间', type: 'number', require: false, default: '0.125' },
+{ prop: 'draggingSmoothTime', desc: '操控时的过渡时间', type: 'number', require: false, default: '0.1' },
 { prop: 'maxSpeed', desc: '最大速度', type: 'number', require: false, default: 'Infinity' },
 { prop: 'azimuthRotateSpeed', desc: '方位角旋转速度', type: 'number', require: false, default: '0.5' },
 { prop: 'polarRotateSpeed', desc: '极角旋转速度', type: 'number', require: false, default: '0.5' },
