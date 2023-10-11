@@ -4,12 +4,6 @@
 
 并且重构了相机相关的所有方法。`setCameraViewpoint`、`flyToObj` 等方法内部都是基于控制器的方法实现。
 
-通过 next 标签安装
-
-```bash
-npm install soonspacejs@next
-```
-
 所有的属性读写、方法调用、事件监听都推荐以下方式。
 
 ```js

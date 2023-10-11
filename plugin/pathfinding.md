@@ -36,6 +36,19 @@ const pathfinding = ssp.registerPlugin(PathfindingPlugin, 'pathfinding');
 consolo.log(pathfinding);
 ```
 
+::: tip 提示
+由于内部使用了 [顶层`await`](https://caniuse.com/?search=top%20await)
+
+在使用 Vite 时开启如下配置
+
+```js
+export default defineConfig(() => ({
+  optimizeDeps: { exclude: ['@soonspacejs/plugin-pathfinding'] }
+)}
+```
+
+:::
+
 ## 方法
 
 ### createNavMesh
