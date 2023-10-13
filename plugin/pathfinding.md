@@ -22,7 +22,7 @@ yarn add @soonspacejs/plugin-pathfinding
 
 ## 使用方法
 
-```js {2,10}
+```js {2,13}
 import SoonSpace from 'soonspacejs';
 import PathfindingPlugin from '@soonspacejs/plugin-pathfinding';
 
@@ -32,21 +32,36 @@ const ssp = new SoonSpace({
   events: {},
 });
 
+await PathfindingPlugin.ready();
+
 const pathfinding = ssp.registerPlugin(PathfindingPlugin, 'pathfinding');
 consolo.log(pathfinding);
 ```
 
-::: tip 提示
-由于内部使用了 [顶层`await`](https://caniuse.com/?search=top%20await)
+## 静态方法
 
-在使用 Vite 时开启如下配置
+### ready
 
-```js
-export default defineConfig(() => ({
-  optimizeDeps: { exclude: ['@soonspacejs/plugin-pathfinding'] }
-)}
+导航区域程序初始化
+
+#### 定义
+
+```ts
+PathfindingPlugin.ready(): Promise<void>
 ```
 
+#### 用法
+
+```js
+await PathfindingPlugin.ready();
+
+pathfinding.createNavMesh({
+  ...
+})
+```
+
+::: tip 提示
+使用 `createNavMesh` 计算路径导航区域时，请先等待 `PathfindingPlugin.ready` 完成
 :::
 
 ## 方法
