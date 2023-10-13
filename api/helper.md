@@ -216,13 +216,13 @@ interface GroundHelperOptions extends BaseHelperOptions {
   repeat?: IVector2;
 }
 
-function addGroundHelper(options: GroundHelperOptions): BaseMesh;
+function addGroundHelper(options: GroundHelperOptions): Promise<Ground>;
 ```
 
 ### 用法：
 
 ```js
-ssp.addGroundHelper({
+await ssp.addGroundHelper({
   id: 'test_ground'
   imgUrl: 'http://xxx.com/xx.png',
   width: 500,
