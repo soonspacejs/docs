@@ -767,7 +767,6 @@ cpsSoonmanagerPlugin.flyToObjectFromVisionsData(model, 0);
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** [`AnimationOptions`](../api/animation.html#animationoptions)
 
-
 ### loadPoi
 
 根据 poiData 渲染 Poi。
@@ -835,11 +834,9 @@ function loadFlowData(): Promise<void>;
 
 ```ts
 // 假设执行第一条流程
-cpsSoonmanagerPlugin
-  .loadFlowData()
-  .then(() => {
-    console.log('流程数据加载完成')
-  })
+cpsSoonmanagerPlugin.loadFlowData().then(() => {
+  console.log('流程数据加载完成');
+});
 ```
 
 ### runFlowById
@@ -860,11 +857,7 @@ function runFlowById(id: string): Promise<void>;
 
 ```ts
 // 假设执行第一条流程
-cpsSoonmanagerPlugin
-  .runFlowById(cpsSoonmanagerPlugin.flowData[0].id)
-  .then(() => {
-    console.log('流程执行结束')
-  })
+cpsSoonmanagerPlugin.runFlowById(cpsSoonmanagerPlugin.flowData[0].id);
 ```
 
 ### fetchMetaData
