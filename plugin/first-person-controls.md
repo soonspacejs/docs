@@ -14,6 +14,8 @@ sidebarDepth: 2
 <br>
 `IJKL` 或 **鼠标** 控制方向
 <br>
+`QE` 上下平移
+<br>
 空格跳跃
 
 ## 样例
@@ -40,32 +42,22 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const firstPersonControls = ssp.registerPlugin(
-  FirstPersonControlsPlugin,
-  'firstPersonControls'
-);
+const firstPersonControls = ssp.registerPlugin(FirstPersonControlsPlugin, 'firstPersonControls');
 consolo.log(firstPersonControls);
 ```
 
 ## 属性
 
-### camera
-
-第一人称控制器的相机，可通过直接更改该属性值的方式来设置相机
-
-- 类型：`PerspectiveCamera`
-- 默认值：如果在调用 `start()` 时还没有设置相机，则会自动创建一个新的相机。
-
-**注意：**
-
-- 如果要给每一人称控制器设置自定义的相机，则需要在在调用 `start()` 方法之前进行设置。
-
-### rotationAngle
+### rotationAngle <Base-Deprecated />
 
 可旋转弧度范围。
 
 - 类型：`{ max: number, min: number }`
 - 默认值：`{ max: Math.PI, min: 0 }`
+
+::: warning 弃用警告
+请使用 [controls](../api/controls.html) 的 `minPolarAngle` 和 `maxPolarAngle` 属性替代
+:::
 
 ### moveSpeed
 
