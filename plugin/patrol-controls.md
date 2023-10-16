@@ -56,7 +56,7 @@ interface StartOptions = {
     naviSpeed?: number | undefined;
     rotateSpeed?: number | undefined;
     flyToStartPoint?: boolean | undefined;
-    onUpdate: ( realTimePosition: Position, nextNode: Node, toNextNodeDistance: number ) => void;
+    onUpdate?: ( realTimePosition: Position, nextNode: Node, toNextNodeDistance: number ) => void;
     onProgress?: ((params: ProgressParams) => void) | undefined;
     onEnd?: ((endPosition: Position) => void) | undefined;
 }
