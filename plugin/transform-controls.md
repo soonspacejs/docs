@@ -32,10 +32,7 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const transformControls = ssp.registerPlugin(
-  TransformControlsPlugin,
-  'transformControls'
-);
+const transformControls = ssp.registerPlugin(TransformControlsPlugin, 'transformControls');
 consolo.log(transformControls);
 ```
 
@@ -51,21 +48,22 @@ consolo.log(transformControls);
 interface StartOptions {
   mode?: 'translate' | 'rotate' | 'scale';
   onUpdate?: (object: Object3D) => void;
+  onDragStart?: (object: Object3D) => void;
+  onDragEnd?: (object: Object3D) => void;
   onClose?: () => void;
 }
 
-function start(options: StartOptions) => Promise<Vector3>
+function start(object: Object3D, options?: StartOptions): TransformControls;
 ```
 
 #### 用法
 
 ```js
-transformControls.start(
+const control = transformControls.start(
   // object
-  sbmObject,
+  modelObject,
   // options
   {
-    object: sbmObject,
     mode: 'translate',
     onUpdate: (object) => {
       console.log('updated object', object);
@@ -101,6 +99,12 @@ transformControls.start(
         prop: 'onUpdate', desc: '操作时实时回调函数', type: '(object: Object3D) => void', require: false, default: ''
       },
       {
+        prop: 'onDragStart', desc: '操作时开始回调函数', type: '(object: Object3D) => void', require: false, default: ''
+      },
+      {
+        prop: 'onDragEnd', desc: '操作时结束回调函数', type: '(object: Object3D) => void', require: false, default: ''
+      },
+      {
         prop: 'onClose', desc: '控制器关闭时触发函数', type: '() => void', require: false, default: ''
       }
     ]"
@@ -108,24 +112,52 @@ transformControls.start(
 
 ### changeMode
 
-切换控制器模式。
+切换控制器模式
+
+默认切换上一个
+
+#### 定义
+
+```ts
+function changeMode(control?: TransformControls | undefined, mode?: StartOptions['mode']): void;
+```
 
 #### 用法
 
 ```js
-patrolControls.changeMode('rotate');
+transformControls.changeMode(control, 'rotate');
 ```
 
 #### 参数
+
+- control: TransformControls
 
 - mode: 'translate' | 'rotate' | 'scale'
 
 ### close
 
-关闭控制器。
+关闭控制器
+
+默认关闭上一个
+
+#### 定义
+
+```ts
+function close(control?: TransformControls | undefined): void;
+```
 
 #### 用法
 
 ```js
-transformControls.close();
+transformControls.close(control);
+```
+
+### closeAll
+
+关闭所有控制器
+
+#### 用法
+
+```js
+transformControls.closeAll();
 ```
