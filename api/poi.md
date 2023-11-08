@@ -99,7 +99,7 @@ ssp.createPoi(
       { prop: 'nameCanvasInfo', desc: '展示名称 canvas 配置', type: 'NameCanvasInfo', require: false, default: '参考下方' },
       { prop: 'iconScale', desc: '图片的缩放比例', type: 'Scale', require: false, default: '{ x: 16, y: 16, z: 1 }', link: '../guide/types.html#scale' },
       { prop: 'scaleFixed', desc: '相机超过设定距离时的固定缩放比例', type: 'ScaleFixed', require: false, default: '', link: '../guide/types.html#scalefixed' },
-      { prop: 'url', desc: '图片资源路径', type: 'string', require: true, default: '' },
+      { prop: 'url', desc: '图片资源路径', type: 'string', require: false, default: '' },
       { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
       { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },

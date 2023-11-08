@@ -74,6 +74,9 @@ ssp
       console.log('onStart', _tween);
     }
   )
+  .then(() => {
+    // 动画结束
+  })
   .catch(() => {
     // 动画终止了
   });

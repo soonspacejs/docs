@@ -90,13 +90,19 @@ interface ITreeData {
   id: string;
   pid: string | null;
   name: string;
-  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB';
+  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB' | 'POLYGON' | 'CIRCLE';
   deviceName: string | null;
   deviceCode: string | null;
   matrix: number[];
   path: string | null;
   familyId: string | null;
   children: ITreeData[];
+  visible: boolean;
+  shape?: {
+    height: number;
+    radius: number;
+    points?: PlaneIVector2[];
+  };
 }
 ```
 
