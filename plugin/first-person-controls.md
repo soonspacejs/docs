@@ -10,6 +10,8 @@ sidebarDepth: 2
 
 ## 交互提示
 
+默认情况下：
+
 `WASD` 或 :arrow_up: :arrow_left: :arrow_down: :arrow_right: 控制移动
 <br>
 `IJKL` 或 **鼠标** 控制方向
@@ -17,6 +19,8 @@ sidebarDepth: 2
 `QE` 上下平移
 <br>
 空格跳跃
+
+可以使用 [keyCodeMap](#keycodemap) 自定义按键
 
 ## 样例
 
@@ -47,6 +51,44 @@ consolo.log(firstPersonControls);
 ```
 
 ## 属性
+
+### enabled
+
+是否开启控制
+
+### keyCodeMap
+
+`v2.10.7`
+
+键盘 [code](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values) 映射，可用于自定义键位
+
+#### 用法
+
+```js
+const { keyCodeMap } = firstPersonControls;
+keyCodeMap.moveLeft = [];
+keyCodeMap.moveRight = [];
+keyCodeMap.rotateLeft = ['ArrowLeft'];
+keyCodeMap.rotateRight = ['ArrowRight'];
+```
+
+默认值
+
+```js
+keyCodeMap = {
+  moveForward: ['ArrowUp', 'KeyW'],
+  moveBackward: ['ArrowDown', 'KeyS'],
+  moveLeft: ['ArrowLeft', 'KeyA'],
+  moveRight: ['ArrowRight', 'KeyD'],
+  moveUp: ['KeyQ'],
+  moveDown: ['KeyE'],
+  rotateUp: ['KeyI'],
+  rotateDown: ['KeyK'],
+  rotateLeft: ['KeyJ'],
+  rotateRight: ['KeyL'],
+  jump: ['Space'],
+};
+```
 
 ### rotationAngle <Base-Deprecated />
 
