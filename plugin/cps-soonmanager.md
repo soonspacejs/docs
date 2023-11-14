@@ -24,7 +24,7 @@ yarn add @soonspacejs/plugin-cps-soonmanager
 
 ## 使用方法
 
-```js {2,10-13}
+```js {2,10-12}
 import SoonSpace from 'soonspacejs';
 import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
 
@@ -35,7 +35,8 @@ const ssp = new SoonSpace({
 });
 
 const cpsSoonmanagerPlugin = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cpsSoonmanagerPlugin');
-console.log(cpsSoonmanagerPlugin);
+cpsSoonmanagerPlugin.setPath('xxx');
+await cpsSoonmanagerPlugin.loadScene();
 ```
 
 ## 属性
