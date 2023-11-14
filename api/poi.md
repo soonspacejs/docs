@@ -8,15 +8,22 @@
 
 <Docs-Iframe src="poi/createPoi.html" />
 
+<Docs-Iframe src="poi/poiText.html" />
+
 ### 定义：
 
 ```ts
 interface NameCanvasInfo {
+  canvasWidth?: number;
+  canvasHeight?: number;
   font?: string;
   fillStyle?: CanvasFillStrokeStyles['fillStyle'];
   strokeStyle?: CanvasFillStrokeStyles['strokeStyle'];
   textAlign?: CanvasTextAlign;
   textBaseline?: CanvasTextBaseline;
+  backgroundStyle?: CanvasFillStrokeStyles['fillStyle'];
+  borderStyle?: CanvasFillStrokeStyles['strokeStyle'];
+  borderWidth?: number; 
 }
 
 interface PoiInfo extends BaseObject3DInfo {
@@ -117,11 +124,16 @@ ssp.createPoi(
 
 <Docs-Table
     :data="[
+      { prop: 'canvasWidth', desc: '画布宽度', type: 'number', require: false, default: '256' },
+      { prop: 'canvasHeight', desc: '画布高度', type: 'number', require: false, default: '256' },
       { prop: 'font', desc: '字体', type: 'string', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font', default: '32px Microsoft YaHei' },
       { prop: 'fillStyle', desc: '填充色', type: 'CanvasFillStrokeStyles[fillStyle]', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle', default: '#fff' },
       { prop: 'strokeStyle', desc: '描边色', type: 'CanvasFillStrokeStyles[strokeStyle]', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle',default: '#000' },
       { prop: 'textAlign', desc: '文本对齐', type: 'CanvasTextAlign', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textAlign',default: 'center' },
-      { prop: 'textBaseline', desc: '文本基线', type: 'CanvasTextBaseline', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline',default: 'bottom' },
+      { prop: 'textBaseline', desc: '文本基线', type: 'CanvasTextBaseline', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline',default: 'middle' },
+      { prop: 'backgroundStyle', desc: '文本背景色', type: 'CanvasFillStrokeStyles[fillStyle]', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle',default: '' },
+      { prop: 'borderStyle', desc: '文本边框色', type: 'CanvasFillStrokeStyles[strokeStyle]', require: false, link: 'https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeStyle',default: '' },
+      { prop: 'borderWidth', desc: '文本边框宽度', type: 'number', require: false,default: '3' },
     ]"
 />
 
@@ -204,10 +216,7 @@ const allPoiList = ssp.getAllPoi();
 ### 定义：
 
 ```ts
-function getPoiByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Poi[];
+function getPoiByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Poi[];
 ```
 
 ### 用法：
@@ -241,9 +250,7 @@ poi.userData = {
     age: 18,
   },
 };
-const poiList = ssp.getPoiByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const poiList = ssp.getPoiByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -353,10 +360,7 @@ ssp.createGroupForPoi({
 ### 定义：
 
 ```ts
-function addPoiForGroup(
-  groupId: GroupInfo['id'],
-  poiInfoList: PoiInfo[]
-): Group | null;
+function addPoiForGroup(groupId: GroupInfo['id'], poiInfoList: PoiInfo[]): Group | null;
 ```
 
 ### 用法：
