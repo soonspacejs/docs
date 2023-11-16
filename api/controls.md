@@ -36,7 +36,7 @@ controls.addEventListener('update', () => {
 ### Dolly 和 Zoom
 
 - Dolly 实际上是移动相机来改变每一帧中图像的组成（移动）。
-- Zoom 包括改变镜头焦距。在 three.js 中，Zoom 实际上是改变相机的 FOV，而相机是静止的（不移动）。
+- Zoom 包括改变镜头焦距。Zoom 实际上是改变相机的 FOV，而相机是静止的（不移动）。
 
 ![dolly](/images/dolly-zoom.png)
 
