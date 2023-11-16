@@ -9,9 +9,7 @@
 ### 定义：
 
 ```ts
-function getObjectById<T extends Object3D = BaseObject3D>(
-  id: BaseObject3DInfo['id']
-): T | null;
+function getObjectById<T extends Object3D = BaseObject3D>(id: BaseObject3DInfo['id']): T | null;
 ```
 
 ### 用法：
@@ -43,10 +41,7 @@ const objectList = ssp.getObjectByName('object_name');
 ### 定义：
 
 ```ts
-function getObjectByUserDataProperty<T extends Object3D = BaseObject3D>(
-  property: string | UserDataPropertyFindFunc,
-  value: any
-): T[];
+function getObjectByUserDataProperty<T extends Object3D = BaseObject3D>(property: string | UserDataPropertyFindFunc, value: any): T[];
 ```
 
 ### 用法：
@@ -80,9 +75,7 @@ object.userData = {
     age: 18,
   },
 };
-const objectList = ssp.getObjectByUserDataProperty(
-  (userData) => userData.people?.name === 'xiaoming'
-);
+const objectList = ssp.getObjectByUserDataProperty((userData) => userData.people?.name === 'xiaoming');
 ```
 
 :::
@@ -102,3 +95,71 @@ function removeObjectById(id: BaseObject3DInfo['id']): boolean;
 ```js
 ssp.removeObjectById('object_id');
 ```
+
+## addObject
+
+添加对象
+
+### 定义:
+
+```ts
+function addObject(object: Object3D, parent?: Object3D): void;
+```
+
+### 用法:
+
+```js
+ssp.addObject(object);
+
+// or
+
+const group = ssp.createGroup({
+  id: 'group',
+});
+
+ssp.addObject(object, group);
+```
+
+### 参数:
+
+#### object
+
+- **类型:** Object3D
+- **描述:** 要添加的空间对象
+- **必填:** <Base-RequireIcon />
+
+#### parent
+
+- **类型:** Object3D
+- **描述:** 被添加对象的父级, 默认为整个场景
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+## removeObject
+
+移除对象
+
+### 定义:
+
+```ts
+function removeObject(object: Object3D): void;
+```
+
+### 用法:
+
+```js
+ssp.removeObject(object);
+
+// or
+
+const model = ssp.getObjectById('xxx_model');
+
+ssp.removeObject(model);
+```
+
+### 参数:
+
+#### object
+
+- **类型:** Object3D
+- **描述:** 要移除的空间对象
+- **必填:** <Base-RequireIcon />
