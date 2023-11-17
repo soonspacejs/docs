@@ -42,10 +42,7 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const drawingTopologyPlugin = ssp.registerPlugin(
-  DrawingTopologyPlugin,
-  'drawTopologyPlugin'
-);
+const drawingTopologyPlugin = ssp.registerPlugin(DrawingTopologyPlugin, 'drawTopologyPlugin');
 consolo.log(drawingTopologyPlugin);
 ```
 
@@ -58,9 +55,11 @@ consolo.log(drawingTopologyPlugin);
 #### 定义
 
 ```ts
-interface StartOptions extends TopologyInfo {
+export interface StartOptions extends TopologyInfo {
   onCancel?: () => void;
-  onDone?: (nodes: TopologyInnerNodeInfo[]) => void;
+  onAdd?: (node: TopologyNodeInfo, intersectObject: Object3D) => void;
+  onUndo?: (node: TopologyNodeInfo) => void;
+  onDone?: (nodes: TopologyNodeInfo[]) => void;
 }
 
 function start(options: StartOptions): void;
@@ -70,9 +69,15 @@ function start(options: StartOptions): void;
 
 ```js
 drawingTopologyPlugin.start({
-  id: 'draing_topology',
+  id: 'drawing_topology',
   onDone(nodes) {
     console.log('drawEnd', nodes);
+  },
+  onAdd(addNode, intersectObject) {
+    console.log('add', addNode, intersectObject);
+  },
+  onUndo(undoNode) {
+    console.log('undo', undoNode);
   },
   onCancel() {
     console.log('drawCancel');
@@ -83,6 +88,7 @@ drawingTopologyPlugin.start({
 #### 参数
 
 ##### options
+
 - **描述:** 配置
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 - **类型:** `StartOptions`
@@ -92,7 +98,13 @@ drawingTopologyPlugin.start({
 <Docs-Table 
     :data="[
       {
-        prop: 'onDone', desc: '绘制完成的回调函数', type: 'function(nodes: TopologyInnerNodeInfo[]){}', require: false, default: ''
+        prop: 'onDone', desc: '绘制完成的回调函数', type: 'function(nodes: TopologyNodeInfo[]){}', require: false, default: ''
+      },
+      {
+        prop: 'onAdd', desc: '添加 node 回调函数', type: 'function(node: TopologyNodeInfo, intersectObject: Object3D){}', require: false, default: ''
+      },
+      {
+        prop: 'onUndo', desc: '撤销 node 回调函数', type: 'function(node: TopologyNodeInfo[]){}', require: false, default: ''
       },
       {
         prop: 'onCancel', desc: '取消绘制的回调函数', type: 'function(){}', require: false, default: ''
