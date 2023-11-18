@@ -51,7 +51,7 @@ ssp.createAmbientLight({
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x9a9a9a', link: '../guide/types.html#icolor' },
-      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
     ]"
 />
 
@@ -131,7 +131,7 @@ ssp.createDirectionalLight({
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
-      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 1000, z: 0 }', link: '../guide/types.html#icolor'  },
       { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: -100, z: 0 }', link: '../guide/types.html#icolor'  },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
@@ -211,7 +211,7 @@ ssp.createHemisphereLight({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'skyColor', desc: '天空颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
       { prop: 'groundColor', desc: '地面颜色', type: 'IColor', require: false, default: '0xdddddd', link: '../guide/types.html#icolor' },
       { prop: 'position', desc: '光的朝向位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position'  },
@@ -281,7 +281,7 @@ ssp.createSpotLight({
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
-      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'angle', desc: '光照方向扩散的角度（最大值为180）', type: 'number', require: false, default: '45' },
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
@@ -350,7 +350,7 @@ ssp.createPointLight({ id: 'pointLight', name: 'pointLight' });
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
-      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
       { prop: 'distance', desc: '光照范围', type: 'number', require: false, default: '5000' },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
@@ -437,7 +437,7 @@ ssp.createRectAreaLight({
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
-      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '1' },
+      { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'width', desc: '矩形区域的宽度', type: 'number', require: false, default: '10' },
       { prop: 'height', desc: '矩形区域的高度', type: 'number', require: false, default: '10' },
       { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
