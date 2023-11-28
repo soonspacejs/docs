@@ -3,7 +3,7 @@
 ### 样例：
 
 ::: warning 注意
-选中效果不可叠加使用。使用一个效果前，必须先清除上一次效果。
+效果不可叠加使用。使用一个效果前，必须先清除上一次效果。
 :::
 
 <Docs-Iframe src="modelTool/selectModel.html" />
