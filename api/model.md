@@ -104,11 +104,7 @@ ssp
 ```ts
 interface CloneModelInfo extends Omit<ModelInfo, 'url'> {}
 
-function cloneModel(
-  model: Model,
-  modelInfo: CloneModelInfo,
-  parent?: BaseObject3D | null
-): Promise<Model>;
+function cloneModel(model: Model, modelInfo: CloneModelInfo, parent?: BaseObject3D | null): Promise<Model>;
 ```
 
 ### 用法:
@@ -205,10 +201,7 @@ const allModelList = ssp.getAllModel();
 ### 定义：
 
 ```ts
-function getModelByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Model[];
+function getModelByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Model[];
 ```
 
 ### 用法：
@@ -242,9 +235,7 @@ model.userData = {
     age: 18,
   },
 };
-const modelList = ssp.getModelByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const modelList = ssp.getModelByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -280,10 +271,7 @@ ssp.removeModelById('xxx');
 ### 定义：
 
 ```ts
-function loadModelToGroup(
-  groupInfo: GroupInfo,
-  modelInfoList: ModelInfo[]
-): Promise<Group>;
+function loadModelToGroup(groupInfo: GroupInfo, modelInfoList: ModelInfo[]): Promise<Group>;
 ```
 
 ### 用法：
@@ -359,10 +347,7 @@ ssp.createGroupForModel({
 ### 定义：
 
 ```ts
-function addModelForGroup(
-  groupId: GroupInfo['id'],
-  modelInfoList: ModelInfo[]
-): Promise<Group | null>;
+function addModelForGroup(groupId: GroupInfo['id'], modelInfoList: ModelInfo[]): Promise<Group | null>;
 ```
 
 ### 用法：
@@ -530,17 +515,10 @@ ssp.hideAllModel();
 
 ```ts
 interface ModelAnimationFindFunc {
-  (
-    animation: AnimationClip,
-    index: number,
-    animations: AnimationClip[]
-  ): boolean;
+  (animation: AnimationClip, index: number, animations: AnimationClip[]): boolean;
 }
 
-function playModelAnimation(
-  model: Model,
-  animation: number | AnimationClip | ModelAnimationFindFunc
-): AnimationAction | undefined;
+function playModelAnimation(model: Model, animation: number | AnimationClip | ModelAnimationFindFunc): AnimationAction | undefined;
 ```
 
 ### 用法：
@@ -581,10 +559,7 @@ ssp.playModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 ### 定义：
 
 ```ts
-function stopModelAnimation(
-  model: Model,
-  animation: number | AnimationClip | ModelAnimationFindFunc
-): void;
+function stopModelAnimation(model: Model, animation: number | AnimationClip | ModelAnimationFindFunc): void;
 ```
 
 ### 用法：
@@ -631,9 +606,31 @@ ssp.setModelDracoDecoderPath('/draco/');
 ```
 
 ::: tip 提示
-`draco` 目录在 `node_modules/three/examples/jsm/libs/draco` 中
+`draco` 目录在 `node_modules/three/examples/jsm/libs` 中
 
 然后将 `draco` 目录拷贝至所在项目的静态资源目录中，一般是 `public` 目录
+:::
+
+## setModelKtx2DecoderPath
+
+设置模型的 KTX2 贴图解压库路径
+
+### 定义：
+
+```ts
+function setModelKtx2DecoderPath(path: string): void;
+```
+
+### 用法：
+
+```js
+ssp.setModelKtx2DecoderPath('/basis/');
+```
+
+::: tip 提示
+`basis` 目录在 `node_modules/three/examples/jsm/libs` 中
+
+然后将 `basis` 目录拷贝至所在项目的静态资源目录中，一般是 `public` 目录
 :::
 
 ## computeModelsBoundsTree
@@ -657,9 +654,7 @@ type ModelsBoundsTreeOptions = {
   workerCreator?: () => Worker;
 };
 
-function computeModelsBoundsTree(
-  options?: ModelsBoundsTreeOptions
-): Promise<void>;
+function computeModelsBoundsTree(options?: ModelsBoundsTreeOptions): Promise<void>;
 ```
 
 ### 用法：
@@ -856,10 +851,7 @@ createFindObjectsInSphereNearPosition ( radius: number, objects: Object3D[] ): F
 
 ```js
 //合建一个查找器，需要指定查找的区域 和 从哪些对象中进行查找
-const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(
-  20,
-  objArr
-);
+const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(20, objArr);
 
 // 使用查找器查找指定位置附近区域的对象
 const nearObjs = findObjectsNearPosition({ x: 100, y: 100, z: 100 });
