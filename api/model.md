@@ -684,7 +684,7 @@ ssp.computeModelsBoundsTree({
 
 <Docs-Table
     :data="[
-      { prop: 'type', desc: '计算的类型', type: 'block | slice', require: false, default: 'slice' },
+      { prop: 'type', desc: '计算的类型', type: 'block | slice | worker', require: false, default: 'slice' },
       { prop: 'force', desc: '是否强制重新计算', type: 'boolean', require: false, default: 'false' },
       { prop: 'frameSliceCount', desc: '配合 `slice` 使用，每帧的几何结构计算数量', type: 'boolean', require: false, default: '500' },
       { prop: 'workerCreator', desc: '配合 `worker` 使用，请参考下方示例', type: '() =&gt; Worker', require: false, default: '' },
