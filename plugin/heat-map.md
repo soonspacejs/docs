@@ -197,19 +197,19 @@ heatMap.setData(
   [
     {
       x: 100,
-      y: 100,
+      z: 100,
       radius: 100,
       value: Math.floor(Math.random() * 100)
     },
     {
       x: 200,
-      y: 50,
+      z: 50,
       radius: 50,
       value: Math.floor(Math.random() * 100)
     },
     {
       x: 100,
-      y: 50,
+      z: 50,
       radius: 50,
       value: Math.floor(Math.random() * 100)
     },
