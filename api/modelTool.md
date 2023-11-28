@@ -21,10 +21,7 @@ interface EdgeSelectOptions {
   edgeThickness?: number;
   edgeStrength?: number;
 }
-function edgeShow(
-  object: BaseObject3D | BaseObject3D[],
-  options?: EdgeSelectOptions
-): Promise<void>;
+function edgeShow(object: BaseObject3D | BaseObject3D[], options?: EdgeSelectOptions): Promise<void>;
 ```
 
 ### 用法:
@@ -67,9 +64,7 @@ ssp.edgeShow(object, {
 ### 定义:
 
 ```ts
-function unEdgeShow(
-  objects?: BaseObject3D | BaseObject3D[]
-): Promise<void | void[]>;
+function unEdgeShow(objects?: BaseObject3D | BaseObject3D[]): Promise<void | void[]>;
 ```
 
 ### 用法:
@@ -101,10 +96,7 @@ interface StrokeSelectOptions extends BaseSelectOptions {
   firstChild?: boolean;
 }
 
-function strokeShow(
-  object: BaseObject3D | BaseObject3D[],
-  options?: StrokeSelectOptions
-): Promise<void | void[]>;
+function strokeShow(object: BaseObject3D | BaseObject3D[], options?: StrokeSelectOptions): Promise<void | void[]>;
 ```
 
 ### 用法:
@@ -165,9 +157,7 @@ ssp.strokeShow(models, {
 ### 定义:
 
 ```ts
-function unStrokeShow(
-  objects?: BaseObject3D | BaseObject3D[]
-): Promise<void | void[]>;
+function unStrokeShow(objects?: BaseObject3D | BaseObject3D[]): Promise<void | void[]>;
 ```
 
 ### 用法:
@@ -234,9 +224,7 @@ ssp.opacityShow(object, {
 ### 定义:
 
 ```ts
-function unOpacityShow(
-  objects?: BaseObject3D | BaseObject3D[]
-): Promise<void | void[]>;
+function unOpacityShow(objects?: BaseObject3D | BaseObject3D[]): Promise<void | void[]>;
 ```
 
 ### 用法:
@@ -258,10 +246,7 @@ ssp.unOpacityShow();
 ```ts
 interface HighlightSelectOptions extends BaseSelectOptions {}
 
-function highlightShow(
-  object: BaseObject3D | BaseObject3D[],
-  options?: HighlightSelectOptions
-): Promise<void | void[]>;
+function highlightShow(object: BaseObject3D | BaseObject3D[], options?: HighlightSelectOptions): Promise<void | void[]>;
 ```
 
 ### 用法:
@@ -302,9 +287,7 @@ ssp.highlightShow(object, { color: 0xff6600 });
 ### 定义:
 
 ```ts
-function unHighlightShow(
-  objects?: BaseObject3D | BaseObject3D[]
-): Promise<void | void[]>;
+function unHighlightShow(objects?: BaseObject3D | BaseObject3D[]): Promise<void | void[]>;
 ```
 
 ### 用法:
@@ -325,22 +308,20 @@ ssp.unHighlightShow();
 
 ```ts
 interface EmissiveSelectOptions extends Omit<BaseSelectOptions, 'opacity'> {
+  baseColor?: IColor;
   minOpacity?: number;
   maxOpacity?: number;
   duration?: number;
   yoyo?: boolean;
 }
 
-function emissiveShow(
-  object: BaseObject3D | BaseObject3D[],
-  options?: EmissiveSelectOptions
-): Promise<void | void[]>;
+function emissiveShow(object: BaseObject3D | BaseObject3D[], options?: EmissiveSelectOptions): Promise<void | void[]>;
 ```
 
 ### 用法:
 
 ```js
-ssp.emissiveShow(object);
+ssp.emissiveShow(object, { color: '#f00', maxOpacity: 1, minOpacity: 0, baseColor: '#ff8787' });
 ```
 
 ### 参数:
@@ -363,9 +344,10 @@ ssp.emissiveShow(object);
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: 'red',  link: '../guide/types.html#icolor'},
-      { prop: 'minOpacity', desc: '动画透明度最小值', type: 'number', require: false, default: 0 },
-      { prop: 'maxOpacity', desc: '动画透明度最大值', type: 'number', require: false, default: 1 },
+      { prop: 'color', desc: '自发光颜色', type: 'IColor', require: false, default: 'red',  link: '../guide/types.html#icolor'},
+      { prop: 'baseColor', desc: '基础颜色', type: 'IColor', require: false, default: '',  link: '../guide/types.html#icolor'},
+      { prop: 'minOpacity', desc: '动画自发光强度最小值', type: 'number', require: false, default: 0 },
+      { prop: 'maxOpacity', desc: '动画自发光强度最大值', type: 'number', require: false, default: 1 },
       { prop: 'duration', desc: '动画周期时长(ms)', type: 'number', require: false, default: 1000 },
       { prop: 'yoyo', desc: '反向播放动画', type: 'boolean', require: false, default: 'false' },
     ]"
@@ -378,9 +360,7 @@ ssp.emissiveShow(object);
 ### 定义:
 
 ```ts
-function unEmissiveShow(
-  objects?: BaseObject3D | BaseObject3D[]
-): Promise<void | void[]>;
+function unEmissiveShow(objects?: BaseObject3D | BaseObject3D[]): Promise<void | void[]>;
 ```
 
 ### 用法:
