@@ -607,7 +607,7 @@ const [topologyInfo] = await cpsSoonmanagerPlugin.getTopologies();
 const sortedToplogyInfo = cpsSoonmanagerPlugin.sortTopologyNodes(topologyInfo);
 
 ssp.createTopology({
-  sortedToplogyInfo,
+  ...sortedToplogyInfo,
   imgUrl: 'xxx.png',
   animation: true,
 });
