@@ -21,6 +21,7 @@
 - [sspx](./sspx.html) - `soonspacejs` 实例存储容器。
 - [heat-map](./heat-map.html) - 热力图。
 - [heat-cloud](./heat-cloud.html) - 热力云。
+- [measuring](./measuring.html) - 测量。
 - [drawing-shape](./drawing-shape.html) - 绘制基础图形。
 - [patrol-controls](./patrol-controls.html) - 路径巡检控制器。
 - [drawing-topology](./drawing-topology.html) - 绘制拓扑路径。

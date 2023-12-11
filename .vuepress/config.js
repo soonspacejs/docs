@@ -191,6 +191,7 @@ module.exports = {
 								"/plugin/sspx",
 								"/plugin/heat-map",
 								"/plugin/heat-cloud",
+								"/plugin/measuring",
 								"/plugin/drawing-shape",
 								"/plugin/patrol-controls",
 								"/plugin/drawing-topology",
