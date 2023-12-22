@@ -1,14 +1,16 @@
 {
   "name": "soonspacejs-docs",
+  "type": "module",
   "scripts": {
-    "start": "vuepress dev .",
-    "build": "vuepress build .",
+    "dev": "vitepress dev ./",
+    "build": "vitepress build ./",
     "build:offLine": "node ./offLineInstructions/index.js"
   },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "1.8.2",
     "@vuepress/plugin-pwa": "^1.8.2",
     "pdf-merger-js": "3.1.0",
+    "vitepress": "latest",
     "vuepress": "1.8.2",
     "vuepress-plugin-baidu-tongji-analytics": "1.0.2"
   }

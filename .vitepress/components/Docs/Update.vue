@@ -87,7 +87,7 @@ export default {
   z-index: 1000;
 
   &-highlight {
-    color: $accentColor;
+    color: var(--accentColor);
   }
 
   &-body {
@@ -127,7 +127,7 @@ export default {
       position: relative;
       width: 100px;
       height: 32px;
-      background-color: $accentColor;
+      background-color: var(--accentColor);
       color: #fff;
       border: none;
       font-size: 14px;
