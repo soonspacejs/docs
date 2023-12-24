@@ -27,11 +27,19 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run build
+          node-version: '16'
+    
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+      
+        name: Install dependencies
+        run: pnpm install
+        run: npm run build
 
-      - name: copy file 
+        name: copy file 
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
