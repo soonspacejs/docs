@@ -1,6 +1,6 @@
 # BaseMesh
 
-该对象继承自 [threejs](https://threejs.org/docs/index.html#api/en/objects/Mesh) `Mesh` 对象。
+该对象继承自 [threejs](https://threejs.org/docs/index#api/en/objects/Mesh) `Mesh` 对象。
 
 ## Mesh 常用属性
 
@@ -22,14 +22,14 @@
 
 网格几何结构
 
-- 类型：[BufferGeometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry)
+- 类型：[BufferGeometry](https://threejs.org/docs/index#api/en/core/BufferGeometry)
 - 默认值：`BufferGeometry`
 
 ### material
 
 网格材质
 
-- 类型：[Material](https://threejs.org/docs/index.html#api/en/materials/Material)
+- 类型：[Material](https://threejs.org/docs/index#api/en/materials/Material)
 - 默认值：`MeshBasicMaterial`
 
 ### visible
@@ -97,7 +97,7 @@
 
 对象可见层级范围
 
-- 类型：[Level](../types.html#level)
+- 类型：[Level](../types#level)
 - 默认值：`{ max: null, min: null }`
 
 ### handleHide
@@ -122,7 +122,7 @@
 
 ### setMove
 
-设置该对象的位置移动。动画过度，使用继承于 [API 补间动画](../../api/animation.html)。
+设置该对象的位置移动。动画过度，使用继承于 [API 补间动画](../../api/animation)。
 
 #### 定义：
 
@@ -155,7 +155,7 @@ sbm.setMove(
 
 ### setRotate
 
-设置该对象的角度旋转。动画过度，使用继承于 [API 补间动画](../../api/animation.html)。
+设置该对象的角度旋转。动画过度，使用继承于 [API 补间动画](../../api/animation)。
 
 #### 定义：
 
@@ -183,7 +183,7 @@ sbm.setRotate(
 
 ### setScale
 
-设置该对象的尺寸缩放。动画过度，使用继承于 [API 补间动画](../../api/animation.html)。
+设置该对象的尺寸缩放。动画过度，使用继承于 [API 补间动画](../../api/animation)。
 
 #### 定义：
 

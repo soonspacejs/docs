@@ -98,17 +98,17 @@ const topology = ssp.createTopology({
       { prop: 'type', desc: '路径类型', type: 'line | network', require: true, default: '' },
       { prop: 'renderLink', desc: '是否渲染连接线', type: 'boolean', require: false, default: 'true' },
       { prop: 'linkWidth', desc: '线宽', type: 'number', require: false, default: '20' },
-      { prop: 'linkColor', desc: '连接线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'linkColor', desc: '连接线颜色', type: 'IColor ｜ IColor[]', require: false, default: '0x00ff00', link: '../guide/types#icolor' },
       { prop: 'renderNode', desc: '是否渲染节点', type: 'boolean', require: false, default: 'true' },
-      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' },
+      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types#icolor' },
       { prop: 'nodeRadius', desc: '节点半径', type: 'numbers', require: false, default: '10' },
       { prop: 'imgUrl', desc: '非纯色线时使用的图片资源路径', type: 'string', require: false, default: 'null' },
-      { prop: 'animation', desc: '非纯色线时的流动动画', type: 'boolean | AnimationOptions', require: false, default: 'false', link: './animation.html#animationoptions'},
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'animation', desc: '非纯色线时的流动动画', type: 'boolean | AnimationOptions', require: false, default: 'false', link: './animation#animationoptions'},
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
     ]"
 />
@@ -121,7 +121,7 @@ const topology = ssp.createTopology({
     :data="[
       { prop: 'id', desc: '节点唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '节点名称', type: 'string', require: false, default: '' },
-      { prop: 'position', desc: '节点坐标', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'position', desc: '节点坐标', type: 'Position', require: true, default: '', link: '../guide/types#position' },
       { prop: 'graphs', desc: '网结构信息', type: 'TopologyNodeGraph[]', require: false, default: '', link: '#topologynodegraph' },
     ]"
 />
@@ -267,8 +267,8 @@ const shortestTopology = ssp.getShortestPath(topologyFromOther, {
 
 <Docs-Table
     :data="[
-      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types#position' },
+      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types#position' },
     ]"
 />
 
@@ -330,8 +330,8 @@ const shortestTopology = ssp.getShortestPathByMultipleStartPoints(
 
 <Docs-Table
     :data="[
-      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position[]', require: true, default: '', link: '../guide/types#position' },
+      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types#position' },
     ]"
 />
 
@@ -393,8 +393,8 @@ const shortestTopology = ssp.getShortestPathByMultipleEndPoints(
 
 <Docs-Table
     :data="[
-      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'start', desc: '路径的起始点（世界位置）', type: 'Position', require: true, default: '', link: '../guide/types#position' },
+      { prop: 'end', desc: '路径的结束点（世界位置）', type: 'Position[]', require: true, default: '', link: '../guide/types#position' },
     ]"
 />
 
@@ -417,7 +417,7 @@ const topology = ssp.getTopologyById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getTopologyByName <Base-Deprecated />
@@ -437,7 +437,7 @@ const topologyList = ssp.getTopologyByName('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllTopology
@@ -508,7 +508,7 @@ const topologyList = ssp.getTopologyByUserDataProperty(
 :::
 
 :::warning 弃用警告
-请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+请使用 [`getObjectByUserDataProperty`](./object#getobjectbyuserdataproperty) 替代
 :::
 
 ## removeTopologyById <Base-Deprecated />
@@ -528,7 +528,7 @@ ssp.removeTopologyById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## createTopologyToGroup
@@ -564,7 +564,7 @@ ssp.createTopologyToGroup(
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### topologyInfoList
@@ -629,9 +629,9 @@ ssp
       { prop: 'id', desc: '路径对象唯一ID', type: 'string', require: false, default: '' },
       { prop: 'name', desc: '路径对象名称', type: 'string', require: false, default: '' },
       { prop: 'linkWidth', desc: '路径线宽', type: 'number', require: false, default: '20' },
-      { prop: 'linkColor', desc: '路径线颜色', type: 'IColor', require: false, default: '0x00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'linkColor', desc: '路径线颜色', type: 'IColor', require: false, default: '0x00ff00', link: '../guide/types#icolor' },
       { prop: 'renderNode', desc: '是否渲染路径节点', type: 'boolean', require: false, default: 'true' },
-      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types.html#icolor' }
+      { prop: 'nodeColor', desc: '节点颜色', type: 'IColor', require: false, default: '0x0000ff', link: '../guide/types#icolor' }
     ]"
 />
 
@@ -663,11 +663,11 @@ ssp.createGroupForTopology({
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 :::warning 弃用警告
-请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+请使用 [`createGroup`](../guide/objectGroup#creategroup) 替代
 :::
 
 ## addTopologyForGroup
@@ -701,7 +701,7 @@ ssp.addTopologyForGroup(
 #### groupId
 
 - **描述:** 组 `id`
-- **类型:** [groupId](./sbm.html#groupinfo)[‘id’]
+- **类型:** [groupId](./sbm#groupinfo)[‘id’]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### topologyInfoList
@@ -727,7 +727,7 @@ const group = ssp.getTopologyGroupById('firstTopologyGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getTopologyGroupByName <Base-Deprecated />
@@ -747,7 +747,7 @@ const groupList = ssp.getTopologyGroupByName('name_firstTopologyGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllTopologyGroup <Base-Deprecated />
@@ -767,7 +767,7 @@ const allTopologyGroupList = ssp.getAllTopologyGroup();
 ```
 
 :::warning 弃用警告
-请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+请使用 [`getAllGroup`](../guide/objectGroup#getallgroup) 替代
 :::
 
 ## removeTopologyGroupById <Base-Deprecated />
@@ -787,7 +787,7 @@ const isRemoveSuccess = ssp.removeTopologyGroupById('firstTopologyGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## clearTopology

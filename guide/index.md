@@ -46,5 +46,5 @@ ES 模块：
 ::: tip 提示
 在 HTML 中直接使用 `soonspacejs` 时需要指定 `three` 依赖地址
 
-用法请参考 [在 html 中使用](./start.html#在-html-中使用)
+用法请参考 [在 html 中使用](./start#在-html-中使用)
 :::

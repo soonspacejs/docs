@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # Line
 
-该对象继承自 [`BaseMesh`](./BaseMesh.html)对象。
+该对象继承自 [`BaseMesh`](./BaseMesh)对象。
 
 ## 扩展属性
 

@@ -92,15 +92,15 @@ ssp.createCanvas3D({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
       { prop: 'points', desc: '点信息集合', type: 'PointInfo[]', require: false, default: '[]', link: '#pointinfo' },
       { prop: 'lines', desc: '线信息集合', type: 'LineInfo[]', require: false, default: '[]', link: '#lineinfo' },
       { prop: 'polygons', desc: '面信息集合', type: 'Polygons[]', require: false, default: '[]', link: '#polygoninfo' },
       { prop: 'circles', desc: '圆信息集合', type: 'CircleInfo[]', require: false, default: '[]', link: '#circleinfo' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
@@ -112,13 +112,13 @@ ssp.createCanvas3D({
       { prop: 'id', desc: '点唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '点名称', type: 'string', require: false, default: '' },
       { prop: 'radius', desc: '点半径', type: 'number', require: false, default: '10' },
-      { prop: 'color', desc: '点颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '点颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'gradient', desc: '点颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '点不透明度', type: 'number', require: false, default: '1' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
@@ -129,15 +129,15 @@ ssp.createCanvas3D({
     :data="[
       { prop: 'id', desc: '线唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '线名称', type: 'string', require: false, default: '' },
-      { prop: 'points', desc: '组成面的点坐标集合', type: 'Position[]', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'points', desc: '组成面的点坐标集合', type: 'Position[]', require: true, default: '', link: '../guide/types#position' },
       { prop: 'width', desc: '线宽', type: 'number', require: false, default: '20' },
-      { prop: 'color', desc: '线颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '线颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'gradient', desc: '线颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '线不透明度', type: 'number', require: false, default: '1' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
@@ -149,14 +149,14 @@ ssp.createCanvas3D({
       { prop: 'id', desc: '面唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '面名称', type: 'string', require: false, default: '' },
       { prop: 'yHeight', desc: '面空间高度', type: 'number', require: true, default: '' },
-      { prop: 'points', desc: '组成面的点坐标集合', type: 'PlaneIVector2[]', require: true, default: '', link: '../guide/types.html#planeivector2' },
-      { prop: 'color', desc: '面颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'points', desc: '组成面的点坐标集合', type: 'PlaneIVector2[]', require: true, default: '', link: '../guide/types#planeivector2' },
+      { prop: 'color', desc: '面颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'gradient', desc: '面颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '面不透明度', type: 'number', require: false, default: '1' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
@@ -168,13 +168,13 @@ ssp.createCanvas3D({
       { prop: 'id', desc: '圆唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '圆名称', type: 'string', require: false, default: '' },
       { prop: 'radius', desc: '圆半径', type: 'number', require: false, default: '10' },
-      { prop: 'color', desc: '圆颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '圆颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'gradient', desc: '圆颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '圆不透明度', type: 'number', require: false, default: '1' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
@@ -183,7 +183,7 @@ ssp.createCanvas3D({
 
 <Docs-Table
     :data="[
-      { prop: 'colors', desc: '渐变色列表', type: 'IColor[]', require: true, default: '', link: '../guide/types.html#icolor' },
+      { prop: 'colors', desc: '渐变色列表', type: 'IColor[]', require: true, default: '', link: '../guide/types#icolor' },
       { prop: 'stops', desc: '渐变色偏移，与 color 对应，值为0 ~ 1之间', type: 'number[]', require: false, default: '根据 colors 均匀分布' },
       { prop: 'size', desc: '渐变贴图的大小', type: 'numbert', require: false, default: '1024' },
     ]"
@@ -206,7 +206,7 @@ const Canvas3D = ssp.getCanvas3DById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getCanvas3DByName <Base-Deprecated />
@@ -226,7 +226,7 @@ const Canvas3DList = ssp.getCanvas3DByName('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllCanvas3D
@@ -297,7 +297,7 @@ const Canvas3DList = ssp.getCanvas3DByUserDataProperty(
 :::
 
 :::warning 弃用警告
-请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+请使用 [`getObjectByUserDataProperty`](./object#getobjectbyuserdataproperty) 替代
 :::
 
 ## removeCanvas3DById <Base-Deprecated />
@@ -317,7 +317,7 @@ ssp.removeCanvas3DById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## createCanvas3DToGroup
@@ -355,7 +355,7 @@ ssp
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### canvas3DInfoList
@@ -392,11 +392,11 @@ ssp.createGroupForCanvas3D({
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 :::warning 弃用警告
-请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+请使用 [`createGroup`](../guide/objectGroup#creategroup) 替代
 :::
 
 ## addCanvas3DForGroup
@@ -432,7 +432,7 @@ ssp
 #### groupId
 
 - **描述:** 组 `id`
-- **类型:** [groupId](./sbm.html#groupinfo)[‘id’]
+- **类型:** [groupId](./sbm#groupinfo)[‘id’]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### canvas3DInfoList
@@ -458,7 +458,7 @@ const group = ssp.getCanvas3DGroupById('firstCanvas3DGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getCanvas3DGroupByName <Base-Deprecated />
@@ -478,7 +478,7 @@ const groupList = ssp.getCanvas3DGroupByName('name_firstCanvas3DGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllCanvas3DGroup <Base-Deprecated />
@@ -498,7 +498,7 @@ const allCanvas3DGroupList = ssp.getAllCanvas3DGroup();
 ```
 
 :::warning 弃用警告
-请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+请使用 [`getAllGroup`](../guide/objectGroup#getallgroup) 替代
 :::
 
 ## removeCanvas3DGroupById <Base-Deprecated />
@@ -518,7 +518,7 @@ const isRemoveSuccess = ssp.removeCanvas3DGroupById('firstCanvas3DGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## clearCanvas3D

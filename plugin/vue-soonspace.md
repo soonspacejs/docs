@@ -139,7 +139,7 @@ body,
 
 自定义类名
 
-- **类型：** [Vue.class](https://cn.vuejs.org/v2/guide/class-and-style.html)
+- **类型：** [Vue.class](https://cn.vuejs.org/v2/guide/class-and-style)
 - **默认值：** `undefined`
 
 ### customStyle
@@ -159,7 +159,7 @@ body,
 
 ### options
 
-[soonspace 配置项](../../guide/config.html)
+[soonspace 配置项](../../guide/config)
 
 - **类型：** object
 - **默认值：** `{}`
@@ -178,7 +178,7 @@ body,
 
 `soonspace` 实例
 
-> 实例存储推荐使用插件 [Sspx](./sspx.html)，或保存在 `Vue` 原型上，你要保存在组件数据中，避免空间数据被劫持。
+> 实例存储推荐使用插件 [Sspx](./sspx)，或保存在 `Vue` 原型上，你要保存在组件数据中，避免空间数据被劫持。
 
 正确写法
 
@@ -215,7 +215,7 @@ export default {
 <br>
 
 ::: tip 提示
-以下方法全部为 [soonspace 空间交互事件](../../guide/event.html) 在 `vue-soonspace` 组件内的事件传递，方法名与回调参数完全一致。
+以下方法全部为 [soonspace 空间交互事件](../../guide/event) 在 `vue-soonspace` 组件内的事件传递，方法名与回调参数完全一致。
 :::
 
 ### modelClick

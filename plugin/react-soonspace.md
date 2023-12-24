@@ -82,7 +82,7 @@ export default function SoonspaceTest() {
 
 这样的目的是使场景融合入 `react` 的生命周期中, 故在某些情况可能会导致场景渲染死循环.
 
-建议使用 [`useMemo`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usememo)、[`useCallback`](https://zh-hans.reactjs.org/docs/hooks-reference.html#usecallback) 优化, 或者将渲染无关的 `props` 提取到组件外部.
+建议使用 [`useMemo`](https://zh-hans.reactjs.org/docs/hooks-reference#usememo)、[`useCallback`](https://zh-hans.reactjs.org/docs/hooks-reference#usecallback) 优化, 或者将渲染无关的 `props` 提取到组件外部.
 :::
 
 ## 配置属性
@@ -118,14 +118,14 @@ export default function SoonspaceTest() {
 
 ### options
 
-`soonspace` [配置项](../../guide/config.html)
+`soonspace` [配置项](../../guide/config)
 
 - **类型：** object
 - **默认值：** `{}`
 
 ### events
 
-`soonspace` [场景事件](../../guide/event.html)
+`soonspace` [场景事件](../../guide/event)
 
 - **类型：** object
 - **默认值：** `{}`
@@ -143,4 +143,4 @@ export default function SoonspaceTest() {
 
 `soonspace` 实例
 
-> 实例存储推荐使用插件 [Sspx](./sspx.html)。
+> 实例存储推荐使用插件 [Sspx](./sspx)。

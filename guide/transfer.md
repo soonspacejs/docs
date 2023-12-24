@@ -34,7 +34,7 @@ new SoonSpace({
 });
 ```
 
-2. 不再兼容 `1.x` 早期版本的 `backgroundColor`、`backgroundAlpha` 字段，使用 [background.color、 background.alpha](./config.html#background) 替代。
+2. 不再兼容 `1.x` 早期版本的 `backgroundColor`、`backgroundAlpha` 字段，使用 [background.color、 background.alpha](./config#background) 替代。
 
 ### API
 
@@ -54,13 +54,13 @@ ssp.createPoi({
 })
 ```
 
-2. 插件安装 `ssp.install` 改为插件注册 [ssp.registerPlugin](../api/pligin.html#registerplugin)。
+2. 插件安装 `ssp.install` 改为插件注册 [ssp.registerPlugin](../api/pligin#registerplugin)。
 
 完善中...
 
 ### 框架插件
 
-1. [**vue-soonspace**](../plugin/vue-soonspace.html)
+1. [**vue-soonspace**](../plugin/vue-soonspace)
    <Base-Table
        :head="[
          { title: 'SoonSpace 版本', key: 'v' },
@@ -78,7 +78,7 @@ npm i vue-soonspace@2.x.x -S
 yarn add vue-soonspace@2.x.x -S
 ```
 
-1. [**react-soonspace**](../plugin/react-soonspace.html)
+1. [**react-soonspace**](../plugin/react-soonspace)
    <Base-Table
        :head="[
          { title: 'SoonSpace 版本', key: 'v' },
@@ -98,7 +98,7 @@ yarn add react-soonspace@2.x.x -S
 
 ### 功能插件
 
-1. [**热力图插件（heat-map）**](../plugin/heat-map.html)
+1. [**热力图插件（heat-map）**](../plugin/heat-map)
    <Base-Table
        :head="[
          { title: 'SoonSpace 版本', key: 'v' },
@@ -119,7 +119,7 @@ yarn remove @soonspacejs/heatmap -S
 yarn add @soonspacejs/plugin-heat-map -S
 ```
 
-2. [**巡检控制器（patrol-controls）**](../plugin/patrol-controls.html)
+2. [**巡检控制器（patrol-controls）**](../plugin/patrol-controls)
    <Base-Table
        :head="[
          { title: 'SoonSpace 版本', key: 'v' },
@@ -140,7 +140,7 @@ yarn remove @soonspacejs/patrol-controls -S
 yarn add @soonspacejs/plugin-patrol-controls -S
 ```
 
-3. [**对象操作控制器（transform-controls）**](../plugin/transform-controls.html)
+3. [**对象操作控制器（transform-controls）**](../plugin/transform-controls)
    <Base-Table
        :head="[
          { title: 'SoonSpace 版本', key: 'v' },
@@ -163,7 +163,7 @@ yarn add @soonspacejs/plugin-transform-controls -S
 
 ### 平台协同插件
 
-1. [**soonmanager-sync**](../plugin/soonmanager-sync.html)
+1. [**soonmanager-sync**](../plugin/soonmanager-sync)
    <Base-Table
        :head="[
          { title: 'SoonSpace 版本', key: 'v' },

@@ -7,7 +7,7 @@
 创建一个补间动画
 
 :::warning 献给不了解模型动画的读者：
-该函数多用来实现一些简单空间属性的补间动画，例如：一个模型具有原始位置（source），你想让它移动到某处（target），这样的简单动画使用该函数就很容易做到。但是它无法像 [模型动画](https://baike.baidu.com/item/%E4%B8%89%E7%BB%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%A8%E7%94%BB/3731278?fromtitle=%E6%A8%A1%E5%9E%8B%E5%8A%A8%E7%94%BB&fromid=24027679&fr=aladdin) 一样灵活与强大，例如：一个游戏人物模型的舞蹈动画，它应该是由建模师在建模时完成，使用文档的 [动画播放](./model.html#playmodelanimation) 方法来播放。
+该函数多用来实现一些简单空间属性的补间动画，例如：一个模型具有原始位置（source），你想让它移动到某处（target），这样的简单动画使用该函数就很容易做到。但是它无法像 [模型动画](https://baike.baidu.com/item/%E4%B8%89%E7%BB%B4%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%A8%E7%94%BB/3731278?fromtitle=%E6%A8%A1%E5%9E%8B%E5%8A%A8%E7%94%BB&fromid=24027679&fr=aladdin) 一样灵活与强大，例如：一个游戏人物模型的舞蹈动画，它应该是由建模师在建模时完成，使用文档的 [动画播放](./model#playmodelanimation) 方法来播放。
 :::
 
 ### 样例：

@@ -221,7 +221,7 @@ soonmanagerSync.setGlobalSetting({
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '背景颜色', type: 'IColor', require: true, link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '背景颜色', type: 'IColor', require: true, link: '../guide/types#icolor' },
       { prop: 'ambientLight', desc: '环境光', type: 'AmbientLightOptions', require: true },
       { prop: 'hemisphereLight', desc: '半球光', type: 'HemisphereLightOptions', require: true },
       { prop: 'directionalLight', desc: '平行光', type: 'DirectionalLightOptions', require: true },

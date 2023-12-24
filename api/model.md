@@ -82,11 +82,11 @@ ssp
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'url', desc: '资源路径', type: 'string', require: true, default: '' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
       { prop: 'onClick', desc: '左键单击事件', type: '(object: Model) =&gt; void', require: false, default: 'null' },
       { prop: 'onDblClick', desc: '左键双击事件', type: '(object: Model) =&gt; void', require: false, default: 'null' },
@@ -155,7 +155,7 @@ const model = ssp.getModelById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getModelByName <Base-Deprecated />
@@ -175,7 +175,7 @@ const modelList = ssp.getModelByName('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllModel
@@ -241,7 +241,7 @@ const modelList = ssp.getModelByUserDataProperty((userData) => userData?.people?
 :::
 
 :::warning 弃用警告
-请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+请使用 [`getObjectByUserDataProperty`](./object#getobjectbyuserdataproperty) 替代
 :::
 
 ## removeModelById <Base-Deprecated />
@@ -261,7 +261,7 @@ ssp.removeModelById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## loadModelToGroup
@@ -296,7 +296,7 @@ ssp
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### modelInfoList
@@ -333,11 +333,11 @@ ssp.createGroupForModel({
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 :::warning 弃用警告
-请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+请使用 [`createGroup`](../guide/objectGroup#creategroup) 替代
 :::
 
 ## addModelForGroup
@@ -370,7 +370,7 @@ ssp
 #### groupId
 
 - **描述:** 组 `id`
-- **类型:** [groupId](./sbm.html#groupinfo)[‘id’]
+- **类型:** [groupId](./sbm#groupinfo)[‘id’]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### modelInfoList
@@ -396,7 +396,7 @@ const group = ssp.getModelGroupById('firstModelGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getModelGroupByName <Base-Deprecated />
@@ -416,7 +416,7 @@ const groupList = ssp.getModelGroupByName('name_firstModelGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllModelGroup <Base-Deprecated />
@@ -436,7 +436,7 @@ const allModelGroupList = ssp.getAllModelGroup();
 ```
 
 :::warning 弃用警告
-请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+请使用 [`getAllGroup`](../guide/objectGroup#getallgroup) 替代
 :::
 
 ## removeModelGroupById <Base-Deprecated />
@@ -456,7 +456,7 @@ const isRemoveSuccess = ssp.removeModelGroupById('firstModelGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## clearModel
@@ -535,7 +535,7 @@ ssp.playModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 ```
 
 ::: tip 提示
-返回的 `action` 对象请参考 [three.js AnimationAction](https://threejs.org/docs/index.html#api/en/animation/AnimationAction)
+返回的 `action` 对象请参考 [three.js AnimationAction](https://threejs.org/docs/index#api/en/animation/AnimationAction)
 :::
 
 ### 参数：
@@ -543,7 +543,7 @@ ssp.playModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 #### model
 
 - **描述:** 模型对象
-- **类型:** [Model](../sceneObject/Model.html)
+- **类型:** [Model](../guide/sceneObject/Model)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### animation
@@ -580,7 +580,7 @@ ssp.stopModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 #### model
 
 - **描述:** 模型对象
-- **类型:** [Model](../sceneObject/Model.html)
+- **类型:** [Model](../guide/sceneObject/Model)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### animation
@@ -722,7 +722,7 @@ ssp.computeModelsBoundsTree({
 ::: warning 注意
 使用 `workerCreator` 时需要项目的构建工具支持 `new Worker()` 语法
 
-在 [Webpack5](https://webpack.js.org/guides/web-workers/#root)、[Vite](https://vitejs.dev/guide/features.html#web-workers) 中无需特殊处理
+在 [Webpack5](https://webpack.js.org/guides/web-workers/#root)、[Vite](https://vitejs.dev/guide/features#web-workers) 中无需特殊处理
 
 如果你使用的是 Webpack4，你可能需要 [worker-loader](https://v4.webpack.js.org/loaders/worker-loader/)
 :::

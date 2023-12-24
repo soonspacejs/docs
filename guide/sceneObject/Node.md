@@ -1,4 +1,4 @@
 # Node
 
-该对象继承自 [`Point`](./Point.html)对象。
+该对象继承自 [`Point`](./Point)对象。
 

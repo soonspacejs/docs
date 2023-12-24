@@ -183,7 +183,7 @@ const ssp = new SoonSpace({
 #### sceneClickEvent
 
 - **type**
-  - 类型: [SceneEventType](./types.html#sceneeventtype)
+  - 类型: [SceneEventType](./types#sceneeventtype)
   - 描述: 触发的点击事件类型
 - **event**
   - 类型: [MouseEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/MouseEvent) ｜ [TouchEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent)
@@ -197,5 +197,5 @@ const ssp = new SoonSpace({
 
 #### position
 
-- **类型：** [Position](./types.html#position)
+- **类型：** [Position](./types#position)
 - **描述：** 射线与空间对象相交坐标点。

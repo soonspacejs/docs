@@ -3,7 +3,7 @@ sidebarDepth: 2
 ---
 # Circle
 
-该对象继承自 [`BaseMesh`](./BaseMesh.html)对象。
+该对象继承自 [`BaseMesh`](./BaseMesh)对象。
 
 ## 方法
 

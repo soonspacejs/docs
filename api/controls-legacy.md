@@ -4,7 +4,7 @@
 
 修改配置的方式共有两种
 
-- 场景初始配置项 [controls](../guide/config.html#controls)。
+- 场景初始配置项 [controls](../guide/config#controls)。
 - Api: [setControlsOptions](#setcontrolsoptions)。
 
 ::: tip 提示

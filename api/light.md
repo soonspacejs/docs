@@ -1,7 +1,7 @@
 # 灯光
 
 ::: tip 提示
-v2.4.0 之后内部已经不在创建额外的灯光，控制场景的明亮度推荐使用 [`setToneMapping`](./sceneTool.html#settonemapping) 控制
+v2.4.0 之后内部已经不在创建额外的灯光，控制场景的明亮度推荐使用 [`setToneMapping`](./sceneTool#settonemapping) 控制
 :::
 
 ### 样例：
@@ -50,7 +50,7 @@ ssp.createAmbientLight({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x9a9a9a', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x9a9a9a', link: '../guide/types#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
     ]"
 />
@@ -130,10 +130,10 @@ ssp.createDirectionalLight({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
-      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 1000, z: 0 }', link: '../guide/types.html#icolor'  },
-      { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: -100, z: 0 }', link: '../guide/types.html#icolor'  },
+      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 1000, z: 0 }', link: '../guide/types#icolor'  },
+      { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: -100, z: 0 }', link: '../guide/types#icolor'  },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
       { prop: 'shadowAutoUpdate', desc: '阴影是否自动更新，如果为 `false` 需要调用 `updateAllShadow` 来更新阴影', type: 'boolean', require: false, default: 'false'},
       { prop: 'mapSize', desc: '阴影的贴图区域大小。值越大，阴影质量越好。但也会增加性能损耗', type: 'number', require: false, default: '4096'},
@@ -212,9 +212,9 @@ ssp.createHemisphereLight({
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
-      { prop: 'skyColor', desc: '天空颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
-      { prop: 'groundColor', desc: '地面颜色', type: 'IColor', require: false, default: '0xdddddd', link: '../guide/types.html#icolor' },
-      { prop: 'position', desc: '光的朝向位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position'  },
+      { prop: 'skyColor', desc: '天空颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
+      { prop: 'groundColor', desc: '地面颜色', type: 'IColor', require: false, default: '0xdddddd', link: '../guide/types#icolor' },
+      { prop: 'position', desc: '光的朝向位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position'  },
     ]"
 />
 
@@ -280,11 +280,11 @@ ssp.createSpotLight({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'angle', desc: '光照方向扩散的角度（最大值为180）', type: 'number', require: false, default: '45' },
-      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types#position' },
+      { prop: 'target', desc: '光照向的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
       { prop: 'shadowAutoUpdate', desc: '阴影是否自动更新，如果为 `false` 需要调用 `updateAllShadow` 来更新阴影', type: 'boolean', require: false, default: 'false'},
       { prop: 'mapSize', desc: '阴影的贴图区域大小。值越大，阴影质量越好。但也会增加性能损耗', type: 'number', require: false, default: '4096'},
@@ -349,9 +349,9 @@ ssp.createPointLight({ id: 'pointLight', name: 'pointLight' });
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
-      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 500, z: 0 }', link: '../guide/types#position' },
       { prop: 'distance', desc: '光照范围', type: 'number', require: false, default: '5000' },
       { prop: 'openShadow', desc: '是否开启阴影', type: 'boolean', require: false, default: 'false'},
       { prop: 'shadowAutoUpdate', desc: '阴影是否自动更新，如果为 `false` 需要调用 `updateAllShadow` 来更新阴影', type: 'boolean', require: false, default: 'false'},
@@ -436,11 +436,11 @@ ssp.createRectAreaLight({
     :data="[
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'intensity', desc: '光照强度', type: 'number', require: false, default: '10' },
       { prop: 'width', desc: '矩形区域的宽度', type: 'number', require: false, default: '10' },
       { prop: 'height', desc: '矩形区域的高度', type: 'number', require: false, default: '10' },
-      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
+      { prop: 'position', desc: '光源的位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
     ]"
 />
 

@@ -83,7 +83,7 @@ drawingShapePlugin.drawingPoint(
 - **类型:** `DrawingPointInfo`
 - **必填:** <Base-RequireIcon />
 
-`DrawingPointInfo` 字段属性（接口类型）继承于 [PointInfo](../api/Canvas3D.html#pointinfo)，但不需要 `id` 字段。
+`DrawingPointInfo` 字段属性（接口类型）继承于 [PointInfo](../api/Canvas3D#pointinfo)，但不需要 `id` 字段。
 
 ##### events
 
@@ -146,7 +146,7 @@ drawingShapePlugin.drawingLine(
 - **类型:** `DrawingLineInfo`
 - **必填:** <Base-RequireIcon />
 
-`DrawingLineInfo` 字段属性（接口类型）继承于 [LineInfo](../api/Canvas3D.html#lineinfo)，但不需要 `id`、`points` 字段。
+`DrawingLineInfo` 字段属性（接口类型）继承于 [LineInfo](../api/Canvas3D#lineinfo)，但不需要 `id`、`points` 字段。
 
 ##### events
 
@@ -213,7 +213,7 @@ drawingShapePlugin.drawingPolygon(
 - **类型:** `DrawingPolygonInfo`
 - **必填:** <Base-RequireIcon />
 
-`DrawingPolygonInfo` 字段属性（接口类型）继承于 [PolygonInfo](../api/Canvas3D.html#polygoninfo)，但不需要 `id`、`points`、`yHeight` 字段。
+`DrawingPolygonInfo` 字段属性（接口类型）继承于 [PolygonInfo](../api/Canvas3D#polygoninfo)，但不需要 `id`、`points`、`yHeight` 字段。
 
 ##### events
 
@@ -275,7 +275,7 @@ drawingShapePlugin.drawingCircle(
 - **类型:** `DrawingCircleInfo`
 - **必填:** <Base-RequireIcon />
 
-`DrawingCircleInfo` 字段属性（接口类型）继承于 [CircleInfo](../api/Canvas3D.html#circleinfo)，但不需要 `id`、`radius` 字段。
+`DrawingCircleInfo` 字段属性（接口类型）继承于 [CircleInfo](../api/Canvas3D#circleinfo)，但不需要 `id`、`radius` 字段。
 
 ##### events
 

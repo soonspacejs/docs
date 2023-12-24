@@ -98,7 +98,7 @@ keyCodeMap = {
 - 默认值：`{ max: Math.PI, min: 0 }`
 
 ::: warning 弃用警告
-请使用 [controls](../api/controls.html) 的 `minPolarAngle` 和 `maxPolarAngle` 属性替代
+请使用 [controls](../api/controls) 的 `minPolarAngle` 和 `maxPolarAngle` 属性替代
 :::
 
 ### moveSpeed
@@ -278,10 +278,10 @@ firstPersonControls.start({
 <Docs-Table 
     :data="[
       {
-        prop: 'position', desc: '起始相机位置', type: 'Position', require: false, default: '', link: '../guide/types.html#position'
+        prop: 'position', desc: '起始相机位置', type: 'Position', require: false, default: '', link: '../guide/types#position'
       },
       {
-        prop: 'rotation', desc: '起始相机弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation'
+        prop: 'rotation', desc: '起始相机弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation'
       },
       {
         prop: 'moveSpeed', desc: '移动速度', type: 'number', require: false, default: '1'

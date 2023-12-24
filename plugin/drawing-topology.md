@@ -112,4 +112,4 @@ drawingTopologyPlugin.start({
     ]"
 />
 
-其他配置参考[这里](../api/topology.html#topologyinfo)
+其他配置参考[这里](../api/topology#topologyinfo)

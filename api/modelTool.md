@@ -50,8 +50,8 @@ ssp.edgeShow(object, {
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '轮廓颜色', type: 'IColor', require: false, default: '#fff', link: '../guide/types.html#icolor'},
-      { prop: 'hideColor', desc: '被遮挡时的轮廓颜色', type: 'IColor', require: false, default: '#999', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '轮廓颜色', type: 'IColor', require: false, default: '#fff', link: '../guide/types#icolor'},
+      { prop: 'hideColor', desc: '被遮挡时的轮廓颜色', type: 'IColor', require: false, default: '#999', link: '../guide/types#icolor' },
       { prop: 'edgeThickness', desc: '轮廓浓度', type: 'number', require: false, default: 3 },
       { prop: 'edgeStrength', desc: '轮廓厚度', type: 'number', require: false, default: 10 },
     ]"
@@ -126,14 +126,14 @@ ssp.strokeShow(models, {
 
 #### StrokeSelectOptions
 
-[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
+[继承自 BaseSelectOptions](../guide/types#baseselectoptions)
 
 <Docs-Table
     :data="[
       { prop: 'isOpacityShow', desc: '是否透明', type: 'boolean', require: false, default: true },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x46ebf7' , link: '../guide/types.html#icolor'},
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x46ebf7' , link: '../guide/types#icolor'},
       { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.2 },
-      { prop: 'edgeColor', desc: '边缘颜色', type: 'IColor', require: false, default: '0x00eeff', link: '../guide/types.html#icolor' },
+      { prop: 'edgeColor', desc: '边缘颜色', type: 'IColor', require: false, default: '0x00eeff', link: '../guide/types#icolor' },
       { prop: 'edgeOpacity', desc: '边缘透明度', type: 'number', require: false, default: 1 },
       { prop: 'modelCache', desc: '当传入 Model 时是否缓存计算结果', type: 'boolean', require: false, default: true },
       { prop: 'firstChild', desc: '是否只作用第一个子节点', type: 'boolean', require: false, default: false },
@@ -208,11 +208,11 @@ ssp.opacityShow(object, {
 
 #### OpacitySelectOptions
 
-[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
+[继承自 BaseSelectOptions](../guide/types#baseselectoptions)
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff' , link: '../guide/types.html#icolor'},
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff' , link: '../guide/types#icolor'},
       { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.2 },
     ]"
 />
@@ -271,11 +271,11 @@ ssp.highlightShow(object, { color: 0xff6600 });
 
 #### HighlightSelectOptions
 
-[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
+[继承自 BaseSelectOptions](../guide/types#baseselectoptions)
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xff0000' , link: '../guide/types.html#icolor'},
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xff0000' , link: '../guide/types#icolor'},
       { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 1 },
     ]"
 />
@@ -340,12 +340,12 @@ ssp.emissiveShow(object, { color: '#f00', maxOpacity: 1, minOpacity: 0, baseColo
 
 #### EmissiveSelectOptions
 
-[继承自 BaseSelectOptions](../guide/types.html#baseselectoptions)
+[继承自 BaseSelectOptions](../guide/types#baseselectoptions)
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '自发光颜色', type: 'IColor', require: false, default: 'red',  link: '../guide/types.html#icolor'},
-      { prop: 'baseColor', desc: '基础颜色', type: 'IColor', require: false, default: '',  link: '../guide/types.html#icolor'},
+      { prop: 'color', desc: '自发光颜色', type: 'IColor', require: false, default: 'red',  link: '../guide/types#icolor'},
+      { prop: 'baseColor', desc: '基础颜色', type: 'IColor', require: false, default: '',  link: '../guide/types#icolor'},
       { prop: 'minOpacity', desc: '动画自发光强度最小值', type: 'number', require: false, default: 0 },
       { prop: 'maxOpacity', desc: '动画自发光强度最大值', type: 'number', require: false, default: 1 },
       { prop: 'duration', desc: '动画周期时长(ms)', type: 'number', require: false, default: 1000 },

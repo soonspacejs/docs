@@ -24,7 +24,7 @@ ssp.setBackgroundColor(0xff0000);
 
 #### color
 
-- **类型:** [IColor](../guide/types.html#icolor)
+- **类型:** [IColor](../guide/types#icolor)
 - **描述:** 颜色值
 - **必填:** <Base-RequireIcon />
 
@@ -48,7 +48,7 @@ ssp.setBackgroundColorAlpha(0xff0000, 0.5);
 
 #### color
 
-- **类型:** [IColor](../guide/types.html#icolor)
+- **类型:** [IColor](../guide/types#icolor)
 - **描述:** 颜色值
 - **必填:** <Base-RequireIcon />
 
@@ -297,7 +297,7 @@ ssp.setSky({
 <Docs-Table
     :data="[
       { prop: 'enabled', desc: '是否开启天空', type: 'boolean', require: false, default: 'true' },
-      { prop: 'position', desc: '天空位置', type: 'Position', require: false, default: { x: 0, y: 0, z: 0 }, link: '../guide/types.html#position' },
+      { prop: 'position', desc: '天空位置', type: 'Position', require: false, default: { x: 0, y: 0, z: 0 }, link: '../guide/types#position' },
       { prop: 'scalar', desc: '天空范围', type: 'number', require: false, default: 450000 },
       { prop: 'turbidity', desc: '太阳浑浊度', type: 'number', require: false, default: 10 },
       { prop: 'rayleigh', desc: '太阳雷利值', type: 'number', require: false, default: 3 },
@@ -638,7 +638,7 @@ ssp.openSceneFog({ color: '0xcce0ff', near: 1, far: 1000 });
 
 <Docs-Table
     :data="[
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xcce0ff', link: '../guide/types.html#icolor'},
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xcce0ff', link: '../guide/types#icolor'},
       { prop: 'near', desc: '起始位置(距离相机)', type: 'number', require: false, default: 500 },
       { prop: 'far', desc: '结束位置(距离相机)', type: 'number', require: false, default: 50000 },
     ]"
@@ -720,7 +720,7 @@ ssp.getObjectLabelPos(object, 'front', { mode: 'scene', extendScale: 1.6 });
 
 #### viewpoint
 
-- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint)
+- **类型:** [FlyToViewpoint](../guide/types#flytoviewpoint)
 - **描述:** 相对模型视角枚举
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 
@@ -759,7 +759,7 @@ ssp.getOffsetByPosition({ x: 100, y: 200, z: 300 });
 
 #### position
 
-- **类型:** [Position](../guide/types.html#position)
+- **类型:** [Position](../guide/types#position)
 - **描述:** 空间坐标
 - **必填:** <Base-RequireIcon />
 
@@ -783,7 +783,7 @@ ssp.getPositionByOffset({ offsetX: 10, offsetY: 10 });
 
 #### offset
 
-- **类型:** [OffsetPoint](../guide/types.html#offsetpoint)
+- **类型:** [OffsetPoint](../guide/types#offsetpoint)
 - **描述:** 偏移量
 - **必填:** <Base-RequireIcon />
 

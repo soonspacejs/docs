@@ -562,7 +562,7 @@ function elevate(height: number, enableTransition?: boolean): Promise<void>;
 
 使用相机最近的轴将视口与对象的包围盒或 `Box3` 对齐
 
-[flyToObj](./camera.html#flytoobj) 方法基于此方法实现
+[flyToObj](./camera#flytoobj) 方法基于此方法实现
 
 #### 定义
 
@@ -632,7 +632,7 @@ function fitToSphere(
 
 从 `position` 看向 `target`
 
-[setCameraViewpoint](./camera.html#setcameraviewpoint) 方法基于此方法实现
+[setCameraViewpoint](./camera#setcameraviewpoint) 方法基于此方法实现
 
 #### 定义
 
@@ -809,7 +809,7 @@ function setBoundary(x: number, y: number, width: number, height: number): void;
 
 返回当前 `target`
 
-[getCameraViewpoint](./camera.html#getcameraviewpoint) 方法基于此方法实现
+[getCameraViewpoint](./camera#getcameraviewpoint) 方法基于此方法实现
 
 #### 定义
 
@@ -828,7 +828,7 @@ function getTarget(out?: Vector3, receiveEndValue?: boolean): Vector3;
 
 返回当前 `position`
 
-[getCameraViewpoint](./camera.html#getcameraviewpoint) 方法基于此方法实现
+[getCameraViewpoint](./camera#getcameraviewpoint) 方法基于此方法实现
 
 #### 定义
 

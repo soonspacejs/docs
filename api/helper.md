@@ -87,10 +87,10 @@ ssp.addGridHelper({
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'size', desc: '网格尺寸', type: 'number', require: false, default: '1000' },
       { prop: 'divisions', desc: '网格横纵向分割格数', type: 'number', require: false, default: '20' },
-      { prop: 'color', desc: '网格颜色', type: 'IColor', require: false, default: '#ffffff', link: '../guide/types.html#icolor' },
-      { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'color', desc: '网格颜色', type: 'IColor', require: false, default: '#ffffff', link: '../guide/types#icolor' },
+      { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
     ]"
 />
 
@@ -143,11 +143,11 @@ ssp.addPlaneHelper({
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'width', desc: '宽度', type: 'number', require: false, default: '500' },
       { prop: 'height', desc: '高度', type: 'number', require: false, default: '500' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '#00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '#00ff00', link: '../guide/types#icolor' },
       { prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: '0.2' },
-      { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'position', desc: '空间位置', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '空间旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
     ]"
 />
 
@@ -190,7 +190,7 @@ ssp.addBoxHelper({
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'box', desc: '包围盒', type: 'string', require: true, default: '' },
-      { prop: 'color', desc: '辅助线条颜色', type: 'IColor', require: false, default: '#00ff00', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '辅助线条颜色', type: 'IColor', require: false, default: '#00ff00', link: '../guide/types#icolor' },
     ]"
 />
 
@@ -248,10 +248,10 @@ await ssp.addGroundHelper({
       { prop: 'width', desc: '地面长（平面的宽）', type: 'number', require: false, default: '500' },
       { prop: 'height', desc: '地面宽（平面的高）', type: 'number', require: false, default: '500' },
       { prop: 'opacity', desc: '地面不透明度', type: 'number', require: false, default: '1' },
-      { prop: 'position', desc: '地面中心点坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '地面旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '地面缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
-      { prop: 'repeat', desc: '地面在平面内的平铺数', type: 'IVector2', require: false, default: '{ x: 10, y: 10 }', link: '../guide/types.html#ivector2' },
+      { prop: 'position', desc: '地面中心点坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '地面旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '地面缩放比', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
+      { prop: 'repeat', desc: '地面在平面内的平铺数', type: 'IVector2', require: false, default: '{ x: 10, y: 10 }', link: '../guide/types#ivector2' },
     ]"
 />
 
@@ -301,7 +301,7 @@ ssp.addDirectionalLightHelper({
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '平行光对象', type: 'DirectionalLight', require: true, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '平行光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '平行光的颜色', link: '../guide/types#icolor' },
       { prop: 'size', desc: '大小', type: 'number', require: false, default: '50' },
     ]"
 />
@@ -352,7 +352,7 @@ ssp.addHemisphereLightHelper({
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '半球光对象', type: 'HemisphereLight', require: true, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '半球光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '半球光的颜色', link: '../guide/types#icolor' },
       { prop: 'size', desc: '大小', type: 'number', require: false, default: '20' },
     ]"
 />
@@ -400,7 +400,7 @@ ssp.addSpotLightHelper({
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '聚光灯对象', type: 'SpotLight', require: true, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '聚光灯的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '聚光灯的颜色', link: '../guide/types#icolor' },
     ]"
 />
 
@@ -450,7 +450,7 @@ ssp.addPointLightHelper({
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '点光对象', type: 'PointLight', require: true, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '点光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '点光的颜色', link: '../guide/types#icolor' },
       { prop: 'size', desc: '大小', type: 'number', require: false, default: '20' },
     ]"
 />
@@ -500,7 +500,7 @@ ssp.addRectAreaLightHelper({
     :data="[
       { prop: 'id', desc: '唯一 ID', type: 'string', require: true, default: '' },
       { prop: 'light', desc: '矩形区域光对象', type: 'RectAreaLight', require: true, default: '' },
-      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '矩形区域光的颜色', link: '../guide/types.html#icolor' },
+      { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '矩形区域光的颜色', link: '../guide/types#icolor' },
     ]"
 />
 

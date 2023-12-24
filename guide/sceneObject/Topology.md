@@ -1,6 +1,6 @@
 # Topology
 
-该对象继承自 [`BaseObject3D`](./BaseObject3D.html)对象。
+该对象继承自 [`BaseObject3D`](./BaseObject3D)对象。
 
 ## 扩展属性
 
@@ -11,7 +11,7 @@
 - **类型：** `TopologyNodeInfo[]`
 - **默认值：** `-`
 
-[TopologyNodeInfo](../api/topology.html#createtopology)
+[TopologyNodeInfo](../api/topology#createtopology)
 
 ### links
 
@@ -20,7 +20,7 @@
 - **类型：** `TopologyLinkInfo[]`
 - **默认值：** `-`
 
-[TopologyLinkInfo](../api/topology.html#topologylinkinfo)
+[TopologyLinkInfo](../api/topology#topologylinkinfo)
 
 ## 方法
 

@@ -1,6 +1,6 @@
 # Icon
 
-该对象继承自 three [`Sprite`](https://threejs.org/docs/index.html#api/en/objects/Sprite)对象。
+该对象继承自 three [`Sprite`](https://threejs.org/docs/index#api/en/objects/Sprite)对象。
 
 ## 扩展属性
 

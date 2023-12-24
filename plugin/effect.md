@@ -174,10 +174,10 @@ effectPlugin.createSmoke({
         prop: 'acceleration', desc: '烟雾粒子的加速度', type: 'number', require: false, default: '10'
       },
       {
-        prop: 'velocity', desc: '烟雾粒子的扩散方向', type: 'IVector3', link: '../guide/types.html#ivector3' ,require: false, default: '{ x: 100, y: 100, z: 100 }'
+        prop: 'velocity', desc: '烟雾粒子的扩散方向', type: 'IVector3', link: '../guide/types#ivector3' ,require: false, default: '{ x: 100, y: 100, z: 100 }'
       },
        {
-        prop: 'color', desc: '烟雾粒子的颜色', type: 'IColor[]', link: '../guide/types.html#icolor' ,require: false, default: '[0x333333, 0x111111]'
+        prop: 'color', desc: '烟雾粒子的颜色', type: 'IColor[]', link: '../guide/types#icolor' ,require: false, default: '[0x333333, 0x111111]'
       },
     ]"
 />
@@ -325,7 +325,7 @@ effectPlugin.openWeather({
         prop: 'imgUrl', desc: '粒子贴图', type: 'string', require: false, default: '内置雨滴图',
       },
       {
-         prop: 'color', desc: '粒子颜色', type: 'IColor', link: '../guide/types.html#icolor', require: false, default: '0xffffff',
+         prop: 'color', desc: '粒子颜色', type: 'IColor', link: '../guide/types#icolor', require: false, default: '0xffffff',
       },
       {
         prop: 'size', desc: '粒子大小', type: 'number', require: false, default: '1',
@@ -436,7 +436,7 @@ effectPlugin.createSparkles({
         prop: 'opacity', desc: '粒子的不透明度', type: 'number | Float32Array', require: false, default: '1',
       },
       {
-         prop: 'color', desc: '粒子颜色', type: 'IColor | Float32Array', link: '../guide/types.html#icolor', require: false, default: '0xffffff',
+         prop: 'color', desc: '粒子颜色', type: 'IColor | Float32Array', link: '../guide/types#icolor', require: false, default: '0xffffff',
       },
       {
         prop: 'size', desc: '粒子大小', type: 'number', require: false, default: '2',
@@ -705,7 +705,7 @@ const pointsWave = effectPlugin.createPointsWave({
         prop: 'maxFluctua', desc: '最大波动系数', type: 'number', require: false, default: '0.1'
       },
       {
-         prop: 'color', desc: '颜色', type: 'IColor', link: '../guide/types.html#icolor', require: false, default: '#485c7c',
+         prop: 'color', desc: '颜色', type: 'IColor', link: '../guide/types#icolor', require: false, default: '#485c7c',
       },
       {
         prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: '1'
@@ -800,7 +800,7 @@ const builds = effectPlugin.createBuilds({
         prop: 'randShift', desc: '随机分布系数', type: 'number', require: false, default: '0.5'
       },
       {
-         prop: 'color', desc: '颜色', type: 'IColor', link: '../guide/types.html#icolor', require: false, default: '#485c7c',
+         prop: 'color', desc: '颜色', type: 'IColor', link: '../guide/types#icolor', require: false, default: '#485c7c',
       }
     ]"
 />
@@ -824,5 +824,5 @@ effectPlugin.removeEffect('test');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](../api/object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](../api/object#removeobjectbyid) 替代
 :::

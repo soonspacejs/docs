@@ -34,7 +34,7 @@ ssp.createGroup({
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./types.html#baseobject3dinfo)
+- **类型:** [GroupInfo](./types#baseobject3dinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 ## getAllGroup

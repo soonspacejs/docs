@@ -1,6 +1,6 @@
 # 相机
 
-`v2.10.x` 版本之后，相机所有的方法都基于 [controls](./controls.html) 实现。
+`v2.10.x` 版本之后，相机所有的方法都基于 [controls](./controls) 实现。
 
 <!-- getCameraViewpoint -->
 
@@ -84,8 +84,8 @@ await ssp.setCameraViewpoint(
 
 <Docs-Table
     :data="[
-      { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '相机旋转弧度', type: 'Rotation', require: true, default: '', link: '../guide/types.html#rotation' },
+      { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '相机旋转弧度', type: 'Rotation', require: true, default: '', link: '../guide/types#rotation' },
     ]"
 />
 
@@ -93,8 +93,8 @@ await ssp.setCameraViewpoint(
 
 <Docs-Table
     :data="[
-      { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
-      { prop: 'target', desc: '相机朝向位置', type: 'Position', require: true, default: '', link: '../guide/types.html#position' },
+      { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types#position' },
+      { prop: 'target', desc: '相机朝向位置', type: 'Position', require: true, default: '', link: '../guide/types#position' },
     ]"
 />
 
@@ -135,7 +135,7 @@ ssp
 
 - **描述:** 相机朝向主场景的视角面
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [FlyToViewpoint](../guide/types.html#flyToViewpoint)
+- **类型:** [FlyToViewpoint](../guide/types#flyToViewpoint)
 - **默认值:** `frontTop`
 
 #### options
@@ -208,9 +208,9 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 
 #### viewpoint
 
-- **描述:** 相机朝向物体对象的视角面，[可选枚举](../../guide/controls/viewpoints.html)。
+- **描述:** 相机朝向物体对象的视角面。
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint)
+- **类型:** [FlyToViewpoint](../guide/types#flytoviewpoint)
 - **默认值:** `frontTop`
 
 #### option
@@ -327,13 +327,13 @@ await ssp.flyTo(
 
 - **描述:** 相机飞向的坐标点
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** [Position](../guide/types.html#position)
+- **类型:** [Position](../guide/types#position)
 
 #### rotation
 
 - **描述:** 相机的旋转弧度
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [FlyToViewpoint](../guide/types.html#flytoviewpoint) | [Rotation](../guide/types.html#rotation)
+- **类型:** [FlyToViewpoint](../guide/types#flytoviewpoint) | [Rotation](../guide/types#rotation)
 - **默认值:** `frontTop`
 
 #### options
@@ -341,7 +341,7 @@ await ssp.flyTo(
 `v2.9.x`
 
 - **描述:** 可配置项
-- **类型:** [AnimationOptions](./animation.html#animationoptions)
+- **类型:** [AnimationOptions](./animation#animationoptions)
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **默认值:** `{}`
 
@@ -410,7 +410,7 @@ ssp
 #### target
 
 - **描述:** 目标点
-- **类型:** [Position](../guide/types.html#position)
+- **类型:** [Position](../guide/types#position)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### options

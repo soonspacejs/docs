@@ -6,35 +6,35 @@
 
 ### 前端框架插件
 
-- [vue-soonspace](./vue-soonspace.html) - Vue 中快速使用 soonspacejs。
-- [react-soonspace](./react-soonspace.html) - React 中快速使用 soonspacejs。
+- [vue-soonspace](./vue-soonspace) - Vue 中快速使用 soonspacejs。
+- [react-soonspace](./react-soonspace) - React 中快速使用 soonspacejs。
 
 ### 平台协同插件
 
-- [soonmanager-sync](./soonmanager-sync.html) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
-- [soonmanager2-sync](./soonmanager2-sync.html) - 空间平台 2.0 生产的场景加载及数据读取。（旧版）
-- [cps-soonmanager](./cps-soonmanager.html) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
-- [cps-scheme](./cps-scheme.html) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 预案插件
+- [soonmanager-sync](./soonmanager-sync) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
+- [soonmanager2-sync](./soonmanager2-sync) - 空间平台 2.0 生产的场景加载及数据读取。（旧版）
+- [cps-soonmanager](./cps-soonmanager) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
+- [cps-scheme](./cps-scheme) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 预案插件
 
 ### 功能扩展插件
 
-- [sspx](./sspx.html) - `soonspacejs` 实例存储容器。
-- [heat-map](./heat-map.html) - 热力图。
-- [heat-cloud](./heat-cloud.html) - 热力云。
-- [measuring](./measuring.html) - 测量。
-- [drawing-shape](./drawing-shape.html) - 绘制基础图形。
-- [patrol-controls](./patrol-controls.html) - 路径巡检控制器。
-- [drawing-topology](./drawing-topology.html) - 绘制拓扑路径。
-- [pathfinding](./pathfinding.html) - 路径查找。
-- [transform-controls](./transform-controls.html) - 空间对象操作（移动、旋转、缩放）控制器。
-- [follow-mouse](./follow-mouse.html) - 空间中摆放模型时，模型跟随鼠标。
-- [first-person-controls](./first-person-controls.html) - 第一人称漫游控制器。
-- [camera-follower](./camera-follower.html) - 相机跟随模型。
-- [clipping-controls](./clipping-controls.html) - 模型、场景切割控制器。
-- [model-blast](./model-blast.html) - 模型爆炸。
-- [effect](./effect.html) - 特效。
-- [navigation](./navigation.html) - 导航。
+- [sspx](./sspx) - `soonspacejs` 实例存储容器。
+- [heat-map](./heat-map) - 热力图。
+- [heat-cloud](./heat-cloud) - 热力云。
+- [measuring](./measuring) - 测量。
+- [drawing-shape](./drawing-shape) - 绘制基础图形。
+- [patrol-controls](./patrol-controls) - 路径巡检控制器。
+- [drawing-topology](./drawing-topology) - 绘制拓扑路径。
+- [pathfinding](./pathfinding) - 路径查找。
+- [transform-controls](./transform-controls) - 空间对象操作（移动、旋转、缩放）控制器。
+- [follow-mouse](./follow-mouse) - 空间中摆放模型时，模型跟随鼠标。
+- [first-person-controls](./first-person-controls) - 第一人称漫游控制器。
+- [camera-follower](./camera-follower) - 相机跟随模型。
+- [clipping-controls](./clipping-controls) - 模型、场景切割控制器。
+- [model-blast](./model-blast) - 模型爆炸。
+- [effect](./effect) - 特效。
+- [navigation](./navigation) - 导航。
 
 ### 开发者插件
 
-- [vscode-sbm-preview](./vscode-sbm-preview.html) - vscode 插件 - sbm 模型预览
+- [vscode-sbm-preview](./vscode-sbm-preview) - vscode 插件 - sbm 模型预览

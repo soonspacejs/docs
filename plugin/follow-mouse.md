@@ -127,10 +127,10 @@ followMousePlugin.start(
         prop: 'openHelper', desc: '是否显示包围盒辅助器', type: 'boolean', require: false, default: 'true'
       },
       {
-        prop: 'helperColor', desc: '包围盒辅助器颜色', type: 'IColor', require: false, default: '0xffff00', link: '../guide/types.html#icolor'
+        prop: 'helperColor', desc: '包围盒辅助器颜色', type: 'IColor', require: false, default: '0xffff00', link: '../guide/types#icolor'
       },
       {
-        prop: 'offset', desc: '模型移动时取点的偏移量', type: 'Position', require: false, default: '', link: '../guide/types.html#position'
+        prop: 'offset', desc: '模型移动时取点的偏移量', type: 'Position', require: false, default: '', link: '../guide/types#position'
       },
       {
         prop: 'onPlace', desc: '放置模型时回调函数', type: '(model) => {}', require: false, default: ''

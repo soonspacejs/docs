@@ -9,7 +9,7 @@ sidebarDepth: 2
 [SoonManager2.0 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
 
 ::: warning 注意
-此插件为 CPS 平台旧版资源使用，新版资源包请使用 [cps-soonmanager](./cps-soonmanager.html) 插件
+此插件为 CPS 平台旧版资源使用，新版资源包请使用 [cps-soonmanager](./cps-soonmanager) 插件
 :::
 
 ## 样例
@@ -101,7 +101,7 @@ interface ITreeData {
 拓扑路径数据
 
 - **默认值:** `null`
-- **类型:** [`TopologyInfo[]`](../api/topology.html#topologyinfo) | `null`
+- **类型:** [`TopologyInfo[]`](../api/topology#topologyinfo) | `null`
 
 ### propertiesData
 
@@ -261,7 +261,7 @@ soonmanager2Sync.loadScene({ needsModelsBoundsTree: false }).then(() => {
 });
 ```
 
-具体请查看 [computeModelsBoundsTree](../api/model.html#computemodelsboundstree)
+具体请查看 [computeModelsBoundsTree](../api/model#computemodelsboundstree)
 
 :::
 

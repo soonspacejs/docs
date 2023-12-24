@@ -92,10 +92,10 @@ cameraFollowerPlugin.start(model, {
 <Docs-Table 
     :data="[
       {
-        prop: 'position', desc: '相机位置（相对于模型）', type: 'Position', require: false, default: '{x: 0,y: 0,z: 0}', link: '../guide/types.html#position'
+        prop: 'position', desc: '相机位置（相对于模型）', type: 'Position', require: false, default: '{x: 0,y: 0,z: 0}', link: '../guide/types#position'
       },
       {
-        prop: 'rotation', desc: '相机弧度（相对于模型）', type: 'Rotation', require: false, default: '{x: 0,y: 0,z: 0}', link: '../guide/types.html#rotation'
+        prop: 'rotation', desc: '相机弧度（相对于模型）', type: 'Rotation', require: false, default: '{x: 0,y: 0,z: 0}', link: '../guide/types#rotation'
       }
     ]"
 />

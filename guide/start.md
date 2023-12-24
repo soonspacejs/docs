@@ -6,7 +6,7 @@
 
 ## 快速搭建
 
-使用 `@soonspacejs/create-app` 快速搭建项目。你可以选择 `Vue`、`React`或者是 `Html` 其中任一开发环境，并且提供是否自动集成 [soonmanager-sync](../plugin/soonmanager-sync.html) 配置选项。
+使用 `@soonspacejs/create-app` 快速搭建项目。你可以选择 `Vue`、`React`或者是 `Html` 其中任一开发环境，并且提供是否自动集成 [soonmanager-sync](../plugin/soonmanager-sync) 配置选项。
 
 ```sh
 # 通过以下命令搭建一个项目模板
@@ -104,8 +104,8 @@ yarn add soonspacejs -S
 
 ### 在 Vue 中使用
 
-[vue-soonspace](../plugin/vue-soonspace.html)
+[vue-soonspace](../plugin/vue-soonspace)
 
 ### 在 React 中使用
 
-[react-soonspace](../plugin/react-soonspace.html)
+[react-soonspace](../plugin/react-soonspace)

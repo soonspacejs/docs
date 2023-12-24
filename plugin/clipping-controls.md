@@ -92,7 +92,7 @@ clippingControlsPlugin.modelClipping(model, {
 <Docs-Table 
     :data="[
       {
-        prop: 'axis', desc: '坐标轴', type: 'AxisType', require: true, default: '', link: '../guide/types.html#axistype'
+        prop: 'axis', desc: '坐标轴', type: 'AxisType', require: true, default: '', link: '../guide/types#axistype'
       },
       {
         prop: 'clipPercent', desc: '百分比(0 - 100)', type: 'number', require: true, default: ''
@@ -133,7 +133,7 @@ clippingControlsPlugin.removeModelClipping(model, 'x');
 ##### axis
 
 - **描述:** 轴线
-- **类型:** [`AxisType`](../guide/types.html#axistype)
+- **类型:** [`AxisType`](../guide/types#axistype)
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ### sceneClipping
@@ -172,7 +172,7 @@ clippingControlsPlugin.sceneClipping({ axis: 'x', clipPoint: 500 });
 <Docs-Table 
     :data="[
       {
-        prop: 'axis', desc: '坐标轴', type: 'AxisType', require: true, default: '', link: '../guide/types.html#axistype'
+        prop: 'axis', desc: '坐标轴', type: 'AxisType', require: true, default: '', link: '../guide/types#axistype'
       },
       {
         prop: 'clipPoint', desc: '切割点的位置', type: 'number', require: true, default: ''
@@ -207,5 +207,5 @@ clippingControlsPlugin.removeSceneClipping('x');
 ##### axis
 
 - **描述:** 轴线
-- **类型:** [`AxisType`](../guide/types.html#axistype)
+- **类型:** [`AxisType`](../guide/types#axistype)
 - **必填:** <Base-RequireIcon :isRequire="false" />

@@ -105,6 +105,81 @@ export default defineConfig({
             { text: '场景事件', link: '/guide/event' },
             { text: '对象事件', link: '/guide/objectEvent' },
             { text: '对象分组', link: '/guide/objectGroup' },
+            {
+              text: '空间对象',
+              link: '/guide/sceneObject/',
+              collapsed: true,
+              items: [
+                {
+                  text: '基础空间对象',
+                  link: '/guide/sceneObject/BaseObject3D',
+                },
+                {
+                  text: '基础网格',
+                  link: '/guide/sceneObject/BaseMesh',
+                },
+                {
+                  text: '空间组',
+                  link: '/guide/sceneObject/Group',
+                },
+                {
+                  text: 'Sbm 模型',
+                  link: '/guide/sceneObject/Sbm',
+                },
+                {
+                  text: '通用模型',
+                  link: '/guide/sceneObject/Model',
+                },
+                {
+                  text: 'Poi',
+                  link: '/guide/sceneObject/Poi',
+                },
+                {
+                  text: 'PoiNode',
+                  link: '/guide/sceneObject/PoiNode',
+                },
+                {
+                  text: '空间画布',
+                  link: '/guide/sceneObject/Canvas3D',
+                },
+                {
+                  text: '拓扑路径',
+                  link: '/guide/sceneObject/Topology',
+                },
+                {
+                  text: '插件对象',
+                  link: '/guide/sceneObject/PluginObject',
+                },
+                {
+                  text: '点',
+                  link: '/guide/sceneObject/Point',
+                },
+                {
+                  text: '线',
+                  link: '/guide/sceneObject/Line',
+                },
+                {
+                  text: '面',
+                  link: '/guide/sceneObject/Polygon',
+                },
+                {
+                  text: '圆',
+                  link: '/guide/sceneObject/Circle',
+                },
+                {
+                  text: '路径连接线',
+                  link: '/guide/sceneObject/Link',
+                },
+                {
+                  text: '路径节点',
+                  link: '/guide/sceneObject/Node',
+                },
+                {
+                  text: '图标',
+                  link: '/guide/sceneObject/Icon',
+                },
+              ],
+            },
           ],
         },
       ],

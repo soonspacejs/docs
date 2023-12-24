@@ -79,7 +79,7 @@ ssp.createPoiNode({
 
 <Docs-Table
     :data="[
-      { prop: 'type', desc: '展示模式', type: 'PoiNodeType', require: true, default: '', link: '../guide/types.html#poinodetype' },
+      { prop: 'type', desc: '展示模式', type: 'PoiNodeType', require: true, default: '', link: '../guide/types#poinodetype' },
       { prop: 'element', desc: 'DOM 元素', type: 'HTMLElement', require: true, default: '' },
       { prop: 'elementAutoDisplay', desc: 'element 自动显示隐藏', type: 'boolean', require: false, default: 'true' },
       { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean', require: false, default: 'false' },
@@ -87,12 +87,12 @@ ssp.createPoiNode({
       { prop: 'onChange', desc: '元素可见性变化时的回调', type: '( visible: boolean ) =&gt; void', require: false, default: '' },
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
-      { prop: 'scaleFixed', desc: '相机超过设定距离时的固定缩放比例', type: 'ScaleFixed', require: false, default: '', link: '../guide/types.html#scalefixed' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
+      { prop: 'scaleFixed', desc: '相机超过设定距离时的固定缩放比例', type: 'ScaleFixed', require: false, default: '', link: '../guide/types#scalefixed' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
@@ -110,7 +110,7 @@ ssp.createPoiNode({
 />
 
 ::: tip 提示
-使用 `scaleFixed` 需要开启 [scaleFixedEnabled](../guide/config.html#scalefixedenabled) 配置
+使用 `scaleFixed` 需要开启 [scaleFixedEnabled](../guide/config#scalefixedenabled) 配置
 :::
 
 ## getPoiNodeById <Base-Deprecated />
@@ -130,7 +130,7 @@ const poiNode = ssp.getPoiNodeById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getPoiNodeByName <Base-Deprecated />
@@ -150,7 +150,7 @@ const poiNodeList = ssp.getPoiNodeByName('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllPoiNode
@@ -221,7 +221,7 @@ const poiNodeList = ssp.getPoiNodeByUserDataProperty(
 :::
 
 :::warning 弃用警告
-请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+请使用 [`getObjectByUserDataProperty`](./object#getobjectbyuserdataproperty) 替代
 :::
 
 ## removePoiNodeById <Base-Deprecated />
@@ -241,7 +241,7 @@ ssp.removePoiNodeById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## createPoiNodeToGroup
@@ -277,7 +277,7 @@ ssp.createPoiNodeToGroup(
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### poiNodeInfoList
@@ -314,11 +314,11 @@ ssp.createGroupForPoiNode({
 #### groupInfo
 
 - **描述:** 实例组对象所需信息
-- **类型:** [GroupInfo](./sbm.html#groupinfo)
+- **类型:** [GroupInfo](./sbm#groupinfo)
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 :::warning 弃用警告
-请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+请使用 [`createGroup`](../guide/objectGroup#creategroup) 替代
 :::
 
 ## addPoiNodeForGroup
@@ -352,7 +352,7 @@ ssp.addPoiNodeForGroup(
 #### groupId
 
 - **描述:** 组 `id`
-- **类型:** [GroupInfo](./sbm.html#groupinfo)[‘id’]
+- **类型:** [GroupInfo](./sbm#groupinfo)[‘id’]
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 #### poiNodeInfoList
@@ -378,7 +378,7 @@ const group = ssp.getPoiNodeGroupById('firstPoiNodeGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getPoiNodeGroupByName <Base-Deprecated />
@@ -398,7 +398,7 @@ const groupList = ssp.getPoiNodeGroupByName('name_firstPoiNodeGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllPoiNodeGroup <Base-Deprecated />
@@ -418,7 +418,7 @@ const allPoiNodeGroupList = ssp.getAllPoiNodeGroup();
 ```
 
 :::warning 弃用警告
-请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+请使用 [`getAllGroup`](../guide/objectGroup#getallgroup) 替代
 :::
 
 ## removePoiNodeGroupById <Base-Deprecated />
@@ -438,7 +438,7 @@ const isRemoveSuccess = ssp.removePoiNodeGroupById('firstPoiNodeGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## clearPoiNode

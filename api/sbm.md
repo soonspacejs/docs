@@ -96,11 +96,11 @@ ssp
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '名称', type: 'string', require: false, default: '' },
       { prop: 'url', desc: '资源路径', type: 'string', require: true, default: '' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
       { prop: 'visible', desc: '是否可见', type: 'boolean', require: false, default: 'true' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
       { prop: 'onClick', desc: '左键单击事件', type: '(object: Sbm) =&gt; void', require: false, default: 'null' },
       { prop: 'onDblClick', desc: '左键双击事件', type: '(object: Sbm) =&gt; void', require: false, default: 'null' },
@@ -230,7 +230,7 @@ const sbm = ssp.getSbmById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getSbmByName <Base-Deprecated />
@@ -250,7 +250,7 @@ const sbmList = ssp.getSbmByName('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllSbm <Base-Deprecated />
@@ -321,7 +321,7 @@ const sbmList = ssp.getSbmByUserDataProperty(
 :::
 
 :::warning 弃用警告
-请使用 [`getObjectByUserDataProperty`](./object.html#getobjectbyuserdataproperty) 替代
+请使用 [`getObjectByUserDataProperty`](./object#getobjectbyuserdataproperty) 替代
 :::
 
 ## removeSbmById <Base-Deprecated />
@@ -341,7 +341,7 @@ ssp.removeSbmById('xxx');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## loadSbmToGroup <Base-Deprecated />
@@ -401,10 +401,10 @@ ssp
     :data="[
       { prop: 'id', desc: '组唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '组名称', type: 'string', require: false, default: '' },
-      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types.html#level' },
-      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#position' },
-      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types.html#rotation' },
-      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types.html#scale' },
+      { prop: 'level', desc: '显示层级范围', type: 'Level', require: false, default: '{ max: null, min: null }', link: '../guide/types#level' },
+      { prop: 'position', desc: '位置坐标', type: 'Position', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#position' },
+      { prop: 'rotation', desc: '旋转弧度', type: 'Rotation', require: false, default: '{ x: 0, y: 0, z: 0 }', link: '../guide/types#rotation' },
+      { prop: 'scale', desc: '缩放比例', type: 'Scale', require: false, default: '{ x: 1, y: 1, z: 1 }', link: '../guide/types#scale' },
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' },
     ]"
 />
@@ -468,7 +468,7 @@ ssp.createGroupForSbm({
 - **必填:** <Base-RequireIcon :isRequire="true"/>
 
 :::warning 弃用警告
-请使用 [`createGroup`](../guide/objectGroup.html#creategroup) 替代
+请使用 [`createGroup`](../guide/objectGroup#creategroup) 替代
 :::
 
 ## addSbmForGroup <Base-Deprecated />
@@ -577,7 +577,7 @@ const group = ssp.getSbmGroupById('firstSbmGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectById`](./object.html#getobjectbyid) 替代
+请使用 [`getObjectById`](./object#getobjectbyid) 替代
 :::
 
 ## getSbmGroupByName <Base-Deprecated />
@@ -597,7 +597,7 @@ const groupList = ssp.getSbmGroupByName('name_firstSbmGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`getObjectByName`](./object.html#getobjectbyname) 替代
+请使用 [`getObjectByName`](./object#getobjectbyname) 替代
 :::
 
 ## getAllSbmGroup <Base-Deprecated />
@@ -617,7 +617,7 @@ const allSbmGroupList = ssp.getAllSbmGroup();
 ```
 
 :::warning 弃用警告
-请使用 [`getAllGroup`](../guide/objectGroup.html#getallgroup) 替代
+请使用 [`getAllGroup`](../guide/objectGroup#getallgroup) 替代
 :::
 
 ## removeSbmGroupById <Base-Deprecated />
@@ -637,7 +637,7 @@ const isRemoveSuccess = ssp.removeSbmGroupById('firstSbmGroup');
 ```
 
 :::warning 弃用警告
-请使用 [`removeObjectById`](./object.html#removeobjectbyid) 替代
+请使用 [`removeObjectById`](./object#removeobjectbyid) 替代
 :::
 
 ## clearSbm <Base-Deprecated />
@@ -657,7 +657,7 @@ ssp.clearSbm();
 ```
 
 :::warning 弃用警告
-请使用 [`clearModel`](./model.html#clearmodel) 替代
+请使用 [`clearModel`](./model#clearmodel) 替代
 :::
 
 ## showAllSbm <Base-Deprecated />
@@ -677,7 +677,7 @@ ssp.showAllSbm();
 ```
 
 :::warning 弃用警告
-请使用 [`showAllModel`](./model.html#showallmodel) 替代
+请使用 [`showAllModel`](./model#showallmodel) 替代
 :::
 
 ## hideAllSbm <Base-Deprecated />
@@ -697,7 +697,7 @@ ssp.hideAllSbm();
 ```
 
 :::warning 弃用警告
-请使用 [`hideAllModel`](./model.html#hideallmodel) 替代
+请使用 [`hideAllModel`](./model#hideallmodel) 替代
 :::
 
 ## getSbmModelMaps <Base-Deprecated />

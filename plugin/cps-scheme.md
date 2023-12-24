@@ -23,7 +23,7 @@ yarn add @soonspacejs/plugin-cps-scheme
 ## 使用方法
 
 ::: warning 前置条件
-预案插件强依赖 CPS 场景加载插件，所以必须先注册 [plugin-cps-soonmanager](./cps-soonmanager.html) 插件及加载场景步骤。
+预案插件强依赖 CPS 场景加载插件，所以必须先注册 [plugin-cps-soonmanager](./cps-soonmanager) 插件及加载场景步骤。
 :::
 
 ```js
@@ -71,7 +71,7 @@ await cpsSchemePlugin.init({
 上游 CPS 插件
 
 - **默认值:** `undefined`
-- **类型:** [`CpsSoonmanagerPlugin`](./cps-soonmanager.html)
+- **类型:** [`CpsSoonmanagerPlugin`](./cps-soonmanager)
 
 ### schemeData
 
@@ -123,7 +123,7 @@ cpsSchemePlugin.autoRunFlow = false;
 - **类型:** `boolean`
 
 ::: tip 提示
-设置为 `false` 后，你可以手动调用执行流程的方法 [runFlowById](./cps-soonmanager.html#runflowbyid)
+设置为 `false` 后，你可以手动调用执行流程的方法 [runFlowById](./cps-soonmanager#runflowbyid)
 :::
 
 ## 方法

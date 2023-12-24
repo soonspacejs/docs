@@ -1,6 +1,6 @@
 # Sbm
 
-该对象继承自 [`BaseObject3D`](./BaseObject3D.html)对象。
+该对象继承自 [`BaseObject3D`](./BaseObject3D)对象。
 
 ## 扩展属性
 

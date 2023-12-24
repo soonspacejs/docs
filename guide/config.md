@@ -41,7 +41,7 @@ const ssp = new SoonSpace({
 
 是否显示场景网格。
 
-- **类型**: boolean | [GridHelperOptions](../api/helper.html#gridhelperoptions)
+- **类型**: boolean | [GridHelperOptions](../api/helper#gridhelperoptions)
 - **默认值**: `false`
 
 <!-- showInfo -->
@@ -98,7 +98,7 @@ const ssp = new SoonSpace({
 
 场景雾化效果。
 
-- **类型**: boolean ｜ [FogOptions](../api/sceneTool.html#fogoptions)
+- **类型**: boolean ｜ [FogOptions](../api/sceneTool#fogoptions)
 - **默认值**: `false`
 
 <!-- controls -->
@@ -107,7 +107,7 @@ const ssp = new SoonSpace({
 
 控制器配置。
 
-- **类型**: [ControlsOptions](../api/controls-legacy.html#controlsoptions)
+- **类型**: [ControlsOptions](../api/controls-legacy#controlsoptions)
 - **默认值**: `{ type: 'free' }`
 
 ## controls（新版）
@@ -117,7 +117,7 @@ const ssp = new SoonSpace({
 - **默认值**: `{}`
 
 ::: warning 警告
-不推荐传参设置，请直接设置 [ssp.controls](../api/controls.html#属性) 属性
+不推荐传参设置，请直接设置 [ssp.controls](../api/controls#属性) 属性
 :::
 
 <!-- hoverEnabled -->
@@ -131,7 +131,7 @@ const ssp = new SoonSpace({
   ::: tip 提示
   不开启时 `modelHover` 和 `poiHover` 不会触发。
 
-  提供一个 `API` [setHoverEnabled](../api/sceneTool.html#sethoverenabled) 动态更改该配置。
+  提供一个 `API` [setHoverEnabled](../api/sceneTool#sethoverenabled) 动态更改该配置。
   :::
 
 ## fileCacheEnabled
@@ -144,7 +144,7 @@ const ssp = new SoonSpace({
   ::: tip 提示
   开启时将防止重复的网络请求
 
-  提供一个 `API` [setFileCacheEnabled](../api/sceneTool.html#setfilecacheenabled) 动态更改该配置。
+  提供一个 `API` [setFileCacheEnabled](../api/sceneTool#setfilecacheenabled) 动态更改该配置。
   :::
 
 ## levelEnabled
@@ -204,5 +204,5 @@ if (option.closeWarnLog) window.console.warn = function () {};
 - **默认值**: `true`
 
 ::: tip 提示
-清空 `indexedDB` 存储参考[这里](../api/sbm.html#clearidb)
+清空 `indexedDB` 存储参考[这里](../api/sbm#clearidb)
 :::

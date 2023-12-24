@@ -8,7 +8,7 @@ sidebarDepth: 2
 
 [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
 
-此插件是基于 [soonmanager2-sync](./soonmanager2-sync.html) 插件的扩展，并完全向下兼容。
+此插件是基于 [soonmanager2-sync](./soonmanager2-sync) 插件的扩展，并完全向下兼容。
 
 ## 样例
 
@@ -166,7 +166,7 @@ interface IPoiData {
 调用 [getTopologies](#gettopologies) 方法时会设置此属性
 
 - **默认值:** `null`
-- **类型:** [`TopologyInfo[]`](../api/topology.html#topologyinfo) | `null`
+- **类型:** [`TopologyInfo[]`](../api/topology#topologyinfo) | `null`
 
 ### propertiesData <Base-Tag title="readonly" />
 
@@ -440,7 +440,7 @@ cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false }).then(() => {
 });
 ```
 
-具体请查看 [computeModelsBoundsTree](../api/model.html#computemodelsboundstree)
+具体请查看 [computeModelsBoundsTree](../api/model#computemodelsboundstree)
 
 :::
 
@@ -554,9 +554,9 @@ await cpsSoonmanagerPlugin.presetEffects({
 _各参数对应的方法_
 | 参数 | 对应的内部方法 |
 | :--------------------: | :----------------------------------------------------: |
-| hdr | [setEnvironment](../api/sceneTool.html#setenvironment) |
-| ssao | [setSSAO](../api/sceneTool.html#setssao) |
-| directionalLightShadow | [createDirectionalLight](../api/light.html#createdirectionallight) |
+| hdr | [setEnvironment](../api/sceneTool#setenvironment) |
+| ssao | [setSSAO](../api/sceneTool#setssao) |
+| directionalLightShadow | [createDirectionalLight](../api/light#createdirectionallight) |
 
 ::: warning 注意
 presetEffects 需要等待场景加载完调用
@@ -614,7 +614,7 @@ ssp.createTopology({
 ```
 
 ::: tip 提示
-在播放路径动画或使用[巡检插件](./patrol-controls.html)时会按照 nodes 数组的顺序执行
+在播放路径动画或使用[巡检插件](./patrol-controls)时会按照 nodes 数组的顺序执行
 
 所以可能需要使用此方法对线路的 nodes 排序
 :::
@@ -734,7 +734,7 @@ cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
 
 - **描述:** 动画参数配置
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [`AnimationOptions`](../api/animation.html#animationoptions)
+- **类型:** [`AnimationOptions`](../api/animation#animationoptions)
 
 ### flyToObjectFromVisionsData
 
@@ -772,7 +772,7 @@ cpsSoonmanagerPlugin.flyToObjectFromVisionsData(model, 0);
 
 - **描述:** 动画参数配置
 - **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [`AnimationOptions`](../api/animation.html#animationoptions)
+- **类型:** [`AnimationOptions`](../api/animation#animationoptions)
 
 ### loadPoi
 
