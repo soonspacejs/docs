@@ -1,8 +1,8 @@
 # 介绍
 
-![version](https://img.shields.io/npm/v/soonspacejs)
-
-![downloads](https://img.shields.io/npm/dm/soonspacejs)
+::: raw
+![version](https://img.shields.io/npm/v/soonspacejs) ![downloads](https://img.shields.io/npm/dm/soonspacejs)
+:::
 
 **SoonSpace.js** 是 [杭州迅维智能科技有限公司](http://www.xwbuilders.com) 面向客户与内部项目的 web 端 `BIM` 开发包。
 
