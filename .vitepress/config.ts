@@ -170,8 +170,8 @@ export default defineConfig({
           text: '功能扩展插件',
           items: [
             { text: 'plugin-sspx', link: '/plugin/sspx' },
-            { text: 'plugin-heap-map', link: '/plugin/heap-map' },
-            { text: 'plugin-heap-cloud', link: '/plugin/heap-cloud' },
+            { text: 'plugin-heat-map', link: '/plugin/heat-map' },
+            { text: 'plugin-heat-cloud', link: '/plugin/heat-cloud' },
             { text: 'plugin-measuring', link: '/plugin/measuring' },
             { text: 'plugin-drawing-shape', link: '/plugin/drawing-shape' },
             { text: 'plugin-patrol-controls', link: '/plugin/patrol-controls' },

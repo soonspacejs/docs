@@ -656,8 +656,7 @@ const mesh = heatCloudPlugin.createHeatCloud(randomPoints, {
 
 ##### HeatParticleVolumeFeaturePoint
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 {
 prop: 'x', desc: 'x', type: 'number', require: true, default: ''
 },
@@ -683,11 +682,9 @@ prop: 'clim', desc: '映射区间', type: 'IVector2', require: false, default: '
 prop: 'valueGradient', desc: '值梯度函数', type: 'GetGradientValue', require: false, default: ''
 },
 {
-prop: 'valuesAccumulate', desc: '热力值累积函数', type: 'HeatValuesAccumulate', require: false, default: '线性累积函数'
+prop: 'valuesAccumulate', desc: '热力值累积函数', type: 'HeatValuesAccumulate', require: false, default: '线性累积函数' 
 },
-
 ]"
-
 />
 
 ##### options
@@ -696,8 +693,7 @@ prop: 'valuesAccumulate', desc: '热力值累积函数', type: 'HeatValuesAccumu
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `CreateHeatCloudOptions`
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 {
 prop: 'value', desc: '值', type: 'number', require: false, default: '100'
 },
@@ -716,7 +712,6 @@ prop: 'valueGradient', desc: '值梯度函数', type: 'GetGradientValue', requir
 {
 prop: 'valuesAccumulate', desc: '热力值累积函数', type: 'HeatValuesAccumulate', require: false, default: '线性累积函数'
 },
-
 {
 prop: 'maxSize', desc: '优化后的梯度选项的所能达到的最大尺寸', type: 'number', require: false, default: '100'
 },
@@ -772,7 +767,6 @@ prop: 'discardOut', desc: '否丢弃超出映射范围的数值', type: 'boolean
 prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require: false, default: '{x:-100,y:-1}'
 },
 ]"
-
 />
 
 ###### gradientTexture
@@ -1009,8 +1003,7 @@ const mesh = heatCloudPlugin.createLineHeat(linePoints, {
 
 ##### ParticleVolumeFeaturePoint
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 {
 prop: 'x', desc: 'x', type: 'number', require: true, default: ''
 },
@@ -1023,7 +1016,6 @@ prop: 'z', desc: 'z', type: 'number', require: true, default: ''
 {
 prop: 'value', desc: '值', type: 'number', require: false, default: '100'
 },
-
 {
 prop: 'hollow', desc: '空心因子', type: 'number', require: false, default: '0'
 },
@@ -1033,9 +1025,7 @@ prop: 'clim', desc: '映射区间', type: 'IVector2', require: false, default: '
 {
 prop: 'valueGradient', desc: '值梯度函数', type: 'GetGradientValue', require: false, default: ''
 },
-
 ]"
-
 />
 
 ##### options
@@ -1044,8 +1034,7 @@ prop: 'valueGradient', desc: '值梯度函数', type: 'GetGradientValue', requir
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `CreatLineHeatOptions`
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 {
 prop: 'value', desc: '值', type: 'number', require: false, default: '100'
 },
@@ -1064,7 +1053,6 @@ prop: 'valueGradient', desc: '值梯度函数', type: 'GetGradientValue', requir
 {
 prop: 'valuesAccumulate', desc: '热力值累积函数', type: 'HeatValuesAccumulate', require: false, default: '线性累积函数'
 },
-
 {
 prop: 'radiusGradient', desc: '半径梯度函数', type: 'GetLineGradientValue', require: false, default: '线性累积函数'
 },
@@ -1129,7 +1117,6 @@ prop: 'discardOut', desc: '否丢弃超出映射范围的数值', type: 'boolean
 prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require: false, default: '{x:-100,y:-1}'
 },
 ]"
-
 />
 
 ###### gradientTexture
@@ -1283,8 +1270,7 @@ const mesh = await heatCloudPlugin.createImageExtrusion(imgUrl, {
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `CreateImageExtrusionOptions & { depth?: number }`
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 {
 prop: 'map', desc: '三维的纹理', type: 'GradientData3DTexture', require: false, default: ''
 },
@@ -1328,7 +1314,6 @@ prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require:
 prop: 'depth', desc: 'depth', type: 'number', require: false, default: '20'
 },
 ]"
-
 />
 
 ### createSliceMesh
@@ -1534,8 +1519,7 @@ sliceMesh.position.set(-500, -500, -500);
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `SliceMaterialOptions & CreateImageData3DTextureFromGradientOptions`
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 {
 prop: 'map', desc: '三维的纹理', type: 'GradientData3DTexture', require: false, default: ''
 },
@@ -1551,23 +1535,19 @@ prop: 'depth', desc: '轴上的坐标值', type: 'number | null', require: false
 {
 prop: 'range', desc: '数值的映射区间 l', type: 'IVector2 | null', require: false, default: 'VolumeMaterial.range'
 },
-
 {
 prop: 'discardOut', desc: '否丢弃超出映射范围的数值', type: 'boolean | null', require: false, default: 'VolumeMaterial.discardOut'
 },
 {
 prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require: false, default: 'VolumeMaterial.voidRange'
 },
-
 {
 prop: 'gradient', desc: '梯度映射纹理', type: 'TexImageSource | ColorGradient', require: false, default: 'VolumeMaterial.gradient'
 },
 {
 prop: 'voidColor', desc: '空值颜色', type: '[number, number, number, number]', require: false, default: ''
 },
-
 ]"
-
 />
 
 ### createImageSlice
@@ -1654,27 +1634,21 @@ document.getElementById(domContainer).appendChild(imageSlice.canvas);
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `CreateImageData3DTextureFromGradientOptions`
 
-<Docs-Table
-:data="[
-
+<Docs-Table :data="[
 {
 prop: 'range', desc: '数值的映射区间 l', type: 'IVector2 | null', require: false, default: 'VolumeMaterial.range'
 },
-
 {
 prop: 'discardOut', desc: '否丢弃超出映射范围的数值', type: 'boolean | null', require: false, default: 'VolumeMaterial.discardOut'
 },
 {
 prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require: false, default: 'VolumeMaterial.voidRange'
 },
-
 {
 prop: 'gradient', desc: '梯度映射纹理', type: 'TexImageSource | ColorGradient', require: false, default: 'VolumeMaterial.gradient'
 },
 {
 prop: 'voidColor', desc: '空值颜色', type: '[number, number, number, number]', require: false, default: ''
 },
-
 ]"
-
 />
