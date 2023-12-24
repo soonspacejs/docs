@@ -2,14 +2,12 @@
   <div class="docs-iframe">
     <iframe
       style="width: 100%; height: 100%"
-      :src="`${this.baseUrl}${this.src}`"
+      :src="`http://www.xwbuilders.com:8800/examples/page/${this.src}`"
       frameborder="0"
       loading="lazy"
       sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-same-origin"
     ></iframe>
-    <a id="code-button" target="_blank" :href="codeBtnHref"
-      ><img src="./close_black.svg"
-    /></a>
+    <a id="code-button" target="_blank" :href="codeBtnHref"><img src="./close_black.svg"/></a>
   </div>
 </template>
 

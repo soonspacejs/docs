@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { resolve } from 'path';
 
 const BASE_HTTP_URL = 'http://www.xwbuilders.com';
 const BASE_PORT = '9018';
@@ -12,6 +13,7 @@ export default defineConfig({
   outDir: 'dist',
   title: 'SoonSpace.js 2.x',
   description: '简洁易学的 WebGL 库',
+  ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/logo/logo.svg' }],
     // manifest
