@@ -49,7 +49,7 @@ console.log(soonmanagerSync);
 
 转换之后的树结构数据
 
-## isPausedRenderWhileLoadingRest
+### isPausedRenderWhileLoadingRest
 
 `2.5.0-rc.4`
 

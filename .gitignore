@@ -2,6 +2,8 @@ node_modules
 dist
 !说明书/*/dist
 
+.vitepress/cache
+
 # misc
 .DS_Store
 

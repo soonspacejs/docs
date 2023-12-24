@@ -19,16 +19,16 @@ yarn add @soonspacejs/plugin-heat-cloud -S
 ## 使用方法
 
 ```ts {2,10}
-import SoonSpace from "soonspacejs";
-import HeatCloudPlugin from "@soonspacejs/plugin-heat-cloud";
+import SoonSpace from 'soonspacejs';
+import HeatCloudPlugin from '@soonspacejs/plugin-heat-cloud';
 
 const ssp = new SoonSpace({
-  el: "#view",
+  el: '#view',
   options: {},
   events: {},
 });
 
-const heatCloudPlugin = ssp.registerPlugin(HeatCloudPlugin, "heatCloudPlugin");
+const heatCloudPlugin = ssp.registerPlugin(HeatCloudPlugin, 'heatCloudPlugin');
 ```
 
 ## 属性
@@ -71,9 +71,8 @@ heatCloudPlugin.defaultGradientVolumeMaterialOptions = {
 ::: tip 用于使用 createLinearGradientTexture 创建 defaultGradientVolumeMaterialOptions.gradient
 
 ```ts
-defaultGradientVolumeMaterialOptions.gradient = createLinearGradientTexture(
-  defaultColorGradient
-);
+defaultGradientVolumeMaterialOptions.gradient =
+  createLinearGradientTexture(defaultColorGradient);
 ```
 
 :::
@@ -82,9 +81,9 @@ defaultGradientVolumeMaterialOptions.gradient = createLinearGradientTexture(
 
 ```ts
 defaultColorGradient: ColorGradient = [
-  [0, "rgba(0,255,0,0)"],
-  [0.5, "rgba(64,255,255,0.5)"],
-  [1, "rgba(255,64,255,1)"],
+  [0, 'rgba(0,255,0,0)'],
+  [0.5, 'rgba(64,255,255,0.5)'],
+  [1, 'rgba(255,64,255,1)'],
 ];
 ```
 
@@ -93,11 +92,11 @@ defaultColorGradient: ColorGradient = [
 修改默认值
 
 ```ts
-const heatCloudPlugin = ssp.registerPlugin(HeatCloudPlugin, "heatCloudPlugin");
+const heatCloudPlugin = ssp.registerPlugin(HeatCloudPlugin, 'heatCloudPlugin');
 heatCloudPlugin.defaultColorGradient = [
-  [0, "rgba(0,255,0,0)"],
-  [0.5, "rgba(255,255,64,0.5)"],
-  [1, "rgba(255,64,255,1)"],
+  [0, 'rgba(0,255,0,0)'],
+  [0.5, 'rgba(255,255,64,0.5)'],
+  [1, 'rgba(255,64,255,1)'],
 ];
 ```
 
@@ -187,7 +186,7 @@ type HeatValuesAccumulate = (
   clim: IVector2
 ) => number;
 type HeatAccumulateValue = Required<
-  Omit<SphereParticleVolumeFeature, "valueGradient">
+  Omit<SphereParticleVolumeFeature, 'valueGradient'>
 > &
   GradientParams;
 /**
@@ -369,7 +368,7 @@ type ColorGradient = ColorStop[];
  * 体积材质的选项
  */
 interface VolumeMaterialOptions<GradientData3DTexture>
-  extends Omit<ShaderMaterialParameters, "map" | "opacity"> {
+  extends Omit<ShaderMaterialParameters, 'map' | 'opacity'> {
   /**
    * 三维的纹理
    */
@@ -780,9 +779,9 @@ prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require:
 
 ```ts
 const defaultColorGradient: ColorGradient = [
-  [0, "rgba(0,255,0,0)"],
-  [0.5, "rgba(64,255,255,0.5)"],
-  [1, "rgba(255,64,255,1)"],
+  [0, 'rgba(0,255,0,0)'],
+  [0.5, 'rgba(64,255,255,0.5)'],
+  [1, 'rgba(255,64,255,1)'],
 ];
 const gradientTexture = createLinearGradientTexture(tdefaultColorGradient);
 ```
@@ -1137,9 +1136,9 @@ prop: 'voidRange', desc: '颜色累积系数', type: 'IVector2 | null', require:
 
 ```ts
 const defaultColorGradient: ColorGradient = [
-  [0, "rgba(0,255,0,0)"],
-  [0.5, "rgba(64,255,255,0.5)"],
-  [1, "rgba(255,64,255,1)"],
+  [0, 'rgba(0,255,0,0)'],
+  [0.5, 'rgba(64,255,255,0.5)'],
+  [1, 'rgba(255,64,255,1)'],
 ];
 const gradientTexture = createLinearGradientTexture(tdefaultColorGradient);
 ```
@@ -1164,7 +1163,7 @@ createImageExtrusion(imageUrl: string, options?: CreateImageExtrusionOptions & {
 type CreateImageExtrusionOptions = VolumeMaterialOptions<ImageData3DTexture> &
   ExtrudeImageOptions;
 interface VolumeMaterialOptions<GradientData3DTexture>
-  extends Omit<ShaderMaterialParameters, "map" | "opacity"> {
+  extends Omit<ShaderMaterialParameters, 'map' | 'opacity'> {
   /**
    * 三维的纹理
    */
@@ -1248,7 +1247,7 @@ interface ExtrudeImageOptions {
   axis?: Axis | null;
   colorSpace?: PredefinedColorSpace | null;
 }
-type PredefinedColorSpace = "display-p3" | "srgb";
+type PredefinedColorSpace = 'display-p3' | 'srgb';
 ```
 
 #### 使用
@@ -1349,7 +1348,7 @@ createSliceMesh(material: VolumeMaterial, options?: SliceMaterialOptions & Creat
  * 切片材质的选项
  */
 interface SliceMaterialOptions
-  extends Omit<ShaderMaterialParameters, "opacity"> {
+  extends Omit<ShaderMaterialParameters, 'opacity'> {
   /**
    * 三维的纹理
    */

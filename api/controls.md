@@ -166,7 +166,7 @@ controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
   - `ZOOM` 用于 `OrthographicCamera`， 并且无法设置 `DOLLY`.
 
 | 触控操作        | 行为                                                                                                                                                                                                                                                                                                                        |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------- |
 | `touches.one`   | `ACTION.TOUCH_ROTATE`\* \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.DOLLY`                                                                                                                                                                                                                                  | `ACTION.ZOOM` | `ACTION.NONE` |
 | `touches.two`   | `ACTION.TOUCH_DOLLY_TRUCK` \| `ACTION.TOUCH_DOLLY_OFFSET` \| `ACTION.TOUCH_DOLLY_ROTATE` \| `ACTION.TOUCH_ZOOM_TRUCK` \| `ACTION.TOUCH_ZOOM_OFFSET` \| `ACTION.TOUCH_ZOOM_ROTATE` \| `ACTION.TOUCH_DOLLY` \| `ACTION.TOUCH_ZOOM` \| `ACTION.TOUCH_ROTATE` \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.NONE` |
 | `touches.three` | `ACTION.TOUCH_DOLLY_TRUCK` \| `ACTION.TOUCH_DOLLY_OFFSET` \| `ACTION.TOUCH_DOLLY_ROTATE` \| `ACTION.TOUCH_ZOOM_TRUCK` \| `ACTION.TOUCH_ZOOM_OFFSET` \| `ACTION.TOUCH_ZOOM_ROTATE` \| `ACTION.TOUCH_ROTATE` \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.NONE`                                                |
@@ -190,7 +190,11 @@ controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
 #### 定义
 
 ```ts
-function rotate(azimuthAngle: number, polarAngle: number, enableTransition?: boolean): Promise<void>;
+function rotate(
+  azimuthAngle: number,
+  polarAngle: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -214,7 +218,10 @@ controls.rotate(Math.PI / 4, 0, true);
 #### 定义
 
 ```ts
-function rotateAzimuthTo(azimuthAngle: number, enableTransition?: boolean): Promise<void>;
+function rotateAzimuthTo(
+  azimuthAngle: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -231,7 +238,10 @@ function rotateAzimuthTo(azimuthAngle: number, enableTransition?: boolean): Prom
 #### 定义
 
 ```ts
-function rotatePolarTo(polarAngle: number, enableTransition?: boolean): Promise<void>;
+function rotatePolarTo(
+  polarAngle: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -274,7 +284,11 @@ function rotatePolarTo(polarAngle: number, enableTransition?: boolean): Promise<
 #### 定义
 
 ```ts
-function rotateTo(azimuthAngle: number, polarAngle: number, enableTransition?: boolean): Promise<void>;
+function rotateTo(
+  azimuthAngle: number,
+  polarAngle: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -332,7 +346,10 @@ function dollyTo(distance: number, enableTransition?: boolean): Promise<void>;
 #### 定义
 
 ```ts
-function dollyInFixed(distance: number, enableTransition?: boolean): Promise<void>;
+function dollyInFixed(
+  distance: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -412,7 +429,12 @@ function truck(x: number, y: number, enableTransition?: boolean): Promise<void>;
 #### 定义
 
 ```ts
-function lookInDirectionOf(x: number, y: number, z: number, enableTransition?: boolean): Promise<void>;
+function lookInDirectionOf(
+  x: number,
+  y: number,
+  z: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -433,7 +455,12 @@ function lookInDirectionOf(x: number, y: number, z: number, enableTransition?: b
 #### 定义
 
 ```ts
-function setFocalOffset(x: number, y: number, z: number, enableTransition?: boolean): Promise<void>;
+function setFocalOffset(
+  x: number,
+  y: number,
+  z: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -454,7 +481,12 @@ function setFocalOffset(x: number, y: number, z: number, enableTransition?: bool
 #### 定义
 
 ```ts
-function setOrbitPoint(targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
+function setOrbitPoint(
+  targetX: number,
+  targetY: number,
+  targetZ: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -492,7 +524,12 @@ function forward(distance: number, enableTransition?: boolean): Promise<void>;
 #### 定义
 
 ```ts
-function moveTo(x: number, y: number, z: number, enableTransition?: boolean): Promise<void>;
+function moveTo(
+  x: number,
+  y: number,
+  z: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -538,7 +575,17 @@ interface FitToOptions {
   paddingTop: number;
 }
 
-function fitToBox(box3OrObject: Box3 | Object3D, enableTransition: boolean, { cover, paddingLeft, paddingRight, paddingBottom, paddingTop }?: Partial<FitToOptions>): Promise<void[]>;
+function fitToBox(
+  box3OrObject: Box3 | Object3D,
+  enableTransition: boolean,
+  {
+    cover,
+    paddingLeft,
+    paddingRight,
+    paddingBottom,
+    paddingTop,
+  }?: Partial<FitToOptions>
+): Promise<void[]>;
 ```
 
 <Docs-Table
@@ -568,7 +615,10 @@ function fitToBox(box3OrObject: Box3 | Object3D, enableTransition: boolean, { co
 #### 定义
 
 ```ts
-function fitToSphere(sphereOrMesh: Sphere | Object3D, enableTransition: boolean): Promise<void[]>;
+function fitToSphere(
+  sphereOrMesh: Sphere | Object3D,
+  enableTransition: boolean
+): Promise<void[]>;
 ```
 
 <Docs-Table
@@ -587,7 +637,15 @@ function fitToSphere(sphereOrMesh: Sphere | Object3D, enableTransition: boolean)
 #### 定义
 
 ```ts
-function setLookAt(positionX: number, positionY: number, positionZ: number, targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
+function setLookAt(
+  positionX: number,
+  positionY: number,
+  positionZ: number,
+  targetX: number,
+  targetY: number,
+  targetZ: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -657,7 +715,12 @@ function lerpLookAt(
 #### 定义
 
 ```ts
-function setPosition(positionX: number, positionY: number, positionZ: number, enableTransition?: boolean): Promise<void>;
+function setPosition(
+  positionX: number,
+  positionY: number,
+  positionZ: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table
@@ -680,7 +743,12 @@ function setPosition(positionX: number, positionY: number, positionZ: number, en
 #### 定义
 
 ```ts
-function setTarget(targetX: number, targetY: number, targetZ: number, enableTransition?: boolean): Promise<void>;
+function setTarget(
+  targetX: number,
+  targetY: number,
+  targetZ: number,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 <Docs-Table

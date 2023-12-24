@@ -132,8 +132,7 @@ ssp.setControlsOptions({
 
 ##### FreeControlsOptions
 
-<Docs-Table
-:data="[
+<Docs-Table :data="[
 { prop: 'enabled', desc: '启用控制器', type: 'boolean', require: false, default: 'true' },
 { prop: 'enabledMousePointInteractive', desc: '开启鼠标对象相交检测', type: 'boolean', require: false, default: 'true' },
 { prop: 'fallbackInteractivePosition', desc: '开启鼠标对象相交检测时，没有相交对象的备用点', type: 'Vector3', require: false, default: '{x:0,y:0,z:0}' },
@@ -159,7 +158,6 @@ ssp.setControlsOptions({
 { prop: 'autoRotateSpeed', desc: '自动旋转速度', type: 'number', require: false, default: 1 },
 { prop: 'autoRotateClockwise', desc: '自动旋转顺时针', type: 'boolean', require: false, default: 'true' },
 ]"
-
 />
 
 ##### OrbitControlsOptions

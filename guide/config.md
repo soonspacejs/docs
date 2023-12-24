@@ -87,6 +87,7 @@ const ssp = new SoonSpace({
       { prop: 'fileNames', desc: '包围盒六张图片的名称集合', type: 'string[]', require: true, default: '' },
     ]"
 />
+
 ::: tip 特殊使用
 `alpha` 设置为 `true`，同时 `color` 设置为 `null`, 空间背景将完全透明。
 :::
@@ -190,7 +191,7 @@ const ssp = new SoonSpace({
   :::
 
 ```js
-if (option.closeWarnLog) window.console.warn = function() {};
+if (option.closeWarnLog) window.console.warn = function () {};
 ```
 
 <!-- useIndexedDB -->

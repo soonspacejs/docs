@@ -11,14 +11,17 @@ export default defineConfig({
   base: '/',
   outDir: 'dist',
   title: 'SoonSpace.js 2.x',
-  description: '简洁易学的 WebGL 框架',
+  description: '简洁易学的 WebGL 库',
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/logo/logo.svg' }],
     // manifest
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    [
+      'meta',
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+    ],
     [
       'link',
       {
@@ -36,6 +39,7 @@ export default defineConfig({
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
   ],
   themeConfig: {
+    logo: '/logo/logo.svg',
     nav: [
       { text: '教程', link: '/guide/' },
       { text: 'API', link: '/api/' },
@@ -92,151 +96,123 @@ export default defineConfig({
     sidebar: {
       '/guide/': [
         {
-          text: 'Guide',
           items: [
-            { text: 'Index', link: '/guide/' },
-            { text: 'One', link: '/guide/one' },
-            { text: 'Two', link: '/guide/two' },
+            { text: '介绍', link: '/guide/' },
+            { text: '快速上手', link: '/guide/start' },
+            { text: '从 1.x 迁移', link: '/guide/transfer' },
+            { text: '类型定义', link: '/guide/types' },
+            { text: '配置项', link: '/guide/config' },
+            { text: '场景事件', link: '/guide/event' },
+            { text: '对象事件', link: '/guide/objectEvent' },
+            { text: '对象分组', link: '/guide/objectGroup' },
+          ],
+        },
+      ],
+      '/api/': [
+        {
+          text: '基础',
+          items: [
+            { text: '通用对象', link: '/api/object' },
+            { text: 'Sbm 模型', link: '/api/sbm' },
+            { text: '通用模型', link: '/api/model' },
+            { text: 'Poi 对象', link: '/api/poi' },
+            { text: 'PoiNode 对象', link: '/api/poinode' },
+            { text: 'PoiMesh 对象', link: '/api/poimesh' },
+            { text: '空间画布对象', link: '/api/canvas3d' },
+            { text: '拓扑路径', link: '/api/topology' },
+          ],
+        },
+        {
+          text: '进阶',
+          items: [
+            { text: '控制器（废弃）', link: '/api/controls-legacy' },
+            { text: '控制器（新版）', link: '/api/controls' },
+            { text: '模型操作', link: '/api/modelTool' },
+            { text: '场景操作', link: '/api/sceneTool' },
+            { text: '相机', link: '/api/camera' },
+            { text: '灯光', link: '/api/light' },
+            { text: '辅助器', link: '/api/helper' },
+            { text: '路径动画', link: '/api/path-animation' },
+          ],
+        },
+        {
+          text: '高阶',
+          items: [
+            { text: '补间动画', link: '/api/animation' },
+            { text: '插件', link: '/api/plugin' },
+          ],
+        },
+      ],
+      '/plugin/': [
+        {
+          text: '前端框架插件',
+          items: [
+            { text: 'vue-soonspace', link: '/plugin/vue-soonspace' },
+            { text: 'react-soonspace', link: '/plugin/react-soonspace' },
+          ],
+        },
+        {
+          text: '平台协同插件',
+          items: [
+            {
+              text: 'plugin-soonmanager-sync',
+              link: '/plugin/soonmanager-sync',
+            },
+            {
+              text: 'plugin-soonmanager2-sync',
+              link: '/plugin/soonmanager2-sync',
+            },
+            { text: 'plugin-cps-soonmanager', link: '/plugin/cps-soonmanager' },
+            { text: 'plugin-cps-scheme', link: '/plugin/cps-scheme' },
+          ],
+        },
+        {
+          text: '功能扩展插件',
+          items: [
+            { text: 'plugin-sspx', link: '/plugin/sspx' },
+            { text: 'plugin-heap-map', link: '/plugin/heap-map' },
+            { text: 'plugin-heap-cloud', link: '/plugin/heap-cloud' },
+            { text: 'plugin-measuring', link: '/plugin/measuring' },
+            { text: 'plugin-drawing-shape', link: '/plugin/drawing-shape' },
+            { text: 'plugin-patrol-controls', link: '/plugin/patrol-controls' },
+            {
+              text: 'plugin-drawing-topology',
+              link: '/plugin/drawing-topology',
+            },
+            { text: 'plugin-pathfinding', link: '/plugin/pathfinding' },
+            {
+              text: 'plugin-transform-controls',
+              link: '/plugin/transform-controls',
+            },
+            { text: 'plugin-follow-mouse', link: '/plugin/follow-mouse' },
+            {
+              text: 'plugin-first-person-controls',
+              link: '/plugin/first-person-controls',
+            },
+            { text: 'plugin-camera-follower', link: '/plugin/camera-follower' },
+            {
+              text: 'plugin-clipping-controls',
+              link: '/plugin/clipping-controls',
+            },
+            { text: 'plugin-model-blast', link: '/plugin/model-blast' },
+            { text: 'plugin-effect', link: '/plugin/effect' },
+            { text: 'plugin-navigation', link: '/plugin/navigation' },
+          ],
+        },
+        {
+          text: '开发者插件',
+          items: [
+            { text: 'vscode-sbm-preivew', link: '/plugin/vscode-sbm-preview' },
           ],
         },
       ],
     },
-    // sidebar: {
-    //   '/guide/': [
-    //     '',
-    //     'start',
-    //     'transfer',
-    //     'types',
-    //     'config',
-    //     'event',
-    //     'objectEvent',
-    //     'objectGroup',
-    //     {
-    //       title: '空间对象',
-    //       children: [
-    //         '/guide/sceneObject/BaseObject3D',
-    //         '/guide/sceneObject/BaseMesh',
-    //         '/guide/sceneObject/Group',
-    //         '/guide/sceneObject/Sbm',
-    //         '/guide/sceneObject/Model',
-    //         '/guide/sceneObject/Poi',
-    //         '/guide/sceneObject/PoiNode',
-    //         '/guide/sceneObject/Canvas3D',
-    //         '/guide/sceneObject/Topology',
-    //         '/guide/sceneObject/PluginObject',
-    //         '/guide/sceneObject/Point',
-    //         '/guide/sceneObject/Line',
-    //         '/guide/sceneObject/Polygon',
-    //         '/guide/sceneObject/Circle',
-    //         '/guide/sceneObject/Link',
-    //         '/guide/sceneObject/Node',
-    //         '/guide/sceneObject/Icon',
-    //       ],
-    //     },
-    //   ],
-    //   '/api/': [
-    //     {
-    //       title: '基础',
-    //       collapsable: false,
-    //       children: [
-    //         '/api/object',
-    //         '/api/sbm',
-    //         '/api/model',
-    //         '/api/poi',
-    //         '/api/poiNode',
-    //         '/api/poiMesh',
-    //         '/api/canvas3D',
-    //         '/api/topology',
-    //       ],
-    //     },
-    //     {
-    //       title: '进阶',
-    //       collapsable: false,
-    //       children: [
-    //         '/api/controls-legacy',
-    //         '/api/controls',
-    //         '/api/modelTool',
-    //         '/api/sceneTool',
-    //         '/api/camera',
-    //         '/api/light',
-    //         '/api/helper',
-    //         '/api/path-animation',
-    //       ],
-    //     },
-    //     {
-    //       title: '高阶',
-    //       collapsable: false,
-    //       children: ['/api/animation', '/api/pligin'],
-    //     },
-    //   ],
-    //   '/plugin/': [
-    //     {
-    //       title: '前端框架插件',
-    //       collapsable: false,
-    //       children: ['/plugin/vue-soonspace', '/plugin/react-soonspace'],
-    //     },
-    //     {
-    //       title: '平台协同插件',
-    //       collapsable: false,
-    //       children: [
-    //         '/plugin/soonmanager-sync',
-    //         '/plugin/soonmanager2-sync',
-    //         '/plugin/cps-soonmanager',
-    //         '/plugin/cps-scheme',
-    //       ],
-    //     },
-    //     {
-    //       title: '功能扩展插件',
-    //       collapsable: false,
-    //       children: [
-    //         '/plugin/sspx',
-    //         '/plugin/heat-map',
-    //         '/plugin/heat-cloud',
-    //         '/plugin/measuring',
-    //         '/plugin/drawing-shape',
-    //         '/plugin/patrol-controls',
-    //         '/plugin/drawing-topology',
-    //         '/plugin/pathfinding',
-    //         '/plugin/transform-controls',
-    //         '/plugin/follow-mouse',
-    //         '/plugin/first-person-controls',
-    //         '/plugin/camera-follower',
-    //         '/plugin/clipping-controls',
-    //         '/plugin/model-blast',
-    //         '/plugin/effect',
-    //         '/plugin/navigation',
-    //       ],
-    //     },
-    //     {
-    //       title: '开发者插件',
-    //       collapsable: false,
-    //       children: ['/plugin/vscode-sbm-preview'],
-    //     },
-    //   ],
-    //   '/faq/': ['/faq/'],
-    //   '/design/': ['/design/'],
-    // },
+    search: {
+      provider: 'local',
+    },
+    footer: {
+      message: '浙ICP备16043491号',
+      copyright: '© Copyright 2018 xwbuilders - All rights reserved.',
+    },
   },
-  // plugins: [
-  //   // ['@vuepress/active-header-links', false],
-  //   ['@vuepress/back-to-top'],
-  //   [
-  //     '@vuepress/pwa',
-  //     {
-  //       serviceWorker: true,
-  //       updatePopup: {
-  //         '/': {
-  //           message: '文档已更新',
-  //           buttonText: 'Refresh',
-  //         },
-  //       },
-  //     },
-  //   ],
-  //   [
-  //     'vuepress-plugin-baidu-tongji-analytics',
-  //     {
-  //       key: 'eabe35e4f4a0087dfb191ca425c2c3a5',
-  //     },
-  //   ],
-  // ],
 });

@@ -1,7 +1,3 @@
----
-collapsable: true
----
-
 # 快速上手
 
 ## hello-world

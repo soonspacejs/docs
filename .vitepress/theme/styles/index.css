@@ -1,42 +1,4 @@
-:root {
-  --accentColor: #e60000;
-}
-
-blockquote {
-  border-left: 4px solid var(--accentColor);
-  color: #666;
-}
-
-h1 {
-  font-size: 32px;
-  padding: 6rem 0 0.8rem 0 !important;
-  margin: -3.6rem 0 0 0 !important;
-}
-
-h2 {
-  font-size: 26px;
-  padding: 5.6rem 0 0.8rem 0 !important;
-  margin: -3.6rem 0 0 0 !important;
-  border-bottom: 2px solid #f00000 !important;
-}
-
-h3 {
-  font-size: 22px;
-  padding: 5.2rem 0 0.8rem 0 !important;
-  margin: -3.6rem 0 0 0 !important;
-  border-bottom: 1px dashed #f00000 !important;
-}
-
-h5 h6 {
-  font-size: 16px;
-  padding: 4.6rem 0 0.6rem 0 !important;
-  margin: -3.6rem 0 0 0 !important;
-}
-
-ul ol {
-  margin: 0.5rem 0;
-}
-
-.sidebar > .sidebar-links > li:not(:first-child) {
-  margin-top: 0 !important;
+img,
+svg {
+  display: inline-block;
 }
