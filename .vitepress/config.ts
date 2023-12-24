@@ -58,13 +58,8 @@ export default defineConfig({
             text: '开发指南',
             items: [
               { text: 'FAQ', link: '/faq/' },
-              { text: '博客', link: `${NEW_PRO_PATH}/blog/` },
               { text: '设计结构', link: '/design/' },
-              {
-                text: '离线文档下载',
-                link: `${NEW_PRO_PATH}/resource/离线功能说明书/SoonSpace 功能说明书.pdf`,
-                target: '_blank',
-              },
+              { text: '博客', link: `${NEW_PRO_PATH}/blog/` },
             ],
           },
           {
