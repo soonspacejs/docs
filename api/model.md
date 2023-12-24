@@ -104,7 +104,11 @@ ssp
 ```ts
 interface CloneModelInfo extends Omit<ModelInfo, 'url'> {}
 
-function cloneModel(model: Model, modelInfo: CloneModelInfo, parent?: BaseObject3D | null): Promise<Model>;
+function cloneModel(
+  model: Model,
+  modelInfo: CloneModelInfo,
+  parent?: BaseObject3D | null
+): Promise<Model>;
 ```
 
 ### 用法:
@@ -201,7 +205,10 @@ const allModelList = ssp.getAllModel();
 ### 定义：
 
 ```ts
-function getModelByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Model[];
+function getModelByUserDataProperty(
+  propNameOrFindFunc: string | UserDataPropertyFindFunc,
+  value?: any
+): Model[];
 ```
 
 ### 用法：
@@ -235,7 +242,9 @@ model.userData = {
     age: 18,
   },
 };
-const modelList = ssp.getModelByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
+const modelList = ssp.getModelByUserDataProperty(
+  (userData) => userData?.people?.name === 'xiaoming'
+);
 ```
 
 :::
@@ -271,7 +280,10 @@ ssp.removeModelById('xxx');
 ### 定义：
 
 ```ts
-function loadModelToGroup(groupInfo: GroupInfo, modelInfoList: ModelInfo[]): Promise<Group>;
+function loadModelToGroup(
+  groupInfo: GroupInfo,
+  modelInfoList: ModelInfo[]
+): Promise<Group>;
 ```
 
 ### 用法：
@@ -308,6 +320,7 @@ ssp
 ## createGroupForModel <Base-Deprecated />
 
 为 `model` 提前创建一个空组。
+
 ::: tip 使用场景
 与 `loadModelToGroup` 不同，有些时候可能你还没有具体的 `modelInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addModelForGroup](#addmodelforgroup) 插入。
 :::
@@ -347,7 +360,10 @@ ssp.createGroupForModel({
 ### 定义：
 
 ```ts
-function addModelForGroup(groupId: GroupInfo['id'], modelInfoList: ModelInfo[]): Promise<Group | null>;
+function addModelForGroup(
+  groupId: GroupInfo['id'],
+  modelInfoList: ModelInfo[]
+): Promise<Group | null>;
 ```
 
 ### 用法：
@@ -515,10 +531,17 @@ ssp.hideAllModel();
 
 ```ts
 interface ModelAnimationFindFunc {
-  (animation: AnimationClip, index: number, animations: AnimationClip[]): boolean;
+  (
+    animation: AnimationClip,
+    index: number,
+    animations: AnimationClip[]
+  ): boolean;
 }
 
-function playModelAnimation(model: Model, animation: number | AnimationClip | ModelAnimationFindFunc): AnimationAction | undefined;
+function playModelAnimation(
+  model: Model,
+  animation: number | AnimationClip | ModelAnimationFindFunc
+): AnimationAction | undefined;
 ```
 
 ### 用法：
@@ -559,7 +582,10 @@ ssp.playModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 ### 定义：
 
 ```ts
-function stopModelAnimation(model: Model, animation: number | AnimationClip | ModelAnimationFindFunc): void;
+function stopModelAnimation(
+  model: Model,
+  animation: number | AnimationClip | ModelAnimationFindFunc
+): void;
 ```
 
 ### 用法：
@@ -654,7 +680,9 @@ type ModelsBoundsTreeOptions = {
   workerCreator?: () => Worker;
 };
 
-function computeModelsBoundsTree(options?: ModelsBoundsTreeOptions): Promise<void>;
+function computeModelsBoundsTree(
+  options?: ModelsBoundsTreeOptions
+): Promise<void>;
 ```
 
 ### 用法：
@@ -851,7 +879,10 @@ createFindObjectsInSphereNearPosition ( radius: number, objects: Object3D[] ): F
 
 ```js
 //合建一个查找器，需要指定查找的区域 和 从哪些对象中进行查找
-const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(20, objArr);
+const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(
+  20,
+  objArr
+);
 
 // 使用查找器查找指定位置附近区域的对象
 const nearObjs = findObjectsNearPosition({ x: 100, y: 100, z: 100 });

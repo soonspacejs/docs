@@ -244,6 +244,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
       { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
     ]"
 />
+
 ::: tip 提示
 内部是调用 `controls.fitToBox` 方法
 :::

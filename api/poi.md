@@ -23,7 +23,7 @@ interface NameCanvasInfo {
   textBaseline?: CanvasTextBaseline;
   backgroundStyle?: CanvasFillStrokeStyles['fillStyle'];
   borderStyle?: CanvasFillStrokeStyles['strokeStyle'];
-  borderWidth?: number; 
+  borderWidth?: number;
 }
 
 interface PoiInfo extends BaseObject3DInfo {
@@ -216,7 +216,10 @@ const allPoiList = ssp.getAllPoi();
 ### 定义：
 
 ```ts
-function getPoiByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Poi[];
+function getPoiByUserDataProperty(
+  propNameOrFindFunc: string | UserDataPropertyFindFunc,
+  value?: any
+): Poi[];
 ```
 
 ### 用法：
@@ -250,7 +253,9 @@ poi.userData = {
     age: 18,
   },
 };
-const poiList = ssp.getPoiByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
+const poiList = ssp.getPoiByUserDataProperty(
+  (userData) => userData?.people?.name === 'xiaoming'
+);
 ```
 
 :::
@@ -321,6 +326,7 @@ ssp.createPoiToGroup(
 ## createGroupForPoi <Base-Deprecated />
 
 为 `poi` 提前创建一个空组。
+
 ::: tip 使用场景
 与 `createPoiToGroup` 不同，有些时候可能你还没有具体的 `poiInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addPoiForGroup](#addpoiforgroup) 插入。
 :::
@@ -360,7 +366,10 @@ ssp.createGroupForPoi({
 ### 定义：
 
 ```ts
-function addPoiForGroup(groupId: GroupInfo['id'], poiInfoList: PoiInfo[]): Group | null;
+function addPoiForGroup(
+  groupId: GroupInfo['id'],
+  poiInfoList: PoiInfo[]
+): Group | null;
 ```
 
 ### 用法：

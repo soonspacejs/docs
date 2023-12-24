@@ -211,9 +211,6 @@ export default {
 };
 ```
 
-<br>
-<br>
-
 ::: tip 提示
 以下方法全部为 [soonspace 空间交互事件](../../guide/event) 在 `vue-soonspace` 组件内的事件传递，方法名与回调参数完全一致。
 :::

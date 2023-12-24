@@ -439,6 +439,7 @@ ssp
 ## createGroupForSbm <Base-Deprecated />
 
 为 `Sbm` 提前创建一个空组。
+
 ::: tip 使用场景
 与 `loadSbmToGroup` 不同，有些时候可能你还没有具体的 `sbmInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addSbmForGroup](#addsbmforgroup) 插入。
 :::

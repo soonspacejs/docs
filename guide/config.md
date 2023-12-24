@@ -128,6 +128,7 @@ const ssp = new SoonSpace({
 
 - **类型**: boolean
 - **默认值**: `false`
+
   ::: tip 提示
   不开启时 `modelHover` 和 `poiHover` 不会触发。
 

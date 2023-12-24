@@ -367,6 +367,7 @@ ssp
 ## createGroupForCanvas3D <Base-Deprecated />
 
 为 `Canvas3D` 提前创建一个空组。
+
 ::: tip 使用场景
 与 `createCanvas3DToGroup` 不同，有些时候可能你还没有具体的 `Canvas3DInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addCanvas3DForGroup](#addCanvas3Dforgroup) 插入。
 :::

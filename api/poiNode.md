@@ -289,6 +289,7 @@ ssp.createPoiNodeToGroup(
 ## createGroupForPoiNode <Base-Deprecated />
 
 为 `poiNode` 提前创建一个空组。
+
 ::: tip 使用场景
 与 `createPoiNodeToGroup` 不同，有些时候可能你还没有具体的 `poiNodeInfo` 数据，但你想提前创建一个批量管理的空组，当有数据时再使用 [addPoiNodeForGroup](#addpoiNodeforgroup) 插入。
 :::
