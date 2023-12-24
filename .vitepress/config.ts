@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitepress';
-import { resolve } from 'path';
 
 const BASE_HTTP_URL = 'http://www.xwbuilders.com';
 const BASE_PORT = '9018';
