@@ -2,7 +2,7 @@ node_modules
 dist
 !说明书/*/dist
 
-src/.vitepress/cache
+.vitepress/cache
 
 # misc
 .DS_Store
