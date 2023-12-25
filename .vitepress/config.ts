@@ -187,7 +187,7 @@ export default defineConfig({
             { text: 'Sbm 模型', link: '/api/sbm' },
             { text: '通用模型', link: '/api/model' },
             { text: 'Poi 对象', link: '/api/poi' },
-            { text: 'PoiNode 对象', link: '/api/poinode' },
+            { text: 'PoiNode 对象', link: '/api/poiNode' },
             { text: 'PoiMesh 对象', link: '/api/poiMesh' },
             { text: '空间画布对象', link: '/api/canvas3D' },
             { text: '拓扑路径', link: '/api/topology' },
