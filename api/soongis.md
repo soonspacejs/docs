@@ -6,7 +6,7 @@
 
 - `el` 配置项被禁用，使用 SoonGIS 中的 canvas 作为容器。
 - 背景相关的配置项被禁用，背景使用 SoonGIS 的底图作为背景。
-- SoonSpace [控制器](./controls) 和 [相机](./camera) 的功能被失效，相机相关的控制使用 SoonGIS 控制器。
+- SoonSpace [控制器](./controls) 和 [相机](./camera) 的功能将失效，相机相关的控制使用 SoonGIS 控制器。
 - [PoiNode 对象](./poiNode) 未完全兼容，目前只支持 `2D` 类型。
 
 ## 样例
