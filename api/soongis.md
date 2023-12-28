@@ -59,7 +59,9 @@ SoonGIS 支持所有 maplibre-gl 选项，包括 `container`、`center`、`zoom`
 具体请查阅 [maplibre-gl 文档](https://maplibre.org/maplibre-gl-js/docs/API/classes/maplibregl.Map/)。
 :::
 
-## SOONSPACE_LAYER_ID <Base-Tag title="readonly" />
+## SOONSPACE_LAYER_ID
+
+<Base-Tag title="readonly" />
 
 ```js
 ssp.soongisManager.SOONSPACE_LAYER_ID;
