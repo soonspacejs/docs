@@ -13,16 +13,14 @@ export default defineConfig({
   title: 'SoonSpace.js 2.x',
   description: '简洁易学的 WebGL 库',
   ignoreDeadLinks: true,
+  lastUpdated: true,
   head: [
     ['link', { rel: 'icon', href: '/logo/logo.svg' }],
     // manifest
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    [
-      'meta',
-      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-    ],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     [
       'link',
       {
@@ -273,9 +271,7 @@ export default defineConfig({
         },
         {
           text: '开发者插件',
-          items: [
-            { text: 'vscode-sbm-preivew', link: '/plugin/vscode-sbm-preview' },
-          ],
+          items: [{ text: 'vscode-sbm-preivew', link: '/plugin/vscode-sbm-preview' }],
         },
       ],
     },
