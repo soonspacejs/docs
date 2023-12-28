@@ -244,6 +244,8 @@ heatMap.setData('hm1', [
 
 <Docs-Iframe src="plugin/polygonHeatMap.html" />
 
+<br/>
+
 #### 与`create()`对比
 
 用户在使用热力图时，一般期望的逻辑是：

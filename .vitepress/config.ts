@@ -211,6 +211,7 @@ export default defineConfig({
           items: [
             { text: '补间动画', link: '/api/animation' },
             { text: '插件', link: '/api/plugin' },
+            { text: 'SoonGIS', link: '/api/soongis' },
           ],
         },
       ],
