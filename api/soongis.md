@@ -71,14 +71,14 @@ SoonGIS 管理器会将 SoonSpace 作为一个图层，并将其 id 设为 `SOON
 
 你可以通过 `map.getLayer(SOONSPACE_LAYER_ID)` 获取 SoonSpace 图层，并对其进行操作。
 
-## coordinates
+## fromPositionToCoordinate
 
-SoonSpace 场景的坐标位置。
+从笛卡尔坐标 `position` 转换为经纬度 `coordinate`。
 
 ### 类型
 
 ```ts
-type Coordinates = {
+type Coordinate = {
   /**
    * 经度
    */
@@ -92,28 +92,48 @@ type Coordinates = {
    */
   altitude: number;
 };
+
+function fromPositionToCoordinate(position: IVector3): Coordinate | null;
 ```
 
 ### 用法
 
 ```js
-ssp.soongisManager.coordinates;
+const position = {
+  x: 0,
+  y: 0,
+  z: 0,
+};
+const coordinate = ssp.soongisManager.fromPositionToCoordinate(position);
 ```
 
-## setCoordinates
+## fromCoordinateToPosition
+
+从经纬度 `coordinate` 转换为笛卡尔坐标 `position`。
 
 ### 类型
 
-设置 SoonSpace 场景的坐标位置。
-
 ```ts
-function setCoordinates(coordinates: Coordinates): void;
+function fromCoordinateToPosition(coordinate: Coordinate): Vector3 | null;
 ```
 
 ### 用法
 
 ```js
-ssp.soongisManager.setCoordinates(coordinates);
+const center = [120.16071664690207, 30.189586637919618];
+
+const position = ssp.soongisManager.fromCoordinateToPosition({
+  longitude: center[0],
+  latitude: center[1],
+  altitude: 0,
+});
+
+// 将模型设置到指定位置
+const model = ssp.loadModel({
+  id: 'xx',
+  url: 'xxx',
+  position,
+});
 ```
 
 更多功能正在完善中...
