@@ -88,7 +88,7 @@ type Coordinate = {
    */
   latitude: number;
   /**
-   * 高度
+   * 高程
    */
   altitude: number;
 };
@@ -101,6 +101,7 @@ function fromPositionToCoordinate(position: IVector3): Coordinate | null;
 ```js
 const position = {
   x: 0,
+  // y 值会直接设置为 coordinate.altitude
   y: 0,
   z: 0,
 };
@@ -125,6 +126,7 @@ const center = [120.16071664690207, 30.189586637919618];
 const position = ssp.soongisManager.fromCoordinateToPosition({
   longitude: center[0],
   latitude: center[1],
+  // 高程会直接设置为 position.y 值
   altitude: 0,
 });
 
