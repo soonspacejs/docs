@@ -274,6 +274,37 @@ const shortestTopology = ssp.getShortestPath(topologyFromOther, {
 
 部分配置参考 [TopologyInfo](#topologyinfo-2)
 
+## getShortestPathAsync
+
+同 [getShortestPath](#getshortestpath)，但是内部计算使用 WebWorker，用于异步获取最短路径。
+
+### 定义：
+
+```ts
+function getShortestPathAsync(
+  topology: Topology,
+  info: ShortestPathInfo
+): Promise<Topology | null>;
+```
+
+### 用法：
+
+```js
+const shortestTopology = await ssp.getShortestPathAsync(topologyFromOther, {
+  start: { x: 0, y: 0, z: 0 },
+  end: { x: 100, y: 0, z: 300 },
+  id: 'shortestPath',
+  linkColor: 'red',
+  nodeColor: 'orange',
+  imgUrl: '../../asstes/img/topology/arrow.png',
+  animation: true,
+});
+```
+
+::: tip 提示
+支持 4 个 worker 线程同时计算。
+:::
+
 ## getShortestPathByMultipleStartPoints
 
 通过指定 多个起点 和 一个终点，并计算每个起点 与 终点 间的最短路径，然后再从这些最短路径中 找出最短的那条 作为最终的路径 并 返回。
@@ -337,6 +368,39 @@ const shortestTopology = ssp.getShortestPathByMultipleStartPoints(
 
 部分配置参考 [TopologyInfo](#topologyinfo-2)
 
+## getShortestPathByMultipleStartPointsAsync
+
+同 [getShortestPathByMultipleStartPoints](#getshortestpathbymultiplestartpoints)，但是内部计算使用 WebWorker，用于异步获取最短路径。
+
+### 定义：
+
+```ts
+function getShortestPathByMultipleStartPointsAsync(
+  topology: Topology,
+  info: ShortestPathByMultipleStartPoints
+): Promise<Topology | null>;
+```
+
+### 用法：
+
+```js
+const shortestTopology = await ssp.getShortestPathByMultipleStartPointsAsync(
+  topologyFromOther,
+  {
+    start: [
+      { x: 0, y: 0, z: 0 },
+      { x: 20, y: 0, z: 0 },
+    ],
+    end: { x: 100, y: 0, z: 300 },
+    id: 'shortestPath',
+    linkColor: 'red',
+    nodeColor: 'orange',
+    imgUrl: '../../asstes/img/topology/arrow.png',
+    animation: true,
+  }
+);
+```
+
 ## getShortestPathByMultipleEndPoints
 
 通过指定 一个起点 和 多个终点，并计算这个起点 与 每个终点 间的最短路径，然后再从这些最短路径中 找出最短的那条 作为最终的路径 并 返回。
@@ -399,6 +463,39 @@ const shortestTopology = ssp.getShortestPathByMultipleEndPoints(
 />
 
 部分配置参考 [TopologyInfo](#topologyinfo-2)
+
+## getShortestPathByMultipleEndPointsAsync
+
+同 [getShortestPathByMultipleEndPoints](#getshortestpathbymultipleendpoints)，但是内部计算使用 WebWorker，用于异步获取最短路径。
+
+### 定义：
+
+```ts
+function getShortestPathByMultipleEndPointsAsync(
+  topology: Topology,
+  info: ShortestPathByMultipleEndPoints
+): Promise<Topology | null>;
+```
+
+### 用法：
+
+```js
+const shortestTopology = await ssp.getShortestPathByMultipleEndPointsAsync(
+  topologyFromOther,
+  {
+    start: { x: 0, y: 0, z: 0 },
+    end: [
+      { x: 100, y: 0, z: 300 },
+      { x: 200, y: 0, z: 400 },
+    ],
+    id: 'shortestPath',
+    linkColor: 'red',
+    nodeColor: 'orange',
+    imgUrl: '../../asstes/img/topology/arrow.png',
+    animation: true,
+  }
+);
+```
 
 ## getTopologyById <Base-Deprecated />
 
