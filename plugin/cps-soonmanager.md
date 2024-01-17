@@ -34,6 +34,7 @@ const ssp = new SoonSpace({
   events: {},
 });
 
+// 如需加载多个场景请注册多个插件
 const cpsSoonmanagerPlugin = ssp.registerPlugin(
   CpsSoonmanagerPlugin,
   'cpsSoonmanagerPlugin'
@@ -50,6 +51,22 @@ await cpsSoonmanagerPlugin.loadScene();
 
 - **默认值:** `''`
 - **类型:** `string`
+
+### sceneGroup
+
+场景 Group 对象
+
+场景树的顶层对象会作为 sceneGroup 的 `children`。
+
+```js
+// Group 的默认 id 是 `path` 属性，可以通过 `getObjectById` 获取
+const sceneGroup = ssp.getObjectById(path);
+// 设置该场景的整体偏移
+sceneGroup.position.set(10, 0, 0);
+```
+
+- **默认值:** `null`
+- **类型:** `Group | null`
 
 ### metaData <Base-Tag title="readonly" />
 
@@ -414,6 +431,10 @@ interface ILoadSceneOptions {
    * 加载流程数据
    */
   loadFlowData?: boolean;
+  /**
+   * 场景 group 信息
+   */
+  sceneGroupInfo?: Partial<BaseObjectInfo>;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
