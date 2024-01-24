@@ -170,6 +170,7 @@ function flyToObj(object: BaseObject3D | BaseMesh, viewpoint: FlyToViewpoint | R
 interface FlyToObjOptions {
   enableTransition?: boolean;
   padding?: number | string;
+  viewpointSpace?: 'world' | 'local';
 }
 
 function flyToObj(object: Object3D | Box3, viewpoint?: FlyToViewpoint, options?: FlyToObjOptions): Promise<void>;
@@ -208,7 +209,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 
 #### viewpoint
 
-- **描述:** 相机朝向物体对象的视角面。
+- **描述:** 相机朝向对象的视口面。
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** [FlyToViewpoint](../guide/types#flytoviewpoint)
 - **默认值:** `frontTop`
@@ -240,8 +241,9 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 `v2.10.x`
 <Docs-Table
     :data="[
-      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
       { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
+      { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
+      { prop: 'viewpointSpace', desc: '视角后飞向的视口面相对于场景还是对象', type: 'world | local', require: false, default: 'world' },
     ]"
 />
 

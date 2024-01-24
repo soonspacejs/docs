@@ -435,6 +435,10 @@ interface ILoadSceneOptions {
    * 场景 group 信息
    */
   sceneGroupInfo?: Partial<BaseObjectInfo>;
+  /**
+   * 对象 id 前缀
+   */
+  objectPrefixId?: string;
 }
 
 function loadScene(options?: ILoadSceneOptions): Promise<void>;
@@ -519,6 +523,8 @@ cpsSoonmanagerPlugin
       { prop: 'loadPoi', desc: '默认执行 loadPoi 方法', type: 'boolean', require: false, default: 'false' },
       { prop: 'refreshPoiByDataSource', desc: '默认执行 refreshPoiByDataSource 方法', type: 'boolean', require: false, default: 'false' },
       { prop: 'loadFlowData', desc: '默认执行 loadFlowData 方法', type: 'boolean', require: false, default: 'false' },
+      { prop: 'sceneGroupInfo', desc: '场景 group 信息', type: 'Partial<BaseObjectInfo>', require: false, default: '{id: [this.path]}' },
+      { prop: 'objectPrefixId', desc: '场景对象的id前缀', type: 'string', require: false, default: '' },
     ]"
 />
 
