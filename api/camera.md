@@ -243,7 +243,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
     :data="[
       { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
       { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
-      { prop: 'viewpointSpace', desc: '视角后飞向的视口面相对于场景还是对象', type: 'world | local', require: false, default: 'world' },
+      { prop: 'viewpointSpace', desc: '`viewpoint` 相对于场景或对象，默认相对于场景', type: 'world | local', require: false, default: 'world' },
     ]"
 />
 
