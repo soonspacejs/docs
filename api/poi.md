@@ -84,7 +84,25 @@ ssp.createPoi(
     userData: {},
   }
 );
+
+// 3d poi
+ssp.createPoi({
+  id: 'xx',
+  name: 'xx',
+  nameCanvasInfo: {
+    fillStyle: '#fff',
+    strokeStyle: '#000',
+  },
+  type: '3d',
+  url: '/xx.png',
+});
 ```
+
+::: tip 提示
+2d 不支持 `rotation` 和 `scale` 属性。
+
+2.5d 不支持 `rotation` 属性`。
+:::
 
 ### 参数：
 
@@ -216,10 +234,7 @@ const allPoiList = ssp.getAllPoi();
 ### 定义：
 
 ```ts
-function getPoiByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Poi[];
+function getPoiByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Poi[];
 ```
 
 ### 用法：
@@ -253,9 +268,7 @@ poi.userData = {
     age: 18,
   },
 };
-const poiList = ssp.getPoiByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const poiList = ssp.getPoiByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -366,10 +379,7 @@ ssp.createGroupForPoi({
 ### 定义：
 
 ```ts
-function addPoiForGroup(
-  groupId: GroupInfo['id'],
-  poiInfoList: PoiInfo[]
-): Group | null;
+function addPoiForGroup(groupId: GroupInfo['id'], poiInfoList: PoiInfo[]): Group | null;
 ```
 
 ### 用法：

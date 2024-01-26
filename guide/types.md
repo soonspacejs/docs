@@ -129,7 +129,7 @@ type SceneEventType = 'hover' | 'click' | 'rightClick' | 'dblClick';
 Poi 展示类型
 
 ```ts
-type PoiType = '2d' | '2D' | '2.5d' | '2.5D';
+type PoiType = '2d' | '2D' | '2.5d' | '2.5D' | '3d' | '3D';
 ```
 
 ## PoiNodeType
@@ -137,7 +137,7 @@ type PoiType = '2d' | '2D' | '2.5d' | '2.5D';
 PoiNode 展示模式类型
 
 ```ts
-type PoiNodeType = PoiType | '3d' | '3D';
+type PoiNodeType = PoiType;
 ```
 
 ## IColor
