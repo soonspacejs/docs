@@ -33,10 +33,7 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const clippingControlsPlugin = ssp.registerPlugin(
-  ClippingControlsPlugin,
-  'clippingControlsPlugin'
-);
+const clippingControlsPlugin = ssp.registerPlugin(ClippingControlsPlugin, 'clippingControlsPlugin');
 consolo.log(clippingControlsPlugin);
 ```
 
@@ -56,10 +53,7 @@ interface ModelClippingOptions {
   openHelper?: boolean;
 }
 
-function modelClipping(
-  model: BaseObject3D,
-  options: ModelClippingOptions
-): void;
+function modelClipping(model: BaseObject3D, options: ModelClippingOptions): void;
 ```
 
 #### 用法
@@ -71,7 +65,20 @@ clippingControlsPlugin.modelClipping(model, {
   isForward: true,
   openHelper: true,
 });
+
+clippingControlsPlugin.modelClipping(model, {
+  axis: 'x',
+  clipPercent: 50,
+  isForward: false,
+  openHelper: true,
+});
 ```
+
+::: tip 提示
+`axis` 和 `isForward` 组合为一个唯一标识，标识相同时会复用切割状态。
+
+同一个轴线可以同时存在两个切割状态。
+:::
 
 #### 参数:
 
@@ -113,7 +120,7 @@ clippingControlsPlugin.modelClipping(model, {
 #### 定义
 
 ```ts
-function removeModelClipping(model: BaseObject3D, axis?: AxisType): void;
+function removeModelClipping(model: BaseObject3D, axis?: AxisType, isForward?: boolean): void;
 ```
 
 #### 用法
@@ -121,6 +128,10 @@ function removeModelClipping(model: BaseObject3D, axis?: AxisType): void;
 ```js
 clippingControlsPlugin.removeModelClipping(model, 'x');
 ```
+
+::: tip 提示
+`axis` 和 `isForward` 组合为一个唯一标识，用于还原切割状态。
+:::
 
 #### 参数:
 
@@ -135,6 +146,13 @@ clippingControlsPlugin.removeModelClipping(model, 'x');
 - **描述:** 轴线
 - **类型:** [`AxisType`](../guide/types#axistype)
 - **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### isForward
+
+- **描述:** 是否正向切割
+- **类型:** `boolean`
+- **必填:** <Base-RequireIcon :isRequire="false" />
+- **默认:** `true`
 
 ### sceneClipping
 
@@ -156,8 +174,15 @@ function sceneClipping(options: SceneClippingOptions): void;
 #### 用法
 
 ```js
-clippingControlsPlugin.sceneClipping({ axis: 'x', clipPoint: 500 });
+clippingControlsPlugin.sceneClipping({ axis: 'x', isForward: true, clipPoint: 500 });
+clippingControlsPlugin.sceneClipping({ axis: 'x', isForward: false, clipPoint: 500 });
 ```
+
+::: tip 提示
+`axis` 和 `isForward` 组合为一个唯一标识，标识相同时会复用切割状态。
+
+同一个轴线可以同时存在两个切割状态。
+:::
 
 #### 参数:
 
@@ -193,7 +218,7 @@ clippingControlsPlugin.sceneClipping({ axis: 'x', clipPoint: 500 });
 #### 定义
 
 ```ts
-function removeSceneClipping(axis?: AxisType): void;
+function removeSceneClipping(axis?: AxisType, isForward?: boolean): void;
 ```
 
 #### 用法
@@ -202,6 +227,10 @@ function removeSceneClipping(axis?: AxisType): void;
 clippingControlsPlugin.removeSceneClipping('x');
 ```
 
+::: tip 提示
+`axis` 和 `isForward` 组合为一个唯一标识，用于还原切割状态。
+:::
+
 #### 参数:
 
 ##### axis
@@ -209,3 +238,10 @@ clippingControlsPlugin.removeSceneClipping('x');
 - **描述:** 轴线
 - **类型:** [`AxisType`](../guide/types#axistype)
 - **必填:** <Base-RequireIcon :isRequire="false" />
+
+##### isForward
+
+- **描述:** 是否正向切割
+- **类型:** `boolean`
+- **必填:** <Base-RequireIcon :isRequire="false" />
+- **默认:** `true`
