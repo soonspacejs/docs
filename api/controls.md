@@ -165,8 +165,8 @@ controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
   - `DOLLY` 用于 `PerspectiveCamera`
   - `ZOOM` 用于 `OrthographicCamera`， 并且无法设置 `DOLLY`.
 
-| 触控操作        | 行为                                                                                                                                                                                                                                                                                                                        |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------- |
+| 触控操作              | 行为                                                                                                       |
+| --------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `touches.one`   | `ACTION.TOUCH_ROTATE`\* \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.DOLLY`                                                                                                                                                                                                                                  | `ACTION.ZOOM` | `ACTION.NONE` |
 | `touches.two`   | `ACTION.TOUCH_DOLLY_TRUCK` \| `ACTION.TOUCH_DOLLY_OFFSET` \| `ACTION.TOUCH_DOLLY_ROTATE` \| `ACTION.TOUCH_ZOOM_TRUCK` \| `ACTION.TOUCH_ZOOM_OFFSET` \| `ACTION.TOUCH_ZOOM_ROTATE` \| `ACTION.TOUCH_DOLLY` \| `ACTION.TOUCH_ZOOM` \| `ACTION.TOUCH_ROTATE` \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.NONE` |
 | `touches.three` | `ACTION.TOUCH_DOLLY_TRUCK` \| `ACTION.TOUCH_DOLLY_OFFSET` \| `ACTION.TOUCH_DOLLY_ROTATE` \| `ACTION.TOUCH_ZOOM_TRUCK` \| `ACTION.TOUCH_ZOOM_OFFSET` \| `ACTION.TOUCH_ZOOM_ROTATE` \| `ACTION.TOUCH_ROTATE` \| `ACTION.TOUCH_TRUCK` \| `ACTION.TOUCH_OFFSET` \| `ACTION.NONE`                                                |
