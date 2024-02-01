@@ -124,6 +124,7 @@ interface ITreeData {
     radius: number;
     points?: PlaneIVector2[];
   };
+  boundingBox?: number[];
 }
 ```
 
