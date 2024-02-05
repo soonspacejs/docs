@@ -88,6 +88,8 @@ Decal.updateTexture(url: DecalInfo['url']): Promise<void>;
 
 ```js
 decal.updateTexture('xxx.png');
+// 重新渲染
+ssp.render();
 ```
 
 ## decal.updateMaterial
@@ -106,6 +108,8 @@ Decal.updateMaterial(params?: DecalMaterialInfo): void
 
 ```js
 decal.updateMaterial({ color: '#ff0', opacity: 0.5 });
+// 重新渲染
+ssp.render();
 ```
 
 ## updateDecalGeometry
