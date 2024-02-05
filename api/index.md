@@ -14,6 +14,7 @@
 - [PoiMesh 对象](./poiMesh)
 - [空间画布对象](./canvas3D)
 - [拓扑路径](./topology)
+- [贴花](./decal)
 
 ### 进阶
 

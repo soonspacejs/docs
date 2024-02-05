@@ -189,6 +189,7 @@ export default defineConfig({
             { text: 'PoiMesh 对象', link: '/api/poiMesh' },
             { text: '空间画布对象', link: '/api/canvas3D' },
             { text: '拓扑路径', link: '/api/topology' },
+            { text: '贴花', link: '/api/decal' },
           ],
         },
         {
