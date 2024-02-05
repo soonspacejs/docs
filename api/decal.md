@@ -78,10 +78,53 @@ const decal = await ssp.createDecal({
 
 更新贴花纹理
 
+### 定义：
+
+```ts
+Decal.updateTexture(url: DecalInfo['url']): Promise<void>;
+```
+
+### 用法：
+
+```js
+decal.updateTexture('xxx.png');
+```
+
 ## decal.updateMaterial
 
 更新贴花材质
 
+### 定义：
+
+```ts
+type DecalMaterialInfo = Pick<DecalInfo, 'color' | 'opacity'>
+
+Decal.updateMaterial(params?: DecalMaterialInfo): void
+```
+
+### 用法：
+
+```js
+decal.updateMaterial({ color: '#ff0', opacity: 0.5 });
+```
+
 ## updateDecalGeometry
 
 更新贴花几何结构
+
+### 定义：
+
+```ts
+type DecalGeometryInfo = Pick<DecalInfo, 'snapping' | 'snappingDistance' | 'snappingTargets'>;
+
+function updateDecalGeometry(decal: Decal, info?: DecalGeometryInfo): Decal;
+```
+
+### 用法：
+
+```js
+// 只可以吸附到特定的对象上
+ssp.updateDecalGeometry(decal, { snapping: true, snappingDistance: 1, snappingTargets: [xxxObject] });
+// 可以吸附到所有模型上
+ssp.updateDecalGeometry(decal, { snapping: true, snappingDistance: 1 });
+```
