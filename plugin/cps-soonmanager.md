@@ -24,7 +24,7 @@ yarn add @soonspacejs/plugin-cps-soonmanager
 
 ## 使用方法
 
-```js {2,10-12}
+```js {2,10-14}
 import SoonSpace from 'soonspacejs';
 import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
 
