@@ -111,7 +111,7 @@ interface ITreeData {
   id: string;
   pid: string | null;
   name: string;
-  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB' | 'POLYGON' | 'CIRCLE';
+  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB' | 'POLYGON' | 'CIRCLE' | 'WATER_SURFACE';
   deviceName: string | null;
   deviceCode: string | null;
   matrix: number[];
