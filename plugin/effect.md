@@ -184,6 +184,87 @@ effectPlugin.createSmoke({
 
 其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
 
+### createWater
+
+创建水面
+
+#### 定义
+
+```ts
+interface WaterOptions extends ShaderMaterialParameters {
+  /**
+   * 水面的多边形区域
+   */
+  polygon: IVector3[];
+  /**
+   * 水面的高度
+   * 默认为第一个顶点的 y 值
+   */
+  height?: number;
+  /**
+   * 太阳的照射的方向
+   */
+  sunDirection?: Vector3;
+  /**
+   * 太阳的颜色
+   */
+  sunColor?: ColorRepresentation;
+  /**
+   * 水的颜色
+   */
+  waterColor?: ColorRepresentation;
+  /**
+   * 水波的强度
+   */
+  distortionScale?: number;
+  /**
+   * 透明度
+   */
+  alpha?: number;
+  /**
+   * 速度
+   */
+  speed?: number;
+  /**
+   * 水面法线纹理
+   */
+  waterNormals?: string | Texture;
+  fog?: boolean;
+  eye?: Vector3;
+  clipBias?: number;
+  textureWidth?: number;
+  textureHeight?: number;
+}
+interface CreateWaterOptions extends PluginObjectInfo, Omit<WaterOptions, 'userData'> {
+  /**
+   * 是否开启水的动画
+   * 如果开启，则会一直触发场景渲染
+   * 如果关闭，则不会主动触发场景渲染，但在渲染渲染时仍会有动画效果，只是不会主动触发场景渲染
+   */
+  animation?: boolean;
+}
+
+function createWater(options: CreateWaterOptions): PluginObject;
+```
+
+#### 用法
+
+```js
+effectPlugin.createWater({
+  id: 'water',
+  position: { x: 0, y: 0.1, z: 0 },
+  polygon: [
+    { x: 0, y: 50, z: 0 },
+    { x: 0, y: 1, z: 1000 },
+    { x: 1500, y: 0, z: 1000 },
+    { x: 1000, y: 0, z: 0 },
+  ],
+  waterColor: '#ff6600',
+});
+```
+
+其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
+
 ### createContactShadows
 
 创建接触阴影
@@ -263,7 +344,7 @@ effectPlugin.createContactShadows({
         prop: 'scale', desc: '用于乘以宽高', type: 'number | [x: number, y: number]', require: false, default: '10'
       },
       {
-        prop: 'darkness', desc: '阴影的黑暗程度', type: 'number', require: false, default: '1'
+        prop: 'darkness', desc: '阴影的黑暗系数', type: 'number', require: false, default: '1'
       },
     ]"
 />
