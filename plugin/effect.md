@@ -463,9 +463,7 @@ effectPlugin.createSparkles({
 #### 定义
 
 ```ts
-function createParticleCluster(
-  options: ParticleClusterOptions
-): ParticleCluster;
+function createParticleCluster(options: ParticleClusterOptions): ParticleCluster;
 ```
 
 参数类型：
@@ -538,14 +536,11 @@ export interface ParticleClusterFeature {
 /**
  * 粒子簇特性点
  */
-export type ParticleClusterFeaturePoint<
-  IVec extends IVector
-> = ParticleClusterFeature & IVec;
+export type ParticleClusterFeaturePoint<IVec extends IVector> = ParticleClusterFeature & IVec;
 /**
  * 很多点粒子族
  */
-export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector>
-  extends ParticleClusterFeature {
+export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector> extends ParticleClusterFeature {
   points: ParticleClusterFeaturePoint<IVec>[];
 }
 
@@ -560,24 +555,20 @@ export interface CreateLineParticleClusterDataArrOptions<IVec extends IVector>
 /**
  * 很多点粒子族
  */
-export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector>
-  extends ParticleClusterFeature {
+export interface CreatePointParticleClusterDataArrOptions<IVec extends IVector> extends ParticleClusterFeature {
   points: ParticleClusterFeaturePoint<IVec>[];
 }
 
 /**
  * ParticleClusterGeometry 的选项
  */
-export type ParticleClusterGeometryOptions = CreatePointParticleClusterDataArrOptions<
-  IVector3
-> &
+export type ParticleClusterGeometryOptions = CreatePointParticleClusterDataArrOptions<IVector3> &
   CreateLineParticleClusterDataArrOptions<IVector3> &
   CreateHeatParticleClusterDataArrOptions<IVector3> &
   Omit<ClusterGeometryOptions, 'clusters'> & {
     clusterType?: ClusterType;
   };
-export type ParticleClusterOptions = ParticleClusterGeometryOptions &
-  PointsMaterialParameters;
+export type ParticleClusterOptions = ParticleClusterGeometryOptions & PointsMaterialParameters;
 ```
 
 ParticleCluster
@@ -590,14 +581,10 @@ export declare class ParticleCluster extends Points {
   set options(value: ParticleClusterGeometryOptions);
   setOptions(options: ParticleClusterGeometryOptions): void;
   addPoint(
-    point:
-      | ParticleClusterFeaturePoint<IVector3>[]
-      | ParticleClusterFeaturePoint<IVector3>,
+    point: ParticleClusterFeaturePoint<IVector3>[] | ParticleClusterFeaturePoint<IVector3>,
     options?: Omit<ParticleClusterGeometryOptions, 'points'>
   ): void;
-  convertPoints(
-    points: ParticleClusterFeaturePoint<IVector3>[]
-  ): ParticleClusterFeatureVector<IVector3>[];
+  convertPoints(points: ParticleClusterFeaturePoint<IVector3>[]): ParticleClusterFeatureVector<IVector3>[];
 }
 ```
 

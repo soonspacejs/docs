@@ -35,10 +35,7 @@ const ssp = new SoonSpace({
 });
 
 // 如需加载多个场景请注册多个插件
-const cpsSoonmanagerPlugin = ssp.registerPlugin(
-  CpsSoonmanagerPlugin,
-  'cpsSoonmanagerPlugin'
-);
+const cpsSoonmanagerPlugin = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cpsSoonmanagerPlugin');
 cpsSoonmanagerPlugin.setPath('xxx');
 await cpsSoonmanagerPlugin.loadScene();
 ```
@@ -52,7 +49,25 @@ await cpsSoonmanagerPlugin.loadScene();
 - **默认值:** `''`
 - **类型:** `string`
 
-### sceneGroup
+## effectPlugin
+
+特效插件实例
+
+- **默认值:** `null`
+- **类型:** `EffectPlugin | null`
+
+```js
+const effectPlugin = ssp.registerPlugin(EffectPlugin, 'effectPlugin');
+
+cpsSoonmanagerPlugin.effectPlugin = effectPlugin;
+cpsSoonmanagerPlugin.loadScene();
+```
+
+::: tip 提示
+当 `renderType` 为 `WATER_SURFACE` 时，需要使用[特效插件](./effect)
+:::
+
+### sceneGroup <Base-Tag title="readonly" />
 
 场景 Group 对象
 
@@ -122,9 +137,12 @@ interface ITreeData {
   shape?: {
     height: number;
     radius: number;
-    points?: PlaneIVector2[];
+    points?: IVector3[];
   };
   boundingBox?: number[];
+  extra?: {
+    [key: string]: any;
+  };
 }
 ```
 
@@ -630,10 +648,7 @@ ssp.createTopology(topologiesInfo[2]);
 #### 定义
 
 ```ts
-function sortTopologyNodes(
-  topologyInfo: TopologyInfo,
-  startNodeId?: TopologyNodeInfo['id']
-): TopologyInfo | undefined;
+function sortTopologyNodes(topologyInfo: TopologyInfo, startNodeId?: TopologyNodeInfo['id']): TopologyInfo | undefined;
 ```
 
 #### 用法
@@ -668,23 +683,12 @@ ssp.createTopology({
 ```ts
 type TAnimationsTweenProps = Pick<
   IKeyframe,
-  | 'x'
-  | 'y'
-  | 'z'
-  | 'rotationX'
-  | 'rotationY'
-  | 'rotationZ'
-  | 'scaleX'
-  | 'scaleY'
-  | 'scaleZ'
+  'x' | 'y' | 'z' | 'rotationX' | 'rotationY' | 'rotationZ' | 'scaleX' | 'scaleY' | 'scaleZ'
 >;
 
 interface IPlayAnimationByIdOptions {
   autoStopPrevious?: boolean;
-  onUpdate?: (
-    source: TAnimationsTweenProps,
-    tween: Tween<TAnimationsTweenProps>
-  ) => void;
+  onUpdate?: (source: TAnimationsTweenProps, tween: Tween<TAnimationsTweenProps>) => void;
   onStart?: (tween: Tween<TAnimationsTweenProps>) => void;
 }
 
@@ -771,10 +775,7 @@ cpsSoonmanagerPlugin.stopObjectAnimation(object);
 #### 定义
 
 ```ts
-function flyToSceneFromVisionsData(
-  index?: number,
-  options?: AnimationOptions
-): Promise<void>;
+function flyToSceneFromVisionsData(index?: number, options?: AnimationOptions): Promise<void>;
 ```
 
 #### 用法
@@ -804,11 +805,7 @@ cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
 #### 定义
 
 ```ts
-function flyToObjectFromVisionsData(
-  object: BaseObject3D,
-  index?: number,
-  options?: AnimationOptions
-): Promise<void>;
+function flyToObjectFromVisionsData(object: BaseObject3D, index?: number, options?: AnimationOptions): Promise<void>;
 ```
 
 #### 用法
