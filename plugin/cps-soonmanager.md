@@ -563,7 +563,7 @@ cpsSoonmanagerPlugin
 
 ### presetEffects
 
-设置预设效果
+设置预设效果，参数来源由平台渲染后导出。
 
 #### 定义
 
@@ -572,6 +572,7 @@ interface IPresetEffectsOptions {
   hdr?: boolean;
   ssao?: boolean;
   directionalLightShadow?: boolean | { angle?: number };
+  toneMappping?: boolean;
 }
 
 function presetEffects(options?: IPresetEffectsOptions): Promise<void>;
@@ -585,6 +586,7 @@ await cpsSoonmanagerPlugin.presetEffects({
   hdr: true,
   ssao: true,
   directionalLightShadow: true,
+  toneMappping: true,
 });
 ```
 
@@ -603,6 +605,7 @@ await cpsSoonmanagerPlugin.presetEffects({
       { prop: 'hdr', desc: '使用资源包中预设的 hdr 环境', type: 'boolean', require: false, default: 'true' },
       { prop: 'ssao', desc: '开启 SSAO  效果', type: 'boolean', require: false, default: 'true' },
       { prop: 'directionalLightShadow', desc: '开启平行光阴影', type: 'boolean', require: false, default: 'true' },
+      { prop: 'toneMappping', desc: '设置 toneMappping', type: 'boolean', require: false, default: 'true' },
     ]"
 />
 
@@ -612,6 +615,7 @@ _各参数对应的方法_
 | hdr | [setEnvironment](../api/sceneTool#setenvironment) |
 | ssao | [setSSAO](../api/sceneTool#setssao) |
 | directionalLightShadow | [createDirectionalLight](../api/light#createdirectionallight) |
+| toneMappping | [setToneMapping](../api/sceneTool.html#settonemapping) |
 
 ::: warning 注意
 presetEffects 需要等待场景加载完调用
