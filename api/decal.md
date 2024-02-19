@@ -132,3 +132,88 @@ ssp.updateDecalGeometry(decal, { snapping: true, snappingDistance: 1, snappingTa
 // 可以吸附到所有模型上
 ssp.updateDecalGeometry(decal, { snapping: true, snappingDistance: 1 });
 ```
+
+## updateAllDecalGeometry
+
+更新所有贴花几何结构
+
+### 定义：
+
+```ts
+type DecalGeometryInfo = Pick<DecalInfo, 'snapping' | 'snappingDistance' | 'snappingTargets'>;
+
+function updateAllDecalGeometry(info?: DecalGeometryInfo): Decal;
+```
+
+### 用法：
+
+```js
+// 只可以吸附到特定的对象上
+ssp.updateAllDecalGeometry({ snapping: true, snappingDistance: 1, snappingTargets: [xxxObject] });
+// 可以吸附到所有模型上
+ssp.updateAllDecalGeometry({ snapping: true, snappingDistance: 1 });
+```
+
+## getAllDecal
+
+获取所有 Decal
+
+### 定义：
+
+```ts
+function getAllDecal(): Decal[];
+```
+
+### 用法：
+
+```js
+const decals = ssp.getAllDecal();
+```
+
+## showAllDecal
+
+显示所有 Decal
+
+### 定义：
+
+```ts
+function showAllDecal(): void;
+```
+
+### 用法：
+
+```js
+ssp.showAllDecal();
+```
+
+## hideAllDecal
+
+隐藏所有 Decal
+
+### 定义：
+
+```ts
+function hideAllDecal(): void;
+```
+
+### 用法：
+
+```js
+ssp.hideAllDecal();
+```
+
+## clearDecal
+
+清空 Decal
+
+### 定义：
+
+```ts
+function clearDecal(): void;
+```
+
+### 用法：
+
+```js
+ssp.clearDecal();
+```
