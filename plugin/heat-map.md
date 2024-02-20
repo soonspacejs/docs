@@ -503,3 +503,131 @@ heatMap.removeById('hm1');
 #### 参数：
 
 - id: string
+
+### createDrawing
+
+通过鼠标操作在多边形内快速绘制热力图。
+
+通过 `points` 选项来设置多边形的顶点的世界坐标。
+
+它会根据你传入的顶点，来创建多边形边界，该多边形边界会以前 3 个顶点所确定的平面来作为多边形边界的所在平面，对于那些不与该多边形共面的点，会向该平面上投影，然后将最终的投影点作为多边形边界的顶点。
+
+#### 用法：
+
+```js
+
+const heatObj = heatMapPlugin.createDrawing({
+  id: "polygon",
+  name: "polygon_name",
+  points: [
+    {
+      x: 0,
+      y: 0,
+      z: 0,
+  },
+    {
+      x: 0,
+      y: 0,
+      z: 100,
+  },
+    {
+      x: 0,
+      y: 100,
+      z: 100,
+  },
+  ],
+  onAdd: (point, data) => {
+    console.log("新增热力点：", point, data);
+  },
+  onUndo: (point, data) => {
+    console.log("删除热力点：", point, data);
+  },
+});
+heatObj
+  .start()
+  .then((res) => {
+    console.log("绘制完成", res);
+  })
+  .catch((res) => {
+    console.log("取消绘制", res);
+  });
+
+```
+
+#### 参数：
+
+##### param
+
+- **描述:** 快速绘制热力图参数
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `DrawingParam`
+
+###### DrawingParam
+
+<br>
+<Docs-Table 
+    :data="[
+      {
+        prop: 'id', desc: '热力图对象 ID', type: 'string', require: true, default: ''
+      },
+      {
+        prop: 'name', desc: '热力图对象名称', type: 'string', require: false, default: ' '
+      },
+      {
+        prop: 'points', desc: '多边形的顶点列表', type: 'IVector3[]', require: true, default: ''
+      },
+      {
+        prop: 'data', desc: '热力图数据', type: 'ScenePolygonDataPoint[]', require: false, default: '', link: '#scenesatapoint'
+      },
+      {
+        prop: 'max', desc: '数据中单点值大于等于该值时，以最深热力颜色展示', type: 'number', require: false, default: '100'
+      },
+      {
+        prop: 'min', desc: '数据中单点值小于等于该值时，以最浅热力颜色展示', type: 'number', require: false, default: '1'
+      },
+      {
+        prop: 'radius', desc: '热力点半径', type: 'number', require: false, default: '100'
+      },
+      {
+        prop: 'value', desc: '热力点值，该值为number时，所有热力点值为该值，该值为数组时，热力点值在此区间随机生成', type: 'number | [number, number]', require: false, default: 'min-max间的随机数'
+      },
+      {
+        prop: 'timeInterval', desc: '节流时间间隔(ms)', type: 'number', require: false, default: '60'
+      },
+      {
+        prop: 'distanceInterval', desc: '节流距离间隔', type: 'number', require: false, default: '5'
+      },
+      {
+        prop: 'addTriggerType', desc: '增加热力点方式', type: `['time', 'drag', 'click', 'mouseMove', 'rightClick', 'dblClick']`, require: false, default: `['click', 'mouseMove']`
+      },
+      {
+        prop: 'doneTriggerType', desc: '完成绘制方式', type: `['click', 'mouseMove', 'rightClick', 'dblClick',  { keyDown: [ 'Enter' ], }]`, require: false, default: `['dblClick', { keyDown: [ 'Enter' ], }]`
+      },
+      {
+        prop: 'undoTriggerType', desc: '撤销热力点方式', type: `['click', 'mouseMove', 'rightClick', 'dblClick', {keyDown: ['Backspace']}]`, require: false, default: `['rightClick', {keyDown: ['Backspace']}]`
+      },
+      {
+        prop: 'onAdd', desc: '添加热力点的回调函数', type: '( point: ScenePolygonDataPoint, data: ScenePolygonDataPoint[] ) => void', require: false, default: ''
+      },
+      {
+        prop: 'onUndo', desc: '撤销热力点的回调函数', type: '( point: ScenePolygonDataPoint, data: ScenePolygonDataPoint[] ) => void', require: false, default: ''
+      },
+      {
+        prop: 'beforePointUpdate', desc: '更新（添加、删除）前回调函数，返回值为true 或 ScenePolygonDataPoint更新，返回值为false不更新', type: `(type: 'add' | 'undo', point: ScenePolygonDataPoint) => boolean | ScenePolygonDataPoint`, require: false, default: ''
+      },
+    ]"
+/>
+
+#### 方法：
+
+##### start
+
+开始绘制热力点
+
+##### cancel
+
+取消绘制热力点，清除绘制的热力点，reject数据，在catch中获取
+
+##### dispose
+
+销毁热力图
