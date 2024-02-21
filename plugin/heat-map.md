@@ -361,7 +361,7 @@ heatMap.createPolygon({
         prop: 'name', desc: '热力图对象名称', type: 'string', require: false, default: ' '
       },
       {
-        prop: 'data', desc: '热力图数据', type: 'ScenePolygonDataPoint[]', require: true, default: '', link: '#scenesatapoint'
+        prop: 'data', desc: '热力图数据', type: 'ScenePolygonDataPoint[]', require: true, default: ''
       },
       {
         prop: 'max', desc: '数据中单点值大于等于该值时，以最深热力颜色展示', type: 'number', require: false, default: '100'
@@ -512,46 +512,48 @@ heatMap.removeById('hm1');
 
 它会根据你传入的顶点，来创建多边形边界，该多边形边界会以前 3 个顶点所确定的平面来作为多边形边界的所在平面，对于那些不与该多边形共面的点，会向该平面上投影，然后将最终的投影点作为多边形边界的顶点。
 
+#### 样例
+
+<Docs-Iframe src="plugin/heatMapDrawing.html" />
+
 #### 用法：
 
 ```js
-
-const heatObj = heatMapPlugin.createDrawing({
-  id: "polygon",
-  name: "polygon_name",
+const drawingHeatObj = heatMapPlugin.createDrawing({
+  id: 'polygon',
+  name: 'polygon_name',
   points: [
     {
       x: 0,
       y: 0,
       z: 0,
-  },
+    },
     {
       x: 0,
       y: 0,
       z: 100,
-  },
+    },
     {
       x: 0,
       y: 100,
       z: 100,
-  },
+    },
   ],
   onAdd: (point, data) => {
-    console.log("新增热力点：", point, data);
+    console.log('新增热力点：', point, data);
   },
   onUndo: (point, data) => {
-    console.log("删除热力点：", point, data);
+    console.log('删除热力点：', point, data);
   },
 });
-heatObj
+drawingHeatObj
   .start()
   .then((res) => {
-    console.log("绘制完成", res);
+    console.log('绘制完成', res);
   })
   .catch((res) => {
-    console.log("取消绘制", res);
+    console.log('取消绘制', res);
   });
-
 ```
 
 #### 参数：
@@ -618,6 +620,8 @@ heatObj
     ]"
 />
 
+<br>
+
 #### 方法：
 
 ##### start
@@ -626,7 +630,7 @@ heatObj
 
 ##### cancel
 
-取消绘制热力点，清除绘制的热力点，reject数据，在catch中获取
+取消绘制热力点，清除绘制的热力点，reject 数据，在 catch 中获取
 
 ##### dispose
 
