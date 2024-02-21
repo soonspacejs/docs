@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 2
+outline: 3
 ---
 
 # plugin-first-person-controls

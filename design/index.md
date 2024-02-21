@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 1
+outline: 2
 ---
 
 # 设计结构

@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 2
+outline: 3
 ---
 
 # plugin-cps-soonmanager
@@ -67,7 +67,9 @@ cpsSoonmanagerPlugin.loadScene();
 当 `renderType` 为 `WATER_SURFACE` 时，需要使用[特效插件](./effect)
 :::
 
-### sceneGroup <Base-Tag title="readonly" />
+### sceneGroup
+
+<Base-Tag title="readonly" />
 
 场景 Group 对象
 
@@ -83,7 +85,9 @@ sceneGroup.position.set(10, 0, 0);
 - **默认值:** `null`
 - **类型:** `Group | null`
 
-### metaData <Base-Tag title="readonly" />
+### metaData
+
+<Base-Tag title="readonly" />
 
 场景元数据
 
@@ -110,7 +114,9 @@ interface IMetadata {
 }
 ```
 
-### treeData <Base-Tag title="readonly" />
+### treeData
+
+<Base-Tag title="readonly" />
 
 场景树数据
 
@@ -158,7 +164,9 @@ const deviceModel = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
 
 :::
 
-### poiData <Base-Tag title="readonly" />
+### poiData
+
+<Base-Tag title="readonly" />
 
 场景内配置 Poi 数据, 该数据在加载场景（loadScene）时自动获取。
 
@@ -198,7 +206,9 @@ interface IPoiData {
 }
 ```
 
-### topologyData <Base-Tag title="readonly" />
+### topologyData
+
+<Base-Tag title="readonly" />
 
 拓扑路径数据
 
@@ -207,7 +217,9 @@ interface IPoiData {
 - **默认值:** `null`
 - **类型:** [`TopologyInfo[]`](../api/topology#topologyinfo) | `null`
 
-### propertiesData <Base-Tag title="readonly" />
+### propertiesData
+
+<Base-Tag title="readonly" />
 
 自定义属性数据，根据 `modelId` 分组
 
@@ -230,7 +242,9 @@ interface IProperties {
 type TPropertiesMap = Map<IProperties['modelId'], IProperties[]>;
 ```
 
-### animationsData <Base-Tag title="readonly" />
+### animationsData
+
+<Base-Tag title="readonly" />
 
 补间动画数据，根据 `modelId` 分组
 
@@ -276,7 +290,9 @@ interface IAnimations {
 type TAnimationsMap = Map<IAnimations['modelId'], IAnimations[]>;
 ```
 
-### modelVisionsData <Base-Tag title="readonly" />
+### modelVisionsData
+
+<Base-Tag title="readonly" />
 
 模型视角数据，根据 `nodeId` 分组
 
@@ -306,13 +322,17 @@ type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions[]>;
 Map 的 key 为 "" 时，表示场景视角数据
 :::
 
-### soonflow <Base-Tag title="readonly" />
+### soonflow
+
+<Base-Tag title="readonly" />
 
 流程执行引擎实例
 
 - **类型:** [SoonFlow](https://www.npmjs.com/package/@soonflow/core)
 
-### flowData <Base-Tag title="readonly" />
+### flowData
+
+<Base-Tag title="readonly" />
 
 场景中配置好的流程数据，数据可提供给 [runFlowById](#runflowbyid) 使用。
 
