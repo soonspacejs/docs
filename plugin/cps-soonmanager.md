@@ -49,7 +49,7 @@ await cpsSoonmanagerPlugin.loadScene();
 - **默认值:** `''`
 - **类型:** `string`
 
-## effectPlugin
+### effectPlugin
 
 特效插件实例
 
