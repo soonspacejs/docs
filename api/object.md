@@ -41,7 +41,10 @@ const objectList = ssp.getObjectByName('object_name');
 ### 定义：
 
 ```ts
-function getObjectByUserDataProperty<T extends Object3D = BaseObject3D>(property: string | UserDataPropertyFindFunc, value: any): T[];
+function getObjectByUserDataProperty<T extends Object3D = BaseObject3D>(
+  property: string | UserDataPropertyFindFunc,
+  value: any
+): T[];
 ```
 
 ### 用法：
@@ -103,7 +106,7 @@ ssp.removeObjectById('object_id');
 ### 定义:
 
 ```ts
-function addObject(object: Object3D, parent?: Object3D): void;
+function addObject(object: Object3D, parent?: Object3D | null): void;
 ```
 
 ### 用法:
@@ -118,6 +121,44 @@ const group = ssp.createGroup({
 });
 
 ssp.addObject(object, group);
+```
+
+### 参数:
+
+#### object
+
+- **类型:** Object3D
+- **描述:** 要添加的空间对象
+- **必填:** <Base-RequireIcon />
+
+#### parent
+
+- **类型:** Object3D
+- **描述:** 被添加对象的父级, 默认为整个场景
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+## attachObject
+
+类似 `addObject`，但会保持对象的世界坐标、旋转、缩放不变
+
+### 定义:
+
+```ts
+function attachObject(object: Object3D, parent?: Object3D | null): void;
+```
+
+### 用法:
+
+```js
+ssp.attachObject(object);
+
+// or
+
+const group = ssp.createGroup({
+  id: 'group',
+});
+
+ssp.attachObject(object, group);
 ```
 
 ### 参数:
