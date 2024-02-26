@@ -1,3 +1,7 @@
+---
+outline: 3
+---
+
 # 控制器（新版）
 
 `v2.10.x` 版本之后发布了全新的控制器，增加了属性配置、方法、事件等。
@@ -27,20 +31,20 @@ controls.addEventListener('update', () => {
 
 ## 术语
 
-### Orbit 旋转
+#### Orbit 旋转
 
 控制器使用球坐标进行轨道旋转。
 
 ![fig1](/images/fig1.svg)
 
-### Dolly 和 Zoom
+#### Dolly 和 Zoom
 
 - Dolly 实际上是移动相机来改变每一帧中图像的组成（移动）。
 - Zoom 包括改变镜头焦距。Zoom 实际上是改变相机的 FOV，而相机是静止的（不移动）。
 
 ![dolly](/images/dolly-zoom.png)
 
-### Truck 和 Pan
+#### Truck 和 Pan
 
 - Truck 相机上下左右的平移操作。
 - Pan 原地保持不动，只转动镜头。类似第一人称的操作。
@@ -49,7 +53,7 @@ controls.addEventListener('update', () => {
 
 ## 属性
 
-### 样例:
+#### 样例:
 
 <Docs-Iframe src="controls/properties.html" />
 
@@ -177,7 +181,7 @@ controls.touches.two = ACTION.TOUCH_DOLLY_TRUCK;
 
 ## 方法
 
-### 样例:
+#### 样例:
 
 <Docs-Iframe src="controls/methods.html" />
 
