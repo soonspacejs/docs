@@ -770,13 +770,13 @@ ssp.getOffsetByPosition({ x: 100, y: 200, z: 300 });
 ### 定义:
 
 ```ts
-function getPositionByOffset(offset: OffsetPoint, z?: number): Vector3;
+function getPositionByOffset(offset: OffsetPoint, z?: number, scalar?: number): Vector3;
 ```
 
 ### 用法:
 
 ```js
-ssp.getPositionByOffset({ offsetX: 10, offsetY: 10 });
+ssp.getPositionByOffset({ offsetX: 10, offsetY: 10 }, 0.1, 10);
 ```
 
 ### 参数:
@@ -791,6 +791,12 @@ ssp.getPositionByOffset({ offsetX: 10, offsetY: 10 });
 
 - **类型:** number
 - **描述:** z 轴, 默认值 0.1
+- **必填:** <Base-RequireIcon :isRequire="false" />
+
+#### scalar
+
+- **类型:** number
+- **描述:** 延长标量, 默认值是 camera 到原点的距离
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ## setHoverEnabled
