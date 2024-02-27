@@ -150,6 +150,18 @@ import type { ColorRepresentation } from 'three';
 type IColor = ColorRepresentation;
 ```
 
+## CameraViewpointData
+
+相机视角数据
+
+```ts
+interface CameraViewpointData {
+  position: Position;
+  target: Position;
+  zoom: number;
+}
+```
+
 ## FlyToViewpoint
 
 飞向视角枚举

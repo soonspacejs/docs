@@ -2,6 +2,57 @@
 
 `v2.10.x` 版本之后，相机所有的方法都基于 [controls](./controls) 实现。
 
+## setCamera
+
+设置相机类型以及视角数据
+
+### 样例：
+
+<Docs-Iframe src="camera/cameraType.html" />
+
+### 定义：
+
+```ts
+type CameraType = 'perspective' | 'orthographic';
+
+function setCamera(cameraType: CameraType, viewpoint?: CameraViewpointData, enableTransition?: boolean): Promise<void>;
+```
+
+### 用法：
+
+```js
+ssp.setCamera('orthographic');
+
+// 设置正交相机，并且设置视角数据
+ssp.setCamera(
+  'orthographic',
+  {
+    position: {
+      x: 100,
+      y: 100,
+      z: 100,
+    },
+    target: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
+    zoom: 1,
+  },
+  true
+);
+```
+
+### 参数：
+
+#### cameraType
+
+- **描述:** 要设置的相机类型。perspective 表示透视相机，orthographic 表示正交相机。
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** CameraType
+
+剩余两个参数与 [setCameraViewpoint](#setcameraviewpoint) 一致，只是 `viewpoint` 为可选参数。
+
 <!-- getCameraViewpoint -->
 
 ## getCameraViewpoint
@@ -34,7 +85,10 @@ console.log('cameraViewpointData', cameraViewpointData);
 function setCameraViewpoint(data: CameraViewpointData): void;
 
 // v2.10.x
-function setCameraViewpoint(data: CameraViewpointData | CameraViewpointDataLegacy, enableTransition?: boolean): Promise<void>;
+function setCameraViewpoint(
+  data: CameraViewpointData | CameraViewpointDataLegacy,
+  enableTransition?: boolean
+): Promise<void>;
 ```
 
 ### 用法
@@ -67,6 +121,7 @@ await ssp.setCameraViewpoint(
       y: 0,
       z: 0,
     },
+    zoom: 1,
   },
   true
 );
@@ -78,9 +133,9 @@ await ssp.setCameraViewpoint(
 
 - **描述:** 由 `getCameraViewpoint` 获取到的相机视角数据。
 - **必填:** <Base-RequireIcon :isRequire="true"/>
-- **类型:** CameraViewpointData
+- **类型:** [CameraViewpointData](../guide/types#cameraviewpointdata) | CameraViewpointDataLegacy
 
-##### CameraViewpointData
+##### CameraViewpointDataLegacy
 
 <Docs-Table
     :data="[
@@ -91,10 +146,13 @@ await ssp.setCameraViewpoint(
 
 `v2.10.x` 版本之后数据格式发生变化，但也兼容了旧版的 `rotation` 参数
 
+##### CameraViewpointData
+
 <Docs-Table
     :data="[
       { prop: 'position', desc: '相机位置', type: 'Position', require: true, default: '', link: '../guide/types#position' },
       { prop: 'target', desc: '相机朝向位置', type: 'Position', require: true, default: '', link: '../guide/types#position' },
+      { prop: 'zoom', desc: '相机焦距', type: 'number', require: true, default: '' },
     ]"
 />
 
@@ -161,7 +219,11 @@ interface FlyToObjOptions extends AnimationOptions {
   padding?: number | string;
 }
 
-function flyToObj(object: BaseObject3D | BaseMesh, viewpoint: FlyToViewpoint | Rotation | Euler = 'frontTop', options: FlyToObjOptions = {}): Promise<void>;
+function flyToObj(
+  object: BaseObject3D | BaseMesh,
+  viewpoint: FlyToViewpoint | Rotation | Euler = 'frontTop',
+  options: FlyToObjOptions = {}
+): Promise<void>;
 ```
 
 `v2.10.x` 版本之后更新了类型
@@ -264,7 +326,11 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
 ### 定义：
 
 ```ts
-function flyTo(position: Position, rotation: FlyToViewpoint | Rotation | Euler = 'frontTop', options?: AnimationOptions): Promise<void>;
+function flyTo(
+  position: Position,
+  rotation: FlyToViewpoint | Rotation | Euler = 'frontTop',
+  options?: AnimationOptions
+): Promise<void>;
 ```
 
 `v2.10.x` 版本之后更新了类型
@@ -274,7 +340,11 @@ interface FlyToOptions {
   enableTransition?: boolean;
 }
 
-function flyTo(position: Position, rotation: FlyToViewpoint | Rotation | Euler = 'frontTop', options?: FlyToOptions): Promise<void>;
+function flyTo(
+  position: Position,
+  rotation: FlyToViewpoint | Rotation | Euler = 'frontTop',
+  options?: FlyToOptions
+): Promise<void>;
 ```
 
 ### 用法：
