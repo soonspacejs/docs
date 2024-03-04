@@ -799,7 +799,7 @@ cpsSoonmanagerPlugin.stopObjectAnimation(object);
 #### 定义
 
 ```ts
-function flyToSceneFromVisionsData(index?: number, options?: AnimationOptions): Promise<void>;
+function flyToSceneFromVisionsData(index?: number): Promise<void>;
 ```
 
 #### 用法
@@ -816,12 +816,6 @@ cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `number`
 
-##### options
-
-- **描述:** 动画参数配置
-- **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [`AnimationOptions`](../api/animation#animationoptions)
-
 ### flyToObjectFromVisionsData
 
 根据对象视角数据飞向
@@ -829,7 +823,7 @@ cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
 #### 定义
 
 ```ts
-function flyToObjectFromVisionsData(object: BaseObject3D, index?: number, options?: AnimationOptions): Promise<void>;
+function flyToObjectFromVisionsData(object: BaseObject3D, index?: number): Promise<void>;
 ```
 
 #### 用法
@@ -853,12 +847,6 @@ cpsSoonmanagerPlugin.flyToObjectFromVisionsData(model, 0);
 - **描述:** 该视角所在数据列表中的下标
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `number`
-
-##### options
-
-- **描述:** 动画参数配置
-- **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [`AnimationOptions`](../api/animation#animationoptions)
 
 ### loadPoi
 
