@@ -309,10 +309,12 @@ interface IModelVisions {
   uuid: string;
   nodeId: string;
   name: string;
-  code?: any;
+  camera: 'O' | 'P';
   position: IVector3;
   rotation: IVector3;
   target: IVector3;
+  zoom: number;
+  primary: boolean;
 }
 
 type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions[]>;
@@ -794,7 +796,7 @@ cpsSoonmanagerPlugin.stopObjectAnimation(object);
 
 ### flyToSceneFromVisionsData
 
-根据场景视角视角数据飞向
+根据场景视角数据飞向
 
 #### 定义
 
@@ -815,6 +817,30 @@ cpsSoonmanagerPlugin.flyToSceneFromVisionsData(0);
 - **描述:** 该视角所在数据列表中的下标
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `number`
+
+### flyToMainSceneFromVisionsData
+
+根据场景视角数据飞向主视角
+
+#### 定义
+
+```ts
+function flyToMainSceneFromVisionsData(fallback?: boolean): Promise<boolean>;
+```
+
+#### 用法
+
+```js
+const success = await cpsSoonmanagerPlugin.flyToMainSceneFromVisionsData();
+```
+
+#### 参数
+
+##### fallback
+
+- **描述:** 没有主视角时，是否默认调用 [`flyMainViewpoint`](../api/camera#flymainviewpoint)。默认是 `true`
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `boolean`
 
 ### flyToObjectFromVisionsData
 
@@ -847,6 +873,38 @@ cpsSoonmanagerPlugin.flyToObjectFromVisionsData(model, 0);
 - **描述:** 该视角所在数据列表中的下标
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `number`
+
+### flyToMainObjectFromVisionsData
+
+根据对象视角数据飞向默认视角
+
+#### 定义
+
+```ts
+function flyToMainObjectFromVisionsData(object: BaseObject3D, fallback?: boolean): Promise<boolean>;
+```
+
+#### 用法
+
+```js
+const model = ssp.getObjectByUserDataProperty('device', 'xxx');
+
+const success = await cpsSoonmanagerPlugin.flyToMainObjectFromVisionsData(model);
+```
+
+#### 参数
+
+##### object
+
+- **描述:** 场景对象
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `BaseObject3D`
+
+##### fallback
+
+- **描述:** 没有默认视角时，是否默认调用 [`flyToObj`](../api/camera#flytoobj)。默认是 `true`
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `boolean`
 
 ### loadPoi
 
