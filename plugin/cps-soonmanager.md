@@ -189,7 +189,7 @@ const [deviceModel] = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
 :::
 
 ::: warning 注意
-由于 `id` 在场景导出导入时会随机生成，所以 `id` 作为唯一标识符可能不准确。
+由于 `id` 在场景导出导入时会随机生成，所以使用 `id` 作为唯一标识符可能不准确。
 
 建议使用 `uuid` 来绑定对象。
 :::
