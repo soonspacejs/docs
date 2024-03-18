@@ -132,8 +132,8 @@ interface ITreeData {
   id: string;
   pid: string | null;
   name: string;
-  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB' | 'POLYGON' | 'CIRCLE' | 'WATER_SURFACE';
-  deviceName: string | null;
+  uuid: string;
+  renderType: 'GROUP' | '3D' | 'ROOM' | 'STUB' | 'POLYGON' | 'CIRCLE' | 'WATER_SURFACE' | 'DECAL';
   deviceCode: string | null;
   matrix: number[];
   path: string | null;
@@ -152,16 +152,46 @@ interface ITreeData {
 }
 ```
 
-::: tip 提示
+|    字段     |                      释义                      |
+| :---------: | :--------------------------------------------: |
+|     id      | 数据库生成的唯一随机 id，作为对象的 `sid` 属性 |
+|     pid     |      父级的 id，作为父级对象的 `sid` 属性      |
+|    name     |       对象的名称，作为对象的 `name` 属性       |
+|    uuid     |             场景内对象的绑定 `id`              |
+| renderType  |                 对象的渲染类型                 |
+| deviceCode  |                    设备编码                    |
+|   matrix    |               对象的局部矩阵信息               |
+|    path     |                    资源路径                    |
+|  familyId   |              模型资源的组件 `id`               |
+|  children   |                  子对象的数组                  |
+|   visible   |               初始化对象是否可见               |
+|    shape    |               多边形、水面等信息               |
+| boundingBox |             房间等对象的包围盒数据             |
+|    extra    |                  一些额外信息                  |
+
+::: tip 检索对象的几种方式
 除了 `children` 其他字段都会存在每个对象的 `userData` 上
 
 ```js
-// 假设定义了一个 deviceCode 为 kx-1
-// 你可以使用 getObjectByUserDataProperty 方法获取该对象
+// 使用 `id` 获取
+const model = ssp.getObjectById('xxx');
 
-const deviceModel = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
+// 使用 `name` 获取
+const [model] = ssp.getObjectByName('xxx');
+
+// 使用 `uuid` 获取
+const [model] = ssp.getObjectByUserDataProperty('uuid', 'xxx');
+
+// 假设定义了一个 deviceCode 为 kx-1
+const [deviceModel] = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
 ```
 
+:::
+
+::: warning 注意
+由于 `id` 在场景导出导入时会随机生成，所以 `id` 作为唯一标识符可能不准确。
+
+建议使用 `uuid` 来绑定对象。
 :::
 
 ### poiData
