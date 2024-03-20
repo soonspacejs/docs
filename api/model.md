@@ -104,11 +104,7 @@ ssp
 ```ts
 interface CloneModelInfo extends Omit<ModelInfo, 'url'> {}
 
-function cloneModel(
-  model: Model,
-  modelInfo: CloneModelInfo,
-  parent?: BaseObject3D | null
-): Promise<Model>;
+function cloneModel(model: Model, modelInfo: CloneModelInfo, parent?: BaseObject3D | null): Promise<Model>;
 ```
 
 ### 用法:
@@ -205,10 +201,7 @@ const allModelList = ssp.getAllModel();
 ### 定义：
 
 ```ts
-function getModelByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Model[];
+function getModelByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Model[];
 ```
 
 ### 用法：
@@ -242,9 +235,7 @@ model.userData = {
     age: 18,
   },
 };
-const modelList = ssp.getModelByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const modelList = ssp.getModelByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -280,10 +271,7 @@ ssp.removeModelById('xxx');
 ### 定义：
 
 ```ts
-function loadModelToGroup(
-  groupInfo: GroupInfo,
-  modelInfoList: ModelInfo[]
-): Promise<Group>;
+function loadModelToGroup(groupInfo: GroupInfo, modelInfoList: ModelInfo[]): Promise<Group>;
 ```
 
 ### 用法：
@@ -360,10 +348,7 @@ ssp.createGroupForModel({
 ### 定义：
 
 ```ts
-function addModelForGroup(
-  groupId: GroupInfo['id'],
-  modelInfoList: ModelInfo[]
-): Promise<Group | null>;
+function addModelForGroup(groupId: GroupInfo['id'], modelInfoList: ModelInfo[]): Promise<Group | null>;
 ```
 
 ### 用法：
@@ -531,11 +516,7 @@ ssp.hideAllModel();
 
 ```ts
 interface ModelAnimationFindFunc {
-  (
-    animation: AnimationClip,
-    index: number,
-    animations: AnimationClip[]
-  ): boolean;
+  (animation: AnimationClip, index: number, animations: AnimationClip[]): boolean;
 }
 
 function playModelAnimation(
@@ -582,10 +563,7 @@ ssp.playModelAnimation(model, (itemAnimation) => itemAnimation.name === 'run');
 ### 定义：
 
 ```ts
-function stopModelAnimation(
-  model: Model,
-  animation: number | AnimationClip | ModelAnimationFindFunc
-): void;
+function stopModelAnimation(model: Model, animation: number | AnimationClip | ModelAnimationFindFunc): void;
 ```
 
 ### 用法：
@@ -680,9 +658,7 @@ type ModelsBoundsTreeOptions = {
   workerCreator?: () => Worker;
 };
 
-function computeModelsBoundsTree(
-  options?: ModelsBoundsTreeOptions
-): Promise<void>;
+function computeModelsBoundsTree(options?: ModelsBoundsTreeOptions): Promise<void>;
 ```
 
 ### 用法：
@@ -879,10 +855,7 @@ createFindObjectsInSphereNearPosition ( radius: number, objects: Object3D[] ): F
 
 ```js
 //合建一个查找器，需要指定查找的区域 和 从哪些对象中进行查找
-const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(
-  20,
-  objArr
-);
+const findObjectsNearPosition = ssp.createFindObjectsInSphereNearPosition(20, objArr);
 
 // 使用查找器查找指定位置附近区域的对象
 const nearObjs = findObjectsNearPosition({ x: 100, y: 100, z: 100 });
@@ -941,216 +914,6 @@ const findNearbyObjects = ssp.createFindObjectsNearPath(
 
 // 使用查找器查找指定的对象集中进行查找
 const nearObjs = findNearbyObjects({ x: 100, y: 100, z: 100 });
-```
-
-## createPathAnimation
-
-创建路径动画
-
-### 定义：
-
-```ts
-/**
- * 路径动画选项
- */
-interface PathAnimationOptions {
-
-  /**
-   * 移动速度
-   */
-  speed?: number;
-
-  /**
-   * 反向播放
-   */
-  reverse?: boolean;
-
-  /**
-   * 是否需要旋转
-   */
-  needsRotate?: boolean;
-
-  /**
-   * 位置更新回调
-   * @remarks
-   * 每当目标位置有更新时会触发
-   */
-  onUpdate?: ( position: Vector3, tween: Tween<Vector3> ) => void;
-
-  /**
-   * 动画开始时回调
-   */
-  onStart?: ( tween: Tween<Vector3> ) => void;
-
-  /**
-   * 每段 tween 动画开始时回调
-   * @param tween
-   */
-  onEveryStart?: ( tween: Tween<Vector3> ) => void;
-
-  /**
-   * 当到达一个点时回调
-   */
-  onPoint?: ( index: number, point: Vector3 ) => void;
-}
-
-
-/**
- * 创建路径动画
- * @param target - 被动画的目标对象
- * @param points - 路径的点列表
- * @param options - 选项
- * @returns
- */
-createPathAnimation ( target: Object3D, points: Vector3[], options?: PathAnimationOptions ): PathAnimation
-```
-
-### target
-
-被动画的目标对象
-
-- 类型：`Object3D`
-
-### points
-
-路径的点列表
-
-- 类型：`Vector3[]`
-
-### 用法：
-
-```js
-//创建路径动画对象
-const pathAnimation = ssp.createPathAnimation(
-  model,
-  [
-    { x: 0, y: 0, z: 0 },
-    { x: 10, y: 0, z: 0 },
-    { x: 10, y: 10, z: 0 },
-    { x: 10, y: 10, z: 10 },
-  ],
-  {
-    speed: 10,
-  }
-);
-
-// 播放动画
-pathAnimation.play();
-
-// 暂停动画
-pathAnimation.pause();
-```
-
-## createTopologyAnimation
-
-创建沿拓扑路径运动的动画
-
-### 样例：
-
-<Docs-Iframe src="topology/pathAnimation.html" />
-
-### 定义：
-
-```ts
-/**
- * 路径动画选项
- */
-interface PathAnimationOptions {
-
-  /**
-   * 移动速度
-   */
-  speed?: number;
-
-  /**
-   * 反向播放
-   */
-  reverse?: boolean;
-
-  /**
-   * 是否需要旋转
-   */
-  needsRotate?: boolean;
-
-  /**
-   * 位置更新回调
-   * @remarks
-   * 每当目标位置有更新时会触发
-   */
-  onUpdate?: ( position: Vector3, tween: Tween<Vector3> ) => void;
-
-  /**
-   * 动画开始时回调
-   */
-  onStart?: ( tween: Tween<Vector3> ) => void;
-
-  /**
-   * 每段 tween 动画开始时回调
-   * @param tween
-   */
-  onEveryStart?: ( tween: Tween<Vector3> ) => void;
-
-  /**
-   * 当到达一个点时回调
-   */
-  onPoint?: ( index: number, point: Vector3 ) => void;
-}
-
-
-  /**
-   * 创建沿拓扑路径动画的动画
-   * @param target - 被动画的目标对象
-   * @param topology - 路径点列表
-   * @param options - 选项
-   * @returns
-   */
-createTopologyAnimation ( target: Object3D, topology: Topology, options?: PathAnimationOptions ): PathAnimation
-```
-
-### target
-
-被动画的目标对象
-
-- 类型：`Object3D`
-
-### topology
-
-拓扑路径
-
-- 类型：`Topology`
-
-### 用法：
-
-```js
-//创建沿拓扑路径动画的动画
-const pathAnimation = ssp.createTopologyAnimation(model, topology, {
-  speed: 10,
-});
-
-/**
- * 所有的 options 可以直接修改
- */
-pathAnimation.speed = 1;
-pathAnimation.reverse = false;
-
-// 播放动画
-pathAnimation
-  .play()
-  .then(() => {
-    console.log('动画结束');
-  })
-  .catch(() => {
-    console.log('stop方法被调用');
-  });
-
-// 暂停动画
-pathAnimation.pause();
-
-// 恢复动画
-pathAnimation.resume();
-
-// 停止动画
-pathAnimation.stop();
 ```
 
 ## clearIdb

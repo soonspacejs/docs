@@ -1,6 +1,216 @@
 # 路径动画
 
-## 路径动画
+## createPathAnimation
+
+创建路径动画
+
+### 定义：
+
+```ts
+/**
+ * 路径动画选项
+ */
+interface PathAnimationOptions {
+
+  /**
+   * 移动速度
+   */
+  speed?: number;
+
+  /**
+   * 反向播放
+   */
+  reverse?: boolean;
+
+  /**
+   * 是否需要旋转
+   */
+  needsRotate?: boolean;
+
+  /**
+   * 位置更新回调
+   * @remarks
+   * 每当目标位置有更新时会触发
+   */
+  onUpdate?: ( position: Vector3, tween: Tween<Vector3> ) => void;
+
+  /**
+   * 动画开始时回调
+   */
+  onStart?: ( tween: Tween<Vector3> ) => void;
+
+  /**
+   * 每段 tween 动画开始时回调
+   * @param tween
+   */
+  onEveryStart?: ( tween: Tween<Vector3> ) => void;
+
+  /**
+   * 当到达一个点时回调
+   */
+  onPoint?: ( index: number, point: Vector3 ) => void;
+}
+
+
+/**
+ * 创建路径动画
+ * @param target - 被动画的目标对象
+ * @param points - 路径的点列表
+ * @param options - 选项
+ * @returns
+ */
+createPathAnimation ( target: Object3D, points: Vector3[], options?: PathAnimationOptions ): PathAnimation
+```
+
+### target
+
+被动画的目标对象
+
+- 类型：`Object3D`
+
+### points
+
+路径的点列表
+
+- 类型：`Vector3[]`
+
+### 用法：
+
+```js
+//创建路径动画对象
+const pathAnimation = ssp.createPathAnimation(
+  model,
+  [
+    { x: 0, y: 0, z: 0 },
+    { x: 10, y: 0, z: 0 },
+    { x: 10, y: 10, z: 0 },
+    { x: 10, y: 10, z: 10 },
+  ],
+  {
+    speed: 10,
+  }
+);
+
+// 播放动画
+pathAnimation.play();
+
+// 暂停动画
+pathAnimation.pause();
+```
+
+## createTopologyAnimation
+
+创建沿拓扑路径运动的动画
+
+### 样例：
+
+<Docs-Iframe src="topology/pathAnimation.html" />
+
+### 定义：
+
+```ts
+/**
+ * 路径动画选项
+ */
+interface PathAnimationOptions {
+
+  /**
+   * 移动速度
+   */
+  speed?: number;
+
+  /**
+   * 反向播放
+   */
+  reverse?: boolean;
+
+  /**
+   * 是否需要旋转
+   */
+  needsRotate?: boolean;
+
+  /**
+   * 位置更新回调
+   * @remarks
+   * 每当目标位置有更新时会触发
+   */
+  onUpdate?: ( position: Vector3, tween: Tween<Vector3> ) => void;
+
+  /**
+   * 动画开始时回调
+   */
+  onStart?: ( tween: Tween<Vector3> ) => void;
+
+  /**
+   * 每段 tween 动画开始时回调
+   * @param tween
+   */
+  onEveryStart?: ( tween: Tween<Vector3> ) => void;
+
+  /**
+   * 当到达一个点时回调
+   */
+  onPoint?: ( index: number, point: Vector3 ) => void;
+}
+
+
+  /**
+   * 创建沿拓扑路径动画的动画
+   * @param target - 被动画的目标对象
+   * @param topology - 路径点列表
+   * @param options - 选项
+   * @returns
+   */
+createTopologyAnimation ( target: Object3D, topology: Topology, options?: PathAnimationOptions ): PathAnimation
+```
+
+### target
+
+被动画的目标对象
+
+- 类型：`Object3D`
+
+### topology
+
+拓扑路径
+
+- 类型：`Topology`
+
+### 用法：
+
+```js
+//创建沿拓扑路径动画的动画
+const pathAnimation = ssp.createTopologyAnimation(model, topology, {
+  speed: 10,
+});
+
+/**
+ * 所有的 options 可以直接修改
+ */
+pathAnimation.speed = 1;
+pathAnimation.reverse = false;
+
+// 播放动画
+pathAnimation
+  .play()
+  .then(() => {
+    console.log('动画结束');
+  })
+  .catch(() => {
+    console.log('stop方法被调用');
+  });
+
+// 暂停动画
+pathAnimation.pause();
+
+// 恢复动画
+pathAnimation.resume();
+
+// 停止动画
+pathAnimation.stop();
+```
+
+## createPathAnimationAction
 
 让物体沿指定路径进行运动的动画
 
@@ -309,7 +519,7 @@ export type AnimationOperate = AnimationAction & {
 };
 ``` -->
 
-## 路径骨骼动画
+## createBonePathAnimation
 
 让物体沿指定路径进行运动并变形以贴合路径的动画
 
@@ -549,7 +759,7 @@ export interface BonePathAnimationInfo {
 }
 ```
 
-## 创建链式骨骼模型
+## createChainSkeletalModel
 
 `createChainSkeletalModel` 为指定的模型创建其对应的链式骨骼模型
 
@@ -600,7 +810,7 @@ const { model: skinModel, skeleton } = ssp.createChainSkeletalModel(model, {
 
 <Docs-Iframe src="animation/createChainSkeletalModel.html" />
 
-## 创建骨骼动画
+## createPathAnimationForBones
 
 `createPathAnimationForBones` 创建骨骼沿曲线路径运动的动画,纯 Bone 动画方案
 
