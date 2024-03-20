@@ -5,7 +5,7 @@ hero:
   name: SoonSpace.js 2.x
   text: 简洁易学的 WebGL 库
   image:
-    src: ./logo/logo.svg
+    src: /logo/logo.svg
   actions:
     - theme: brand
       text: 开始学习 →

@@ -6,35 +6,22 @@ const PACKAGE_NAME = 'soonspacejs';
 
 const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`;
 
+const BASE = '/soonspacejs'
+
 export default defineConfig({
-  base: '/soonspacejs',
+  base: BASE,
   outDir: 'dist',
   title: 'SoonSpace.js 2.x',
   description: '简洁易学的 WebGL 库',
   ignoreDeadLinks: true,
   lastUpdated: true,
   head: [
-    ['link', { rel: 'icon', href: '/logo/logo.svg' }],
+    ['link', { rel: 'icon', href: `${BASE}/logo/logo.svg` }],
     // manifest
-    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['link', { rel: 'manifest', href: `${BASE}/manifest.json` }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    [
-      'link',
-      {
-        rel: 'apple-touch-icon',
-        href: '/images/icons/apple-icon-152x152.png',
-      },
-    ],
-    [
-      'meta',
-      {
-        name: 'msapplication-TileImage',
-        content: '/images/icons/ms-icon-144x144.png',
-      },
-    ],
-    ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
   ],
   themeConfig: {
     logo: '/logo/logo.svg',
