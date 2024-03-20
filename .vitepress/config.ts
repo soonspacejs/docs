@@ -5,10 +5,10 @@ const BASE_PORT = '9018';
 const PACKAGE_NAME = 'soonspacejs';
 
 const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`;
-const NEW_PRO_PATH = 'http://www.xwbuilders.com:8800';
+const NEW_PRO_PATH = 'https://xwbuilders.com/soonspacejs/';
 
 export default defineConfig({
-  base: '/',
+  base: '/soonspacejs',
   outDir: 'dist',
   title: 'SoonSpace.js 2.x',
   description: '简洁易学的 WebGL 库',

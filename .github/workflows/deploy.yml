@@ -45,6 +45,6 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.KEY }}
           source: "dist,!dist/resource"
-          target: "/mnt/soonspacejs"
+          target: "/home/xwmodel/deploy/soonspacejs"
           strip_components: 1
           timeout: 120s

@@ -2,7 +2,7 @@
   <div class="docs-iframe">
     <iframe
       style="width: 100%; height: 100%"
-      :src="`http://www.xwbuilders.com:8800/examples/page/${src}`"
+      :src="`https://xwbuilders.com/soonspacejs/examples/page/${src}`"
       frameborder="0"
       loading="lazy"
       sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts allow-pointer-lock allow-same-origin"
@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      baseUrl: "http://www.xwbuilders.com:8800/examples/page/",
+      baseUrl: "https://xwbuilders.com/soonspacejs/examples/page/",
     };
   },
   computed: {
