@@ -5,7 +5,6 @@ const BASE_PORT = '9018';
 const PACKAGE_NAME = 'soonspacejs';
 
 const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`;
-const NEW_PRO_PATH = 'https://xwbuilders.com/soonspacejs/';
 
 export default defineConfig({
   base: '/soonspacejs',
@@ -43,7 +42,7 @@ export default defineConfig({
       { text: '教程', link: '/guide/' },
       { text: 'API', link: '/api/' },
       { text: '插件', link: '/plugin/' },
-      { text: '样例', link: `${NEW_PRO_PATH}/examples/` },
+      { text: '样例', link: `https://xwbuilders.com/soonspacejs/examples/` },
       { text: '1.x', link: `${OLD_PRO_PATH}/Docs/1.x/` },
       {
         text: '了解更多',
