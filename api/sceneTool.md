@@ -137,7 +137,7 @@ function setSkyBackground(dirPath: string, fileNames: string[]): Promise<void>;
 ```js
 await ssp.setSkyBackground(
   // 文件夹路径
-  'http://www.xwbuilders.com:9018/soonspacejs/skybox/sunny/',
+  './xxx/sunny/',
   // 有序的图片名集合
   ['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg']
 );

@@ -11,7 +11,7 @@
 
 ### 平台协同插件
 
-- [soonmanager-sync](./soonmanager-sync) - [空间平台](http://www.xwbuilders.com:9050/#/projectManage/bim) 生产的场景加载及数据读取。
+- [soonmanager-sync](./soonmanager-sync) - [空间平台](http://111.231.137.202:9050/#/projectManage/bim) 生产的场景加载及数据读取。
 - [soonmanager2-sync](./soonmanager2-sync) - 空间平台 2.0 生产的场景加载及数据读取。（旧版）
 - [cps-soonmanager](./cps-soonmanager) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。（新版）
 - [cps-scheme](./cps-scheme) - [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 预案插件

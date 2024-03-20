@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress';
 
-const BASE_HTTP_URL = 'http://www.xwbuilders.com';
+const BASE_HTTP_URL = 'http://111.231.137.202';
 const BASE_PORT = '9018';
 const PACKAGE_NAME = 'soonspacejs';
 
