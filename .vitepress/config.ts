@@ -44,10 +44,6 @@ export default defineConfig({
       { text: 'API', link: '/api/' },
       { text: '插件', link: '/plugin/' },
       { text: '样例', link: `${NEW_PRO_PATH}/examples/` },
-      {
-        text: '更新日志',
-        link: `https://github.com/soonspacejs/docs/releases`,
-      },
       { text: '1.x', link: `${OLD_PRO_PATH}/Docs/1.x/` },
       {
         text: '了解更多',
@@ -57,7 +53,6 @@ export default defineConfig({
             items: [
               { text: 'FAQ', link: '/faq/' },
               { text: '设计结构', link: '/design/' },
-              { text: '博客', link: `${NEW_PRO_PATH}/blog/` },
             ],
           },
           {
@@ -65,11 +60,11 @@ export default defineConfig({
             items: [
               {
                 text: '建模工具 SoonBuilder',
-                link: `${BASE_HTTP_URL}?page_id=1101&lang=zh`,
+                link: `https://xwbuilders.com/product/uBuilder`,
               },
               {
-                text: '空间平台 SoonManager',
-                link: `${BASE_HTTP_URL}:9050`,
+                text: '空间平台 CPS',
+                link: `https://sooncps.xwbuilders.com/`,
               },
             ],
           },
