@@ -46,6 +46,18 @@ const drawingTopologyPlugin = ssp.registerPlugin(DrawingTopologyPlugin, 'drawTop
 consolo.log(drawingTopologyPlugin);
 ```
 
+## 属性
+
+## drawing
+
+是否正在绘制
+
+#### 用法
+
+```js
+drawingTopologyPlugin.drawing;
+```
+
 ## 方法
 
 ### start
@@ -59,7 +71,7 @@ export interface StartOptions extends TopologyInfo {
   onCancel?: () => void;
   onAdd?: (node: TopologyNodeInfo, intersectObject: Object3D) => void;
   onUndo?: (node: TopologyNodeInfo) => void;
-  onDone?: (nodes: TopologyNodeInfo[]) => void;
+  onDone?: (nodes: TopologyNodeInfo[], topology: Topology | null) => void;
 }
 
 function start(options: StartOptions): void;
@@ -70,8 +82,8 @@ function start(options: StartOptions): void;
 ```js
 drawingTopologyPlugin.start({
   id: 'drawing_topology',
-  onDone(nodes) {
-    console.log('drawEnd', nodes);
+  onDone(nodes, topology) {
+    console.log('drawEnd', nodes, topology);
   },
   onAdd(addNode, intersectObject) {
     console.log('add', addNode, intersectObject);
@@ -98,7 +110,7 @@ drawingTopologyPlugin.start({
 <Docs-Table 
     :data="[
       {
-        prop: 'onDone', desc: '绘制完成的回调函数', type: 'function(nodes: TopologyNodeInfo[]){}', require: false, default: ''
+        prop: 'onDone', desc: '绘制完成的回调函数', type: 'function(nodes: TopologyNodeInfo[], topology: Topology | null){}', require: false, default: ''
       },
       {
         prop: 'onAdd', desc: '添加 node 回调函数', type: 'function(node: TopologyNodeInfo, intersectObject: Object3D){}', require: false, default: ''
@@ -113,3 +125,51 @@ drawingTopologyPlugin.start({
 />
 
 其他配置参考[这里](../api/topology#topologyinfo)
+
+### undo
+
+撤销上一次 node，触发 `onUndo`
+
+#### 定义
+
+```ts
+function undo(): void;
+```
+
+#### 用法
+
+```js
+drawingTopologyPlugin.undo();
+```
+
+### done
+
+完成本次绘制，触发 `onDone`
+
+#### 定义
+
+```ts
+function done(): void;
+```
+
+#### 用法
+
+```js
+drawingTopologyPlugin.done();
+```
+
+### cancel
+
+取消绘制，触发 `onCancel`
+
+#### 定义
+
+```ts
+function cancel(): void;
+```
+
+#### 用法
+
+```js
+drawingTopologyPlugin.cancel();
+```
