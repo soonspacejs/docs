@@ -15,7 +15,7 @@ interface PoiNodeInfo extends BaseObject3DInfo {
   type: PoiNodeType;
   element: HTMLElement;
   elementAutoDisplay?: boolean;
-  occlude?: boolean | Object3D[] | Vector3;
+  occlude?: boolean | Object3D[] | IVector3;
   occludeThrottle?: number;
   onChange?: (visible: boolean) => void;
   scaleFixed?: ScaleFixed | null;
@@ -68,7 +68,7 @@ ssp.createPoiNode(
       { prop: 'type', desc: '展示模式', type: 'PoiNodeType', require: true, default: '', link: '../guide/types#poinodetype' },
       { prop: 'element', desc: 'DOM 元素', type: 'HTMLElement', require: true, default: '' },
       { prop: 'elementAutoDisplay', desc: 'element 自动显示隐藏', type: 'boolean', require: false, default: 'true' },
-      { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean | Object3D[] | Vector3', require: false, default: 'false' },
+      { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean | Object3D[] | IVector3', require: false, default: 'false' },
       { prop: 'occludeThrottle', desc: '遮挡查询的节流时间(ms)', type: 'number', require: false, default: '0' },
       { prop: 'onChange', desc: '元素可见性变化时的回调', type: '( visible: boolean ) =&gt; void', require: false, default: '' },
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
@@ -103,6 +103,7 @@ ssp.createPoiNode({
   // 与指定方向检测，提高性能
   // 表示朝向正z轴，当相机在背面时，不显示
   // occlude: new Vector3(0, 0, 1), 
+  // occlude: {x:0, y:0, z:1}, 
   occludeThrottle: 300,
 });
 ```
