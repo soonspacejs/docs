@@ -8,12 +8,6 @@
 
 <Docs-Iframe src="poiNode/createPoiNode.html" />
 
-模型遮挡
-<Docs-Iframe src="poiNode/poiNodeOcclude.html" />
-
-显隐过渡
-<Docs-Iframe src="poiNode/poiNodeTransition.html" />
-
 ### 定义：
 
 ```ts
@@ -21,7 +15,7 @@ interface PoiNodeInfo extends BaseObject3DInfo {
   type: PoiNodeType;
   element: HTMLElement;
   elementAutoDisplay?: boolean;
-  occlude?: boolean;
+  occlude?: boolean | Object3D[] | Vector3;
   occludeThrottle?: number;
   onChange?: (visible: boolean) => void;
   scaleFixed?: ScaleFixed | null;
@@ -57,14 +51,6 @@ ssp.createPoiNode(
     userData: {},
   }
 );
-
-// 遮挡查询
-ssp.createPoiNode({
-  type: '3d',
-  element: el,
-  occlude: true,
-  occludeThrottle: 300,
-});
 ```
 
 ### 参数：
@@ -82,7 +68,7 @@ ssp.createPoiNode({
       { prop: 'type', desc: '展示模式', type: 'PoiNodeType', require: true, default: '', link: '../guide/types#poinodetype' },
       { prop: 'element', desc: 'DOM 元素', type: 'HTMLElement', require: true, default: '' },
       { prop: 'elementAutoDisplay', desc: 'element 自动显示隐藏', type: 'boolean', require: false, default: 'true' },
-      { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean', require: false, default: 'false' },
+      { prop: 'occlude', desc: '开启遮挡查询', type: 'boolean | Object3D[] | Vector3', require: false, default: 'false' },
       { prop: 'occludeThrottle', desc: '遮挡查询的节流时间(ms)', type: 'number', require: false, default: '0' },
       { prop: 'onChange', desc: '元素可见性变化时的回调', type: '( visible: boolean ) =&gt; void', require: false, default: '' },
       { prop: 'id', desc: '唯一ID', type: 'string | number', require: true, default: '' },
@@ -96,6 +82,29 @@ ssp.createPoiNode({
       { prop: 'userData', desc: '用户数据', type: 'any', require: false, default: '{}' }
     ]"
 />
+
+###### occlude
+
+<Docs-Iframe src="poiNode/poiNodeNormal.html" />
+
+<Docs-Iframe src="poiNode/poiNodeTransition.html" />
+
+```js
+import { Vector3 } from 'three';
+
+// 遮挡查询
+ssp.createPoiNode({
+  type: '3d',
+  element: el,
+  // 与场景所有对象检测，比较消耗性能
+  occlude: true,
+  // 只与指定对象检测，提高性能
+  // occlude: [model],
+  // 与指定方向检测，提高性能
+  // occlude: new Vector3(0, 0, 1),
+  occludeThrottle: 300,
+});
+```
 
 ###### scaleFixed
 
@@ -176,10 +185,7 @@ const allPoiNodeList = ssp.getAllPoiNode();
 ### 定义：
 
 ```ts
-function getPoiNodeByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): PoiNode[];
+function getPoiNodeByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): PoiNode[];
 ```
 
 ### 用法：
@@ -213,9 +219,7 @@ poiNode.userData = {
     age: 18,
   },
 };
-const poiNodeList = ssp.getPoiNodeByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const poiNodeList = ssp.getPoiNodeByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -251,10 +255,7 @@ ssp.removePoiNodeById('xxx');
 ### 定义：
 
 ```ts
-function createPoiNodeToGroup(
-  groupInfo: GroupInfo,
-  poiNodeInfoList: PoiNodeInfo[]
-): Group;
+function createPoiNodeToGroup(groupInfo: GroupInfo, poiNodeInfoList: PoiNodeInfo[]): Group;
 ```
 
 ### 用法：
@@ -329,10 +330,7 @@ ssp.createGroupForPoiNode({
 ### 定义：
 
 ```ts
-function addPoiNodeForGroup(
-  groupId: GroupInfo['id'],
-  poiNodeInfoList: PoiNodeInfo[]
-): Group | null;
+function addPoiNodeForGroup(groupId: GroupInfo['id'], poiNodeInfoList: PoiNodeInfo[]): Group | null;
 ```
 
 ### 用法：
