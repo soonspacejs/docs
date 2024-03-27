@@ -101,7 +101,8 @@ ssp.createPoiNode({
   // 只与指定对象检测，提高性能
   // occlude: [model],
   // 与指定方向检测，提高性能
-  // occlude: new Vector3(0, 0, 1),
+  // 表示朝向正z轴，当相机在背面时，不显示
+  // occlude: new Vector3(0, 0, 1), 
   occludeThrottle: 300,
 });
 ```
