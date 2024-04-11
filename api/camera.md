@@ -232,6 +232,7 @@ function flyToObj(
 interface FlyToObjOptions {
   enableTransition?: boolean;
   padding?: number | string;
+  minPadding?: number;
   viewpointSpace?: 'world' | 'local';
 }
 
@@ -305,6 +306,7 @@ ssp.flyToObj(sbm, 'left', { padding: '30%', enableTransition: false });
     :data="[
       { prop: 'enableTransition', desc: '是否开启过渡效果', type: 'boolean', require: false, default: 'true' },
       { prop: 'padding', desc: '视角后飞向的偏移量', type: 'number | string', require: false, default: '30%' },
+      { prop: 'minPadding', desc: '计算的最小偏移量，防止飞向空节点时相机锁死', type: 'number', require: false, default: '1' },
       { prop: 'viewpointSpace', desc: '`viewpoint` 相对于场景或对象，默认相对于场景', type: 'world | local', require: false, default: 'world' },
     ]"
 />

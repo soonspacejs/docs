@@ -132,7 +132,35 @@ const ssp = new SoonSpace({
   ::: tip 提示
   不开启时 `modelHover` 和 `poiHover` 不会触发。
 
-  提供一个 `API` [setHoverEnabled](../api/sceneTool#sethoverenabled) 动态更改该配置。
+  使用 [setHoverEnabled](../api/sceneTool#sethoverenabled) 动态更改该配置。
+  :::
+
+## levelEnabled
+
+是否开启 level 检测
+
+- **类型**: boolean
+- **默认值**: `false`
+  ::: tip 提示
+  不开启时，场景对象的 level 配置无效
+
+  此时可以减少场景多余的计算。
+
+  使用 [setLevelEnabled](../api/sceneTool#setlevelenabled) 动态更改该配置。
+  :::
+
+## scaleFixedEnabled
+
+是否开启 scaleFixed 检测
+
+- **类型**: boolean
+- **默认值**: `false`
+  ::: tip 提示
+  不开启时，场景 Poi、PoiNode 的 scaleFixed 配置无效
+
+  此时可以减少场景多余的计算。
+
+  使用 [setScaleFixedEnabled](../api/sceneTool#setscalefixedenabled) 动态更改该配置。
   :::
 
 ## fileCacheEnabled
@@ -146,30 +174,6 @@ const ssp = new SoonSpace({
   开启时将防止重复的网络请求
 
   提供一个 `API` [setFileCacheEnabled](../api/sceneTool#setfilecacheenabled) 动态更改该配置。
-  :::
-
-## levelEnabled
-
-是否开启 level 检测
-
-- **类型**: boolean
-- **默认值**: `false`
-  ::: tip 提示
-  不开启时，场景对象的 level 配置无效
-
-  此时可以减少场景多余的计算。
-  :::
-
-## scaleFixedEnabled
-
-是否开启 scaleFixed 检测
-
-- **类型**: boolean
-- **默认值**: `false`
-  ::: tip 提示
-  不开启时，场景 Poi、PoiNode 的 scaleFixed 配置无效
-
-  此时可以减少场景多余的计算。
   :::
 
 ## closeInfoLog

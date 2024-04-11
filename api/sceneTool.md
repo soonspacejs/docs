@@ -823,6 +823,38 @@ ssp.setHoverEnabled(true);
 - **描述:** 是否开启
 - **必填:** <Base-RequireIcon />
 
+## setLevelEnabled
+
+设置开启 `level` 功能
+
+### 定义:
+
+```ts
+function setLevelEnabled(enabled: boolean): void;
+```
+
+### 用法:
+
+```js
+ssp.setLevelEnabled(true);
+```
+
+## setScaleFixedEnabled
+
+设置开启 `scaleFixed` 功能
+
+### 定义:
+
+```ts
+function setScaleFixedEnabled(enabled: boolean): void;
+```
+
+### 用法:
+
+```js
+ssp.setScaleFixedEnabled(true);
+```
+
 ## setFileCacheEnabled
 
 `v2.6.34`
