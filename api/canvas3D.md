@@ -32,9 +32,10 @@ interface LineInfo extends BaseMeshInfo {
   gradient?: GradientTextureOptions;
 }
 
-interface PolygonInfo extends BaseMeshInfo {
+interface PolygonInfo extends BaseObjectInfo {
   yHeight: number;
   points: PlaneIVector2[];
+  depth?: number;
   color?: IColor;
   opacity?: number;
   gradient?: GradientTextureOptions;
@@ -150,6 +151,7 @@ ssp.createCanvas3D({
       { prop: 'name', desc: '面名称', type: 'string', require: false, default: '' },
       { prop: 'yHeight', desc: '面空间高度', type: 'number', require: true, default: '' },
       { prop: 'points', desc: '组成面的点坐标集合', type: 'PlaneIVector2[]', require: true, default: '', link: '../guide/types#planeivector2' },
+      { prop: 'depth', desc: '凸起的深度', type: 'number', require: true, default: '' },
       { prop: 'color', desc: '面颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
       { prop: 'gradient', desc: '面颜色渐变', type: 'GradientTextureOptions', require: false, default: '', link: '#gradienttextureoptions' },
       { prop: 'opacity', desc: '面不透明度', type: 'number', require: false, default: '1' },
