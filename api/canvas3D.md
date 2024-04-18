@@ -149,7 +149,7 @@ ssp.createCanvas3D({
     :data="[
       { prop: 'id', desc: '面唯一ID', type: 'string | number', require: true, default: '' },
       { prop: 'name', desc: '面名称', type: 'string', require: false, default: '' },
-      { prop: 'yHeight', desc: '面空间高度', type: 'number', require: true, default: '' },
+      { prop: 'yHeight', desc: '面空间高度', type: 'number', require: false, default: '1' },
       { prop: 'points', desc: '组成面的点坐标集合', type: 'PlaneIVector2[]', require: true, default: '', link: '../guide/types#planeivector2' },
       { prop: 'depth', desc: '凸起的深度', type: 'number', require: false, default: '0' },
       { prop: 'color', desc: '面颜色', type: 'IColor', require: false, default: '0xffffff', link: '../guide/types#icolor' },
