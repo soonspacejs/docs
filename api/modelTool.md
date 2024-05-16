@@ -132,9 +132,9 @@ ssp.strokeShow(models, {
     :data="[
       { prop: 'isOpacityShow', desc: '是否透明', type: 'boolean', require: false, default: true },
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0x46ebf7' , link: '../guide/types#icolor'},
-      { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.2 },
+      { prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: 0.2 },
       { prop: 'edgeColor', desc: '边缘颜色', type: 'IColor', require: false, default: '0x00eeff', link: '../guide/types#icolor' },
-      { prop: 'edgeOpacity', desc: '边缘透明度', type: 'number', require: false, default: 1 },
+      { prop: 'edgeOpacity', desc: '边缘不透明度', type: 'number', require: false, default: 1 },
       { prop: 'modelCache', desc: '当传入 Model 时是否缓存计算结果', type: 'boolean', require: false, default: true },
       { prop: 'firstChild', desc: '是否只作用第一个子节点', type: 'boolean', require: false, default: false },
     ]"
@@ -213,7 +213,7 @@ ssp.opacityShow(object, {
 <Docs-Table
     :data="[
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xffffff' , link: '../guide/types#icolor'},
-      { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 0.2 },
+      { prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: 0.2 },
     ]"
 />
 
@@ -276,7 +276,7 @@ ssp.highlightShow(object, { color: 0xff6600 });
 <Docs-Table
     :data="[
       { prop: 'color', desc: '颜色', type: 'IColor', require: false, default: '0xff0000' , link: '../guide/types#icolor'},
-      { prop: 'opacity', desc: '透明度', type: 'number', require: false, default: 1 },
+      { prop: 'opacity', desc: '不透明度', type: 'number', require: false, default: 1 },
     ]"
 />
 
