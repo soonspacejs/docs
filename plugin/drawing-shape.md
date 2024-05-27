@@ -32,51 +32,69 @@ const ssp = new SoonSpace({
   events: {},
 });
 
-const drawingShapePlugin = ssp.registerPlugin(
-  DrawingShapePlugin,
-  'drawingShapePlugin'
-);
+const drawingShapePlugin = ssp.registerPlugin(DrawingShapePlugin, 'drawingShapePlugin');
 consolo.log(drawingShapePlugin);
+```
+
+## 属性
+
+### blankIntersect
+
+是否允许在空白处绘制
+
+- **默认值:** `true`
+- **类型:** `boolean`
+
+#### 用法
+
+```js
+drawingShapePlugin.blankIntersect = false;
 ```
 
 ## 方法
 
 ### drawingPoint
+
 绘制点
 
 #### 交互
+
 鼠标 **左键单击** 确定位置并结束绘制，鼠标 **右键单击** 或按键 **Esc** 取消绘制。
 
 #### 定义
+
 ```ts
-type DrawingPointInfo = Omit<PointInfo, 'id'>
+type DrawingPointInfo = Omit<PointInfo, 'id'>;
 
 interface DrawingPointEvents {
-  onCancel?: () => void
+  onCancel?: () => void;
 }
 
-function drawingPoint(options: DrawingPointInfo, events?: DrawingPointEvents): Promise<Omit<PointInfo, 'id'>>
+function drawingPoint(options: DrawingPointInfo, events?: DrawingPointEvents): Promise<Omit<PointInfo, 'id'>>;
 ```
 
 #### 用法
+
 ```js
-drawingShapePlugin.drawingPoint(
-  // options
-  {
-    color: 'red',
-    opacity: 0.5
-  },
-  // events
-  {
-    onCancel() {
-      console.log('drawPoint onCancel')
+drawingShapePlugin
+  .drawingPoint(
+    // options
+    {
+      color: 'red',
+      opacity: 0.5,
+    },
+    // events
+    {
+      onCancel() {
+        console.log('drawPoint onCancel');
+      },
     }
-  }
-)
-  .then(res => console.log('drawPoint done', res))
+  )
+  .then((res) => console.log('drawPoint done', res));
 ```
 
 #### 参数:
+
 ##### options
 
 - **描述:** 点参数配置
@@ -92,6 +110,7 @@ drawingShapePlugin.drawingPoint(
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ###### DrawingPointEvents
+
 <Docs-Table 
     :data="[
       {
@@ -101,45 +120,51 @@ drawingShapePlugin.drawingPoint(
 />
 
 ### drawingLine
+
 绘制线
 
 #### 交互
+
 鼠标 **左键单击** 确定位置，鼠标 **左键双击** 确定位置并结束绘制，鼠标 **右键单击** 或按键 **Del** 取消上一步绘制，鼠标 **右键双击** 或按键 **Esc** 取消绘制。
 
 #### 定义
+
 ```ts
-type DrawingLineInfo = Omit<LineInfo, 'id' | 'points'>
+type DrawingLineInfo = Omit<LineInfo, 'id' | 'points'>;
 
 interface DrawingLineEvents {
-  onCancel?: () => void
-  onCancelPrev?: () => void
+  onCancel?: () => void;
+  onCancelPrev?: () => void;
 }
 
-function drawingLine(options: DrawingLineInfo, events?: DrawingLineEvents): Promise<Omit<LineInfo, 'id'>>
+function drawingLine(options: DrawingLineInfo, events?: DrawingLineEvents): Promise<Omit<LineInfo, 'id'>>;
 ```
 
 #### 用法
+
 ```js
-drawingShapePlugin.drawingLine(
-  // options
-  {
-    color: 'red',
-    opacity: 0.5
-  },
-  // events
-  {
-    onCancel() {
-      console.log('drawingLine onCancel')
+drawingShapePlugin
+  .drawingLine(
+    // options
+    {
+      color: 'red',
+      opacity: 0.5,
     },
-    onCancelPrev() {
-      console.log('drawingLine onCancelPrev')
-    },
-  }
-)
-  .then(res => console.log('drawingLine done', res))
+    // events
+    {
+      onCancel() {
+        console.log('drawingLine onCancel');
+      },
+      onCancelPrev() {
+        console.log('drawingLine onCancelPrev');
+      },
+    }
+  )
+  .then((res) => console.log('drawingLine done', res));
 ```
 
 #### 参数:
+
 ##### options
 
 - **描述:** 线参数配置
@@ -155,6 +180,7 @@ drawingShapePlugin.drawingLine(
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ###### DrawingLineEvents
+
 <Docs-Table 
     :data="[
       {
@@ -167,46 +193,52 @@ drawingShapePlugin.drawingLine(
 />
 
 ### drawingPolygon
+
 绘制面
 
 #### 交互
+
 鼠标 **左键单击** 确定位置，鼠标 **左键双击** 确定位置并结束绘制，鼠标 **右键单击** 或按键 **Del** 取消上一步绘制，鼠标 **右键双击** 或按键 **Esc** 取消绘制。
 
 #### 定义
+
 ```ts
-type DrawingPolygonInfo = Omit<PolygonInfo, 'id' | 'points' | 'yHeight'>
+type DrawingPolygonInfo = Omit<PolygonInfo, 'id' | 'points' | 'yHeight'>;
 
 interface DrawingPolygonEvents {
-  onCancel?: () => void
-  onCancelPrev?: () => void
+  onCancel?: () => void;
+  onCancelPrev?: () => void;
 }
 
-function drawingPolygon(options: DrawingPolygonInfo, events?: DrawingPolygonEvents): Promise<Omit<PolygonInfo, 'id'>>
+function drawingPolygon(options: DrawingPolygonInfo, events?: DrawingPolygonEvents): Promise<Omit<PolygonInfo, 'id'>>;
 ```
 
 #### 用法
+
 ```js
-drawingShapePlugin.drawingPolygon(
-  // options
-  {
-    yHeight: 200,
-    color: 'blue',
-    opacity: 0.1
-  },
-  // events
-  {
-    onCancel() {
-      console.log('drawingPolygon onCancel')
+drawingShapePlugin
+  .drawingPolygon(
+    // options
+    {
+      yHeight: 200,
+      color: 'blue',
+      opacity: 0.1,
     },
-    onCancelPrev() {
-      console.log('drawingPolygon onCancelPrev')
-    },
-  }
-)
-  .then(res => console.log('drawingPolygon done', res))
+    // events
+    {
+      onCancel() {
+        console.log('drawingPolygon onCancel');
+      },
+      onCancelPrev() {
+        console.log('drawingPolygon onCancelPrev');
+      },
+    }
+  )
+  .then((res) => console.log('drawingPolygon done', res));
 ```
 
 #### 参数:
+
 ##### options
 
 - **描述:** 面参数配置
@@ -222,6 +254,7 @@ drawingShapePlugin.drawingPolygon(
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ###### DrawingPolygonEvents
+
 <Docs-Table 
     :data="[
       {
@@ -234,12 +267,15 @@ drawingShapePlugin.drawingPolygon(
 />
 
 ### drawingCircle
+
 绘制圆
 
 #### 交互
+
 鼠标 **左键单击** 确定圆心位置，移动鼠标设置半径，再次鼠标 **左键单击** 完成绘制， **右键单击** 或按键 **Esc** 取消绘制。
 
 #### 定义
+
 ```ts
 type DrawingCircleInfo = Omit<CircleInfo, 'id' ｜ 'radius'>
 
@@ -251,24 +287,27 @@ function drawingCircle(options: DrawingCircleInfo, events?: DrawingCircleEvents)
 ```
 
 #### 用法
+
 ```js
-drawingShapePlugin.drawingCircle(
-  // options
-  {
-    color: 'blue',
-    opacity: 0.5
-  },
-  // events
-  {
-    onCancel() {
-      console.log('drawingCircle onCancel')
+drawingShapePlugin
+  .drawingCircle(
+    // options
+    {
+      color: 'blue',
+      opacity: 0.5,
+    },
+    // events
+    {
+      onCancel() {
+        console.log('drawingCircle onCancel');
+      },
     }
-  }
-)
-  .then(res => console.log('drawingCircle done', res))
+  )
+  .then((res) => console.log('drawingCircle done', res));
 ```
 
 #### 参数:
+
 ##### options
 
 - **描述:** 圆参数配置
@@ -284,6 +323,7 @@ drawingShapePlugin.drawingCircle(
 - **必填:** <Base-RequireIcon :isRequire="false" />
 
 ###### DrawingCircleEvents
+
 <Docs-Table 
     :data="[
       {
@@ -293,14 +333,17 @@ drawingShapePlugin.drawingCircle(
 />
 
 ### clearDrawingCanvas3D
+
 清空绘制画布
 
 #### 定义
+
 ```ts
-function clearDrawingCanvas3D(): void
+function clearDrawingCanvas3D(): void;
 ```
 
 #### 用法
+
 ```js
-drawingShapePlugin.clearDrawingCanvas3D()
+drawingShapePlugin.clearDrawingCanvas3D();
 ```
