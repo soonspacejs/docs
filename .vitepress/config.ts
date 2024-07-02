@@ -6,7 +6,8 @@ const PACKAGE_NAME = 'soonspacejs';
 
 const OLD_PRO_PATH = `${BASE_HTTP_URL}:${BASE_PORT}/${PACKAGE_NAME}`;
 
-const BASE = '/soonspacejs'
+// @ts-ignore
+const BASE = process.env.BASE
 
 export default defineConfig({
   base: BASE,

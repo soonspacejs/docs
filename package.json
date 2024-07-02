@@ -3,11 +3,13 @@
   "type": "module",
   "scripts": {
     "dev": "vitepress dev ./",
-    "build": "vitepress build ./",
+    "build": "cross-env BASE=/soonspacejs vitepress build ./",
+    "build:github": "cross-env BASE=/docs vitepress build ./",
     "preview": "vitepress preview ./",
     "build:offLine": "node ./offLineInstructions/index.js"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "pdf-merger-js": "3.1.0",
     "stylus": "^0.62.0",
     "vitepress": "latest"
