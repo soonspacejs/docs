@@ -12,6 +12,6 @@
     "cross-env": "^7.0.3",
     "pdf-merger-js": "3.1.0",
     "stylus": "^0.62.0",
-    "vitepress": "latest"
+    "vitepress": "1.3.1"
   }
 }
