@@ -752,7 +752,7 @@ function playObjectAnimation(
   object: BaseObject3D,
   animationIndex?: number,
   options?: IPlayAnimationByIdOptions
-): Promise<void>;
+): Promise<boolean>;
 ```
 
 #### 用法
@@ -815,7 +815,7 @@ cpsSoonmanagerPlugin.playObjectAnimation(object, 0, {
 #### 定义
 
 ```ts
-function stopObjectAnimation(object: BaseObject3D): Promise<void>;
+function stopObjectAnimation(object: BaseObject3D): Promise<boolean>;
 ```
 
 #### 用法
@@ -831,7 +831,7 @@ cpsSoonmanagerPlugin.stopObjectAnimation(object);
 #### 定义
 
 ```ts
-function flyToSceneFromVisionsData(index?: number): Promise<void>;
+function flyToSceneFromVisionsData(index?: number): Promise<boolean>;
 ```
 
 #### 用法
@@ -879,7 +879,7 @@ const success = await cpsSoonmanagerPlugin.flyToMainSceneFromVisionsData();
 #### 定义
 
 ```ts
-function flyToObjectFromVisionsData(object: BaseObject3D, index?: number): Promise<void>;
+function flyToObjectFromVisionsData(object: BaseObject3D, index?: number): Promise<boolean>;
 ```
 
 #### 用法
