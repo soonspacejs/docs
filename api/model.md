@@ -19,52 +19,64 @@ interface ModelInfo extends BaseObject3DInfo, ObjectEvents<Model> {
   url: string;
 }
 
-function loadModel(modelInfo: ModelInfo): Promise<Model>;
+function loadModel(modelInfo: ModelInfo, parent?: Object3D | null): Promise<Model | null>;
 ```
 
 ### 用法：
 
 ```js
+//
+
 ssp
-  .loadModel(
-    // modelInfo
-    {
-      id: 'xx',
-      name: 'xx',
-      url: 'xx/x.fbx',
-      level: {
-        max: 1000,
-        min: null,
-      },
-      position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: 0, z: 0 },
-      scale: { x: 2, y: 2, z: 2 },
-      onClick(e) {
-        /**
-         * 对象的独立事件触发后，默认不传播（类似 DOM 的事件冒泡）到全局事件，
-         * 调用 eventPropagation 方法通知事件继续传播到全局。
-         *
-         * warn：
-         *  在 **非箭头函数** 中参数 e 与 this 的指向都是当前模型对象，
-         *  在 *箭头函数** 参数 e 依然是模型对象，但 this 指向会发生改变。
-         */
-        this.eventPropagation();
+  .loadModel({
+    id: 'xx',
+    name: 'xx',
+    url: 'xx/x.fbx',
+    level: {
+      max: 1000,
+      min: null,
+    },
+    position: { x: 0, y: 0, z: 0 },
+    rotation: { x: 0, y: 0, z: 0 },
+    scale: { x: 2, y: 2, z: 2 },
+    onClick(e) {
+      /**
+       * 对象的独立事件触发后，默认不传播（类似 DOM 的事件冒泡）到全局事件，
+       * 调用 eventPropagation 方法通知事件继续传播到全局。
+       *
+       * warn：
+       *  在 **非箭头函数** 中参数 e 与 this 的指向都是当前模型对象，
+       *  在 *箭头函数** 参数 e 依然是模型对象，但 this 指向会发生改变。
+       */
+      this.eventPropagation();
 
-        console.log('模型自身的点击事件触发', this);
-      },
-      onDblClick: (e) => {
-        /**
-         * 这里模拟在 **箭头函数** 中
-         */
-        e.eventPropagation();
+      console.log('模型自身的点击事件触发', this);
+    },
+    onDblClick: (e) => {
+      /**
+       * 这里模拟在 **箭头函数** 中
+       */
+      e.eventPropagation();
 
-        console.log('模型自身的双击事件触发', e);
-      },
-      userData: {},
-    }
-  )
+      console.log('模型自身的双击事件触发', e);
+    },
+    userData: {},
+  })
   .then((model) => console.log(model))
   .catch((err) => console.error(err));
+
+//
+
+const model = await ssp.loadModel(
+  {
+    id: 'xx',
+    url: './xx.glb',
+  },
+  null // 父级对象， null 表示模型不会添加到场景中
+);
+
+// 添加到场景中
+ssp.addObject(model);
 ```
 
 ### 参数：
@@ -94,6 +106,12 @@ ssp
       { prop: 'onLoad', desc: '加载完成事件', type: '(object: Model) =&gt; void', require: false, default: 'null' },
     ]"
 />
+
+#### parent
+
+- **描述:** 父级对象，默认被添加在 `scene` 下
+- **类型:** `Object3D | null`
+- **必填:** <Base-RequireIcon :isRequire="false"/>
 
 ## cloneModel
 
