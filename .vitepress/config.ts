@@ -177,8 +177,7 @@ export default defineConfig({
         {
           text: '进阶',
           items: [
-            { text: '控制器（废弃）', link: '/api/controls-legacy' },
-            { text: '控制器（新版）', link: '/api/controls' },
+            { text: '控制器', link: '/api/controls' },
             { text: '模型操作', link: '/api/modelTool' },
             { text: '场景操作', link: '/api/sceneTool' },
             { text: '相机', link: '/api/camera' },
