@@ -18,8 +18,7 @@
 
 ### 进阶
 
-- [控制器（废弃）](./controls-legacy)
-- [控制器（新版）](./controls)
+- [控制器](./controls)
 - [模型操作](./modelTool)
 - [场景操作](./sceneTool)
 - [相机](./camera)
