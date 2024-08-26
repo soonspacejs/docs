@@ -186,7 +186,9 @@ const [deviceModel] = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
 :::
 
 ::: warning 注意
-`2024-08-09` 之后导出的版本，已经将现在的 `id` 作为之前的 `uuid`，如果要兼容旧版本，使用 `loadScene` 方法时传入 `{ asId: 'sid' }`。
+`2024-08-09` 之后导出的版本，已经将现在的 `id` 作为之前的 `uuid`。
+
+如果使用旧版资源包或者新版资源包使用 `id`，使用 `loadScene` 方法时传入 `{ asId: 'id' }`。
 :::
 
 ### poiData
@@ -595,7 +597,7 @@ cpsSoonmanagerPlugin
       { prop: 'loadFlowData', desc: '默认执行 loadFlowData 方法', type: 'boolean', require: false, default: 'false' },
       { prop: 'sceneGroupInfo', desc: '场景 group 信息', type: 'Partial<BaseObjectInfo>', require: false, default: '{id: [this.path]}' },
       { prop: 'objectPrefixId', desc: '场景对象的id前缀', type: 'string', require: false, default: '' },
-      { prop: 'asId', desc: '作为对象 id 的字段', type: 'id | sid', require: false, default: 'id' },
+      { prop: 'asId', desc: '作为对象 id 的字段', type: 'id | sid', require: false, default: 'sid' },
     ]"
 />
 
