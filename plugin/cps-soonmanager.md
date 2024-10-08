@@ -938,6 +938,31 @@ const success = await cpsSoonmanagerPlugin.flyToMainObjectFromVisionsData(model)
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `boolean`
 
+### getSpaceAssets
+
+获取空间下辖设备列表
+
+#### 定义
+
+```ts
+function getSpaceAssets<T extends BaseObject3D = BaseObject3D>(space: BaseObject3D): Promise<T[]>;
+```
+
+#### 用法
+
+```ts
+const [spaceObject] = ssp.getObjectByUserDataProperty('space', 'xxx');
+const spaceAssets = cpsSoonmanagerPlugin.getSpaceAssets(spaceObject);
+```
+
+#### 参数
+
+##### space
+
+- **描述:** 空间对象
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `BaseObject3D`
+
 ### loadPoi
 
 根据 poiData 渲染 Poi。
