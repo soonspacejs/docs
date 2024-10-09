@@ -952,7 +952,7 @@ function getSpaceAssets<T extends BaseObject3D = BaseObject3D>(space: BaseObject
 
 ```ts
 const [spaceObject] = ssp.getObjectByUserDataProperty('space', 'xxx');
-const spaceAssets = cpsSoonmanagerPlugin.getSpaceAssets(spaceObject);
+const spaceAssets = await cpsSoonmanagerPlugin.getSpaceAssets(spaceObject);
 ```
 
 #### 参数
