@@ -184,6 +184,77 @@ effectPlugin.createSmoke({
 
 其他配置参考 [BaseObject3DInfo](../guide/types.md#baseobject3dinfo)
 
+### createSmoke2
+
+创建烟雾
+
+#### 样例
+
+<Docs-Iframe src="plugin/flameSmoke.html" />
+
+#### 定义
+
+```ts
+interface Smoke2Options extends PluginObjectInfo {
+  imgUrl?: string;
+  radius?: number;
+  maxLife?: number;
+  maxSize?: number;
+  rate?: number;
+  blending?: Blending;
+}
+
+function createSmoke2(options: Smoke2Options): PluginObject;
+```
+
+#### 用法
+
+```js
+const smoke = effectPlugin.createSmoke2({
+  id: 'smoke2',
+  position: { x: 0, y: -20, z: 0 },
+  scale: {
+    x: 5,
+    y: 5,
+    z: 5,
+  },
+  radius: 2,
+  maxSize: 80,
+  maxLife: 30,
+  rate: 20,
+});
+```
+
+#### 参数
+
+##### options
+
+- **描述:** 配置
+- **必填:** <Base-RequireIcon :isRequire="true"/>
+- **类型:** `Smoke2Options`
+
+##### Smoke2Options
+
+<Docs-Table 
+    :data="[
+      {
+        prop: 'imgUrl', desc: '烟雾图片', type: 'string', require: false, default: '内置图片'
+      },
+       {
+        prop: 'radius', desc: '烟雾扩散半径', type: 'number', require: false, default: '0.5'
+      },
+      {
+        prop: 'maxLife', desc: '烟雾最大存在时间（秒）', type: 'number', require: false, default: '3.5'
+      },
+      {
+        prop: 'maxSize', desc: '烟雾最大的大小', type: 'number', require: false, default: '3.0'
+      },
+      {
+        prop: 'rate', desc: '烟雾的上升速率', type: 'number', require: false, default: '10'
+      },
+    ]"
+/>
+
 ### createWater
 
 创建水面
