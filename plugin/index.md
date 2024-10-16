@@ -33,6 +33,7 @@
 - [clipping-controls](./clipping-controls) - 模型、场景切割控制器。
 - [model-blast](./model-blast) - 模型爆炸。
 - [effect](./effect) - 特效。
+- [drag-controls](./drag-controls) - 模型或对象拖拽。
 - [navigation](./navigation) - 导航。
 
 ### 开发者插件

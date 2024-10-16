@@ -248,6 +248,7 @@ export default defineConfig({
             },
             { text: 'plugin-model-blast', link: '/plugin/model-blast' },
             { text: 'plugin-effect', link: '/plugin/effect' },
+            { text: 'plugin-drag-controls', link: '/plugin/drag-controls' },
             { text: 'plugin-navigation', link: '/plugin/navigation' },
           ],
         },
