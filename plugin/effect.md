@@ -201,6 +201,7 @@ interface Smoke2Options extends PluginObjectInfo {
   maxLife?: number;
   maxSize?: number;
   rate?: number;
+  colors?: IColor[];
   blending?: Blending;
 }
 
@@ -222,6 +223,7 @@ const smoke = effectPlugin.createSmoke2({
   maxSize: 80,
   maxLife: 30,
   rate: 20,
+  colors: [ 0x000000, 0xffffff ],
 });
 ```
 
@@ -251,6 +253,12 @@ const smoke = effectPlugin.createSmoke2({
       },
       {
         prop: 'rate', desc: '烟雾的上升速率', type: 'number', require: false, default: '10'
+      },
+      {
+        prop: 'colors', desc: '烟雾颜色数组', type: 'IColor[]', require: false, default: '[ 0x000000, 0xffffff ]'
+      },
+      {
+        prop: 'blending', desc: '烟雾材质混合', type: 'THREE.Blending', require: false, default: 'NormalBlending'
       },
     ]"
 />
