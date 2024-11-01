@@ -351,6 +351,35 @@ type TModelVisionsMap = Map<IModelVisions['nodeId'], IModelVisions[]>;
 Map 的 key 为 "" 时，表示场景视角数据
 :::
 
+### spacesData
+
+<Base-Tag title="readonly" />
+
+模型视角数据，根据 `sid` 分组
+
+调用 [fetchSpacesData](#fetchspacesdata) 方法时会设置此属性
+
+- **默认值:** `null`
+- **类型:** `TSpacesMap | null`
+
+#### 定义
+
+```ts
+interface ISpaces {
+  id: string;
+  sid: string;
+  name: string;
+  type: string;
+  matrix: number[];
+  visible: boolean;
+  // treeData 中的 id 列表
+  assets: string[] | null;
+  children: ISpaces[] | null;
+}
+
+export type TSpacesMap = Map<ISpaces['sid'], ISpaces>;
+```
+
 ### soonflow
 
 <Base-Tag title="readonly" />
@@ -1155,5 +1184,25 @@ function fetchModelVisionsData(): Promise<TModelVisionsMap>;
 ```ts
 cpsSoonmanagerPlugin.fetchModelVisionsData().then((modelVisions) => {
   console.log(modelVisions);
+});
+```
+
+### fetchSpacesData
+
+根据当前 `path` 获取空间数据
+
+由 [getSpaceAssets](#getspaceassets) 方法调用
+
+#### 定义
+
+```ts
+function fetchSpacesData(): Promise<Map<string, ISpaces>>;
+```
+
+#### 用法
+
+```ts
+cpsSoonmanagerPlugin.fetchSpacesData().then((spacesData) => {
+  console.log(spacesData);
 });
 ```
