@@ -548,6 +548,11 @@ function loadScene(options?: ILoadSceneOptions): Promise<void>;
 #### 用法
 
 ```js
+// 进度事件
+cpsSoonmanagerPlugin.addEventListener('progressing', ({ progress }) => {
+  console.log((progress.loaded / progress.total) * 100 + '% loaded');
+});
+
 cpsSoonmanagerPlugin
   .loadScene()
   .then(() => {
