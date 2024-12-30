@@ -46,20 +46,18 @@ consolo.log(dragControlsPlugin);
 
 ```ts
 interface StartOptions {
-  objects: Object3D[];
   dragStart?: (object: Object3D) => void;
   drag?: (object: Object3D) => void;
   dragEnd?: (object: Object3D) => void;
 }
 
-function start(options: StartOptions): void;
+function start(objects: Object3D[], options?: StartOptions): void;
 ```
 
 #### 用法
 
 ```js
-dragControlsPlugin.start({
-  objects: [model1, model2],
+dragControlsPlugin.start([model1, model2], {
   drag(object) {
     console.log(object);
   },
@@ -74,19 +72,23 @@ dragControlsPlugin.start({
 
 #### 参数:
 
+##### objects
+
+- **描述:** 拖拽的对象数组
+- **类型:** `Object3D[]`
+- **必填:** <Base-RequireIcon :isRequire="true" />
+
+
 ##### options
 
 - **描述:** 配置选项
 - **类型:** `StartOptions`
-- **必填:** <Base-RequireIcon :isRequire="true" />
+- **必填:** <Base-RequireIcon :isRequire="false" />
 
 ###### StartOptions
 
 <Docs-Table 
     :data="[
-      {
-        prop: 'objects', desc: '拖拽的对象数组', type: 'Object3D[]', require: true, default: ''
-      },
       {
         prop: 'dragStart', desc: '拖拽开始事件', type: '(object: Object3D) => void', require: false
       },
