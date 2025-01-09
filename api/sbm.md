@@ -23,10 +23,7 @@ interface SbmInfo extends BaseObject3DInfo, ObjectEvents<Sbm> {
   url: string;
 }
 
-function loadSbm(
-  sbmInfo: SbmInfo,
-  onProgress?: ModelLoadingProgressCallback
-): Promise<Sbm>;
+function loadSbm(sbmInfo: SbmInfo, onProgress?: ModelLoadingProgressCallback): Promise<Sbm>;
 ```
 
 ### 用法：
@@ -68,13 +65,6 @@ ssp
         console.log('模型自身的双击事件触发', e);
       },
       userData: {},
-    },
-    // onProgress
-    ({ loaded, total }) => {
-      console.log(
-        '模型加载进度：',
-        Math.round((loaded / total) * 10000) / 100 + '%'
-      );
     }
   )
   .then((sbm) => console.log(sbm))
@@ -137,11 +127,7 @@ ssp
 ### 定义:
 
 ```ts
-function parseSbm(
-  data: ArrayBuffer,
-  sbmInfo: SbmInfo,
-  onProgress?: ModelLoadingProgressCallback
-): Promise<Sbm>;
+function parseSbm(data: ArrayBuffer, sbmInfo: SbmInfo, onProgress?: ModelLoadingProgressCallback): Promise<Sbm>;
 ```
 
 ### 用法：
@@ -175,11 +161,7 @@ const sbm = await ssp.parseSbm(new ArrayBuffer(8), sbmInfo, () => {});
 ```ts
 interface CloneSbmInfo extends Omit<SbmInfo, 'url'> {}
 
-function cloneSbm(
-  model: Sbm,
-  cloneSbmInfo: CloneSbmInfo,
-  parent?: BaseObject3D | null
-): Promise<Sbm>;
+function cloneSbm(model: Sbm, cloneSbmInfo: CloneSbmInfo, parent?: BaseObject3D | null): Promise<Sbm>;
 ```
 
 ### 用法:
@@ -276,10 +258,7 @@ const allSbmList = ssp.getAllSbm();
 ### 定义：
 
 ```ts
-function getSbmByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Sbm[];
+function getSbmByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Sbm[];
 ```
 
 ### 用法：
@@ -313,9 +292,7 @@ sbm.userData = {
     age: 18,
   },
 };
-const sbmList = ssp.getSbmByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const sbmList = ssp.getSbmByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -370,19 +347,7 @@ ssp
       // ...
     },
     // sbmInfoList
-    [sbmInfo1, sbmInfo2, sbmInfo3],
-    // onProgress
-    ({ current, modelTotal, loadingModelIndex }) => {
-      console.log(
-        '模型加载进度：',
-        Math.round(
-          loadingModelIndex / modelTotal +
-            (current.loaded / current.total) * (1 / modelTotal) * 10000
-        ) /
-          100 +
-          '%'
-      );
-    }
+    [sbmInfo1, sbmInfo2, sbmInfo3]
   )
   .then((group) => console.log(group));
 ```
@@ -494,9 +459,8 @@ ssp
     // groupId
     'firstSbmGroup',
     // sbmInfoList
-    [sbmInfo4, sbmInfo5],
+    [sbmInfo4, sbmInfo5]
     // onProgress
-    (progress) => console.log('进度信息：', progress)
   )
   .then((group) => console.log(group));
 ```
@@ -528,10 +492,7 @@ ssp
 ### 定义:
 
 ```ts
-function createSbmGroupFromXml(
-  groupInfo: GroupInfo,
-  url: string
-): Promise<Group>;
+function createSbmGroupFromXml(groupInfo: GroupInfo, url: string): Promise<Group>;
 ```
 
 ### 用法:

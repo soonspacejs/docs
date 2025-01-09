@@ -159,10 +159,7 @@ interface TopologyPassableInfo {
   passable: number;
 }
 
-function setTopologyPassable(
-  topology: Topology,
-  info: TopologyPassableInfo[]
-): void;
+function setTopologyPassable(topology: Topology, info: TopologyPassableInfo[]): void;
 ```
 
 ### 用法：
@@ -231,10 +228,7 @@ interface ShortestPathInfo extends BaseObject3DInfo, TopologyEffectInfo {
   end: Position;
 }
 
-function getShortestPath(
-  topology: Topology,
-  info: ShortestPathInfo
-): Topology | null;
+function getShortestPath(topology: Topology, info: ShortestPathInfo): Topology | null;
 ```
 
 ### 用法：
@@ -281,10 +275,7 @@ const shortestTopology = ssp.getShortestPath(topologyFromOther, {
 ### 定义：
 
 ```ts
-function getShortestPathAsync(
-  topology: Topology,
-  info: ShortestPathInfo
-): Promise<Topology | null>;
+function getShortestPathAsync(topology: Topology, info: ShortestPathInfo): Promise<Topology | null>;
 ```
 
 ### 用法：
@@ -312,9 +303,7 @@ const shortestTopology = await ssp.getShortestPathAsync(topologyFromOther, {
 ### 定义：
 
 ```ts
-interface ShortestPathByMultipleStartPoints
-  extends BaseObject3DInfo,
-    TopologyEffectInfo {
+interface ShortestPathByMultipleStartPoints extends BaseObject3DInfo, TopologyEffectInfo {
   start: Position[];
   end: Position;
 }
@@ -328,21 +317,18 @@ function getShortestPathByMultipleStartPoints(
 ### 用法：
 
 ```js
-const shortestTopology = ssp.getShortestPathByMultipleStartPoints(
-  topologyFromOther,
-  {
-    start: [
-      { x: 0, y: 0, z: 0 },
-      { x: 20, y: 0, z: 0 },
-    ],
-    end: { x: 100, y: 0, z: 300 },
-    id: 'shortestPath',
-    linkColor: 'red',
-    nodeColor: 'orange',
-    imgUrl: '../../asstes/img/topology/arrow.png',
-    animation: true,
-  }
-);
+const shortestTopology = ssp.getShortestPathByMultipleStartPoints(topologyFromOther, {
+  start: [
+    { x: 0, y: 0, z: 0 },
+    { x: 20, y: 0, z: 0 },
+  ],
+  end: { x: 100, y: 0, z: 300 },
+  id: 'shortestPath',
+  linkColor: 'red',
+  nodeColor: 'orange',
+  imgUrl: '../../asstes/img/topology/arrow.png',
+  animation: true,
+});
 ```
 
 ### 参数：
@@ -384,21 +370,18 @@ function getShortestPathByMultipleStartPointsAsync(
 ### 用法：
 
 ```js
-const shortestTopology = await ssp.getShortestPathByMultipleStartPointsAsync(
-  topologyFromOther,
-  {
-    start: [
-      { x: 0, y: 0, z: 0 },
-      { x: 20, y: 0, z: 0 },
-    ],
-    end: { x: 100, y: 0, z: 300 },
-    id: 'shortestPath',
-    linkColor: 'red',
-    nodeColor: 'orange',
-    imgUrl: '../../asstes/img/topology/arrow.png',
-    animation: true,
-  }
-);
+const shortestTopology = await ssp.getShortestPathByMultipleStartPointsAsync(topologyFromOther, {
+  start: [
+    { x: 0, y: 0, z: 0 },
+    { x: 20, y: 0, z: 0 },
+  ],
+  end: { x: 100, y: 0, z: 300 },
+  id: 'shortestPath',
+  linkColor: 'red',
+  nodeColor: 'orange',
+  imgUrl: '../../asstes/img/topology/arrow.png',
+  animation: true,
+});
 ```
 
 ## getShortestPathByMultipleEndPoints
@@ -408,37 +391,29 @@ const shortestTopology = await ssp.getShortestPathByMultipleStartPointsAsync(
 ### 定义：
 
 ```ts
-interface ShortestPathByMultipleEndPoints
-  extends BaseObject3DInfo,
-    TopologyEffectInfo {
+interface ShortestPathByMultipleEndPoints extends BaseObject3DInfo, TopologyEffectInfo {
   start: Position;
   end: Position[];
 }
 
-function getShortestPathByMultipleEndPoints(
-  topology: Topology,
-  info: ShortestPathByMultipleEndPoints
-): Topology | null;
+function getShortestPathByMultipleEndPoints(topology: Topology, info: ShortestPathByMultipleEndPoints): Topology | null;
 ```
 
 ### 用法：
 
 ```js
-const shortestTopology = ssp.getShortestPathByMultipleEndPoints(
-  topologyFromOther,
-  {
-    start: { x: 0, y: 0, z: 0 },
-    end: [
-      { x: 100, y: 0, z: 300 },
-      { x: 200, y: 0, z: 400 },
-    ],
-    id: 'shortestPath',
-    linkColor: 'red',
-    nodeColor: 'orange',
-    imgUrl: '../../asstes/img/topology/arrow.png',
-    animation: true,
-  }
-);
+const shortestTopology = ssp.getShortestPathByMultipleEndPoints(topologyFromOther, {
+  start: { x: 0, y: 0, z: 0 },
+  end: [
+    { x: 100, y: 0, z: 300 },
+    { x: 200, y: 0, z: 400 },
+  ],
+  id: 'shortestPath',
+  linkColor: 'red',
+  nodeColor: 'orange',
+  imgUrl: '../../asstes/img/topology/arrow.png',
+  animation: true,
+});
 ```
 
 ### 参数：
@@ -480,21 +455,18 @@ function getShortestPathByMultipleEndPointsAsync(
 ### 用法：
 
 ```js
-const shortestTopology = await ssp.getShortestPathByMultipleEndPointsAsync(
-  topologyFromOther,
-  {
-    start: { x: 0, y: 0, z: 0 },
-    end: [
-      { x: 100, y: 0, z: 300 },
-      { x: 200, y: 0, z: 400 },
-    ],
-    id: 'shortestPath',
-    linkColor: 'red',
-    nodeColor: 'orange',
-    imgUrl: '../../asstes/img/topology/arrow.png',
-    animation: true,
-  }
-);
+const shortestTopology = await ssp.getShortestPathByMultipleEndPointsAsync(topologyFromOther, {
+  start: { x: 0, y: 0, z: 0 },
+  end: [
+    { x: 100, y: 0, z: 300 },
+    { x: 200, y: 0, z: 400 },
+  ],
+  id: 'shortestPath',
+  linkColor: 'red',
+  nodeColor: 'orange',
+  imgUrl: '../../asstes/img/topology/arrow.png',
+  animation: true,
+});
 ```
 
 ## getTopologyById <Base-Deprecated />
@@ -560,10 +532,7 @@ const allTopologyList = ssp.getAllTopology();
 ### 定义：
 
 ```ts
-function getTopologyByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Topology[];
+function getTopologyByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Topology[];
 ```
 
 ### 用法：
@@ -597,9 +566,7 @@ topology.userData = {
     age: 18,
   },
 };
-const topologyList = ssp.getTopologyByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const topologyList = ssp.getTopologyByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -635,10 +602,7 @@ ssp.removeTopologyById('xxx');
 ### 定义：
 
 ```ts
-function createTopologyToGroup(
-  groupInfo: GroupInfo,
-  topologyInfoList: TopologyInfo[]
-): Group;
+function createTopologyToGroup(groupInfo: GroupInfo, topologyInfoList: TopologyInfo[]): Group;
 ```
 
 ### 用法：
@@ -687,9 +651,7 @@ interface TopologyInfoForGml extends BaseObject3DInfo {
   nodeColor?: IColor;
 }
 
-function createTopologyFromGml(
-  topologyInfo: TopologyInfoForGml
-): Promise<Topology>;
+function createTopologyFromGml(topologyInfo: TopologyInfoForGml): Promise<Topology>;
 ```
 
 ### 用法：
@@ -774,10 +736,7 @@ ssp.createGroupForTopology({
 ### 定义：
 
 ```ts
-function addTopologyForGroup(
-  groupId: GroupInfo['id'],
-  topologyInfoList: TopologyInfo[]
-): Group | null;
+function addTopologyForGroup(groupId: GroupInfo['id'], topologyInfoList: TopologyInfo[]): Group | null;
 ```
 
 ### 用法：
@@ -787,9 +746,7 @@ ssp.addTopologyForGroup(
   // groupId
   'firstTopologyGroup',
   // topologyInfoList
-  [topologyInfo4, topologyInfo5],
-  // onProgress
-  (progress) => console.log('进度信息：', progress)
+  [topologyInfo4, topologyInfo5]
 );
 ```
 

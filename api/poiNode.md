@@ -102,8 +102,8 @@ ssp.createPoiNode({
   // occlude: [model],
   // 与指定方向检测，提高性能
   // 表示朝向正z轴，当相机在背面时，不显示
-  // occlude: new Vector3(0, 0, 1), 
-  // occlude: {x:0, y:0, z:1}, 
+  // occlude: new Vector3(0, 0, 1),
+  // occlude: {x:0, y:0, z:1},
   occludeThrottle: 300,
 });
 ```
@@ -342,9 +342,7 @@ ssp.addPoiNodeForGroup(
   // groupId
   'firstPoiNodeGroup',
   // poiNodeInfoList
-  [poiNodeInfo4, poiNodeInfo5],
-  // onProgress
-  (progress) => console.log('进度信息：', progress)
+  [poiNodeInfo4, poiNodeInfo5]
 );
 ```
 

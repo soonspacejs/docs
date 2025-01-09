@@ -377,9 +377,7 @@ ssp
     // groupId
     'firstModelGroup',
     // modelInfoList
-    [modelInfo4, modelInfo5],
-    // onProgress
-    (progress) => console.log('进度信息：', progress)
+    [modelInfo4, modelInfo5]
   )
   .then((group) => console.log(group));
 ```

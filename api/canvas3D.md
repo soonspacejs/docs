@@ -254,10 +254,7 @@ const allCanvas3DList = ssp.getAllCanvas3D();
 ### 定义：
 
 ```ts
-function getCanvas3DByUserDataProperty(
-  propNameOrFindFunc: string | UserDataPropertyFindFunc,
-  value?: any
-): Canvas3D[];
+function getCanvas3DByUserDataProperty(propNameOrFindFunc: string | UserDataPropertyFindFunc, value?: any): Canvas3D[];
 ```
 
 ### 用法：
@@ -291,9 +288,7 @@ Canvas3D.userData = {
     age: 18,
   },
 };
-const Canvas3DList = ssp.getCanvas3DByUserDataProperty(
-  (userData) => userData?.people?.name === 'xiaoming'
-);
+const Canvas3DList = ssp.getCanvas3DByUserDataProperty((userData) => userData?.people?.name === 'xiaoming');
 ```
 
 :::
@@ -329,10 +324,7 @@ ssp.removeCanvas3DById('xxx');
 ### 定义：
 
 ```ts
-function createCanvas3DToGroup(
-  groupInfo: GroupInfo,
-  canvas3DInfoList: Canvas3DInfo[]
-): Group;
+function createCanvas3DToGroup(groupInfo: GroupInfo, canvas3DInfoList: Canvas3DInfo[]): Group;
 ```
 
 ### 用法：
@@ -409,10 +401,7 @@ ssp.createGroupForCanvas3D({
 ### 定义：
 
 ```ts
-function addCanvas3DForGroup(
-  groupId: GroupInfo['id'],
-  canvas3DInfoList: Canvas3DInfo[]
-): Group | null;
+function addCanvas3DForGroup(groupId: GroupInfo['id'], canvas3DInfoList: Canvas3DInfo[]): Group | null;
 ```
 
 ### 用法：
@@ -423,9 +412,7 @@ ssp
     // groupId
     'firstCanvas3DGroup',
     // canvas3DInfoList
-    [Canvas3DInfo4, Canvas3DInfo5],
-    // onProgress
-    (progress) => console.log('进度信息：', progress)
+    [Canvas3DInfo4, Canvas3DInfo5]
   )
   .then((group) => console.log(group));
 ```

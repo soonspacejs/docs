@@ -389,9 +389,7 @@ ssp.addPoiForGroup(
   // groupId
   'firstPoiGroup',
   // poiInfoList
-  [poiInfo4, poiInfo5],
-  // onProgress
-  (progress) => console.log('进度信息：', progress)
+  [poiInfo4, poiInfo5]
 );
 ```
 
