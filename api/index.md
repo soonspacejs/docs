@@ -30,3 +30,4 @@
 
 - [补间动画](./animation)
 - [插件](./plugin)
+- [性能](./performance.md)
