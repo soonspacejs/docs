@@ -621,7 +621,7 @@ cpsSoonmanagerPlugin
       { prop: 'syncProperties', desc: '是否同步自定义属性，开启时自动调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据，开启时自动调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
-      { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'false' },
+      { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
       { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
       { prop: 'loadLevel', desc: '加载的树层级。如果设置了loadTargetId，则以此为起始层。从1开始计算', type: 'number', require: false, default: 'Infinity' },
@@ -669,7 +669,9 @@ function presetEffects(options?: IPresetEffectsOptions): Promise<void>;
 #### 用法
 
 ```js
-await cpsSoonmanagerPlugin.loadScene();
+await cpsSoonmanagerPlugin.loadScene({
+  applyPresetEffects: false,
+});
 await cpsSoonmanagerPlugin.presetEffects({
   hdr: true,
   ssao: true,
