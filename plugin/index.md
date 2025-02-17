@@ -19,6 +19,7 @@
 ### 功能扩展插件
 
 - [sspx](./sspx) - `soonspacejs` 实例存储容器。
+- [atmosphere](./atmosphere) - 大气环境。
 - [heat-map](./heat-map) - 热力图。
 - [heat-cloud](./heat-cloud) - 热力云。
 - [measuring](./measuring) - 测量。

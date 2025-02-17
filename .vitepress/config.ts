@@ -222,6 +222,7 @@ export default defineConfig({
           text: '功能扩展插件',
           items: [
             { text: 'plugin-sspx', link: '/plugin/sspx' },
+            { text: 'plugin-atmosphere', link: '/plugin/atmosphere' },
             { text: 'plugin-heat-map', link: '/plugin/heat-map' },
             { text: 'plugin-heat-cloud', link: '/plugin/heat-cloud' },
             { text: 'plugin-measuring', link: '/plugin/measuring' },
