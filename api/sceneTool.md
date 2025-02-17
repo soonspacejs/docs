@@ -215,8 +215,8 @@ ssp.setColorSpace('Linear');
 ### 定义：
 
 ```ts
-interface interface ToneMappingOptions {
-  type?: 'None' | 'Reinhard' | 'Cineon' | 'ACESFilmic';
+interface ToneMappingOptions {
+  type?: 'None' | 'Reinhard' | 'Cineon' | 'ACESFilmic' | 'AGX';
   exposure?: number;
 }
 

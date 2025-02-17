@@ -117,6 +117,15 @@ atmospherePlugin.start('../xx/atmosphere/assets');
 然后将 `assets` 目录拷贝至所在项目的静态资源目录中，一般是 `public` 目录
 :::
 
+::: tip 提示
+调用 `start` 方法后，内部将会重置环境效果，并且重置色调。
+
+```js
+ssp.setToneMapping({ type: 'AGX', exposure: 10 });
+```
+
+:::
+
 ### stop
 
 结束大气效果。
@@ -132,6 +141,16 @@ function stop(): void;
 ```js
 atmospherePlugin.stop();
 ```
+
+::: tip 提示
+调用 `stop` 方法后，内部将会还原环境与色调。
+
+```js
+ssp.setEnvironment();
+ssp.setToneMapping({ type: 'ACESFilmic', exposure: 0.8 });
+```
+
+:::
 
 ### dispose
 
