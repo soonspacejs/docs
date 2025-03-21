@@ -114,7 +114,7 @@ interface IMetadata {
 }
 ```
 
-### treeData
+<!-- ### treeData
 
 <Base-Tag title="readonly" />
 
@@ -189,7 +189,7 @@ const [deviceModel] = ssp.getObjectByUserDataProperty('deviceCode', 'kx-1');
 `2024-08-09` 之后导出的版本，已经将现在的 `id` 作为之前的 `uuid`。
 
 如果使用旧版资源包或者新版资源包使用 `id`，使用 `loadScene` 方法时传入 `{ asId: 'id' }`。
-:::
+::: -->
 
 ### poiData
 
