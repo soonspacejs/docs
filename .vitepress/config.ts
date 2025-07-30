@@ -249,9 +249,5 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
-    footer: {
-      message: '浙ICP备16043491号',
-      copyright: '© Copyright 2018 xwbuilders - All rights reserved.',
-    },
   },
 });
