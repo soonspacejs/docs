@@ -5,6 +5,7 @@
     "dev": "vitepress dev ./",
     "build": "cross-env BASE=/soonspacejs vitepress build ./",
     "build:github": "cross-env BASE=/docs vitepress build ./",
+    "build:koomapjs": "cross-env BASE=/koomapjs vitepress build ./",
     "preview": "vitepress preview ./",
     "build:offLine": "node ./offLineInstructions/index.js"
   },
