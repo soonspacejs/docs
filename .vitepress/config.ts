@@ -30,7 +30,7 @@ export default defineConfig({
       { text: '教程', link: '/guide/' },
       { text: 'API', link: '/api/' },
       { text: '插件', link: '/plugin/' },
-      { text: '样例', link: `https://xwbuilders.com/soonspacejs/examples/` },
+      { text: '样例', link: `http://www.bim-oss.enterprise.gafzcloud.com/koomapjs/examples/index.html` },
       { text: '1.x', link: `${OLD_PRO_PATH}/Docs/1.x/` },
       {
         text: '了解更多',
@@ -40,19 +40,6 @@ export default defineConfig({
             items: [
               { text: 'FAQ', link: '/faq/' },
               { text: '设计结构', link: '/design/' },
-            ],
-          },
-          {
-            text: '相关产品',
-            items: [
-              {
-                text: '建模工具 SoonBuilder',
-                link: `https://xwbuilders.com/product/uBuilder`,
-              },
-              {
-                text: '空间平台 CPS',
-                link: `https://sooncps.xwbuilders.com/`,
-              },
             ],
           },
         ],
