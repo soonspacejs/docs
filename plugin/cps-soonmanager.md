@@ -484,6 +484,10 @@ interface ILoadSceneOptions {
    */
   path?: string;
   /**
+   * 保留源 Model API，并通过内部代理自动合批
+   */
+  autoInstancing?: boolean | AutoInstancingOptions;
+  /**
    * 同步自定义属性
    */
   syncProperties?: boolean;
@@ -618,6 +622,7 @@ cpsSoonmanagerPlugin
     :data="[
       { prop: 'key', desc: '等价于 setKey 方法', type: 'string', require: false, default: '' },
       { prop: 'path', desc: '等价于 setPath 方法', type: 'string', require: false, default: '' },
+      { prop: 'autoInstancing', desc: '加载完成后启用场景自动合批；传对象时作为 AutoInstancingOptions', type: 'boolean | AutoInstancingOptions', require: false, default: 'undefined' },
       { prop: 'syncProperties', desc: '是否同步自定义属性，开启时自动调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据，开启时自动调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
@@ -639,6 +644,24 @@ cpsSoonmanagerPlugin
 自定义属性存储在对象的 `userData.properties` 属性上
 :::
 
+::: tip 大场景自动合批
+`autoInstancing` 省略时不会改变当前状态；传 `true` 使用默认参数；传配置对象时启用并应用该参数；传 `false` 关闭当前 CPS 场景的自动合批。
+
+```js
+await cpsSoonmanagerPlugin.loadScene({
+  autoInstancing: {
+    minInstances: 2,
+    maxInstancesPerBatch: 512,
+    dynamicPromotionFrames: 2,
+    transparentSinglePass: false,
+    skipEmptyTextureUploads: false,
+  },
+});
+```
+
+`loadSceneAndSemantic` 和 `loadSceneAndSemanticInWorker` 使用同一个 `ILoadSceneOptions`，也支持该配置。完整参数和合批策略见 [性能：setAutoInstancing](../api/performance#setautoinstancing)。
+:::
+
 ###### 分层加载示例
 
 <Docs-Iframe src="plugin/cpsSoonmanagerLevel.html" />
@@ -647,6 +670,99 @@ cpsSoonmanagerPlugin
 由于场景模型是嵌套的树结构，内部对象的矩阵变换依赖父级，如果先加载内部，可能会出现位置、旋转、缩放的错乱
 
 建议 `loadTargetId` 设置为上层节点的 id
+:::
+
+### setAutoInstancing
+
+切换当前 CPS 场景根节点的自动合批。原始 `Model` 和内部 Mesh 会继续保留在场景树中，对象查询、业务 ID、缓存、显隐、拾取和事件 API 不需要改写。
+
+#### 定义
+
+```ts
+setAutoInstancing(
+  enabled?: boolean,
+  options?: AutoInstancingOptions
+): void;
+```
+
+#### 用法
+
+```js
+cpsSoonmanagerPlugin.setAutoInstancing(true, {
+  minInstances: 2,
+  maxInstancesPerBatch: 512,
+  dynamicPromotionFrames: 2,
+});
+
+// 关闭并移除该 CPS 场景的内部代理
+cpsSoonmanagerPlugin.setAutoInstancing(false);
+```
+
+在场景根节点创建前调用该方法不会产生代理。需要随加载启用时，应优先使用 [loadScene](#loadscene) 的 `autoInstancing` 参数。
+
+#### 参数
+
+##### enabled
+
+- **描述:** 是否启用自动合批
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** `boolean`
+- **默认值:** `true`
+
+##### options
+
+- **描述:** 自动合批配置
+- **必填:** <Base-RequireIcon :isRequire="false"/>
+- **类型:** [`AutoInstancingOptions`](../api/performance#autoinstancingoptions)
+- **默认值:** `{}`
+
+### getAutoInstancingStats
+
+获取当前 CPS 场景的合批统计。该方法用于判断代理数量和兼容回退情况，不应使用页面显示的原始 Mesh 数量判断合批是否生效。
+
+#### 定义
+
+```ts
+getAutoInstancingStats():
+  | AutoInstancingStats
+  | AutoInstancingStats[]
+  | null;
+```
+
+场景根节点尚未创建时返回 `null`。
+
+#### 用法
+
+```js
+const stats = cpsSoonmanagerPlugin.getAutoInstancingStats();
+const list = Array.isArray(stats) ? stats : stats ? [stats] : [];
+
+const proxyRenderables = list.reduce(
+  (total, item) =>
+    total +
+    item.instancedBatches +
+    item.mergedBatches +
+    item.batchedBatches +
+    item.passthroughObjects,
+  0
+);
+
+console.table({
+  sourceRenderables: list.reduce(
+    (total, item) => total + item.sourceRenderables,
+    0
+  ),
+  proxyRenderables,
+  drawCalls: ssp.viewport.renderer.info.render.calls,
+});
+```
+
+::: tip 性能验证
+首次代理渲染可能包含 geometry 上传和 shader 编译。先预热若干帧，再在相同相机、分辨率和后处理配置下比较关闭/开启时的 draw call、帧耗时 p50 和 p95。详细方法见 [如何判断优化是否生效](../api/performance#如何判断优化是否生效)。
+:::
+
+::: warning 透明材质
+`transparentSinglePass` 是减少双面透明 draw call 的可选视觉权衡。如果玻璃、水面等模型的前后表面混合发生变化，请关闭该选项。
 :::
 
 ### presetEffects
