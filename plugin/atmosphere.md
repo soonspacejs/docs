@@ -171,3 +171,51 @@ atmospherePlugin.dispose();
 ::: tip 提示
 `dispose` 方法会释放显存，可以在组件销毁时调用。
 :::
+
+## 云层与光照遮罩
+
+### setCloudLayer
+
+```ts
+setCloudLayer(options: {
+  coverage?: number
+  quality?: 'low' | 'medium' | 'high' | 'ultra'
+}): void
+```
+
+更新云层覆盖率和质量预设，并触发重新渲染。
+
+```ts
+atmospherePlugin.setCloudLayer({
+  coverage: 0.45,
+  quality: 'high',
+})
+```
+
+### loadCloudTextures
+
+```ts
+loadCloudTextures(basePath: string): void
+```
+
+从目录加载 `local_weather.png`、`turbulence.png`、`shape.bin`、`shape_detail.bin` 和 `stbn.bin`。必须先调用 `start()`。
+
+::: warning 异步加载
+纹理请求没有取消或代际保护。不要并发或重复调用 `loadCloudTextures()`；确认全部纹理加载完成后再 `dispose()`，否则在途回调仍可能把新纹理写回已释放的 effect。
+:::
+
+### updateModelLightingMask
+
+```ts
+updateModelLightingMask(): void
+```
+
+把当前场景模型 Mesh 加入大气光照遮罩 layer。场景启动后又加载了新模型时可再次调用。
+
+### neesUpdate
+
+```ts
+atmospherePlugin.neesUpdate = true
+```
+
+该兼容属性通过更新内部 `cacheKey` 使大气参数重新计算。属性名按现有 API 保留为 `neesUpdate`。

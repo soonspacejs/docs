@@ -213,3 +213,52 @@ function setMapCamera() {
 ### 额外参数
 
 - **MapCamera.zoom** 调整相机地图缩放大小
+
+## Navigator 基类
+
+包当前还导出 `Navigator`，用于承载路径播放状态和扩展自定义导航器。
+
+```ts
+import {
+  Navigator,
+} from '@soonspacejs/plugin-navigation'
+
+class SiteNavigator extends Navigator {
+  start() {
+    this.play(0)
+  }
+
+  flip() {
+    this.paths.reverse()
+  }
+}
+```
+
+### 状态属性
+
+| 属性 | 默认值 | 说明 |
+| --- | --- | --- |
+| `loop` | `false` | 是否循环。 |
+| `autoNext` | `true` | 是否自动进入下一段。 |
+| `playAfterStart` | `false` | `start`/`restart` 后是否自动播放。 |
+| `flyToModelAfterStart` | `true` | 开始时是否飞向主体模型。 |
+| `backStartPointWhenStop` | `true` | 停止时是否返回起点。 |
+| `model` | `Object3D` | 路径动画主体。 |
+| `speed` | `1` | 播放速度。 |
+| `pathProgress` | `0` | 当前段进度。 |
+| `totalProgress` | `0` | 总进度。 |
+| `currentPath` | - | 当前 Topology。 |
+| `currentPathIndex` | `0` | 当前路径索引。 |
+| `currentRotationVector` | `Vector3` | 当前节点指向下一节点的向量。 |
+
+### 方法
+
+`restart()`、`play(index?, node?)`、`pause()`、`stop()` 和 `over()` 会维护 `PLAY_STATUS`。`start()` 与 `flip()` 在基类中是空实现，需要子类实现实际导航行为。
+
+可以设置 `onPlay(info)` 和 `onStatusChange(status)` 回调。
+
+当前实现中 `totalProgress` 与 `pathProgress` 读写同一个内部值；如果业务需要独立的总进度，应在子类中覆盖该属性。
+
+::: warning 当前状态
+`Navigator` 是可扩展基类，不是完整的开箱即用导航实现。现有开箱即用能力仍以本页的 `NavigateCamera` 为主。
+:::

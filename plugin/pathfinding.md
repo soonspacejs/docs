@@ -294,3 +294,43 @@ dispose(): void;
 ```js
 pathfinding.dispose();
 ```
+
+## 补充 API
+
+### createTiledNavMesh
+
+```ts
+createTiledNavMesh(
+  objects: Object3D[],
+  config?: Partial<TiledNavMeshGeneratorConfig>
+): NavMesh | null
+```
+
+按 tiled 模式生成导航网格。已有 `navMesh` 时不会重新生成，而是警告并返回旧实例；场景几何变化后应先释放 crowd，再调用 `disposeNavMesh()`，最后重新生成。
+
+### disposeNavMesh
+
+```ts
+disposeNavMesh(): void
+```
+
+只释放当前导航网格。`dispose()` 还会释放 crowd 和 debug helper。
+
+### getVertices
+
+```ts
+getVertices(objects: Object3D[]): {
+  positions: Float32Array
+  indices: TypedArray | null
+}
+```
+
+遍历普通 Mesh 和 InstancedMesh，应用世界变换后合并为 Recast 可用的顶点和索引。
+
+### deInstancingMesh
+
+```ts
+deInstancingMesh(mesh: InstancedMesh): Mesh[]
+```
+
+把 InstancedMesh 的每个实例转换为独立 Mesh，用于导航网格几何采集。返回 Mesh 共享源 geometry 和 material，不应单独 dispose 这些共享资源。

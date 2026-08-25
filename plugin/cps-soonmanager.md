@@ -1329,3 +1329,104 @@ cpsSoonmanagerPlugin.fetchSpacesData().then((spacesData) => {
   console.log(spacesData);
 });
 ```
+
+## FDS 体数据
+
+`CpsSoonmanagerPlugin` 内置 `FdsManager`，可以读取场景中的 `fds.json`，也可以直接传入 URL 或 FDS 数据项。
+
+### loadFDS
+
+```ts
+loadFDS(
+  input?: string | IFdsData | Array<string | IFdsData>,
+  options?: {
+    field?: 'temperature' | 'soot_density' | 'hrrpuv'
+  }
+): Promise<VolumePoints[]>
+```
+
+```ts
+await cpsSoonmanagerPlugin.loadFDS(undefined, {
+  field: 'temperature',
+})
+```
+
+不传 `input` 时，插件会读取 `fetchFDSData()` 的可见数据源；没有有效数据源时回退到当前场景目录下的默认 FDS 数据文件。
+
+### 播放控制
+
+| API | 返回值 | 说明 |
+| --- | --- | --- |
+| `getFDSState()` | `IFdsManagerState` | 获取活动体、时间、帧和播放状态。 |
+| `playFDS()` | `boolean` | 播放当前活动体。 |
+| `pauseFDS()` | `boolean` | 暂停。 |
+| `toggleFDSPlay()` | `boolean` | 切换播放状态。 |
+| `setFDSTime(timeSec, options?)` | `Promise<VolumePoints \| null>` | 跳到指定秒数；`options.wait` 默认为 `true`。 |
+| `clearFDS()` | `number` | 移除全部 FDS 体对象并返回数量。 |
+
+更底层的 FDS 数据结构与事件见 [plugin-fds](./fds)。
+
+## 补充数据读取 API
+
+以下方法直接读取并返回对应场景资源。不同加载流程会按需要缓存其中一部分结果；不要假定直接调用每个 `fetch*` 都会更新同名属性。
+
+| API | 返回值 |
+| --- | --- |
+| `fetchSemanticData()` | `Promise<SemanticObject>` |
+| `fetchRoadsData()` | `Promise<IRoadsData>` |
+| `fetchFlatData()` | `Promise<IFlatData[]>` |
+| `fetchPoiData()` | `Promise<IPoiData[]>` |
+| `fetchDataSourceData()` | `Promise<any>` |
+| `fetchTopologyData()` | `Promise<ITopologyPath[]>` |
+| `fetchFlowsData()` | `Promise<FlowType[]>` |
+| `fetchGisData()` | `Promise<IGisData>` |
+| `fetchGisPlotsData()` | `Promise<IGisPlot[]>` |
+| `fetchFDSData()` | `Promise<IFdsData[]>` |
+
+`loadTopologies()` 会读取 `fetchTopologyData()` 并为每条数据调用 `ssp.createTopology()`；`presetGis()` 会按元数据初始化地形、倾斜摄影、影像和 GeoJSON。
+
+::: warning presetGis 生命周期
+不要把 `presetGis()` 当作可重复刷新的 API。部分地形分支会创建新的 renderer 并覆盖当前引用，重复调用前不会先释放旧实例。通常应由 `loadScene*` 流程调用一次。
+:::
+
+## Work ID 映射
+
+### applyWorkIdMap
+
+```ts
+applyWorkIdMap(
+  workIdMap?: IWorkIdMap | null
+): IApplyWorkIdMapResult
+```
+
+```ts
+const result = cpsSoonmanagerPlugin.applyWorkIdMap({
+  'scene-object-id': { work_id: 'business-object-id' },
+})
+```
+
+映射会把 `work_id` 写入对象 `userData`、`extraIds` 和 SoonSpace 对象缓存。尚未加载的目标会保留为 pending，并在对象创建后继续应用。
+
+```ts
+interface IApplyWorkIdMapResult {
+  received: number
+  accepted: number
+  applied: number
+  pending: number
+  invalid: number
+  duplicates: number
+}
+```
+
+## 其他公开方法
+
+| API | 说明 |
+| --- | --- |
+| `refreshByUserData()` | 注册属性变化监听并同步 POI。应只调用一次，避免重复监听。 |
+| `runWithCode(fn)` | 通过 SoonSpace `utils.runWithCode` 执行函数。 |
+| `getTreeNodeById(id, treeData, options)` | 递归查询树节点。第三个参数使用内部加载选项，业务通常无需直接调用。 |
+| `dispose()` | 中止语义加载，并释放 FDS、道路、场景 Group、大气和当前地形/tiles。 |
+
+::: warning refreshByUserData 生命周期
+`refreshByUserData()` 注册的 `propertiesChanged` 监听不会由 `dispose()` 移除，`dispose()` 也不会清空 `objectsAnimations`。只在插件与 SoonSpace 实例同生命周期时启用该监听；销毁前应先停止业务持有的动画。
+:::

@@ -192,6 +192,7 @@ export default defineConfig({
             { text: '补间动画', link: '/api/animation' },
             { text: '插件', link: '/api/plugin' },
             { text: '性能', link: '/api/performance' },
+            { text: '包导出 API 索引', link: '/api/package-exports' },
           ],
         },
       ],
@@ -222,6 +223,9 @@ export default defineConfig({
           text: '功能扩展插件',
           items: [
             { text: 'plugin-sspx', link: '/plugin/sspx' },
+            { text: 'plugin-fds', link: '/plugin/fds' },
+            { text: 'plugin-flow', link: '/plugin/flow' },
+            { text: 'plugin-poi-renderer', link: '/plugin/poi-renderer' },
             { text: 'plugin-atmosphere', link: '/plugin/atmosphere' },
             { text: 'plugin-heat-map', link: '/plugin/heat-map' },
             { text: 'plugin-heat-cloud', link: '/plugin/heat-cloud' },
@@ -251,6 +255,19 @@ export default defineConfig({
             { text: 'plugin-effect', link: '/plugin/effect' },
             { text: 'plugin-drag-controls', link: '/plugin/drag-controls' },
             { text: 'plugin-navigation', link: '/plugin/navigation' },
+          ],
+        },
+        {
+          text: '数据加载插件',
+          items: [
+            { text: 'plugin-gs3d-loader', link: '/plugin/gs3d-loader' },
+            { text: 'plugin-ifc-loader', link: '/plugin/ifc-loader' },
+            { text: 'plugin-sbmz-loader', link: '/plugin/sbmz-loader' },
+            {
+              text: 'plugin-soonbuilder-loader',
+              link: '/plugin/soonbuilder-loader',
+            },
+            { text: 'plugin-tiles', link: '/plugin/tiles' },
           ],
         },
         {

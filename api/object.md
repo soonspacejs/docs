@@ -131,6 +131,24 @@ ssp.addObject(object, group);
 - **描述:** 要添加的空间对象
 - **必填:** <Base-RequireIcon />
 
+## Group 查询兼容 API
+
+以下方法保留用于兼容旧代码。新代码应使用通用对象 API。
+
+```ts
+getGroupById(id: GroupInfo['id']): Group | null
+getGroupByName(name: string): Group[]
+removeGroupById(id: GroupInfo['id']): boolean
+```
+
+等价替代：
+
+```ts
+ssp.getObjectById<Group>(id)
+ssp.getObjectByName<Group>(name)
+ssp.removeObjectById(id)
+```
+
 #### parent
 
 - **类型:** Object3D

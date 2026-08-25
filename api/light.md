@@ -567,3 +567,15 @@ function updateAllShadow(): void;
 ```js
 ssp.updateAllShadow();
 ```
+
+## getAllLight
+
+获取当前由 SoonSpace 管理的全部灯光。
+
+```ts
+getAllLight<T extends THREE.Light = THREE.Light>(): T[]
+```
+
+```ts
+const lights = ssp.getAllLight()
+```

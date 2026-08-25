@@ -156,3 +156,46 @@ tween.stop();
 - **描述:** 动画开始时回调
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **类型:** `(tween: Tween<PropType>) => void`
+
+## 剪辑动画控制
+
+剪辑动画 API 按 `Object3D` 或 SoonSpace 对象 ID 管理播放状态和初始 transform 缓存。
+
+### playClipAnimation
+
+```ts
+playClipAnimation(
+  model: Object3D | string,
+  data: IClipAnimation | IClipAnimation[]
+): Promise<void>
+```
+
+### stopClipAnimation
+
+```ts
+stopClipAnimation(
+  model: Object3D | string,
+  data?: IClipAnimation | IClipAnimation[]
+): void
+```
+
+停止播放，但保留缓存。
+
+### resetClipAnimation
+
+```ts
+resetClipAnimation(
+  model: Object3D | string,
+  data?: IClipAnimation | IClipAnimation[]
+): void
+```
+
+停止动画并恢复首次播放前的 transform。
+
+### disposeClipAnimation
+
+```ts
+disposeClipAnimation(model: Object3D | string): void
+```
+
+停止并释放指定模型的全部剪辑动画缓存。移除长期存在的模型或销毁业务模块时调用。

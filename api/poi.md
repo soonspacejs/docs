@@ -534,3 +534,22 @@ function hideAllPoi(): void;
 ```js
 ssp.hideAllPoi();
 ```
+
+## clonePoi
+
+克隆已有 Poi，并可覆盖 Poi 配置或指定父对象。
+
+```ts
+clonePoi(
+  poi: Poi,
+  poiInfo: ClonePoiInfo,
+  parent?: Object3D | null
+): Poi | void
+```
+
+```ts
+const copied = ssp.clonePoi(sourcePoi, {
+  id: 'poi-copy',
+  position: { x: 10, y: 0, z: 0 },
+})
+```

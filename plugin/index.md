@@ -19,6 +19,9 @@
 ### 功能扩展插件
 
 - [sspx](./sspx) - `soonspacejs` 实例存储容器。
+- [fds](./fds) - FDS 体数据加载与播放。
+- [flow](./flow) - 流程图解析、执行与交互触发。
+- [poi-renderer](./poi-renderer) - HTML、视频和面板 PoiNode 渲染。
 - [atmosphere](./atmosphere) - 大气环境。
 - [heat-map](./heat-map) - 热力图。
 - [heat-cloud](./heat-cloud) - 热力云。
@@ -36,6 +39,14 @@
 - [effect](./effect) - 特效。
 - [drag-controls](./drag-controls) - 模型或对象拖拽。
 - [navigation](./navigation) - 导航。
+
+### 数据加载插件
+
+- [gs3d-loader](./gs3d-loader) - Gaussian Splatting 场景加载。
+- [ifc-loader](./ifc-loader) - IFC 模型加载。
+- [sbmz-loader](./sbmz-loader) - SBMZ 模型组加载。
+- [soonbuilder-loader](./soonbuilder-loader) - SoonBuilder 项目加载。
+- [tiles](./tiles) - 3D Tiles、地形、Overlay 与 GIS 标绘。
 
 ### 开发者插件
 

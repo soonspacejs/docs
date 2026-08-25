@@ -161,3 +161,23 @@ transformControls.close(control);
 ```js
 transformControls.closeAll();
 ```
+
+### setBounds
+
+动态修改控制器的移动范围来源对象；传 `null` 取消限制。
+
+```ts
+setBounds(
+  control?: TransformControls,
+  bounds?: Object3D | null
+): void
+```
+
+```ts
+const control = transformControls.start(model)
+
+transformControls.setBounds(control, room)
+transformControls.setBounds(control, null)
+```
+
+省略 `control` 时使用最近创建的控制器。设置非空 bounds 时会立即把当前对象限制到范围内。

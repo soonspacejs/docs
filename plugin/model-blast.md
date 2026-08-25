@@ -139,3 +139,31 @@ modelBlastPlugin.stopForObjects();
 
 后续想连续还原两个模型就需要指定参数调用两次 `stopForObjects`。
 :::
+
+## blastObjects
+
+包还导出不依赖插件实例的 `blastObjects` 函数。它适合业务自己控制爆炸距离或时间轴。
+
+```ts
+import {
+  blastObjects,
+} from '@soonspacejs/plugin-model-blast'
+
+const action = blastObjects(objects, ssp)
+
+action.setTime(20)
+action.setTime(40)
+action.stop()
+```
+
+```ts
+blastObjects(
+  objects: Object3D[],
+  ssp: SoonSpace
+): {
+  setTime(time?: number): void
+  stop(): void
+}
+```
+
+`stop()` 会恢复调用 `blastObjects` 时记录的原始位置。

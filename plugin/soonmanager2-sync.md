@@ -488,3 +488,15 @@ soonmanager2SyncPlugin.fetchModelVisionsData().then((modelVisions) => {
   console.log(modelVisions);
 });
 ```
+
+## fetchTopologyData
+
+读取并转换 `topology.json`，但不写入 `topologyData`。需要同时更新插件缓存时调用 `getTopologies()`。
+
+```ts
+fetchTopologyData(): Promise<ITopologyPath[]>
+```
+
+```ts
+const topologies = await soonmanager2SyncPlugin.fetchTopologyData()
+```

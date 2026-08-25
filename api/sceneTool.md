@@ -835,6 +835,46 @@ ssp
 fn 函数可以返回一个 Promise, 场景会在 fn 返回结果之后渲染
 :::
 
+## getScreenshot <Base-Deprecated />
+
+`getScreenshot()` 是 `screenshot()` 的兼容别名。
+
+```ts
+getScreenshot(): Promise<Blob | null>
+```
+
+## isolate
+
+通过 Three.js Layers 只显示指定对象。
+
+```ts
+isolate(
+  objects: Object3D | Object3D[],
+  layerChannel?: number
+): void
+```
+
+默认使用 layer `1`。传入的 layer 必须在 `0..31` 范围内。
+
+```ts
+ssp.isolate([modelA, modelB])
+
+// 回到默认 layer 0
+ssp.unisolate()
+```
+
+## unisolate
+
+```ts
+unisolate(layerChannel?: number): void
+```
+
+把相机和场景对象重新启用到 layer `0`，并禁用指定的隔离 layer。
+
+::: warning 自定义 Layers
+`isolate()` / `unisolate()` 不保存调用前的 layer mask，也不支持嵌套恢复。原本使用其他 layer 的对象会被改写；如果业务依赖自定义 layers，请在调用前自行保存 mask，并在结束后恢复。
+:::
+
 ## clearObject
 
 清除除灯光外所有对象

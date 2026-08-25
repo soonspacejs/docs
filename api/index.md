@@ -31,3 +31,4 @@
 - [补间动画](./animation)
 - [插件](./plugin)
 - [性能](./performance.md)
+- [包导出 API 索引](./package-exports)

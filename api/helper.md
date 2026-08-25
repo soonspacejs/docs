@@ -551,3 +551,21 @@ function hideAllHelper(): void;
 ```js
 ssp.hideAllHelper();
 ```
+
+## getHelperById <Base-Deprecated />
+
+```ts
+getHelperById<Helper extends Object3D>(
+  id: string
+): Helper | null
+```
+
+新代码请使用 `getObjectById<Helper>(id)`。
+
+## removeHelperById <Base-Deprecated />
+
+```ts
+removeHelperById(id: string): boolean
+```
+
+新代码请使用 `removeObjectById(id)`。

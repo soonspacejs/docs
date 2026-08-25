@@ -43,6 +43,45 @@ class HeatMapPlugin {
 - 类型：string
 - 必填：是
 
+## 插件对象
+
+插件对象用于把插件创建的 Three.js 对象纳入 SoonSpace 对象管理。
+
+```ts
+createPluginObject(
+  info: PluginObjectInfo,
+  object?: Object3D
+): PluginObject
+
+addToPluginObject(
+  id: PluginObjectInfo['id'],
+  object: Object3D
+): PluginObject | null
+
+getPluginObjectById(
+  id: PluginObjectInfo['id']
+): PluginObject | null
+
+getPluginObjectByName(name: string): PluginObject[]
+
+removePluginObjectById(
+  id: PluginObjectInfo['id']
+): boolean
+```
+
+```ts
+const pluginObject = ssp.createPluginObject({
+  id: 'weather-effect',
+  name: 'Weather effect',
+})
+
+ssp.addToPluginObject('weather-effect', mesh)
+ssp.getObjectById<PluginObject>('weather-effect')
+ssp.removeObjectById('weather-effect')
+```
+
+`getPluginObjectById`、`getPluginObjectByName` 和 `removePluginObjectById` 是兼容 API，调用时会输出 deprecated 警告。新代码分别使用 `getObjectById`、`getObjectByName` 和 `removeObjectById`。
+
 ## getPlugin
 获取已注册插件
 ### 用法

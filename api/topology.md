@@ -891,3 +891,18 @@ function hideAllTopology(): void;
 ```js
 ssp.hideAllTopology();
 ```
+
+## resetTopologyNodes
+
+整体替换 Topology 的节点数据，并重新生成连接关系。
+
+```ts
+resetTopologyNodes(
+  topology: Topology,
+  nodes: TopologyNodeInfo[]
+): Topology
+```
+
+```ts
+ssp.resetTopologyNodes(topology, nextNodes)
+```

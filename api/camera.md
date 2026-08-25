@@ -420,6 +420,24 @@ await ssp.flyTo(
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 - **默认值:** `{}`
 
+## flyToBoundingBox <Base-Deprecated />
+
+飞向指定包围盒。该方法保留用于兼容旧代码，新代码请使用 `flyToObj(box, viewpoint, options)`。
+
+```ts
+flyToBoundingBox(
+  bbox: Box3,
+  viewpoint?: FlyToViewpoint,
+  options?: FlyToObjOptions
+): Promise<void>
+```
+
+```ts
+const box = new THREE.Box3().setFromObject(model)
+
+await ssp.flyToBoundingBox(box, 'frontTop')
+```
+
 `v2.10.x`
 
 - **描述:** 可配置项

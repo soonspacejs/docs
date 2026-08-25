@@ -953,3 +953,23 @@ ssp.clearIdb().then(() => {
 #### 手动清除 indexedDB 缓存
 
 ![manual](./img/clearIdb.jpg)
+
+## getModelsMap
+
+读取模型 URL 缓存。Map 的 key 是模型资源 URL，value 是作为克隆源的 `Model`。
+
+```ts
+getModelsMap(): Map<string, Model>
+```
+
+## setModelsMap
+
+整体替换模型 URL 缓存。
+
+```ts
+setModelsMap(map: Map<string, Model>): void
+```
+
+::: warning 注意
+该 API 会直接替换 ModelManager 使用的 Map 引用，但不会同步内部的 `modelsPromiseMap`，因此不能单独把注入 URL 变成首次加载缓存命中。不要在 SoonSpace 实例之间共享同一个 Map：任一实例销毁时都会清空它，从而同时清空其他实例看到的缓存。通常应把这两个方法视为低层兼容 API。
+:::

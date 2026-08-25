@@ -973,3 +973,45 @@ effectPlugin.removeEffect('test');
 :::warning 弃用警告
 请使用 [`removeObjectById`](../api/object#removeobjectbyid) 替代
 :::
+
+## createCircleWave
+
+创建平面圆形光波并返回 `PluginObject`。
+
+```ts
+createCircleWave(options: CircleWaveOptions): PluginObject
+```
+
+```ts
+const wave = effectPlugin.createCircleWave({
+  id: 'circle-wave',
+  textureUrl: ['/textures/wave-in.png'],
+  position: { x: 0, y: 0.02, z: 0 },
+  width: 10,
+  height: 10,
+  isScaleAnimate: true,
+  isOpacityAnimate: true,
+})
+```
+
+`textureUrl[1]` 存在时会同时创建外圈。`createCircleWave` 通过 `createPluginObject()` 创建对象，因此返回值已经加入场景。
+
+## createCylinderWave
+
+```ts
+createCylinderWave(options: CylinderWaveOptions): PluginObject
+```
+
+```ts
+const wave = effectPlugin.createCylinderWave({
+  id: 'cylinder-wave',
+  position: { x: 0, y: 0, z: 0 },
+  topRadius: 1,
+  bottomRadius: 2,
+  height: 8,
+  texturePath: '/textures/cylinder-wave.png',
+  color: '#00bcd4',
+})
+```
+
+该方法会自动把返回的 `PluginObject` 加入场景。移除对象后，对应的逐帧更新会停止。
