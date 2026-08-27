@@ -60,7 +60,7 @@ ssp.setAutoInstancing(false, modelRoot);
 | 字段 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | `minInstances` | `number` | `2` | 同一兼容分组达到该数量后才创建批次。向下取整，最小值为 `1`。 |
-| `maxInstancesPerBatch` | `number` | `512` | 一个代理批次最多表示多少个源 Mesh。向下取整，且不会小于 `minInstances`。 |
+| `maxInstancesPerBatch` | `number` | `512` | 一个普通代理批次最多表示多少个源 Mesh。向下取整，且不会小于 `minInstances`。CPS 内部标记的透明语义辅助对象会按兼容组保持单批，因此可能超过该数量。 |
 | `dynamicPromotionFrames` | `number` | `2` | 对象连续发生局部变换达到该帧数后，临时提升为独立代理；稳定后可重新进入静态批次。向下取整，最小值为 `1`。 |
 | `transparentSinglePass` | `boolean` | `false` | 双面透明 `BatchedMesh` 代理只绘制一次。代理会同步源材质状态，不会持久修改源材质。 |
 | `skipEmptyTextureUploads` | `boolean` | `false` | 渲染代理时，临时跳过 `image` 为 `null` 且已标记更新的纹理上传，渲染后恢复纹理版本。 |
@@ -146,16 +146,23 @@ console.table({
 | --- | --- | --- |
 | `InstancedMesh` | 使用同一 geometry、material 和渲染状态的不透明 Mesh | 不依赖 multi-draw。 |
 | 静态合并 Mesh | 使用相同材质和兼容小 geometry 的不透明 Mesh | 单个源 geometry 的 position 顶点不超过 `1024`；每个合并块最多 `32` 个对象。 |
-| `BatchedMesh` | 其余兼容的小 Mesh，包括透明 Mesh | 需要 `WEBGL_multi_draw`。 |
+| `BatchedMesh` | 其余兼容的小 Mesh，以及 CPS 内部标记的透明语义辅助 Mesh | 需要 `WEBGL_multi_draw`。普通可见透明 Mesh 保持独立代理；CPS 透明兼容组必须能够完整放入一个批次，否则回退。 |
 | 独立代理或源对象 | 不能安全合批的对象 | 始终作为兼容回退。 |
 
-批次键会比较材质、geometry schema、阴影配置、`renderOrder`、layers、视锥裁剪和自定义深度/距离材质。条件不一致的对象不会进入同一批次。
+批次键会比较完整材质渲染状态、geometry schema、阴影配置、`renderOrder`、layers、视锥裁剪和自定义深度/距离材质。条件不一致的对象不会进入同一批次。
+
+普通可见透明 Mesh 不会自动进入 `BatchedMesh`，继续由 Three.js 按对象执行全局透明排序。完全透明、关闭深度写入且不产生模板效果的辅助对象可以安全合批，并会关闭无意义的逐实例排序。
+
+CPS 插件会通过内部非公开标记允许语义辅助 Mesh 按兼容材质组透明合批。同一兼容组会在 geometry 和内存预算允许时忽略普通的 `maxInstancesPerBatch` 上限并保持单批；不同材质组仍按批次排序，不保证跨批次的逐对象深度交错。如果业务依赖半透明对象之间的精确混合顺序，应关闭该 CPS 场景的自动合批。
+
+CPS 语义和自绘制辅助 Mesh 可以通过每实例颜色保留不同的源材质颜色。除颜色外，材质的可见性、深度、混合、裁剪、模板和着色器状态仍必须完全一致；运行时修改这些状态会让目标对象退出原批次，恢复一致后可重新合批。内部合批标记不会写入源对象的 `userData` 或序列化结果。
 
 下列对象会使用独立代理或源对象渲染：
 
 - `SkinnedMesh`、`LOD`、Light、已有 `BatchedMesh` 和 morph target Mesh；
 - 使用自定义 render/shadow callback 或自定义矩阵更新方法的对象；
 - 使用 material `onBeforeRender` 的对象；
+- 使用自定义 `onBeforeCompile` 或 `customProgramCacheKey` 的显式合批材质；
 - 世界矩阵行列式小于或等于 `0` 的对象；
 - 静态合并或 `BatchedMesh` 路径中的多材质 Mesh；
 - 不兼容的小 geometry schema。大 Mesh 如果共享同一个 geometry，仍可使用 `InstancedMesh`。

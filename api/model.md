@@ -661,6 +661,8 @@ ssp.setModelKtx2DecoderPath('/basis/');
 
 需要在模型加载完成后调用此方法
 
+返回的 Promise 会在实际 BVH 计算完成后 resolve。`block`、`slice` 和 `worker` 的计算错误都会 reject；Viewport 在任务完成前销毁时，以 `AbortError` 结束。
+
 ### 定义：
 
 ```ts
@@ -685,7 +687,7 @@ await ssp.loadModel({
   url: 'xxxx',
 });
 
-ssp.computeModelsBoundsTree({
+await ssp.computeModelsBoundsTree({
   type: 'slice',
   force: false,
   frameSliceCount: 1000,
@@ -705,8 +707,8 @@ ssp.computeModelsBoundsTree({
 <Docs-Table
     :data="[
       { prop: 'type', desc: '计算的类型', type: 'block | slice | worker', require: false, default: 'slice' },
-      { prop: 'force', desc: '是否强制重新计算', type: 'boolean', require: false, default: 'false' },
-      { prop: 'frameSliceCount', desc: '配合 `slice` 使用，每帧的几何结构计算数量', type: 'boolean', require: false, default: '500' },
+      { prop: 'force', desc: '是否强制重新计算；同一 Geometry 正在计算时，会等待当前任务完成后重新构建', type: 'boolean', require: false, default: 'false' },
+      { prop: 'frameSliceCount', desc: '配合 `slice` 使用，每帧计算数量的上限；实际工作量还会受约 4ms 的帧预算限制', type: 'number', require: false, default: '500' },
       { prop: 'workerCreator', desc: '配合 `worker` 使用，请参考下方示例', type: '() =&gt; Worker', require: false, default: '' },
     ]"
 />
@@ -730,13 +732,21 @@ function workerCreator() {
   return worker;
 }
 
-ssp.computeModelsBoundsTree({
+await ssp.computeModelsBoundsTree({
   type: 'worker',
   workerCreator,
 });
 ```
 
 文件位于 `node_modules/soonspacejs/dist/generateBVH.worker.js`
+:::
+
+::: tip 任务复用与强制重建
+同一 Geometry 的重复普通调用会复用在途任务。传入 `force: true` 时，如果旧任务尚未结束，新任务会排队并在旧任务完成后重新构建，返回的 Promise 会等待强制重建完成。
+:::
+
+::: tip Worker 生命周期
+每个 SoonSpace Viewport 使用独立的 BVH WorkerPool。销毁 Viewport 时只会终止该实例的 Worker，并以 `AbortError` 结束仍在进行的 Worker 任务，不会影响其他 SoonSpace 实例。
 :::
 
 ::: warning 注意

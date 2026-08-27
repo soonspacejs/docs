@@ -576,15 +576,17 @@ cpsSoonmanagerPlugin
 如果你需要使用 Worker 计算 BVH，可以关闭默认行为
 
 ```js
-cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false }).then(() => {
-  ssp.computeModelsBoundsTree({
-    type: 'worker',
-    workerCreator,
-  });
+await cpsSoonmanagerPlugin.loadScene({ needsModelsBoundsTree: false });
+
+await ssp.computeModelsBoundsTree({
+  type: 'worker',
+  workerCreator,
 });
 ```
 
 具体请查看 [computeModelsBoundsTree](../api/model#computemodelsboundstree)
+
+默认的 `needsModelsBoundsTree: true` 会在场景对象加载完成后启动分片计算，但 `loadScene()` 不等待 BVH 全部完成。如果后续逻辑依赖 BVH 已可用，请关闭默认行为并像上例一样手动 `await ssp.computeModelsBoundsTree()`。
 
 :::
 
@@ -625,7 +627,7 @@ cpsSoonmanagerPlugin
       { prop: 'autoInstancing', desc: '加载完成后启用场景自动合批；传对象时作为 AutoInstancingOptions', type: 'boolean | AutoInstancingOptions', require: false, default: 'undefined' },
       { prop: 'syncProperties', desc: '是否同步自定义属性，开启时自动调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据，开启时自动调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
-      { prop: 'needsModelsBoundsTree', desc: '场景加载完成后调用 ssp.computeModelsBoundsTree 方法', type: 'boolean', require: false, default: 'true' },
+      { prop: 'needsModelsBoundsTree', desc: '场景加载完成后在后台调用 ssp.computeModelsBoundsTree；loadScene 不等待 BVH 全部完成', type: 'boolean', require: false, default: 'true' },
       { prop: 'applyPresetEffects', desc: '默认调用 presetEffects 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'loadSceneAlgorithm', desc: '加载场景使用的算法', type: 'LoadSceneAlgorithm', require: false, default: 'LoadSceneAlgorithm.DFS' },
       { prop: 'loadTargetId', desc: '加载的目标树节点id', type: 'string', require: false, default: '' },
@@ -660,6 +662,20 @@ await cpsSoonmanagerPlugin.loadScene({
 ```
 
 `loadSceneAndSemantic` 和 `loadSceneAndSemanticInWorker` 使用同一个 `ILoadSceneOptions`，也支持该配置。完整参数和合批策略见 [性能：setAutoInstancing](../api/performance#setautoinstancing)。
+
+如果初始化期间不需要渐进显示场景，可以暂停渲染，把加载过程中的对象变更合并为一次恢复渲染：
+
+```js
+await ssp.viewport.setPauseRender(true);
+
+try {
+  await cpsSoonmanagerPlugin.loadSceneAndSemantic({
+    autoInstancing: true,
+  });
+} finally {
+  await ssp.viewport.setPauseRender(false);
+}
+```
 :::
 
 ###### 分层加载示例
@@ -763,6 +779,8 @@ console.table({
 
 ::: warning 透明材质
 `transparentSinglePass` 是减少双面透明 draw call 的可选视觉权衡。如果玻璃、水面等模型的前后表面混合发生变化，请关闭该选项。
+
+CPS 语义辅助 Mesh 会按兼容材质组透明合批，以减少大场景 draw call；不同材质组之间不保证逐对象深度交错。如果业务依赖半透明语义对象之间的精确混合顺序，请对该场景调用 `cpsSoonmanagerPlugin.setAutoInstancing(false)`。
 :::
 
 ### presetEffects
