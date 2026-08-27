@@ -38,6 +38,7 @@ export default defineConfig({
           {
             text: '开发指南',
             items: [
+              { text: '更新日志', link: '/changelog' },
               { text: 'FAQ', link: '/faq/' },
               { text: '设计结构', link: '/design/' },
             ],
