@@ -1,5 +1,20 @@
 # 更新日志
 
+## 2.16.3（2026-08-28）
+
+### CPS 场景加载
+
+- `ITreeData` 新增 `twinsIdentifier` 字段。加载树节点时，非空的 `twinsIdentifier` 会加入场景对象的 `extraIds`，可以继续通过现有的 `getObjectById` 查询链路获取对应对象。
+- `twinsIdentifier` 为 `null` 或空字符串时不会写入 `extraIds`，原有 `id`、`sid` 的顺序和行为保持不变。
+
+### 升级
+
+```bash
+npm install soonspacejs@2.16.3
+```
+
+如果项目使用 `@soonspacejs/*` 插件，请将 SoonSpace 和插件统一升级到 `2.16.3`。
+
 ## 2.16.2（2026-08-28）
 
 ### 性能与兼容性

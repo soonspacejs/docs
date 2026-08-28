@@ -140,6 +140,7 @@ interface ITreeData {
   familyId: string | null;
   children: ITreeData[];
   visible: boolean;
+  twinsIdentifier: string | null;
   shape?: {
     height: number;
     radius: number;
@@ -165,6 +166,7 @@ interface ITreeData {
 |  familyId   |          模型资源的组件 `id`           |
 |  children   |              子对象的数组              |
 |   visible   |           初始化对象是否可见           |
+| twinsIdentifier |      Twins 系统中的对象标识       |
 |    shape    |           多边形、水面等信息           |
 | boundingBox |         房间等对象的包围盒数据         |
 |    extra    |              一些额外信息              |
@@ -644,6 +646,16 @@ cpsSoonmanagerPlugin
 
 ::: tip 提示
 自定义属性存储在对象的 `userData.properties` 属性上
+:::
+
+::: tip twinsIdentifier 对象查询
+`ITreeData.twinsIdentifier` 会随场景加载写入对应对象的 `extraIds`。字段为非空字符串时，可以继续使用现有的对象查询 API：
+
+```js
+const object = ssp.getObjectById(treeNode.twinsIdentifier);
+```
+
+字段为 `null` 或空字符串时不会写入 `extraIds`，原有 `id`、`sid` 查询方式不变。
 :::
 
 ::: tip 大场景自动合批
