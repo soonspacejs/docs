@@ -62,7 +62,7 @@ ssp.setAutoInstancing(false, modelRoot);
 | `minInstances` | `number` | `2` | 同一兼容分组达到该数量后才创建批次。向下取整，最小值为 `1`。 |
 | `maxInstancesPerBatch` | `number` | `512` | 一个普通代理批次最多表示多少个源 Mesh。向下取整，且不会小于 `minInstances`。CPS 内部标记的透明语义辅助对象会按兼容组保持单批，因此可能超过该数量。 |
 | `dynamicPromotionFrames` | `number` | `2` | 对象连续发生局部变换达到该帧数后，临时提升为独立代理；稳定后可重新进入静态批次。向下取整，最小值为 `1`。 |
-| `transparentSinglePass` | `boolean` | `false` | 双面透明 `BatchedMesh` 代理只绘制一次。代理会同步源材质状态，不会持久修改源材质。 |
+| `transparentSinglePass` | `boolean` | `false` | 双面透明代理只绘制一次，覆盖 `BatchedMesh`、独立 Mesh 和已有 `InstancedMesh` 代理。代理会同步源材质状态，不会持久修改源材质。 |
 | `skipEmptyTextureUploads` | `boolean` | `false` | 渲染代理时，临时跳过 `image` 为 `null` 且已标记更新的纹理上传，渲染后恢复纹理版本。 |
 
 ::: warning 注意
@@ -152,6 +152,8 @@ console.table({
 批次键会比较完整材质渲染状态、geometry schema、阴影配置、`renderOrder`、layers、视锥裁剪和自定义深度/距离材质。条件不一致的对象不会进入同一批次。
 
 普通可见透明 Mesh 不会自动进入 `BatchedMesh`，继续由 Three.js 按对象执行全局透明排序。完全透明、关闭深度写入且不产生模板效果的辅助对象可以安全合批，并会关闭无意义的逐实例排序。
+
+`transparentSinglePass` 只改变内部代理材质的双面绘制次数，不会让未标记的普通透明 Mesh 自动进入 `BatchedMesh`。独立代理使用内部材质副本，源材质引用、运行时修改和释放责任保持不变。
 
 CPS 插件会通过内部非公开标记允许语义辅助 Mesh 按兼容材质组透明合批。同一兼容组会在 geometry 和内存预算允许时忽略普通的 `maxInstancesPerBatch` 上限并保持单批；不同材质组仍按批次排序，不保证跨批次的逐对象深度交错。如果业务依赖半透明对象之间的精确混合顺序，应关闭该 CPS 场景的自动合批。
 
