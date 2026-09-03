@@ -4,7 +4,7 @@ outline: 3
 
 # 包导出 API 索引
 
-本页按 SoonSpace.js `2.15.19` 的 package 入口文件生成，列出可导入符号与公开类成员。它用于查漏和搜索；签名、默认值、约束与示例请阅读对应详细页面或包的 TypeScript 声明。
+本页按 SoonSpace.js `2.16.4` 的 package 入口文件生成，列出可导入符号与公开类成员。它用于查漏和搜索；签名、默认值、约束与示例请阅读对应详细页面或包的 TypeScript 声明。
 
 ::: tip 边界说明
 类成员以未标记 `private` / `protected` 且不以下划线开头为准。清单也保留入口文件中的第三方再导出。
@@ -32,7 +32,7 @@ outline: 3
 - `Icon`：`stype`
 - `Line`：`updateGeometry`、`setOptions`
 - `Link`：`passable`、`updateGeometry`、`computeVertex`、`computeTextureRepeat`、`createTexture`
-- `Model`：`formatType`、`setEnvMap`、`copy`
+- `Model`：`formatType`、`url`、`setEnvMap`、`copy`
 - `Node`：`graphs`
 - `PluginObject`：无
 - `Poi`：`icon`、`text`、`iconType`、`scaleFixed`、`getBoundingBox`、`copy`

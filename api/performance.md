@@ -10,6 +10,7 @@
 
 ```ts
 interface AutoInstancingOptions {
+  syncMode?: 'safe' | 'signal';
   minInstances?: number;
   maxInstancesPerBatch?: number;
   dynamicPromotionFrames?: number;
@@ -59,11 +60,30 @@ ssp.setAutoInstancing(false, modelRoot);
 
 | 字段 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
+| `syncMode` | `'safe' \| 'signal'` | `'safe'` | `safe` 会在每次渲染时全量检查源对象，兼容直接修改 `Object3D` 的既有代码；`signal` 只处理显式变更通知，适合能覆盖全部变更路径的编辑器。详见 [变更通知（signals）](./signals)。 |
 | `minInstances` | `number` | `2` | 同一兼容分组达到该数量后才创建批次。向下取整，最小值为 `1`。 |
 | `maxInstancesPerBatch` | `number` | `512` | 一个普通代理批次最多表示多少个源 Mesh。向下取整，且不会小于 `minInstances`。CPS 内部标记的透明语义辅助对象会按兼容组保持单批，因此可能超过该数量。 |
 | `dynamicPromotionFrames` | `number` | `2` | 对象连续发生局部变换达到该帧数后，临时提升为独立代理；稳定后可重新进入静态批次。向下取整，最小值为 `1`。 |
 | `transparentSinglePass` | `boolean` | `false` | 双面透明代理只绘制一次，覆盖 `BatchedMesh`、独立 Mesh 和已有 `InstancedMesh` 代理。代理会同步源材质状态，不会持久修改源材质。 |
 | `skipEmptyTextureUploads` | `boolean` | `false` | 渲染代理时，临时跳过 `image` 为 `null` 且已标记更新的纹理上传，渲染后恢复纹理版本。 |
+
+### `signal` 同步模式
+
+`safe` 是默认值，不会改变既有代码的行为：即使业务直接执行 `object3D.position.x = 1`，下一帧仍会全量检查源对象并同步内部代理。
+
+`signal` 不再执行这项全量兜底检查。它适用于由编辑器或业务层统一管理对象变更的场景，可以减少静态大场景每帧的 CPU 扫描；代价是每一处绕过 SoonSpace 高层 API 的变更都必须显式发送通知，否则代理会继续使用旧状态。
+
+```js
+ssp.setAutoInstancing(true, sceneRoot, {
+  syncMode: 'signal',
+});
+
+// 直接修改 Three.js 对象后，通知自动合批同步该对象。
+object3D.position.x = 1;
+ssp.signals.objectChanged.dispatch(object3D);
+```
+
+批量修改时可传入对象数组。直接替换 geometry、材质或调整场景树时，应使用相应的 `geometryChanged`、`materialChanged`、`objectAdded`、`objectRemoved` 通知。完整调用方式和无目标通知的回退行为见 [变更通知（signals）](./signals)。
 
 ::: warning 注意
 `transparentSinglePass` 会减少双面透明材质的 draw call，但可能改变前后表面的混合结果。使用前应检查玻璃、水面等透明模型的视觉效果。

@@ -1,5 +1,24 @@
 # 更新日志
 
+## 2.16.4（2026-09-03）
+
+### 自动合批与变更通知
+
+- `AutoInstancingOptions` 新增 `syncMode`。默认 `safe` 保持每帧全量兜底同步，兼容直接修改 Three.js 对象的既有代码；`signal` 仅同步显式通知的对象，适合由编辑器统一覆盖对象变更路径的大场景。
+- 新增 [变更通知（signals）](./api/signals) 说明。使用 `signal` 模式时，直接修改对象、geometry、材质或场景树后，应发送对应的 `objectChanged`、`geometryChanged`、`materialChanged`、`objectAdded` 或 `objectRemoved` 通知。
+
+### 模型
+
+- `Model` 现在保留加载资源的 `url`，克隆模型时也会保留该路径。
+
+### 升级
+
+```bash
+npm install soonspacejs@2.16.4
+```
+
+如果项目使用 `@soonspacejs/*` 插件，请将 SoonSpace 和插件统一升级到 `2.16.4`。
+
 ## 2.16.3（2026-08-28）
 
 ### CPS 场景加载

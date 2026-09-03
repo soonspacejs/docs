@@ -113,6 +113,10 @@ ssp.addObject(model);
 - **类型:** `Object3D | null`
 - **必填:** <Base-RequireIcon :isRequire="false"/>
 
+### Model.url
+
+`loadModel` 创建的 `Model` 会保留传入的资源路径，可通过 `model.url` 读取。`cloneModel` 创建的副本也会保留原模型的 `url`，无需在 `CloneModelInfo` 中重复传入。
+
 ## cloneModel
 
 克隆 Model 模型

@@ -664,6 +664,7 @@ const object = ssp.getObjectById(treeNode.twinsIdentifier);
 ```js
 await cpsSoonmanagerPlugin.loadScene({
   autoInstancing: {
+    syncMode: 'safe',
     minInstances: 2,
     maxInstancesPerBatch: 512,
     dynamicPromotionFrames: 2,
@@ -673,7 +674,7 @@ await cpsSoonmanagerPlugin.loadScene({
 });
 ```
 
-`loadSceneAndSemantic` 和 `loadSceneAndSemanticInWorker` 使用同一个 `ILoadSceneOptions`，也支持该配置。完整参数和合批策略见 [性能：setAutoInstancing](../api/performance#setautoinstancing)。
+`loadSceneAndSemantic` 和 `loadSceneAndSemanticInWorker` 使用同一个 `ILoadSceneOptions`，也支持该配置。`syncMode` 默认是 `safe`；只有编辑器能在直接修改 Three.js 对象后发送 `signals` 通知时，才应使用 `signal`。完整参数、合批策略和通知方式见 [性能：setAutoInstancing](../api/performance#setautoinstancing) 与 [变更通知（signals）](../api/signals)。
 
 如果初始化期间不需要渐进显示场景，可以暂停渲染，把加载过程中的对象变更合并为一次恢复渲染：
 
