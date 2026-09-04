@@ -97,6 +97,7 @@ function App() {
           "three": "https://unpkg.com/three/build/three.module.js",
           "three/examples/": "https://unpkg.com/three/examples/",
           "three-mesh-bvh": "https://unpkg.com/three-mesh-bvh@0.5.23/build/index.module.js",
+          "@robotlegsjs/signals": "https://esm.sh/@robotlegsjs/signals@2.1.0",
           "soonspacejs": "https://unpkg.com/soonspacejs/dist/index.esm.js"
         }
       }

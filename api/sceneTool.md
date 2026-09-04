@@ -907,6 +907,10 @@ function clearSignals(): void;
 ssp.clearSignals();
 ```
 
+::: danger 注意
+该方法会移除当前 SoonSpace 实例的全部 signal 监听，包括 SDK 内部、插件和其他业务模块注册的监听。清理单个功能时，请使用对应 signal 的 `remove` 或 slot 的 `remove()`。详见 [事件与变更通知（signals）](./signals)。
+:::
+
 ## clear
 
 清除所有对象

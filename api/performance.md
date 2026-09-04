@@ -60,7 +60,7 @@ ssp.setAutoInstancing(false, modelRoot);
 
 | 字段 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| `syncMode` | `'safe' \| 'signal'` | `'safe'` | `safe` 会在每次渲染时全量检查源对象，兼容直接修改 `Object3D` 的既有代码；`signal` 只处理显式变更通知，适合能覆盖全部变更路径的编辑器。详见 [变更通知（signals）](./signals)。 |
+| `syncMode` | `'safe' \| 'signal'` | `'safe'` | `safe` 会在每次渲染时全量检查源对象，兼容直接修改 `Object3D` 的既有代码；`signal` 只处理显式变更通知，适合能覆盖全部变更路径的编辑器。详见 [事件与变更通知（signals）](./signals)。 |
 | `minInstances` | `number` | `2` | 同一兼容分组达到该数量后才创建批次。向下取整，最小值为 `1`。 |
 | `maxInstancesPerBatch` | `number` | `512` | 一个普通代理批次最多表示多少个源 Mesh。向下取整，且不会小于 `minInstances`。CPS 内部标记的透明语义辅助对象会按兼容组保持单批，因此可能超过该数量。 |
 | `dynamicPromotionFrames` | `number` | `2` | 对象连续发生局部变换达到该帧数后，临时提升为独立代理；稳定后可重新进入静态批次。向下取整，最小值为 `1`。 |
@@ -83,7 +83,7 @@ object3D.position.x = 1;
 ssp.signals.objectChanged.dispatch(object3D);
 ```
 
-批量修改时可传入对象数组。直接替换 geometry、材质或调整场景树时，应使用相应的 `geometryChanged`、`materialChanged`、`objectAdded`、`objectRemoved` 通知。完整调用方式和无目标通知的回退行为见 [变更通知（signals）](./signals)。
+批量修改时可传入对象数组。直接替换 geometry、材质或调整场景树时，应使用相应的 `geometryChanged`、`materialChanged`、`objectAdded`、`objectRemoved` 通知。完整调用方式和无目标通知的回退行为见 [事件与变更通知（signals）](./signals)。
 
 ::: warning 注意
 `transparentSinglePass` 会减少双面透明材质的 draw call，但可能改变前后表面的混合结果。使用前应检查玻璃、水面等透明模型的视觉效果。

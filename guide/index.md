@@ -44,7 +44,7 @@ ES 模块：
 [https://unpkg.com/soonspacejs/dist/index.esm.js](https://unpkg.com/soonspacejs/dist/index.esm.js)
 
 ::: tip 提示
-在 HTML 中直接使用 `soonspacejs` 时需要指定 `three` 依赖地址
+在 HTML 中直接使用 `soonspacejs` 时需要指定 `three`、`three-mesh-bvh` 和 `@robotlegsjs/signals` 等运行依赖地址。
 
 用法请参考 [在 html 中使用](./start#在-html-中使用)
 :::

@@ -193,7 +193,7 @@ export default defineConfig({
             { text: '补间动画', link: '/api/animation' },
             { text: '插件', link: '/api/plugin' },
             { text: '性能', link: '/api/performance' },
-            { text: '变更通知（Signals）', link: '/api/signals' },
+            { text: '事件与变更通知（Signals）', link: '/api/signals' },
             { text: '包导出 API 索引', link: '/api/package-exports' },
           ],
         },

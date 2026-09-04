@@ -1,6 +1,6 @@
 # 场景事件
 
-实例初始时定义场景可交互事件函数。
+实例初始时可以通过 `events` 定义场景交互函数。运行时监听、完整 signal 清单和清理方式见 [事件与变更通知（signals）](../api/signals)。
 
 ```js
 const ssp = new SoonSpace({
@@ -28,26 +28,26 @@ const ssp = new SoonSpace({
       console.log(model);
     },
     // 鼠标点击 poi
-    poiClick(poi) {
-      console.log(poi);
+    poiClick(poiEvent) {
+      console.log(poiEvent, poiEvent.target);
     },
     // 鼠标双击 poi
-    poiDblClick(poi) {
-      console.log(poi);
+    poiDblClick(poiEvent) {
+      console.log(poiEvent, poiEvent.target);
     },
     // 鼠标右键点击 poi
-    poiRightClick(poi) {
-      console.log(poi);
+    poiRightClick(poiEvent) {
+      console.log(poiEvent, poiEvent.target);
     },
     // 鼠标悬浮 poi
-    poiHover(poi) {
-      console.log(poi);
+    poiHover(poiEvent) {
+      console.log(poiEvent, poiEvent.target);
     },
     // 鼠标悬浮离开 poi
-    poiUnHover() {
+    poiUnHover(poi) {
       console.log(poi);
     },
-    // 鼠标点击场景且未相交到任何对象
+    // 左键点击场景且射线未命中任何对象
     sceneClick(sceneClickEvent) {
       console.log(sceneClickEvent, sceneClickEvent.type);
     },
@@ -70,7 +70,7 @@ const ssp = new SoonSpace({
 #### modelEvent
 
 - **target**
-  - **类型：** Sbm ｜ Model
+  - **类型：** Model
   - **描述：** 事件选中的第一个模型。
 - **currentTarget**
   - **类型：** Mesh
@@ -78,7 +78,7 @@ const ssp = new SoonSpace({
 - **intersects**
   - **类型：** intersect[]
     - intersect
-      - model：Sbm ｜ Model
+      - model：Model
       - sourceData：object
   - **描述：** 事件选中的所有数据。
 
@@ -120,7 +120,7 @@ const ssp = new SoonSpace({
 
 #### model
 
-- **类型** Sbm | Model
+- **类型** Model
 - **描述** 上次鼠标悬浮后又离开的模型对象
 
 ## poiClick
@@ -129,10 +129,14 @@ const ssp = new SoonSpace({
 
 ### 回调参数
 
-#### poi
+#### poiEvent
 
-- **类型：** Poi
-- **描述：** 单击选中的 `Poi` 对象
+- **target**
+  - **类型：** Poi
+  - **描述：** 单击选中的 `Poi` 对象。
+- **event**
+  - **类型：** MouseEvent | TouchEvent
+  - **描述：** 触发交互的原生输入事件。
 
 ## poiDblClick
 
@@ -140,19 +144,19 @@ const ssp = new SoonSpace({
 
 ### 回调参数
 
-#### poi
+#### poiEvent
 
-[同 poiClick](#poi)
+[同 poiClick](#poievent)
 
 ## poiRightClick
 
-单击 `poi` 事件。
+右键单击或移动端长按 `poi` 事件。
 
 ### 回调参数
 
-#### poi
+#### poiEvent
 
-[同 poiClick](#poi)
+[同 poiClick](#poievent)
 
 ## poiHover
 
@@ -160,9 +164,9 @@ const ssp = new SoonSpace({
 
 ### 回调参数
 
-#### poi
+#### poiEvent
 
-[同 poiClick](#poi)
+[同 poiClick](#poievent)
 
 ## poiUnHover
 
@@ -172,11 +176,12 @@ const ssp = new SoonSpace({
 
 #### poi
 
-[同 poiClick](#poi)
+- **类型：** Poi
+- **描述：** 上次鼠标悬浮后又离开的 `Poi` 对象。
 
 ## sceneClick
 
-场景点击（单击、双击、右键点击）并且未相交到任何对象时触发。
+鼠标左键单击，并且射线未相交到任何对象时触发。
 
 ### 回调参数
 
@@ -184,7 +189,7 @@ const ssp = new SoonSpace({
 
 - **type**
   - 类型: [SceneEventType](./types#sceneeventtype)
-  - 描述: 触发的点击事件类型
+  - 描述: 当前固定为 `click`
 - **event**
   - 类型: [MouseEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/MouseEvent) ｜ [TouchEvent](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent)
   - 描述: 触发时传递的原生事件

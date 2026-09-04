@@ -31,5 +31,5 @@
 - [补间动画](./animation)
 - [插件](./plugin)
 - [性能](./performance.md)
-- [变更通知（Signals）](./signals)
+- [事件与变更通知（Signals）](./signals)
 - [包导出 API 索引](./package-exports)

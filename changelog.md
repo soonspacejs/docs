@@ -1,5 +1,36 @@
 # 更新日志
 
+## 2.16.6（2026-09-04）
+
+### Signals 依赖
+
+- `@robotlegsjs/signals` 已升级到 `2.1.0`，并由 `soonspacejs` 声明为运行时依赖。通过 npm、pnpm 或 Yarn 安装 SoonSpace 时会自动安装；仅使用 `ssp.signals` 不需要在业务项目中手动添加依赖。
+- SDK 构建会将 `@robotlegsjs/signals` 保留为外部模块，由 Vite、Webpack 等构建工具正常解析；直接使用浏览器原生 ES modules 时，需要在 import map 中配置该模块。
+- [事件与变更通知文档](./api/signals) 现在包含全部内置信号、回调参数、动态对象事件、监听清理、高频事件注意事项和自动合批同步规则。
+
+### 升级
+
+```bash
+npm install soonspacejs@2.16.6
+```
+
+如果项目使用 `@soonspacejs/*` 插件，请将 SoonSpace 和插件统一升级到 `2.16.6`。
+
+## 2.16.5（2026-09-03）
+
+### 自动合批
+
+- 同一帧内多次请求渲染时，待注册根节点的兜底重试会合并到下一次实际渲染前执行，避免 `requestSync` 在高频 GIS 或流式加载场景中反复立即扫描。
+- `syncMode: 'signal'` 的待注册根节点只由对应变更通知唤醒；普通重绘不会为它执行 `safe` 模式的兜底重试。
+
+### 升级
+
+```bash
+npm install soonspacejs@2.16.5
+```
+
+如果项目使用 `@soonspacejs/*` 插件，请将 SoonSpace 和插件统一升级到 `2.16.5`。
+
 ## 2.16.4（2026-09-03）
 
 ### 自动合批与变更通知
