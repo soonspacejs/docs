@@ -2,7 +2,7 @@
 
 `ssp.signals` 是 SoonSpace 的统一信号入口，既可以监听场景事件，也可以在直接修改 Three.js 对象后通知 SoonSpace 刷新渲染状态。
 
-SoonSpace 2.16.6 起将 `@robotlegsjs/signals` 作为运行时依赖。通过 npm、pnpm 或 Yarn 安装 `soonspacejs` 时会自动安装它；仅使用 `ssp.signals` 不需要再手动添加依赖。如果业务代码需要直接 `import { Signal } from '@robotlegsjs/signals'` 创建自己的信号，仍应把它声明为业务项目的直接依赖。
+本页描述 3.0 alpha 的原生 signals 与 Entity 通知边界。`@robotlegsjs/signals` 是 SDK 的运行时依赖，版本约束为 `^2.1.0`；包管理器会自动安装，仅使用 `ssp.signals` 不需要手动添加。SDK 构建保留它为外部模块，由业务构建工具解析。如果业务代码直接 `import { Signal } from '@robotlegsjs/signals'` 创建自己的信号，应把它声明为业务项目的直接依赖。浏览器原生 ES modules 需要额外配置其 import map，不能只加载 SDK 文件。
 
 ## 基本用法
 
@@ -86,8 +86,8 @@ ssp.signals.modelClick.remove(onModelClick);
 
 `getSceneInfo`、`cameraChange` 和 `mouseMove` 都可能高频触发。监听函数中不要执行同步网络请求、大量 DOM 更新或完整场景遍历；需要更新界面时，可自行节流或合并到一次 `requestAnimationFrame`。
 
-::: warning 自动合批与 beforeRender
-启用自动合批后，SoonSpace 会保守地认为额外的 `beforeRender` 监听可能直接修改 Three.js 对象，因此实际绘制前会执行完整源对象同步。使用 `syncMode: 'signal'` 优化大场景时，应避免在 `beforeRender` 中修改场景；改为在业务更新发生时修改对象并发送对应的变更通知。
+::: tip beforeRender 与提交顺序
+实际绘制时先派发 `beforeRender`，再提交已明确通知的 Entity 更新，最后绘制。监听中修改 Entity 时仍需调用 `notifyChange`；新增监听不会触发完整源树同步，也不会自动读取草稿。原生对象修改按下面的 signals 协议请求绘制。
 :::
 
 ### 原生输入事件
@@ -126,7 +126,7 @@ ssp.signals.modelClick.remove(onModelClick);
 ```ts
 interface ModelEventParams {
   target: Model;
-  currentTarget: THREE.Object3D;
+  currentTarget: THREE.Mesh;
   intersects: Array<{
     model: Model;
     sourceData: THREE.Intersection;
@@ -140,7 +140,7 @@ interface PoiEventParams {
 }
 
 interface SceneClickParam {
-  type: 'click';
+  type: SceneEventType; // 导出的参数类型；sceneClick 当前派发 click。
   event: MouseEvent | TouchEvent;
 }
 ```
@@ -177,13 +177,13 @@ interface ObjectEventParams {
 
 | Signal | 建议参数 | 说明 |
 | --- | --- | --- |
-| `objectAdded` | `THREE.Object3D` 或无参数 | 对象或子树已加入场景。无参数表示无法定位目标，需要全量刷新。 |
-| `objectRemoved` | `THREE.Object3D` 或无参数 | 对象或子树已从场景移除。无参数表示无法定位目标，需要清理无效根节点并全量刷新。 |
-| `objectChanged` | `THREE.Object3D \| THREE.Object3D[]` 或无参数 | 对象的变换、显隐、图层或其他渲染状态变化。无参数表示全量同步。 |
-| `geometryChanged` | `THREE.Object3D \| THREE.Object3D[]` 或无参数 | Mesh 的 geometry 被替换或修改。无参数表示全量同步并重算场景统计。 |
-| `materialAdded` | `THREE.Material \| THREE.Material[]` 或无参数 | 业务或插件直接加入材质后通知渲染代理。 |
-| `materialChanged` | `THREE.Material \| THREE.Material[]` 或无参数 | 已有材质属性变化。无参数表示材质引用可能已替换，需要全量同步。 |
-| `materialRemoved` | `THREE.Material \| THREE.Material[]` 或无参数 | 业务或插件直接移除材质后通知渲染代理。 |
+| `objectAdded` | `THREE.Object3D` 或无参数 | 对象或子树已加入场景，通知原生子系统并请求绘制。 |
+| `objectRemoved` | `THREE.Object3D` 或无参数 | 对象或子树已从场景移除，通知原生子系统并请求绘制。 |
+| `objectChanged` | `THREE.Object3D \| THREE.Object3D[]` 或无参数 | 原生对象的变换、显隐、图层或渲染状态变化，请求绘制。 |
+| `geometryChanged` | `THREE.Object3D \| THREE.Object3D[]` 或无参数 | 原生 Mesh 的 geometry 被替换或修改，更新统计并请求绘制。 |
+| `materialAdded` | `THREE.Material \| THREE.Material[]` 或无参数 | 原生路径加入材质后的通知，并请求绘制。 |
+| `materialChanged` | `THREE.Material \| THREE.Material[]` 或无参数 | 原生材质属性或引用变化的通知，并请求绘制。 |
+| `materialRemoved` | `THREE.Material \| THREE.Material[]` 或无参数 | 原生路径移除材质后的通知，并请求绘制。 |
 
 调用 SoonSpace 的高层对象、材质和场景 API 时，SDK 会在对应路径发送必要通知。只有业务绕过这些 API，直接修改 Three.js 对象或场景树时，才需要手动 `dispatch`。
 
@@ -197,45 +197,51 @@ interface ObjectEventParams {
 
 `thingModelPropsChange` 和 `propertiesChanged` 是插件协作信号。只有在使用对应插件并理解其数据协议时，才应由业务主动派发。
 
-## 自动合批的变更通知
+## 原生对象的变更通知
 
-启用 [自动合批](./performance#setautoinstancing) 且 `syncMode: 'signal'` 时，SoonSpace 不会在每次渲染前扫描整个源对象树。直接修改 Three.js 对象后，必须发送与变更类型对应的通知；未通知时，内部代理可能继续显示旧的变换、可见性、geometry 或材质状态。
-
-| 直接操作 | 通知方式 |
-| --- | --- |
-| 修改对象的位置、旋转、缩放、可见性、图层或渲染状态 | `ssp.signals.objectChanged.dispatch(object3D)` |
-| 批量修改对象 | `ssp.signals.objectChanged.dispatch([objectA, objectB])` |
-| 使用 `parent.add(child)` 加入子树 | `ssp.signals.objectAdded.dispatch(child)` |
-| 使用 `child.removeFromParent()` 移除子树 | `ssp.signals.objectRemoved.dispatch(child)` |
-| 替换或修改 `mesh.geometry` | `ssp.signals.geometryChanged.dispatch(mesh)` |
-| 修改已在使用的材质属性 | `ssp.signals.materialChanged.dispatch(material)` |
-| 替换 `mesh.material` 引用 | `ssp.signals.materialChanged.dispatch()` |
+直接操作原生 Three.js 对象后，发送对应通知以更新原生子系统并请求绘制。这些 signal 不负责 Entity 资源合批，也不扫描源树创建代理。原生 geometry / material 修改仍需遵循 Three.js 的 `needsUpdate`、包围盒和 BVH 等更新要求，发送 signal 不代替它们。
 
 ```js
-// 变换或显隐
 mesh.position.x = 1;
 mesh.visible = false;
 ssp.signals.objectChanged.dispatch(mesh);
 
-// 替换 geometry
 mesh.geometry = nextGeometry;
 ssp.signals.geometryChanged.dispatch(mesh);
 
-// 修改已有材质
 mesh.material.opacity = 0.5;
 mesh.material.transparent = true;
 ssp.signals.materialChanged.dispatch(mesh.material);
 ```
 
-有目标参数时，自动合批会尽量只同步受影响对象；不传目标时会回退为相关根节点的完整同步。例如直接替换 `mesh.material` 后，仅传新材质无法定位旧批次，应调用 `ssp.signals.materialChanged.dispatch()`。
+直接调整场景树不能替代 SoonSpace 的对象缓存注册与卸载。需要 SDK 管理身份及拾取时，优先使用 `addObject` / `removeObject`；仅发送 `objectAdded` / `objectRemoved` 不保证完成全部缓存操作。3.0 alpha 不再提供 `safe` / `signal` 自动合批同步模式，旧规则见 [2.x 历史参考](./performance-2.x)。
 
-变更 signal 只负责把目标标记为待同步，真正的代理重建和 GPU 更新会合并到下一次实际渲染前执行。同一帧内连续派发多次通知不会立即重复完整重建。
+<span id="entity-notifications"></span>
 
-`modelAnimation` 和 `tweenUpdate` 没有具体对象参数，自动合批收到它们时会同步相关根节点。对于自行实现的动画，优先在每次业务更新后派发带目标的 `objectChanged`，避免扩大同步范围。
+## Entity 通知与原生 signals 的区别
 
-::: warning safe 与 signal
-`signals` 不会拦截 `object3D.position.x = 1` 这类 Three.js 原生赋值。`syncMode: 'safe'` 会用全量检查兼容这类代码；选择 `syncMode: 'signal'` 前，应确认所有直接变更路径都能发送通知。仅调用 `ssp.render()` 不会自动补发 `objectChanged`。
+::: warning 不混用更新对象
+以下规则适用于 3.0 alpha。`ssp.signals` 仍服务于原生对象和输入渲染事件，Entity 使用自己的显式通知。
 :::
+
+| 更新对象 | 入口 | 提交内容 |
+| --- | --- | --- |
+| 原生 Object3D | `ssp.signals.objectChanged.dispatch(object)` | 通知原生子系统并请求绘制，不提交 Entity。 |
+| Entity 的 position / quaternion / scale 草稿 | `entity.notifyChange('transform')` | 在调用时捕获 TRS 快照，不顺带提交显隐。 |
+| Entity 的 visible / contentVisible 草稿 | `entity.notifyChange('visibility')` | 在调用时同时捕获两个字段，不顺带提交变换。 |
+| Entity 模型资源 | `entity.replaceModel(resourceOrURL)` | 异步准备候选，成功后排队提交模型引用。 |
+
+```ts
+entity.position.x = 1;
+entity.notifyChange('transform');
+entity.visible = false;
+entity.notifyChange('visibility');
+ssp.flushUpdates();
+```
+
+`objectChanged.dispatch(entity)` 不会提交 Entity 草稿，`render()` 也不会代替通知。Entity 没有 safe 模式的全量直接赋值兜底；父级的已提交变化由 SDK 传播到受影响后代。已转交的几何和材质不可通过旧 `geometryChanged` / `materialChanged` 通知继续外部修改，应注册或加载新资源再替换模型。
+
+`ssp.signals` 仍可用于订阅场景、相机、输入和渲染事件，但旧 `modelClick` 不会自动转换成 Entity 命中。需要 Entity 身份时，由输入位置构造 Raycaster，再调用 `ssp.pickEntities()`。详见 [Entity API](./entities#包围盒与拾取) 与 [迁移指南](../guide/entity-migration)。
 
 ## 常见问题
 

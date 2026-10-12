@@ -1,5 +1,11 @@
 # 快速上手
 
+::: tip 版本与 Entity 入口
+下面的示例介绍原生 SoonSpace 初始化方式。3.0 alpha 的静态模型路径见 [Entity 入门](./entity)，它同样使用 `new SoonSpace(...)`。先按 [安装说明](./index#install) 配置同版 SDK 与插件。
+
+本页远程 iframe 和后面的原生 HTML / CDN 示例是既有 2.x 参考，不作为 alpha 构建的验收结果。3.0 alpha 推荐使用包管理器，避免不完整或未固定版本的 import map。
+:::
+
 ## hello-world
 
 <Docs-Iframe src="start/helloWorld.html" />

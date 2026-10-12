@@ -8,7 +8,7 @@ outline: 3
 
 [CPS 平台](https://sooncps.xwbuilders.com/workspace/manager) 生产的场景加载及数据读取。
 
-此插件是基于 [soonmanager2-sync](./soonmanager2-sync) 插件的扩展，并完全向下兼容。
+此插件基于 [soonmanager2-sync](./soonmanager2-sync) 扩展。3.0 alpha 保留原生场景加载路径，但移除旧自动合批 API，不能视为 2.x 的完全兼容升级。
 
 ## 样例
 
@@ -16,10 +16,10 @@ outline: 3
 
 ## 安装
 
+下面的命令安装已发布的 alpha；当前稳定标签仍是 2.x。本页远程 iframe 是既有原生样例，不证明其部署版本已升级为 alpha。
+
 ```bash
-npm install @soonspacejs/plugin-cps-soonmanager
-# or
-yarn add @soonspacejs/plugin-cps-soonmanager
+npm install soonspacejs@3.0.0-alpha.0 @soonspacejs/plugin-cps-soonmanager@3.0.0-alpha.0
 ```
 
 ## 使用方法
@@ -39,6 +39,273 @@ const cpsSoonmanagerPlugin = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cpsSoonma
 cpsSoonmanagerPlugin.setPath('xxx');
 await cpsSoonmanagerPlugin.loadScene();
 ```
+
+## Entity 场景加载（3.0 alpha）
+
+::: warning 3.0 alpha 预览
+本节对应已发布的 `3.0.0-alpha.0`，接口仍可能发生破坏性变更。请按 [安装说明](../guide/#install) 固定 SDK、插件与 peer 依赖，不能混用 2.x 插件。
+
+以下接口不会自动替换 `loadScene`、`loadSceneAndSemantic` 或其业务 API。旧接口仍按本页其他章节使用。
+:::
+
+新路径把业务层级保存在 Entity 中，渲染树只保留合批后的对象和真正需要的原生附件，不再把每个业务节点的空 Object3D 结构挂入 Scene。父子矩阵和继承显隐由 Entity 的已提交状态维护，业务编辑后需要主动调用 `notifyChange`。
+
+先阅读 [Entity 入门](../guide/entity)、[Entity API](../api/entities) 与 [迁移指南](../guide/entity-migration)。模型共享、资源释放和合批边界分别见 [模型资源](../api/model-resources) 与 [性能](../api/performance)。
+
+### loadEntityScene
+
+读取完整 CPS 场景包，完成元数据读取、授权和树解码，再将模型与树中受支持的语义节点导入 Entity。
+
+#### 定义
+
+```ts
+loadEntityScene(
+  options?: Omit<CpsEntityPackageOptions, 'path'> & { path?: string }
+): Promise<CpsEntityPackageScene>;
+
+interface CpsEntityPackageOptions extends CpsEntityTreeOptions {
+  path: string;
+  key?: string;
+  asId?: 'id' | 'sid';
+}
+
+interface CpsEntityPackageScene {
+  path: string;
+  metadata: IMetadata;
+  scene: CpsEntityScene;
+  requiresWatermark: boolean;
+}
+```
+
+#### 用法
+
+```ts
+import SoonSpace from 'soonspacejs';
+import CpsSoonmanagerPlugin from '@soonspacejs/plugin-cps-soonmanager';
+
+const ssp = new SoonSpace({
+  el: '#view',
+  options: {},
+  events: {},
+});
+const cps = ssp.registerPlugin(CpsSoonmanagerPlugin, 'cps');
+
+// 使用压缩模型时，在第一次加载前配置相应解码器。
+ssp.setModelDracoDecoderPath('/decoders/draco/');
+ssp.setModelKtx2DecoderPath('/decoders/basis/');
+
+const controller = new AbortController();
+const result = await cps.loadEntityScene({
+  path: '/scene-package',
+  asId: 'sid',
+  signal: controller.signal,
+  // key: applicationPublicKey, // 可选：企业应用公钥，不是私钥。
+});
+
+console.log(result.metadata.name, result.requiresWatermark);
+const bounds = ssp.entities.getBounds(result.scene.root);
+if (!bounds.isEmpty()) await ssp.controls.fitToBox(bounds, true);
+
+const room = result.scene.getBySourceId('room-source-sid');
+if (room) {
+  room.visible = false;
+  room.notifyChange('visibility');
+}
+
+// 仅释放这个加载会话；不会清空其他消费者的 Entity 或 GIS。
+// result.scene.dispose();
+```
+
+#### 参数与返回值
+
+| 参数 | 说明 | 默认行为 |
+| --- | --- | --- |
+| `path` | 场景包根路径；支持包内相对路径解析及现有 CPS 查询代理路径形式。 | 本次显式传值 → 当前 Entity 包的 `path` → 插件 `path`；最终不能为空。 |
+| `key` | 本次授权使用的应用**公钥**。 | 使用插件已配置的公钥；本次覆盖不会修改插件默认凭据。 |
+| `asId` | 选择用于会话内源 ID 查询的字段。 | `sid`；缺失或为空时回退到 `id`。 |
+| `signal` | 取消当前加载。 | 不取消其他消费者持有的共享模型资源。 |
+| `idForNode` | 自定义节点的源 ID，返回非空且在本次树中唯一的字符串。 | 优先于 `asId`。 |
+| `resolveModelURL` | 将 `3D` 节点解析为模型 URL。 | 使用包根路径与解码树中的 `node.path`；参见资源支持范围。 |
+| `loadModel` | 自定义模型导入，返回 `Promise<ModelLease>`。 | 使用 `ssp.models.load`；回调存在时由它加载，但仍会先调用 `resolveModelURL`。 |
+| `createAttachment` | 自定义非 `GROUP` / `STUB` / `3D` 节点工厂。 | 使用本插件内置的受支持语义工厂；显式传入时完全替换默认工厂。 |
+| `beforeCommit` | 全部候选内容准备完成、显示前的同步检查。 | 抛出异常时放弃候选会话并保留之前的会话。**不能返回 Promise。** |
+
+`CpsEntityTreeOptions` 及工厂返回结构见 [共享导入选项](#共享导入选项)。返回值包含本次包的路径、元数据、Entity 会话和水印要求；读取元数据不意味着其中所有平台设置都已应用。
+
+#### 加载、授权与切换
+
+1. 读取 `SceneMetadata.json`，按包内规则读取 `db/flat_models` 和树资源。
+2. 元数据版本 `>= 1.2` 时，复用现有 CPS 授权策略和 v1 / v2 签名、解密逻辑；更早版本读取明文树。
+3. 在隐藏的会话根 Entity 下创建候选节点，以最多 4 个并发任务加载模型或附件。
+4. 候选内容全部成功、同步检查和必要水印显示完成后，整体激活并释放本加载器的旧会话。
+
+调试包仍遵循现有水印规则，不能通过新 API 绕过授权或水印。`key` 只能传应用公钥；不要把签名或服务端私钥放进前端。包 JSON 在包加载入口捕获 SDK 请求头快照；每个模型在模型加载入口独立捕获已配置 loader 的请求头，不保证与包 JSON 的快照相同。模型根请求及同来源标准 glTF 依赖使用该模型的快照，其他来源依赖不继承凭据；携带凭据的可信来源依赖拒绝重定向。宿主解码器、自定义 handler 与模型工厂须自行处理鉴权、跨域和重定向，见 [模型请求边界](../api/model-resources#gltf-请求头与来源边界)。
+
+加载失败、取消或被同入口的新请求替代时，不会把半成品作为当前场景显示，之前已接受的会话保留。已开始的解码工作可能继续完成，但过期结果会被释放，不会覆盖新会话。`signal` 只控制加载过程，已接受会话的销毁应调用 `scene.dispose()`。
+
+`loadEntityScene` 与 `loadEntityTree` 会协调取消另一 Entity 入口的待处理请求，并在成功切换后清理另一入口的会话。它们不会自动移除旧 `loadScene` 创建的 Object3D 场景；不要在同一个内容上重复调用两套加载路径。
+
+::: tip 独立状态
+新包入口不覆写旧的 `path`、`metaData`、`treeData` 属性。查询本次 Entity 包应读取返回值或 `getEntityScene()`，不能依赖旧属性跟随更新。
+:::
+
+#### 资源与语义支持范围
+
+- 默认 `3D` 资源支持静态 `.glb` / `.gltf`，以及 `SBMG----` 字节封装的 `.sbmx`。原始 `.sbm` 不支持，需同时提供可解析该路径的 `resolveModelURL` 和 `loadModel` 适配器，避免默认 URL 扩展名检查先拒绝资源。Draco / KTX2 使用 SoonSpace 现有解码配置。
+- URL 模型中的静止姿态变换轨道可接受；实际变换动画、骨骼、Morph 和多材质 Mesh 不在该静态资源导入范围内。
+- `GROUP` / `STUB` 只生成逻辑 Entity。内置语义工厂支持 `POLYGON`、`CIRCLE`、`AREA`、`FLOOR`、`ROOM`、`OUTSIDE`、`BUILDING`、`DOOR`、`STAIRCASE`、`ELEVATOR`、`VENT`、`WINDOW`、`ZONE`、`WATER_SOURCE`、`ENTRANCE`；其他类型需显式提供工厂。
+- 语义工厂生成后，可转换的静态 Mesh 叶节点会成为共享模型快照：相同兼容几何使用 InstancedMesh，不同兼容几何使用 BatchedMesh；材质颜色可作为成员色保存，不因房间随机颜色无谓拆批。
+- 快照保存 Mesh 相对语义节点的矩阵和初始继承显隐；节点自身的 `matrix` 由 Entity 应用一次。线条等剩余渲染内容保留为附件，空语义结构不挂入 Scene。依赖骨骼、LOD、灯光、CSS 或自定义渲染回调的原生层级按需要保留上下文。
+- 兼容的单面、普通混合、非透射透明语义 Mesh 可使用批内排序的 BatchedMesh。**跨批次以及与其他透明对象之间的精确交错排序暂未解决**；有精确混合要求的内容需保持独立绘制。
+
+::: warning 不是 loadSceneAndSemantic 的直接替代
+首期尚未迁移独立 `semantic_model.json` 加载管线、GIS / POI / Work ID / 自定义属性，以及包中其余预设和业务设置的完整应用。新入口支持的是模型和**树内受支持语义节点**，不是旧场景业务能力的等价替换。
+
+Entity 合批开关和统计由 `ssp.entities` 管理。3.0 alpha 已移除 `cps.setAutoInstancing()`、`cps.getAutoInstancingStats()` 及原生加载选项 `autoInstancing`。
+:::
+
+### getEntityScene
+
+```ts
+getEntityScene(): CpsEntityPackageScene | null;
+```
+
+返回最近成功接受的 `loadEntityScene` 结果；尚无完整包会话时返回 `null`。它不会返回 `loadEntityTree` 的会话，后者需要保存方法返回值。
+
+```ts
+const currentPackage = cps.getEntityScene();
+const root = currentPackage?.scene.root;
+```
+
+### loadEntityTree
+
+只导入调用方已解码的 CPS 树，**不读取完整包元数据、不执行授权或签名验证**。传入数据的来源和访问控制由调用方负责。
+
+```ts
+loadEntityTree(
+  nodes?: ITreeData[] | null,
+  options?: CpsEntityTreeOptions
+): Promise<CpsEntityScene>;
+```
+
+省略 `nodes` 时使用插件已有的 `treeData`；尚未准备树数据会抛出异常。`nodes` 必须是无循环的树，选定的源 ID 必须非空且唯一。节点矩阵需包含 16 个有限数值，并且是可分解、重新组合为 TRS 的仿射矩阵，支持零缩放和镜像。往返验证的逐元素容限为 `1e-8 * max(1, abs(sourceElement))`。超出容限的局部剪切或透视矩阵会明确拒绝，不静默近似，已接受会话保留。正常嵌套 TRS 产生的世界剪切另由 Entity 渲染器回退独立对象保真处理。
+
+```ts
+// decodedTree 由应用自己的合法解码 / 解析流程提供。
+const session = await cps.loadEntityTree(decodedTree, {
+  idForNode: node => node.sid || node.id,
+  resolveModelURL: node => {
+    if (!node.path) throw new Error(`模型缺少 path: ${node.id}`);
+    return new URL(node.path, 'https://example.com/scene-package/').href;
+  },
+  signal: controller.signal,
+});
+
+const entity = session.getBySourceId('source-sid');
+```
+
+该示例只适用于 `GROUP` / `STUB` / `3D` 树；含语义节点时还需传入 `createAttachment`。`loadEntityTree` 不会自动采用完整包入口的内置语义工厂。URL 示例要求树节点实际带有 `path`；如果模型路径单独存储，应从自己的路径表解析。
+
+此方法默认使用 `sid`（字段缺失时回退 `id`）；可以通过 `idForNode` 改为其他源 ID。默认 URL 解析依赖插件已有的节点路径表和 `path`，且只接受 `.glb` / `.gltf`。对于新解码树或 `.sbmx`，应显式提供 `resolveModelURL`；其他格式应同时提供路径解析和返回静态模型 lease 的 `loadModel`。
+
+它同样采用隐藏候选根、有限并发、取消和成功后替换机制；不会自动加载 POI / GIS 等包级业务。
+
+### 共享导入选项
+
+以下类型从 `@soonspacejs/plugin-cps-soonmanager` 导出，适用于两个新入口。`loadEntityTree` 的实际参数是插件的 `ITreeData[]`，工厂参数使用下列较小的公开节点结构。
+
+```ts
+import type { Object3D } from 'three';
+import type { ModelLease } from 'soonspacejs';
+
+interface CpsEntityTreeNode {
+  id: string;
+  sid?: string;
+  name: string;
+  renderType: string;
+  matrix: readonly number[];
+  visible: boolean;
+  children: readonly CpsEntityTreeNode[];
+  path?: string | null;
+}
+
+interface CpsEntityTreeOptions {
+  signal?: AbortSignal;
+  idForNode?: (node: CpsEntityTreeNode) => string;
+  resolveModelURL?: (node: CpsEntityTreeNode) => string;
+  loadModel?: (
+    node: CpsEntityTreeNode,
+    signal: AbortSignal
+  ) => Promise<ModelLease>;
+  createAttachment?: (
+    node: CpsEntityTreeNode,
+    signal: AbortSignal
+  ) => Promise<CpsEntityAttachment>;
+  beforeCommit?: () => void;
+}
+
+interface CpsEntityAttachment {
+  object: Object3D;
+  model?: ModelLease;
+  empty?: boolean;
+  release: () => void;
+}
+```
+
+工厂约定：
+
+- `loadModel` 返回一个调用方 lease。加载器为 Entity 保留资源后会释放该 lease，包括取消和失败路径；工厂不应提前释放它。
+- 即使配置了 `loadModel`，仍会先运行 `resolveModelURL`。自定义格式或路径表应同时覆盖解析函数，不能让默认解析先报错。
+- `createAttachment` 返回离场的 Object3D；根节点应使用单位局部变换，子节点保留相对变换。不要再次应用 CPS 节点的 `matrix`，它属于 Entity。
+- 可选 `model` 表示工厂已提取的静态模型 lease。加载器将它绑定到 Entity，并释放工厂交出的 lease；`object` 只放未转换的剩余内容，避免同一 Mesh 被重复绘制。
+- `empty: true` 表示没有剩余渲染内容，不再创建 Object3D 附件；仍需提供 `object` 和 `release`。
+- `release` 只释放工厂自己拥有的对象、资源和缓存。会话释放或候选失败时由加载器调用，不能释放已转交 SDK 的共享资源；实现应避免重复清理。
+- 工厂应响应传入的 `signal`；即使工厂晚返回，加载器也不会挂入过期结果，并会调用清理。
+- `beforeCommit` 只做同步校验。异步准备请在工厂或方法调用前完成。
+
+独立使用导出的 `CpsEntityTreeLoader` / `CpsEntityPackageLoader` 时，不会获得插件私有的语义工厂。完整包 loader 接受调试包时还需要提供同步水印显示函数；通常应优先使用上述插件入口。
+
+独立 `CpsEntityTreeLoader` 默认以节点 `id` 查询，插件的 `loadEntityTree` 默认选择 `sid` 并回退到 `id`，两者不要混淆。高级 loader 提供 `load`、`cancelPending`、`dispose`，完整包 loader 另有只读 `current`；底层类型 `CpsPreparedPackage` 描述准备结果，但其 `prepare` 方法是私有实现。
+
+```ts
+interface CpsPreparedPackage {
+  path: string;
+  metadata: IMetadata;
+  flatData: IFlatData[];
+  tree: IInnerTreeData[];
+  requiresWatermark: boolean;
+}
+```
+
+### CpsEntityScene
+
+```ts
+class CpsEntityScene {
+  readonly root: Entity;
+  readonly bySourceId: Map<string, Entity>;
+  getBySourceId(id: string): Entity | undefined;
+  dispose(): void;
+}
+```
+
+- `root` 是无模型的会话逻辑根，可通过 `position` / `quaternion` / `scale` 及 `notifyChange('transform')` 整体移动，也可用 `visible` 与 `notifyChange('visibility')` 控制整场显隐。
+- `getBySourceId` 使用 `asId` / `idForNode` 选择的源 ID。Entity 的实际 `id` 带唯一会话前缀，不要用源 ID 调用旧 `ssp.getObjectById` 查询它。已删除的 Entity 不再返回。
+- `bySourceId` 用于读取源 ID 映射，不应由业务增删其中记录。
+- `dispose()` 可重复调用，释放本会话创建的 Entity、模型引用和工厂附件；即使业务把某个会话 Entity 从根节点下移出，它仍属于这个会话的释放范围。其他 owner 的内容不会被清空。
+
+### 新路径的合批控制与统计
+
+```ts
+// 新 Entity 渲染路径，不是旧 CPS sceneGroup 的代理开关。
+ssp.entities.setInstancingEnabled(true);
+ssp.entities.setBatchedEnabled(true);
+ssp.flushUpdates();
+
+console.table(ssp.entities.getStats());
+console.log(ssp.viewport.renderer.info.render.calls);
+```
+
+`getStats()` 是整个 EntityCollection 的统计，包含其他 Entity 消费者，不限于当前 CPS 会话。`independentObjects` 统计模型回退对象，不含全部原生附件；批次数也不等于整帧 draw calls。必须在同视角、分辨率与渲染配置下预热后测量 CPU / GPU 帧耗时，不能仅用这些数字判断性能达标。详细见 [性能验证](../api/performance)。
 
 ## 属性
 
@@ -486,10 +753,6 @@ interface ILoadSceneOptions {
    */
   path?: string;
   /**
-   * 保留源 Model API，并通过内部代理自动合批
-   */
-  autoInstancing?: boolean | AutoInstancingOptions;
-  /**
    * 同步自定义属性
    */
   syncProperties?: boolean;
@@ -626,7 +889,6 @@ cpsSoonmanagerPlugin
     :data="[
       { prop: 'key', desc: '等价于 setKey 方法', type: 'string', require: false, default: '' },
       { prop: 'path', desc: '等价于 setPath 方法', type: 'string', require: false, default: '' },
-      { prop: 'autoInstancing', desc: '加载完成后启用场景自动合批；传对象时作为 AutoInstancingOptions', type: 'boolean | AutoInstancingOptions', require: false, default: 'undefined' },
       { prop: 'syncProperties', desc: '是否同步自定义属性，开启时自动调用 fetchPropertiesData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'syncModelVisions', desc: '是否同步节点视角数据，开启时自动调用 fetchModelVisionsData 方法', type: 'boolean', require: false, default: 'true' },
       { prop: 'needsModelsBoundsTree', desc: '场景加载完成后在后台调用 ssp.computeModelsBoundsTree；loadScene 不等待 BVH 全部完成', type: 'boolean', require: false, default: 'true' },
@@ -658,33 +920,15 @@ const object = ssp.getObjectById(treeNode.twinsIdentifier);
 字段为 `null` 或空字符串时不会写入 `extraIds`，原有 `id`、`sid` 查询方式不变。
 :::
 
-::: tip 大场景自动合批
-`autoInstancing` 省略时不会改变当前状态；传 `true` 使用默认参数；传配置对象时启用并应用该参数；传 `false` 关闭当前 CPS 场景的自动合批。
+::: tip 原生加载与渲染请求
+原生 `loadScene`、`loadSceneAndSemantic` 和 worker 路径不再自动合批。需要 Entity 模型批处理时，显式迁移到 [loadEntityScene](#loadentityscene)，先确认其业务支持范围。
 
-```js
-await cpsSoonmanagerPlugin.loadScene({
-  autoInstancing: {
-    syncMode: 'safe',
-    minInstances: 2,
-    maxInstancesPerBatch: 512,
-    dynamicPromotionFrames: 2,
-    transparentSinglePass: false,
-    skipEmptyTextureUploads: false,
-  },
-});
-```
-
-`loadSceneAndSemantic` 和 `loadSceneAndSemanticInWorker` 使用同一个 `ILoadSceneOptions`，也支持该配置。`syncMode` 默认是 `safe`；只有编辑器能在直接修改 Three.js 对象后发送 `signals` 通知时，才应使用 `signal`。完整参数、合批策略和通知方式见 [性能：setAutoInstancing](../api/performance#setautoinstancing) 与 [变更通知（signals）](../api/signals)。
-
-如果初始化期间不需要渐进显示场景，可以暂停渲染，把加载过程中的对象变更合并为一次恢复渲染：
+初始化期间不需要渐进显示时，可以暂停渲染，完成加载后在 finally 中恢复；这只合并绘制请求，不会把原生对象转换成 Entity。
 
 ```js
 await ssp.viewport.setPauseRender(true);
-
 try {
-  await cpsSoonmanagerPlugin.loadSceneAndSemantic({
-    autoInstancing: true,
-  });
+  await cpsSoonmanagerPlugin.loadSceneAndSemantic();
 } finally {
   await ssp.viewport.setPauseRender(false);
 }
@@ -701,100 +945,6 @@ try {
 建议 `loadTargetId` 设置为上层节点的 id
 :::
 
-### setAutoInstancing
-
-切换当前 CPS 场景根节点的自动合批。原始 `Model` 和内部 Mesh 会继续保留在场景树中，对象查询、业务 ID、缓存、显隐、拾取和事件 API 不需要改写。
-
-#### 定义
-
-```ts
-setAutoInstancing(
-  enabled?: boolean,
-  options?: AutoInstancingOptions
-): void;
-```
-
-#### 用法
-
-```js
-cpsSoonmanagerPlugin.setAutoInstancing(true, {
-  minInstances: 2,
-  maxInstancesPerBatch: 512,
-  dynamicPromotionFrames: 2,
-});
-
-// 关闭并移除该 CPS 场景的内部代理
-cpsSoonmanagerPlugin.setAutoInstancing(false);
-```
-
-在场景根节点创建前调用该方法不会产生代理。需要随加载启用时，应优先使用 [loadScene](#loadscene) 的 `autoInstancing` 参数。
-
-#### 参数
-
-##### enabled
-
-- **描述:** 是否启用自动合批
-- **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** `boolean`
-- **默认值:** `true`
-
-##### options
-
-- **描述:** 自动合批配置
-- **必填:** <Base-RequireIcon :isRequire="false"/>
-- **类型:** [`AutoInstancingOptions`](../api/performance#autoinstancingoptions)
-- **默认值:** `{}`
-
-### getAutoInstancingStats
-
-获取当前 CPS 场景的合批统计。该方法用于判断代理数量和兼容回退情况，不应使用页面显示的原始 Mesh 数量判断合批是否生效。
-
-#### 定义
-
-```ts
-getAutoInstancingStats():
-  | AutoInstancingStats
-  | AutoInstancingStats[]
-  | null;
-```
-
-场景根节点尚未创建时返回 `null`。
-
-#### 用法
-
-```js
-const stats = cpsSoonmanagerPlugin.getAutoInstancingStats();
-const list = Array.isArray(stats) ? stats : stats ? [stats] : [];
-
-const proxyRenderables = list.reduce(
-  (total, item) =>
-    total +
-    item.instancedBatches +
-    item.mergedBatches +
-    item.batchedBatches +
-    item.passthroughObjects,
-  0
-);
-
-console.table({
-  sourceRenderables: list.reduce(
-    (total, item) => total + item.sourceRenderables,
-    0
-  ),
-  proxyRenderables,
-  drawCalls: ssp.viewport.renderer.info.render.calls,
-});
-```
-
-::: tip 性能验证
-首次代理渲染可能包含 geometry 上传和 shader 编译。先预热若干帧，再在相同相机、分辨率和后处理配置下比较关闭/开启时的 draw call、帧耗时 p50 和 p95。详细方法见 [如何判断优化是否生效](../api/performance#如何判断优化是否生效)。
-:::
-
-::: warning 透明材质
-`transparentSinglePass` 是减少双面透明 draw call 的可选视觉权衡。如果玻璃、水面等模型的前后表面混合发生变化，请关闭该选项。
-
-CPS 语义辅助 Mesh 会按兼容材质组透明合批，以减少大场景 draw call；不同材质组之间不保证逐对象深度交错。如果业务依赖半透明语义对象之间的精确混合顺序，请对该场景调用 `cpsSoonmanagerPlugin.setAutoInstancing(false)`。
-:::
 
 ### presetEffects
 

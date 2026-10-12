@@ -1,5 +1,39 @@
 # 更新日志
 
+## 3.0.0-alpha.0（2026-10-12，alpha 预览）
+
+### 破坏性变更
+
+- 完全移除 SDK 与 CPS 插件的旧 AutoInstancing 引擎、控制方法、选项和统计，原生 Object3D 保留但不自动转换，迁移步骤见 [Entity 迁移指南](./guide/entity-migration)。
+- 配套 `@soonspacejs/*` 插件需要使用同版 alpha，Three.js 等依赖要求和固定安装组合见 [安装说明](./guide/#install)，稳定标签仍为 `2.16.8`。
+
+### Entity 与资源
+
+- 新增逻辑 Entity 树与显式变更通知，支持嵌套变换、子树显隐、自身内容显隐、选择、拾取和包围盒，渲染树只保留绘制对象及必要容器。
+- 共享静态模型资源按兼容性使用 InstancedMesh、BatchedMesh 或独立 Mesh，提供加载取消、资源替换和 lease 生命周期，不轮询未通知的编辑草稿。
+- CPS 新增完整包和已解码树的 Entity 导入入口，支持树内受支持的静态语义内容，但不等价替换 GIS、POI、自定义属性及全部旧场景业务。
+
+### 加载与通知
+
+- glTF 标准依赖按来源隔离请求头和凭据，其他来源不继承 SDK 鉴权，带凭据的可信来源依赖拒绝重定向，宿主解码器和自定义 handler 仍由宿主管理请求策略。
+- 原生 `ssp.signals` 保留场景、输入、对象和渲染通知，Entity 草稿通过 `notifyChange` 提交，具体边界见 [Signals 文档](./api/signals)。
+
+### 安装与类型
+
+- 核心与插件的类型声明补齐内部依赖并保留共享 SDK 类型身份，安装包按严格类型检查验收，不依赖关闭库声明检查。
+- Flow 统一提供原生动画播放器供 CPS 与流程节点共用，不再要求安装与 prerelease 范围冲突的旧解析器，见 [Flow 文档](./plugin/flow)。
+- Recast 配套依赖升级到官方 `0.43.1`，保留外部 NavMesh/Crowd 类型身份；Three.js 固定验收组合见安装说明。
+
+### 升级
+
+使用固定版本安装 alpha，稳定版标签保持不变：
+
+```bash
+npm install soonspacejs@3.0.0-alpha.0
+```
+
+完整依赖与插件版本见 [安装说明](./guide/#install)，接口仍可能发生破坏性变更，不承诺固定场景或设备的帧率提升。
+
 ## 2.16.6（2026-09-04）
 
 ### Signals 依赖

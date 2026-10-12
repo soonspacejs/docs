@@ -9,8 +9,26 @@ outline: 3
 ## 安装
 
 ```bash
-npm install @soonspacejs/plugin-flow -S
+npm install soonspacejs@3.0.0-alpha.0 @soonspacejs/plugin-flow@3.0.0-alpha.0
 ```
+
+配套依赖见 [安装说明](../guide/#install)，不要混用 2.x 插件。
+
+## 3.0 alpha 的共享动画播放器
+
+Flow 统一提供 `AnimationPlayer` 及类型 `TAnimationFrame`、`TTransformObject`、`TTweenSource`、`TTweenType`、`TEventMap`，CPS 和 Flow 节点使用同一份实现。业务无需额外安装旧 `umanager-animation-parser`，也无需使用 `--force` 或 `--legacy-peer-deps` 绕过它的版本范围。
+
+```ts
+import SoonSpace from 'soonspacejs';
+import { AnimationPlayer } from '@soonspacejs/plugin-flow';
+import type { Object3D } from 'three';
+
+export function createNativePlayer(ssp: SoonSpace, target: Object3D) {
+  return new AnimationPlayer(ssp, target);
+}
+```
+
+播放器的目标仍是原生 Object3D；这一共享入口不代表 Entity 模型已支持动画。多个播放器操作同一目标时共享初始变换，`reset()` 恢复最初状态，不把中间播放位置当作起点。
 
 ## 执行流程
 

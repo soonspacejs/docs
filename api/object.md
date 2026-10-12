@@ -200,7 +200,18 @@ ssp.attachObject(object, group);
 ### 定义:
 
 ```ts
-function removeObject(object: Object3D): void;
+function removeObject(object: Object3D, options?: { dispose?: boolean }): void;
+```
+
+::: warning 3.0 alpha 的资源处置边界
+`dispose` 默认 `true`，按既有规则移除对象并释放资源。`dispose: false` 只移出场景、清理 SDK 对象缓存与旧拾取列表，并派发正常的 `objectRemoved` 通知，不销毁 geometry、material、texture 或 POI DOM。资源仍归原持有方，后续需要自行释放或明确转交；它不是资源注册或自动合批方法。
+
+Entity 资源的所有权规则见 [模型资源](./model-resources)，Entity 原生附件见 [Entity API](./entities#object3d-附件)。不要用这个方法销毁已交给资源注册器管理的共享资源。
+:::
+
+```ts
+// 从原生场景注销对象，保留资源供后续转移。
+ssp.removeObject(sourceObject, { dispose: false });
 ```
 
 ### 用法:

@@ -4,7 +4,7 @@ outline: 3
 
 # 包导出 API 索引
 
-本页按 SoonSpace.js `2.16.6` 的 package 入口文件生成，列出可导入符号与公开类成员。它用于查漏和搜索；签名、默认值、约束与示例请阅读对应详细页面或包的 TypeScript 声明。
+本页先列出 3.0 alpha 的新入口，再保留原来的 `2.16.6` 导出快照供历史查询。历史快照不是 alpha 完整清单，签名、默认值、约束以对应版本的包声明和详细 API 页面为准。
 
 ::: tip 边界说明
 类成员以未标记 `private` / `protected` 且不以下划线开头为准。清单也保留入口文件中的第三方再导出。
@@ -13,6 +13,43 @@ outline: 3
 ::: warning 稳定性
 “能够从包入口导入”不等于所有低层成员都承诺长期稳定。业务代码应优先使用详细页面说明的高层 API。
 :::
+
+## 3.0 alpha 的 Entity 与 CPS 入口
+
+::: warning 预览版本边界
+本节对应已发布的 `3.0.0-alpha.0`。2.x 包不包含这组 Entity 入口；3.0 alpha 已移除旧 AutoInstancing 方法、类型和 CPS 加载选项。下方 2.x 快照中的旧符号不能直接套用到 alpha。
+:::
+
+| 导出或实例入口 | 详细说明 |
+| --- | --- |
+| `ssp.entities`、`ssp.flushUpdates()`、`ssp.requestRender()`、`ssp.pickEntities(raycaster)` | [Entity 与 EntityCollection](./entities) |
+| `ssp.models`、`ssp.materials` | [模型资源与 lease](./model-resources) |
+| 命名类 `Entity`、`EntityCollection` | [逻辑对象及集合](./entities)；业务通过 `entities.add()` 创建对象。 |
+| 命名类 `ModelResources`、`ResourceLease` | [资源与所有权](./model-resources)；业务获取 lease，不直接 new ResourceLease。 |
+| 命名类 `ModelResourceUnsupportedError`，类型 `UnsupportedModelReason` | [资源加载错误与支持范围](./model-resources#格式与静态边界) |
+| 类型 `EntityOptions`、`EntityChange`、`EntityHit` | [创建、变更通知、拾取](./entities) |
+| 类型 `ModelPart`、`ModelLoadOptions`、`ModelLease`、`MaterialLease` | [模型描述、加载及引用](./model-resources) |
+
+命名类 `Entity` 与旧 SBM/XML 数据接口中的同名 `Entity` 不是同一概念。alpha 顶层 `Entity` 指向新逻辑对象类，旧类型引用需要核对，不能沿用同名假设。新子系统没有对外的 Primitive 抽象；内部 EntityRenderer、缓存批次及资源记录操作不是业务 API。
+
+使用流程见 [Entity 入门](../guide/entity)，CPS 的新加载入口见 [CPS Entity 接入](../plugin/cps-soonmanager#loadentityscene)。
+
+`@soonspacejs/plugin-flow` 在 alpha 中统一导出 `AnimationPlayer`，以及类型 `TAnimationFrame`、`TTransformObject`、`TTweenSource`、`TTweenType`、`TEventMap`。CPS 和 Flow 共享该实现；目标仍是原生 Object3D，见 [共享动画播放器](../plugin/flow#_3-0-alpha-的共享动画播放器)。
+
+`@soonspacejs/plugin-cps-soonmanager` 的 alpha 导出：
+
+| 导出或实例入口 | 公开成员与用途 |
+| --- | --- |
+| 插件 `loadEntityTree`、`loadEntityScene`、`getEntityScene` | 推荐的业务加载入口，签名见 [CPS 文档](../plugin/cps-soonmanager#loadentityscene)。 |
+| 类 `CpsEntityScene` | `root`、`bySourceId`、`getBySourceId`、`dispose`，管理单次加载会话。 |
+| 类 `CpsEntityTreeLoader` | `load`、`cancelPending`、`dispose`，高级独立树导入。 |
+| 类 `CpsEntityPackageLoader` | `current`、`load`、`cancelPending`、`dispose`，高级完整包导入。 |
+| 类型 `CpsEntityTreeNode`、`CpsEntityTreeOptions`、`CpsEntityAttachment` | 共享节点、导入选项及工厂返回描述。 |
+| 类型 `CpsEntityPackageOptions`、`CpsEntityPackageScene`、`CpsPreparedPackage` | 包选项、已接受会话及准备结果描述；`CpsPreparedPackage` 的导出不表示私有 `prepare` 方法可调用。 |
+
+## 2.x 导出快照（历史参考）
+
+以下各包清单保留 `2.16.6` 的生成结果，不是 3.0 alpha 声明。尤其是 AutoInstancing 相关方法与类型已删除；仍使用 2.x 的项目按自己安装包的声明核对。
 
 ## soonspacejs
 

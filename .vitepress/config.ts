@@ -12,7 +12,7 @@ const BASE = process.env.BASE || ''
 export default defineConfig({
   base: BASE,
   outDir: 'dist',
-  title: 'SoonSpace.js 2.x',
+  title: 'SoonSpace.js 3.0 alpha',
   description: '简洁易学的 WebGL 库',
   ignoreDeadLinks: true,
   lastUpdated: true,
@@ -76,7 +76,9 @@ export default defineConfig({
           items: [
             { text: '介绍', link: '/guide/' },
             { text: '快速上手', link: '/guide/start' },
-            { text: '从 1.x 迁移', link: '/guide/transfer' },
+            { text: 'Entity 入门（3.0 alpha）', link: '/guide/entity' },
+            { text: '迁移到 Entity（3.0 alpha）', link: '/guide/entity-migration' },
+            { text: '从 1.x 迁移（2.x 参考）', link: '/guide/transfer' },
             { text: '类型定义', link: '/guide/types' },
             { text: '配置项', link: '/guide/config' },
             { text: '场景事件', link: '/guide/event' },
@@ -165,6 +167,8 @@ export default defineConfig({
           text: '基础',
           items: [
             { text: '通用对象', link: '/api/object' },
+            { text: 'Entity 与集合（3.0 alpha）', link: '/api/entities' },
+            { text: '模型资源与 lease（3.0 alpha）', link: '/api/model-resources' },
             { text: 'Sbm 模型', link: '/api/sbm' },
             { text: '通用模型', link: '/api/model' },
             { text: 'Poi 对象', link: '/api/poi' },
